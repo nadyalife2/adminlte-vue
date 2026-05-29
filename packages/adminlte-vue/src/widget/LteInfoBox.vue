@@ -16,7 +16,7 @@ const props = withDefaults(
   { theme: 'info' }
 )
 
-const iconClass = computed(() => `info-box-icon text-bg-${props.iconTheme ?? props.theme}`)
+const iconClass = computed(() => `info-box-icon text-bg-${props.iconTheme ?? props.theme} shadow-sm`)
 </script>
 
 <template>

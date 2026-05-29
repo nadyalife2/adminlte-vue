@@ -45,17 +45,10 @@ const resolvedUser = computed<TopbarUser>(
       </ul>
 
       <ul class="navbar-nav ms-auto">
-        <li v-if="search" class="nav-item d-flex align-items-center me-2">
-          <button
-            type="button"
-            class="btn btn-sm rounded-pill border bg-body-secondary text-secondary d-inline-flex align-items-center gap-2 px-3"
-            title="Search (⌘K)"
-            @click="commandPalette?.open()"
-          >
+        <li v-if="search" class="nav-item">
+          <a class="nav-link" href="#" role="button" title="Search (⌘K)" @click.prevent="commandPalette?.open()">
             <i class="bi bi-search"></i>
-            <span class="d-none d-md-inline">Search</span>
-            <kbd class="d-none d-md-inline border rounded px-1 ms-1 bg-body text-body-secondary">⌘K</kbd>
-          </button>
+          </a>
         </li>
 
         <slot name="end" />
@@ -64,29 +57,13 @@ const resolvedUser = computed<TopbarUser>(
         <LteColorModeToggle v-if="colorModeToggle" />
 
         <li class="nav-item dropdown user-menu">
-          <button
-            type="button"
-            class="nav-link dropdown-toggle d-flex align-items-center"
-            data-bs-toggle="dropdown"
-          >
-            <img
-              :src="resolvedUser.image"
-              :alt="resolvedUser.name"
-              class="user-image rounded-circle shadow"
-              width="32"
-              height="32"
-            />
-            <span class="d-none d-md-inline ms-2">{{ resolvedUser.name }}</span>
-          </button>
+          <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" @click.prevent>
+            <img :src="resolvedUser.image" class="user-image rounded-circle shadow" :alt="resolvedUser.name" />
+            <span class="d-none d-md-inline">{{ resolvedUser.name }}</span>
+          </a>
           <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
             <li class="user-header text-bg-primary">
-              <img
-                :src="resolvedUser.image"
-                :alt="resolvedUser.name"
-                class="rounded-circle shadow"
-                width="80"
-                height="80"
-              />
+              <img :src="resolvedUser.image" class="rounded-circle shadow" :alt="resolvedUser.name" />
               <p>
                 {{ resolvedUser.name }}<template v-if="resolvedUser.role"> - {{ resolvedUser.role }}</template>
                 <small v-if="resolvedUser.memberSince">Member since {{ resolvedUser.memberSince }}</small>

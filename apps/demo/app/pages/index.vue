@@ -16,10 +16,10 @@ const sales = {
     <!-- Small boxes -->
     <div class="row">
       <div class="col-lg-3 col-6">
-        <LteSmallBox title="150" text="New Orders" theme="primary" icon="bi-bag" url="#" />
+        <LteSmallBox title="150" text="New Orders" theme="primary" icon="bi-cart" url="#" />
       </div>
       <div class="col-lg-3 col-6">
-        <LteSmallBox title="53%" text="Bounce Rate" theme="success" icon="bi-graph-up" url="#" />
+        <LteSmallBox title="53%" text="Bounce Rate" theme="success" icon="bi-bar-chart-line" url="#" />
       </div>
       <div class="col-lg-3 col-6">
         <LteSmallBox title="44" text="User Registrations" theme="warning" icon="bi-person-plus" url="#" />
@@ -31,7 +31,7 @@ const sales = {
 
     <div class="row">
       <div class="col-md-8">
-        <LteCard title="Sales overview" icon="bi-bar-chart" collapsible maximizable>
+        <LteCard title="Sales Value" icon="bi-bar-chart" collapsible maximizable>
           <ClientOnly>
             <LteApexChart type="area" :height="320" :series="sales.series" :options="sales.options" />
           </ClientOnly>

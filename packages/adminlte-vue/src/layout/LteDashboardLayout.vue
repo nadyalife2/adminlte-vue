@@ -16,6 +16,8 @@ import LteCommandPalette from '../widget/LteCommandPalette.vue'
 const props = withDefaults(
   defineProps<
     DashboardLayoutProps & {
+      /** Brand text shown next to the logo in the sidebar. */
+      brandText?: string
       /** Link component for sidebar/palette nav (e.g. NuxtLink). Default `<a>`. */
       linkComponent?: string | Component
       /** Accordion treeview (one open group per parent). Default false. */
@@ -93,6 +95,7 @@ useAccessibility()
       :items="menuItems"
       :logo="logo"
       :logo-href="logoHref"
+      :brand-text="brandText"
       :theme="sidebarTheme"
       :sidebar-class="sidebarClass"
       :current-path="currentPath"

@@ -24,7 +24,7 @@ withDefaults(
       </span>
     </a>
     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
-      <span class="dropdown-item dropdown-header">{{ notifications.length }} Notifications</span>
+      <span class="dropdown-item dropdown-header">{{ count ?? notifications.length }} Notifications</span>
       <template v-for="(n, idx) in notifications" :key="idx">
         <div class="dropdown-divider"></div>
         <a :href="n.url || '#'" class="dropdown-item">

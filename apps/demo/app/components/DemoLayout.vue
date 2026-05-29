@@ -41,21 +41,21 @@ const layout = computed(() => ({
 }))
 
 const user = {
-  name: 'Aigars Silkalns',
-  image: 'https://www.gravatar.com/avatar/?d=mp',
+  name: 'Alexander Pierce',
+  image: '/assets/img/user2-160x160.jpg',
   role: 'Web Developer',
   memberSince: 'Nov. 2023',
 }
 
 const messages: NavMessage[] = [
-  { from: 'Brad Diesel', text: 'Call me whenever you can…', time: '4 Hours Ago', star: 'warning' },
-  { from: 'John Pierce', text: 'I got your message bro', time: '4 Hours Ago' },
-  { from: 'Nora Silvester', text: 'The subject goes here', time: '4 Hours Ago', star: 'danger' },
+  { from: 'Brad Diesel', text: 'Call me whenever you can...', time: '4 Hours Ago', star: 'danger', image: '/assets/img/user1-128x128.jpg' },
+  { from: 'John Pierce', text: 'I got your message bro', time: '4 Hours Ago', star: 'secondary', image: '/assets/img/user8-128x128.jpg' },
+  { from: 'Nora Silvester', text: 'The subject goes here', time: '4 Hours Ago', star: 'warning', image: '/assets/img/user3-128x128.jpg' },
 ]
 const notifications: NavNotification[] = [
   { text: '4 new messages', icon: 'bi-envelope', time: '3 mins' },
-  { text: '8 friend requests', icon: 'bi-people', iconTheme: 'success', time: '12 hours' },
-  { text: '3 new reports', icon: 'bi-file-earmark', iconTheme: 'danger', time: '2 days' },
+  { text: '8 friend requests', icon: 'bi-people-fill', time: '12 hours' },
+  { text: '3 new reports', icon: 'bi-file-earmark-fill', time: '2 days' },
 ]
 
 function navigate(href: string) {
@@ -69,7 +69,8 @@ function navigate(href: string) {
     :current-path="route.path"
     :link-component="NuxtLink"
     :navigate="navigate"
-    logo="/logo.svg"
+    logo="/assets/img/AdminLTELogo.png"
+    brand-text="AdminLTE 4"
     :user="user"
     :fixed-header="layout.fixedHeader"
     :fixed-sidebar="layout.fixedSidebar"
@@ -82,6 +83,15 @@ function navigate(href: string) {
     :enable-sidebar-persistence="layout.enableSidebarPersistence"
     :dir="layout.dir"
   >
+    <template #topbar-start>
+      <li class="nav-item d-none d-md-block">
+        <NuxtLink to="/" class="nav-link"><i class="bi bi-grid-1x2 me-1" aria-hidden="true" />Live preview</NuxtLink>
+      </li>
+      <li class="nav-item d-none d-md-block">
+        <NuxtLink to="/docs" class="nav-link"><i class="bi bi-book me-1" aria-hidden="true" />Documentation</NuxtLink>
+      </li>
+    </template>
+
     <template #topbar-end>
       <LteNavMessages :messages="messages" />
       <LteNavNotifications :notifications="notifications" />
