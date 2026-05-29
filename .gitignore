@@ -1,0 +1,26 @@
+# dependencies
+node_modules/
+.pnpm-store/
+
+# build output
+dist/
+.output/
+.nuxt/
+.nitro/
+.cache/
+
+# logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# env / editor
+.env
+.env.*
+!.env.example
+.DS_Store
+*.local
+
+# misc
+*.map
+coverage/
