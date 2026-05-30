@@ -17,24 +17,28 @@ if (!targets.length) {
   process.exit(1)
 }
 
+// THEME=light|dark, WIDTH=<px> let us diff dark mode and responsive breakpoints.
+const THEME = process.env.THEME === 'dark' ? 'dark' : 'light'
+const WIDTH = Number(process.env.WIDTH) || 1440
+
 const browser = await chromium.launch()
 const ctx = await browser.newContext({
-  viewport: { width: 1440, height: 900 },
+  viewport: { width: WIDTH, height: 900 },
   deviceScaleFactor: 1,
-  colorScheme: 'light',
+  colorScheme: THEME,
 })
-// Force light theme deterministically before page scripts run (both storage keys).
-await ctx.addInitScript(() => {
+// Force the theme deterministically before page scripts run (both storage keys).
+await ctx.addInitScript((theme) => {
   try {
-    localStorage.setItem('theme', 'light') // original AdminLTE (Bootstrap pattern)
-    localStorage.setItem('lte-theme', 'light') // adminlte-vue useColorMode
+    localStorage.setItem('theme', theme) // original AdminLTE (Bootstrap pattern)
+    localStorage.setItem('lte-theme', theme) // adminlte-vue useColorMode
   } catch {}
-})
+}, THEME)
 const page = await ctx.newPage()
 
 async function shoot(url, file) {
   await page.goto(url, { waitUntil: 'networkidle', timeout: 60000 })
-  await page.evaluate(() => document.documentElement.setAttribute('data-bs-theme', 'light'))
+  await page.evaluate((theme) => document.documentElement.setAttribute('data-bs-theme', theme), THEME)
   await page.waitForTimeout(2500) // let ApexCharts / async widgets settle
   await page.screenshot({ path: file, fullPage: true })
 }
