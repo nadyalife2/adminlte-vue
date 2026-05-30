@@ -1,18 +1,33 @@
 <script setup lang="ts">
 definePageMeta({ layout: false })
-import { onMounted, onBeforeUnmount } from 'vue'
-
-// Switch document direction to RTL for this page only.
-onMounted(() => document.documentElement.setAttribute('dir', 'rtl'))
-onBeforeUnmount(() => document.documentElement.removeAttribute('dir'))
 </script>
 
 <template>
   <DemoLayout dir="rtl" :fixed-sidebar="true">
-    <LteAppContent title="Layout RTL" :breadcrumbs="[{ label: 'Layout', href: '#' }, { label: 'RTL' }]">
-      <LteCard title="Right-to-Left">
-        <p>The layout flips to RTL. For full RTL styling, load <code>adminlte-vue/css/rtl</code>.</p>
-      </LteCard>
+    <LteAppContent
+      title="Layout RTL"
+      :breadcrumbs="[{ label: 'Home', href: '#' }, { label: 'Layout RTL' }]"
+    >
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Title</h3>
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-lte-toggle="card-collapse" title="Collapse">
+                  <i data-lte-icon="expand" class="bi bi-plus-lg"></i>
+                  <i data-lte-icon="collapse" class="bi bi-dash-lg"></i>
+                </button>
+                <button type="button" class="btn btn-tool" data-lte-toggle="card-remove" title="Remove">
+                  <i class="bi bi-x-lg"></i>
+                </button>
+              </div>
+            </div>
+            <div class="card-body">Start creating your amazing application!</div>
+            <div class="card-footer">Footer</div>
+          </div>
+        </div>
+      </div>
     </LteAppContent>
   </DemoLayout>
 </template>

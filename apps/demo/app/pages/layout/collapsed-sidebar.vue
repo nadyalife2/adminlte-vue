@@ -1,18 +1,34 @@
 <script setup lang="ts">
 definePageMeta({ layout: false })
-import { onMounted, onBeforeUnmount } from 'vue'
-
-// Start with the sidebar collapsed by toggling the body class on mount.
-onMounted(() => document.body.classList.add('sidebar-collapse'))
-onBeforeUnmount(() => document.body.classList.remove('sidebar-collapse'))
 </script>
 
 <template>
-  <DemoLayout :fixed-sidebar="true">
-    <LteAppContent title="Collapsed Sidebar" :breadcrumbs="[{ label: 'Layout', href: '#' }, { label: 'Collapsed Sidebar' }]">
-      <LteCard title="Collapsed Sidebar">
-        <p>The sidebar starts collapsed. Use the navbar toggle (☰) to expand it.</p>
-      </LteCard>
+  <DemoLayout :sidebar-mini="true" :fixed-sidebar="true">
+    <CollapseSidebarOnMount />
+    <LteAppContent
+      title="Collapsed Sidebar"
+      :breadcrumbs="[{ label: 'Home', href: '#' }, { label: 'Collapsed Sidebar' }]"
+    >
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Title</h3>
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-lte-toggle="card-collapse" title="Collapse">
+                  <i data-lte-icon="expand" class="bi bi-plus-lg"></i>
+                  <i data-lte-icon="collapse" class="bi bi-dash-lg"></i>
+                </button>
+                <button type="button" class="btn btn-tool" data-lte-toggle="card-remove" title="Remove">
+                  <i class="bi bi-x-lg"></i>
+                </button>
+              </div>
+            </div>
+            <div class="card-body">Start creating your amazing application!</div>
+            <div class="card-footer">Footer</div>
+          </div>
+        </div>
+      </div>
     </LteAppContent>
   </DemoLayout>
 </template>

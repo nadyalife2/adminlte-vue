@@ -1,43 +1,320 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { onBeforeUnmount, onMounted } from 'vue'
 
-// useColorMode is provided by <LteDashboardLayout> (auto-imported by the module).
-const { colorMode, resolvedMode, setColorMode } = useColorMode()
+// Clone of the original AdminLTE "Theme Customize" page: pick a Bootstrap
+// background + color mode for the live sidebar / navbar / footer. The chrome
+// elements are rendered by the layout, so we mutate them via the document and
+// restore them on unmount.
+const themeBg = [
+  'bg-primary', 'bg-primary-subtle', 'bg-secondary', 'bg-secondary-subtle',
+  'bg-success', 'bg-success-subtle', 'bg-danger', 'bg-danger-subtle',
+  'bg-warning', 'bg-warning-subtle', 'bg-info', 'bg-info-subtle',
+  'bg-light', 'bg-light-subtle', 'bg-dark', 'bg-dark-subtle',
+  'bg-body-secondary', 'bg-body-tertiary', 'bg-body', 'bg-black',
+  'bg-white', 'bg-transparent',
+]
+let cleanups: Array<() => void> = []
 
-const accent = ref('#0d6efd')
-const sidebarDark = ref(true)
+onMounted(() => {
+  const wire = (
+    selector: string,
+    modeId: string,
+    colorId: string,
+    codeId: string,
+    code: (bg: string, mode: string) => string,
+  ) => {
+    const el = document.querySelector(selector)
+    const modeSel = document.getElementById(modeId) as HTMLSelectElement | null
+    const colorSel = document.getElementById(colorId) as HTMLSelectElement | null
+    const codeEl = document.getElementById(codeId)
+    if (!el || !modeSel || !colorSel || !codeEl) return
+    colorSel.innerHTML = themeBg
+      .map((bg) => `<option value="${bg}" class="text-${bg}">${bg}</option>`)
+      .join('')
+    let mode = ''
+    let bg = ''
+    const update = () => {
+      el.setAttribute('data-bs-theme', mode)
+      codeEl.innerHTML = code(bg, mode)
+    }
+    const onMode = (e: Event) => {
+      mode = (e.target as HTMLSelectElement).value
+      update()
+    }
+    const onColor = (e: Event) => {
+      bg = (e.target as HTMLSelectElement).value
+      themeBg.forEach((c) => el.classList.remove(c))
+      if (themeBg.includes(bg)) el.classList.add(bg)
+      update()
+    }
+    modeSel.addEventListener('input', onMode)
+    colorSel.addEventListener('input', onColor)
+    cleanups.push(() => {
+      modeSel.removeEventListener('input', onMode)
+      colorSel.removeEventListener('input', onColor)
+    })
+  }
+
+  wire('.app-sidebar', 'sidebar-color-modes', 'sidebar-color', 'sidebar-color-code',
+    (bg, mode) => `<pre><code class="language-html">&lt;aside class="app-sidebar ${bg}" data-bs-theme="${mode}"&gt;...&lt;/aside&gt;</code></pre>`)
+  wire('.app-header', 'navbar-color-modes', 'navbar-color', 'navbar-color-code',
+    (bg, mode) => `<pre><code class="language-html">&lt;nav class="app-header navbar navbar-expand ${bg}" data-bs-theme="${mode}"&gt;...&lt;/nav&gt;</code></pre>`)
+  wire('.app-footer', 'footer-color-modes', 'footer-color', 'footer-color-code',
+    (bg, mode) => `<pre><code class="language-html">&lt;footer class="app-footer ${bg}" data-bs-theme="${mode}"&gt;...&lt;/footer&gt;</code></pre>`)
+})
+
+onBeforeUnmount(() => {
+  for (const selector of ['.app-sidebar', '.app-header', '.app-footer']) {
+    const el = document.querySelector(selector)
+    if (!el) continue
+    themeBg.forEach((c) => el.classList.remove(c))
+    el.removeAttribute('data-bs-theme')
+  }
+  cleanups.forEach((fn) => fn())
+  cleanups = []
+})
 </script>
 
 <template>
-  <LteAppContent title="Theme Generator" :breadcrumbs="[{ label: 'Theme Generator' }]">
-    <div class="row">
-      <div class="col-md-5">
-        <LteCard title="Options">
-          <label class="form-label">Color mode</label>
-          <div class="btn-group d-flex mb-3" role="group">
-            <button
-              v-for="m in (['light', 'dark', 'auto'] as const)"
-              :key="m"
-              type="button"
-              class="btn"
-              :class="colorMode === m ? 'btn-primary' : 'btn-outline-primary'"
-              @click="setColorMode(m)"
-            >{{ m }}</button>
-          </div>
-          <LteInputColor v-model="accent" label="Accent color" />
-          <LteInputSwitch v-model="sidebarDark" label="Dark sidebar" theme="primary" />
-        </LteCard>
-      </div>
-      <div class="col-md-7">
-        <LteCard title="Preview">
-          <p>Current preference: <code>{{ colorMode }}</code> · resolved: <code>{{ resolvedMode }}</code></p>
-          <div class="d-flex flex-wrap gap-2">
-            <LteButton :style="{ backgroundColor: accent, borderColor: accent }" theme="primary">Accent button</LteButton>
-            <span class="badge text-bg-primary align-self-center">Badge</span>
-          </div>
-          <LteProgress :value="65" theme="primary" show-label class="mt-3" />
-        </LteCard>
-      </div>
-    </div>
+  <LteAppContent
+    title="Theme Customize"
+    :breadcrumbs="[{ label: 'Home', href: '#' }, { label: 'Theme Customize' }]"
+  >
+            <div class="row">
+              <!--begin::Col-->
+              <div class="col-12">
+                <!--begin::Card-->
+                <div class="card">
+                  <!--begin::Card Header-->
+                  <div class="card-header">
+                    <!--begin::Card Title-->
+                    <h3 class="card-title">Sidebar Theme</h3>
+                    <!--end::Card Title-->
+
+                    <!--begin::Card Toolbar-->
+                    <div class="card-tools">
+                      <button type="button" class="btn btn-tool" data-lte-toggle="card-collapse">
+                        <i data-lte-icon="expand" class="bi bi-plus-lg"></i>
+                        <i data-lte-icon="collapse" class="bi bi-dash-lg"></i>
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btn-tool"
+                        data-lte-toggle="card-remove"
+                        title="Remove"
+                      >
+                        <i class="bi bi-x-lg"></i>
+                      </button>
+                    </div>
+                    <!--end::Card Toolbar-->
+                  </div>
+                  <!--end::Card Header-->
+                  <!--begin::Card Body-->
+                  <div class="card-body">
+                    <!--begin::Row-->
+                    <div class="row">
+                      <!--begin::Col-->
+                      <div class="col-md-3">
+                        <select
+                          id="sidebar-color-modes"
+                          class="form-select form-select-lg"
+                          aria-label="Sidebar Color Mode Select"
+                        >
+                          <option value="">---Select---</option>
+                          <option value="dark">Dark</option>
+                          <option value="light">Light</option>
+                        </select>
+                      </div>
+                      <!--end::Col-->
+                      <!--begin::Col-->
+                      <div class="col-md-3">
+                        <select
+                          id="sidebar-color"
+                          class="form-select form-select-lg"
+                          aria-label="Sidebar Color Select"
+                        >
+                          <option value="">---Select---</option>
+                        </select>
+                      </div>
+                      <!--end::Col-->
+                      <!--begin::Col-->
+                      <div class="col-md-6">
+                        <div id="sidebar-color-code" class="w-100"></div>
+                      </div>
+                      <!--end::Col-->
+                    </div>
+                    <!--end::Row-->
+                  </div>
+                  <!--end::Card Body-->
+                  <!--begin::Card Footer-->
+                  <div class="card-footer">
+                    Check more color in
+                    <a
+                      href="https://getbootstrap.com/docs/5.3/utilities/background/"
+                      target="_blank"
+                      class="link-primary"
+                      >Bootstrap Background Colors</a
+                    >
+                  </div>
+                  <!--end::Card Footer-->
+                </div>
+                <!--end::Card-->
+
+                <!--begin::Card-->
+                <div class="card mt-4">
+                  <!--begin::Card Header-->
+                  <div class="card-header">
+                    <!--begin::Card Title-->
+                    <h3 class="card-title">Navbar Theme</h3>
+                    <!--end::Card Title-->
+
+                    <!--begin::Card Toolbar-->
+                    <div class="card-tools">
+                      <button type="button" class="btn btn-tool" data-lte-toggle="card-collapse">
+                        <i data-lte-icon="expand" class="bi bi-plus-lg"></i>
+                        <i data-lte-icon="collapse" class="bi bi-dash-lg"></i>
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btn-tool"
+                        data-lte-toggle="card-remove"
+                        title="Remove"
+                      >
+                        <i class="bi bi-x-lg"></i>
+                      </button>
+                    </div>
+                    <!--end::Card Toolbar-->
+                  </div>
+                  <!--end::Card Header-->
+                  <!--begin::Card Body-->
+                  <div class="card-body">
+                    <!--begin::Row-->
+                    <div class="row">
+                      <!--begin::Col-->
+                      <div class="col-md-3">
+                        <select
+                          id="navbar-color-modes"
+                          class="form-select form-select-lg"
+                          aria-label="Navbar Color Mode Select"
+                        >
+                          <option value="">---Select---</option>
+                          <option value="dark">Dark</option>
+                          <option value="light">Light</option>
+                        </select>
+                      </div>
+                      <!--end::Col-->
+                      <!--begin::Col-->
+                      <div class="col-md-3">
+                        <select
+                          id="navbar-color"
+                          class="form-select form-select-lg"
+                          aria-label="Navbar Color Select"
+                        >
+                          <option value="">---Select---</option>
+                        </select>
+                      </div>
+                      <!--end::Col-->
+                      <!--begin::Col-->
+                      <div class="col-md-6">
+                        <div id="navbar-color-code" class="w-100"></div>
+                      </div>
+                      <!--end::Col-->
+                    </div>
+                    <!--end::Row-->
+                  </div>
+                  <!--end::Card Body-->
+                  <!--begin::Card Footer-->
+                  <div class="card-footer">
+                    Check more color in
+                    <a
+                      href="https://getbootstrap.com/docs/5.3/utilities/background/"
+                      target="_blank"
+                      class="link-primary"
+                      >Bootstrap Background Colors</a
+                    >
+                  </div>
+                  <!--end::Card Footer-->
+                </div>
+                <!--end::Card-->
+
+                <!--begin::Card-->
+                <div class="card mt-4">
+                  <!--begin::Card Header-->
+                  <div class="card-header">
+                    <!--begin::Card Title-->
+                    <h3 class="card-title">Footer Theme</h3>
+                    <!--end::Card Title-->
+
+                    <!--begin::Card Toolbar-->
+                    <div class="card-tools">
+                      <button type="button" class="btn btn-tool" data-lte-toggle="card-collapse">
+                        <i data-lte-icon="expand" class="bi bi-plus-lg"></i>
+                        <i data-lte-icon="collapse" class="bi bi-dash-lg"></i>
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btn-tool"
+                        data-lte-toggle="card-remove"
+                        title="Remove"
+                      >
+                        <i class="bi bi-x-lg"></i>
+                      </button>
+                    </div>
+                    <!--end::Card Toolbar-->
+                  </div>
+                  <!--end::Card Header-->
+                  <!--begin::Card Body-->
+                  <div class="card-body">
+                    <!--begin::Row-->
+                    <div class="row">
+                      <!--begin::Col-->
+                      <div class="col-md-3">
+                        <select
+                          id="footer-color-modes"
+                          class="form-select form-select-lg"
+                          aria-label="Footer Color Mode Select"
+                        >
+                          <option value="">---Select---</option>
+                          <option value="dark">Dark</option>
+                          <option value="light">Light</option>
+                        </select>
+                      </div>
+                      <!--end::Col-->
+                      <!--begin::Col-->
+                      <div class="col-md-3">
+                        <select
+                          id="footer-color"
+                          class="form-select form-select-lg"
+                          aria-label="Footer Color Select"
+                        >
+                          <option value="">---Select---</option>
+                        </select>
+                      </div>
+                      <!--end::Col-->
+                      <!--begin::Col-->
+                      <div class="col-md-6">
+                        <div id="footer-color-code" class="w-100"></div>
+                      </div>
+                      <!--end::Col-->
+                    </div>
+                    <!--end::Row-->
+                  </div>
+                  <!--end::Card Body-->
+                  <!--begin::Card Footer-->
+                  <div class="card-footer">
+                    Check more color in
+                    <a
+                      href="https://getbootstrap.com/docs/5.3/utilities/background/"
+                      target="_blank"
+                      class="link-primary"
+                      >Bootstrap Background Colors</a
+                    >
+                  </div>
+                  <!--end::Card Footer-->
+                </div>
+                <!--end::Card-->
+              </div>
+              <!--end::Col-->
+            </div>
   </LteAppContent>
 </template>

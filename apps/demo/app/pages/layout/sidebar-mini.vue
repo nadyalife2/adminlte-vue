@@ -4,11 +4,30 @@ definePageMeta({ layout: false })
 
 <template>
   <DemoLayout :sidebar-mini="true" :fixed-sidebar="true">
-    <LteAppContent title="Sidebar Mini" :breadcrumbs="[{ label: 'Layout', href: '#' }, { label: 'Sidebar Mini' }]">
-      <LteCard title="Sidebar Mini">
-        <p>When collapsed, the sidebar shrinks to an icon-only rail instead of hiding completely.
-          Toggle the sidebar to see the mini mode.</p>
-      </LteCard>
+    <LteAppContent
+      title="Sidebar Mini"
+      :breadcrumbs="[{ label: 'Home', href: '#' }, { label: 'Sidebar Mini' }]"
+    >
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Title</h3>
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-lte-toggle="card-collapse" title="Collapse">
+                  <i data-lte-icon="expand" class="bi bi-plus-lg"></i>
+                  <i data-lte-icon="collapse" class="bi bi-dash-lg"></i>
+                </button>
+                <button type="button" class="btn btn-tool" data-lte-toggle="card-remove" title="Remove">
+                  <i class="bi bi-x-lg"></i>
+                </button>
+              </div>
+            </div>
+            <div class="card-body">Start creating your amazing application!</div>
+            <div class="card-footer">Footer</div>
+          </div>
+        </div>
+      </div>
     </LteAppContent>
   </DemoLayout>
 </template>
