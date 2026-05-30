@@ -1,7 +1,8 @@
 <script setup lang="ts">
-type Ability = { theme: string; title: string; tool: 'collapse' | 'remove' | 'maximize'; collapsed?: boolean }
+type Theme = 'primary' | 'success' | 'warning' | 'danger'
+type Tool = 'collapse' | 'remove' | 'maximize'
 
-const abilities: Ability[] = [
+const abilities: Array<{ theme: Theme; title: string; tool: Tool; collapsed?: boolean }> = [
   { theme: 'primary', title: 'Expandable', tool: 'collapse', collapsed: true },
   { theme: 'success', title: 'Collapsable', tool: 'collapse' },
   { theme: 'warning', title: 'Removable', tool: 'remove' },
@@ -9,20 +10,10 @@ const abilities: Ability[] = [
 ]
 
 const sections = [
-  { heading: 'Abilities', variant: 'header' as const },
+  { heading: 'Abilities', variant: 'default' as const },
   { heading: 'Card Outlined', variant: 'outline' as const },
-  { heading: 'Card with', code: '.text-bg-*', variant: 'bg' as const },
+  { heading: 'Card with', code: '.text-bg-*', variant: 'solid' as const },
 ]
-
-function cardClass(variant: string, a: Ability): string {
-  const base =
-    variant === 'outline'
-      ? `card card-outline card-${a.theme}`
-      : variant === 'bg'
-        ? `card text-bg-${a.theme}`
-        : `card card-${a.theme}`
-  return a.collapsed ? `${base} collapsed-card` : base
-}
 </script>
 
 <template>
@@ -33,40 +24,17 @@ function cardClass(variant: string, a: Ability): string {
       <h5 class="mb-2">{{ s.heading }} <code v-if="s.code">{{ s.code }}</code></h5>
       <div class="row g-4 mb-4">
         <div v-for="(a, ai) in abilities" :key="ai" class="col-md-3">
-          <div :class="cardClass(s.variant, a)">
-            <div class="card-header">
-              <h3 class="card-title">{{ a.title }}</h3>
-              <div class="card-tools">
-                <button
-                  v-if="a.tool === 'collapse'"
-                  type="button"
-                  class="btn btn-tool"
-                  data-lte-toggle="card-collapse"
-                >
-                  <i data-lte-icon="expand" class="bi bi-plus-lg"></i>
-                  <i data-lte-icon="collapse" class="bi bi-dash-lg"></i>
-                </button>
-                <button
-                  v-else-if="a.tool === 'remove'"
-                  type="button"
-                  class="btn btn-tool"
-                  data-lte-toggle="card-remove"
-                >
-                  <i class="bi bi-x-lg"></i>
-                </button>
-                <button
-                  v-else
-                  type="button"
-                  class="btn btn-tool"
-                  data-lte-toggle="card-maximize"
-                >
-                  <i data-lte-icon="maximize" class="bi bi-fullscreen"></i>
-                  <i data-lte-icon="minimize" class="bi bi-fullscreen-exit"></i>
-                </button>
-              </div>
-            </div>
-            <div class="card-body">The body of the card</div>
-          </div>
+          <LteCard
+            :title="a.title"
+            :theme="a.theme"
+            :variant="s.variant"
+            :collapsible="a.tool === 'collapse'"
+            :default-collapsed="a.tool === 'collapse' && !!a.collapsed"
+            :removable="a.tool === 'remove'"
+            :maximizable="a.tool === 'maximize'"
+          >
+            The body of the card
+          </LteCard>
         </div>
       </div>
     </template>
