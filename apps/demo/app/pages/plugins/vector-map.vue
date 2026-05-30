@@ -9,7 +9,6 @@ onMounted(async () => {
   try {
     // Register the world map data with jsVectorMap before rendering.
     await import('jsvectormap')
-    // @ts-expect-error — map data module has no types
     await import('jsvectormap/dist/maps/world.js')
     ready.value = true
   } catch {

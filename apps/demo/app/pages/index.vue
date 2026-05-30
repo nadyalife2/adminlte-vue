@@ -37,7 +37,6 @@ const mapReady = ref(false)
 onMounted(async () => {
   try {
     await import('jsvectormap')
-    // @ts-expect-error — map data module has no types
     await import('jsvectormap/dist/maps/world.js')
     mapReady.value = true
   } catch {

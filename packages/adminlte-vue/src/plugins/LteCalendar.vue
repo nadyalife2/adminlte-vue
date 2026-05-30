@@ -8,7 +8,7 @@ const props = withDefaults(
     initialView?: string
     options?: Partial<CalendarOptions>
   }>(),
-  { events: () => [], initialView: 'dayGridMonth' }
+  { events: () => [] as EventInput[], initialView: 'dayGridMonth' }
 )
 
 const el = ref<HTMLElement | null>(null)

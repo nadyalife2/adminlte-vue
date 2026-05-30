@@ -9,7 +9,7 @@ const props = withDefaults(
     options?: Record<string, unknown>
     height?: string
   }>(),
-  { columns: () => [], data: () => [] }
+  { columns: () => [] as Array<Record<string, unknown>>, data: () => [] as unknown[] }
 )
 
 const el = ref<HTMLElement | null>(null)

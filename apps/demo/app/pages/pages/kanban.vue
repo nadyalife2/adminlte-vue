@@ -42,7 +42,7 @@ onMounted(async () => {
       const card = document.createElement('article')
       card.className = 'kanban-card'
       card.innerHTML = `
-        <p class="fw-semibold mb-1 small">${title.replace(/[<>&]/g, (c) => esc[c])}</p>
+        <p class="fw-semibold mb-1 small">${title.replace(/[<>&]/g, (c) => esc[c] ?? c)}</p>
         <div class="d-flex justify-content-between align-items-center">
           <div class="kanban-assignees">
             <span class="kanban-assignee" title="You">YO</span>
