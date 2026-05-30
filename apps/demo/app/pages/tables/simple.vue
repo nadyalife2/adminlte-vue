@@ -1,32 +1,340 @@
-<script setup lang="ts">
-const rows = [
-  { id: 183, product: 'AdminLTE v4', date: '11-7-2024', status: 'Pending', popularity: 90 },
-  { id: 219, product: 'Vue Port', date: '11-7-2024', status: 'Active', popularity: 80 },
-  { id: 657, product: 'Nuxt Module', date: '11-7-2024', status: 'Active', popularity: 95 },
-  { id: 175, product: 'React Port', date: '11-7-2024', status: 'Inactive', popularity: 60 },
-]
-const statusTheme = (s: string) => (s === 'Active' ? 'success' : s === 'Pending' ? 'warning' : 'secondary')
-</script>
-
 <template>
-  <LteAppContent title="Simple Tables" :breadcrumbs="[{ label: 'Tables', href: '#' }, { label: 'Simple' }]">
-    <LteCard title="Striped, hover table">
-      <div class="table-responsive">
-        <table class="table table-striped table-hover align-middle">
-          <thead>
-            <tr><th>ID</th><th>Product</th><th>Date</th><th>Status</th><th>Popularity</th></tr>
-          </thead>
-          <tbody>
-            <tr v-for="row in rows" :key="row.id">
-              <td>{{ row.id }}</td>
-              <td>{{ row.product }}</td>
-              <td>{{ row.date }}</td>
-              <td><span :class="`badge text-bg-${statusTheme(row.status)}`">{{ row.status }}</span></td>
-              <td style="width: 30%"><LteProgress :value="row.popularity" theme="primary" size="sm" /></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </LteCard>
+  <LteAppContent
+    title="Simple Tables"
+    :breadcrumbs="[{ label: 'Home', href: '#' }, { label: 'Simple Tables' }]"
+  >
+            <div class="row">
+              <div class="col-md-6">
+                <div class="card mb-4">
+                  <div class="card-header">
+                    <h3 class="card-title">Bordered Table</h3>
+                  </div>
+                  <!-- /.card-header -->
+                  <div class="card-body">
+                    <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                          <th style="width: 10px">#</th>
+                          <th>Task</th>
+                          <th>Progress</th>
+                          <th style="width: 40px">Label</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr class="align-middle">
+                          <td>1.</td>
+                          <td>Update software</td>
+                          <td>
+                            <div class="progress progress-xs">
+                              <div
+                                class="progress-bar progress-bar-danger"
+                                style="width: 55%"
+                              ></div>
+                            </div>
+                          </td>
+                          <td><span class="badge text-bg-danger">55%</span></td>
+                        </tr>
+                        <tr class="align-middle">
+                          <td>2.</td>
+                          <td>Clean database</td>
+                          <td>
+                            <div class="progress progress-xs">
+                              <div class="progress-bar text-bg-warning" style="width: 70%"></div>
+                            </div>
+                          </td>
+                          <td>
+                            <span class="badge text-bg-warning">70%</span>
+                          </td>
+                        </tr>
+                        <tr class="align-middle">
+                          <td>3.</td>
+                          <td>Cron job running</td>
+                          <td>
+                            <div class="progress progress-xs progress-striped active">
+                              <div class="progress-bar text-bg-primary" style="width: 30%"></div>
+                            </div>
+                          </td>
+                          <td>
+                            <span class="badge text-bg-primary">30%</span>
+                          </td>
+                        </tr>
+                        <tr class="align-middle">
+                          <td>4.</td>
+                          <td>Fix and squish bugs</td>
+                          <td>
+                            <div class="progress progress-xs progress-striped active">
+                              <div class="progress-bar text-bg-success" style="width: 90%"></div>
+                            </div>
+                          </td>
+                          <td>
+                            <span class="badge text-bg-success">90%</span>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!-- /.card-body -->
+                  <div class="card-footer clearfix">
+                    <ul class="pagination pagination-sm m-0 float-end">
+                      <li class="page-item">
+                        <a class="page-link" href="#">&laquo;</a>
+                      </li>
+                      <li class="page-item">
+                        <a class="page-link" href="#">1</a>
+                      </li>
+                      <li class="page-item">
+                        <a class="page-link" href="#">2</a>
+                      </li>
+                      <li class="page-item">
+                        <a class="page-link" href="#">3</a>
+                      </li>
+                      <li class="page-item">
+                        <a class="page-link" href="#">&raquo;</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <!-- /.card -->
+
+                <div class="card mb-4">
+                  <div class="card-header">
+                    <h3 class="card-title">Condensed Full Width Table</h3>
+                  </div>
+                  <!-- /.card-header -->
+                  <div class="card-body p-0">
+                    <table class="table table-sm">
+                      <thead>
+                        <tr>
+                          <th style="width: 10px">#</th>
+                          <th>Task</th>
+                          <th>Progress</th>
+                          <th style="width: 40px">Label</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr class="align-middle">
+                          <td>1.</td>
+                          <td>Update software</td>
+                          <td>
+                            <div class="progress progress-xs">
+                              <div
+                                class="progress-bar progress-bar-danger"
+                                style="width: 55%"
+                              ></div>
+                            </div>
+                          </td>
+                          <td><span class="badge text-bg-danger">55%</span></td>
+                        </tr>
+                        <tr class="align-middle">
+                          <td>2.</td>
+                          <td>Clean database</td>
+                          <td>
+                            <div class="progress progress-xs">
+                              <div class="progress-bar text-bg-warning" style="width: 70%"></div>
+                            </div>
+                          </td>
+                          <td>
+                            <span class="badge text-bg-warning">70%</span>
+                          </td>
+                        </tr>
+                        <tr class="align-middle">
+                          <td>3.</td>
+                          <td>Cron job running</td>
+                          <td>
+                            <div class="progress progress-xs progress-striped active">
+                              <div class="progress-bar text-bg-primary" style="width: 30%"></div>
+                            </div>
+                          </td>
+                          <td>
+                            <span class="badge text-bg-primary">30%</span>
+                          </td>
+                        </tr>
+                        <tr class="align-middle">
+                          <td>4.</td>
+                          <td>Fix and squish bugs</td>
+                          <td>
+                            <div class="progress progress-xs progress-striped active">
+                              <div class="progress-bar text-bg-success" style="width: 90%"></div>
+                            </div>
+                          </td>
+                          <td>
+                            <span class="badge text-bg-success">90%</span>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+              </div>
+              <!-- /.col -->
+              <div class="col-md-6">
+                <div class="card mb-4">
+                  <div class="card-header">
+                    <h3 class="card-title">Simple Full Width Table</h3>
+
+                    <div class="card-tools">
+                      <ul class="pagination pagination-sm float-end">
+                        <li class="page-item">
+                          <a class="page-link" href="#">&laquo;</a>
+                        </li>
+                        <li class="page-item">
+                          <a class="page-link" href="#">1</a>
+                        </li>
+                        <li class="page-item">
+                          <a class="page-link" href="#">2</a>
+                        </li>
+                        <li class="page-item">
+                          <a class="page-link" href="#">3</a>
+                        </li>
+                        <li class="page-item">
+                          <a class="page-link" href="#">&raquo;</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <!-- /.card-header -->
+                  <div class="card-body p-0">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th style="width: 10px">#</th>
+                          <th>Task</th>
+                          <th>Progress</th>
+                          <th style="width: 40px">Label</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr class="align-middle">
+                          <td>1.</td>
+                          <td>Update software</td>
+                          <td>
+                            <div class="progress progress-xs">
+                              <div
+                                class="progress-bar progress-bar-danger"
+                                style="width: 55%"
+                              ></div>
+                            </div>
+                          </td>
+                          <td><span class="badge text-bg-danger">55%</span></td>
+                        </tr>
+                        <tr class="align-middle">
+                          <td>2.</td>
+                          <td>Clean database</td>
+                          <td>
+                            <div class="progress progress-xs">
+                              <div class="progress-bar text-bg-warning" style="width: 70%"></div>
+                            </div>
+                          </td>
+                          <td>
+                            <span class="badge text-bg-warning">70%</span>
+                          </td>
+                        </tr>
+                        <tr class="align-middle">
+                          <td>3.</td>
+                          <td>Cron job running</td>
+                          <td>
+                            <div class="progress progress-xs progress-striped active">
+                              <div class="progress-bar text-bg-primary" style="width: 30%"></div>
+                            </div>
+                          </td>
+                          <td>
+                            <span class="badge text-bg-primary">30%</span>
+                          </td>
+                        </tr>
+                        <tr class="align-middle">
+                          <td>4.</td>
+                          <td>Fix and squish bugs</td>
+                          <td>
+                            <div class="progress progress-xs progress-striped active">
+                              <div class="progress-bar text-bg-success" style="width: 90%"></div>
+                            </div>
+                          </td>
+                          <td>
+                            <span class="badge text-bg-success">90%</span>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+
+                <div class="card mb-4">
+                  <div class="card-header">
+                    <h3 class="card-title">Striped Full Width Table</h3>
+                  </div>
+                  <!-- /.card-header -->
+                  <div class="card-body p-0">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th style="width: 10px">#</th>
+                          <th>Task</th>
+                          <th>Progress</th>
+                          <th style="width: 40px">Label</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr class="align-middle">
+                          <td>1.</td>
+                          <td>Update software</td>
+                          <td>
+                            <div class="progress progress-xs">
+                              <div
+                                class="progress-bar progress-bar-danger"
+                                style="width: 55%"
+                              ></div>
+                            </div>
+                          </td>
+                          <td><span class="badge text-bg-danger">55%</span></td>
+                        </tr>
+                        <tr class="align-middle">
+                          <td>2.</td>
+                          <td>Clean database</td>
+                          <td>
+                            <div class="progress progress-xs">
+                              <div class="progress-bar text-bg-warning" style="width: 70%"></div>
+                            </div>
+                          </td>
+                          <td>
+                            <span class="badge text-bg-warning">70%</span>
+                          </td>
+                        </tr>
+                        <tr class="align-middle">
+                          <td>3.</td>
+                          <td>Cron job running</td>
+                          <td>
+                            <div class="progress progress-xs progress-striped active">
+                              <div class="progress-bar text-bg-primary" style="width: 30%"></div>
+                            </div>
+                          </td>
+                          <td>
+                            <span class="badge text-bg-primary">30%</span>
+                          </td>
+                        </tr>
+                        <tr class="align-middle">
+                          <td>4.</td>
+                          <td>Fix and squish bugs</td>
+                          <td>
+                            <div class="progress progress-xs progress-striped active">
+                              <div class="progress-bar text-bg-success" style="width: 90%"></div>
+                            </div>
+                          </td>
+                          <td>
+                            <span class="badge text-bg-success">90%</span>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+              </div>
+              <!-- /.col -->
+            </div>
   </LteAppContent>
 </template>
