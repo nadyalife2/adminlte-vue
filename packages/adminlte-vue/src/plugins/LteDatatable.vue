@@ -12,9 +12,12 @@ const props = withDefaults(
   { columns: () => [] as Array<Record<string, unknown>>, data: () => [] as unknown[] }
 )
 
-const el = ref<HTMLElement | null>(null)
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-let table: any = null
+type Tabulator = any
+const emit = defineEmits<{ ready: [table: Tabulator] }>()
+
+const el = ref<HTMLElement | null>(null)
+let table: Tabulator = null
 
 onMounted(async () => {
   if (!el.value) return
@@ -27,6 +30,12 @@ onMounted(async () => {
     data: props.data,
     ...props.options,
   })
+  table.on('tableBuilt', () => emit('ready', table))
+})
+
+defineExpose({
+  /** The underlying Tabulator instance (null until mounted). */
+  getTable: () => table,
 })
 
 watch(

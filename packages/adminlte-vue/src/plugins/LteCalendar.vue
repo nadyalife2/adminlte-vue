@@ -1,6 +1,13 @@
 <script setup lang="ts">
 import { onBeforeUnmount, onMounted, ref, watch } from 'vue'
-import type { Calendar, CalendarOptions, EventInput } from '@fullcalendar/core'
+import type {
+  Calendar,
+  CalendarOptions,
+  EventInput,
+  EventClickArg,
+  EventDropArg,
+} from '@fullcalendar/core'
+import type { DateClickArg } from '@fullcalendar/interaction'
 
 const props = withDefaults(
   defineProps<{
@@ -10,6 +17,12 @@ const props = withDefaults(
   }>(),
   { events: () => [] as EventInput[], initialView: 'dayGridMonth' }
 )
+
+const emit = defineEmits<{
+  dateClick: [arg: DateClickArg]
+  eventClick: [arg: EventClickArg]
+  eventDrop: [arg: EventDropArg]
+}>()
 
 const el = ref<HTMLElement | null>(null)
 let calendar: Calendar | null = null
@@ -28,9 +41,17 @@ onMounted(async () => {
     headerToolbar: { left: 'prev,next today', center: 'title', right: 'dayGridMonth,dayGridWeek' },
     editable: true,
     events: props.events,
+    dateClick: (arg) => emit('dateClick', arg),
+    eventClick: (arg) => emit('eventClick', arg),
+    eventDrop: (arg) => emit('eventDrop', arg),
     ...props.options,
   })
   calendar.render()
+})
+
+defineExpose({
+  /** The underlying FullCalendar instance (null until mounted). */
+  getApi: () => calendar,
 })
 
 watch(

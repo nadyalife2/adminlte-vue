@@ -17,6 +17,8 @@ const props = withDefaults(
      * - 'solid'   → fully colored card (`text-bg-{theme}`)
      */
     variant?: 'default' | 'outline' | 'solid'
+    /** Add `bg-gradient` to the card (most visible with `variant: 'solid'`). */
+    gradient?: boolean
     collapsible?: boolean
     defaultCollapsed?: boolean
     removable?: boolean
@@ -38,7 +40,12 @@ const cardClass = computed(() => {
     else if (props.variant === 'solid') base = `card text-bg-${props.theme}`
     else base = `card card-${props.theme}`
   }
-  return cn(base, isCollapsed.value && 'collapsed-card', isMaximized.value && 'maximized-card')
+  return cn(
+    base,
+    props.gradient && props.theme && 'bg-gradient',
+    isCollapsed.value && 'collapsed-card',
+    isMaximized.value && 'maximized-card'
+  )
 })
 
 const hasTools = computed(
@@ -49,36 +56,41 @@ const transition = treeviewTransition(300)
 
 <template>
   <div v-if="!isRemoved" :class="cardClass">
-    <div v-if="title || hasTools || $slots.title || $slots.tools" :class="cn('card-header', headerClass)">
-      <h3 class="card-title">
-        <slot name="title">
-          <i v-if="icon" :class="cn(biClass(icon), 'me-1')"></i>{{ title }}
-        </slot>
-      </h3>
-      <div class="card-tools">
-        <slot name="tools" />
-        <button
-          v-if="collapsible"
-          type="button"
-          class="btn btn-tool"
-          :title="isCollapsed ? 'Expand' : 'Collapse'"
-          @click="toggleCollapse"
-        >
-          <i :class="['bi', isCollapsed ? 'bi-plus-lg' : 'bi-dash-lg']"></i>
-        </button>
-        <button
-          v-if="maximizable"
-          type="button"
-          class="btn btn-tool"
-          title="Maximize"
-          @click="toggleMaximize"
-        >
-          <i :class="['bi', isMaximized ? 'bi-fullscreen-exit' : 'bi-fullscreen']"></i>
-        </button>
-        <button v-if="removable" type="button" class="btn btn-tool" title="Remove" @click="remove">
-          <i class="bi bi-x-lg"></i>
-        </button>
-      </div>
+    <div
+      v-if="$slots.header || title || hasTools || $slots.title || $slots.tools"
+      :class="cn('card-header', headerClass)"
+    >
+      <slot name="header">
+        <h3 class="card-title">
+          <slot name="title">
+            <i v-if="icon" :class="cn(biClass(icon), 'me-1')"></i>{{ title }}
+          </slot>
+        </h3>
+        <div class="card-tools">
+          <slot name="tools" />
+          <button
+            v-if="collapsible"
+            type="button"
+            class="btn btn-tool"
+            :title="isCollapsed ? 'Expand' : 'Collapse'"
+            @click="toggleCollapse"
+          >
+            <i :class="['bi', isCollapsed ? 'bi-plus-lg' : 'bi-dash-lg']"></i>
+          </button>
+          <button
+            v-if="maximizable"
+            type="button"
+            class="btn btn-tool"
+            title="Maximize"
+            @click="toggleMaximize"
+          >
+            <i :class="['bi', isMaximized ? 'bi-fullscreen-exit' : 'bi-fullscreen']"></i>
+          </button>
+          <button v-if="removable" type="button" class="btn btn-tool" title="Remove" @click="remove">
+            <i class="bi bi-x-lg"></i>
+          </button>
+        </div>
+      </slot>
     </div>
 
     <Transition v-bind="transition">
