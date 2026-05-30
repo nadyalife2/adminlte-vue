@@ -1,17 +1,17 @@
 <script setup lang="ts" generic="T">
 import { ref } from 'vue'
+import type { PropType } from 'vue'
 import type { Options, SortableEvent } from 'sortablejs'
 import { useSortable } from '../composables/use-sortable'
 
-const props = withDefaults(
-  defineProps<{
-    /** v-model — the ordered list. */
-    modelValue?: T[]
-    tag?: string
-    options?: Options
-  }>(),
-  { modelValue: () => [] as T[], tag: 'div' }
-)
+// Runtime prop declaration (see LteCalendar): emits a runtime `type: Array` so
+// the auto-imported v-model resolves to `T[]` rather than `never[]`.
+const props = defineProps({
+  /** v-model — the ordered list. */
+  modelValue: { type: Array as PropType<T[]>, default: () => [] },
+  tag: { type: String, default: 'div' },
+  options: { type: Object as PropType<Options>, default: undefined },
+})
 const emit = defineEmits<{ 'update:modelValue': [value: T[]]; end: [event: SortableEvent] }>()
 
 const el = ref<HTMLElement | null>(null)

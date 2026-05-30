@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { onBeforeUnmount, onMounted, ref, watch } from 'vue'
+import type { PropType } from 'vue'
 import type {
   Calendar,
   CalendarOptions,
@@ -9,14 +10,15 @@ import type {
 } from '@fullcalendar/core'
 import type { DateClickArg } from '@fullcalendar/interaction'
 
-const props = withDefaults(
-  defineProps<{
-    events?: EventInput[]
-    initialView?: string
-    options?: Partial<CalendarOptions>
-  }>(),
-  { events: () => [] as EventInput[], initialView: 'dayGridMonth' }
-)
+// Runtime prop declaration (not the `defineProps<T>()` type form): an array prop
+// whose only declaration is a `() => []` factory default compiles without a
+// runtime `type`, so Volar infers `never[]` when the component is auto-imported.
+// `Array as PropType<…>` emits `type: Array`, keeping the element type intact.
+const props = defineProps({
+  events: { type: Array as PropType<EventInput[]>, default: () => [] },
+  initialView: { type: String, default: 'dayGridMonth' },
+  options: { type: Object as PropType<Partial<CalendarOptions>>, default: undefined },
+})
 
 const emit = defineEmits<{
   dateClick: [arg: DateClickArg]

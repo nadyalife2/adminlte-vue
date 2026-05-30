@@ -1,16 +1,17 @@
 <script setup lang="ts">
 import { onBeforeUnmount, onMounted, ref, watch } from 'vue'
+import type { PropType } from 'vue'
 
-const props = withDefaults(
-  defineProps<{
-    columns?: Array<Record<string, unknown>>
-    data?: unknown[]
-    /** Extra Tabulator options merged over { columns, data }. */
-    options?: Record<string, unknown>
-    height?: string
-  }>(),
-  { columns: () => [] as Array<Record<string, unknown>>, data: () => [] as unknown[] }
-)
+// Runtime prop declaration (see LteCalendar): `Array as PropType<…>` emits a
+// runtime `type: Array`, so the auto-imported component's array props resolve
+// to their element type instead of `never[]` under Volar.
+const props = defineProps({
+  columns: { type: Array as PropType<Array<Record<string, unknown>>>, default: () => [] },
+  data: { type: Array as PropType<unknown[]>, default: () => [] },
+  /** Extra Tabulator options merged over { columns, data }. */
+  options: { type: Object as PropType<Record<string, unknown>>, default: undefined },
+  height: { type: String, default: undefined },
+})
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type Tabulator = any
