@@ -1,34 +1,34 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
+import { nextTick, onMounted, ref } from 'vue'
 
-// Ports the original Chat page script: scroll to latest on load, and append
-// an outgoing bubble when the composer is submitted.
-onMounted(() => {
-  const fmtTime = () => new Date().toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })
-  const form = document.getElementById('chat-composer')
-  const input = document.getElementById('chat-input') as HTMLInputElement | null
-  const list = document.getElementById('chat-messages')
-  if (!form || !input || !list) return
+// Reactive chat: a message list + composer driven by Vue state.
+type Message = { side: 'them' | 'me'; text: string; time: string }
 
-  list.scrollTop = list.scrollHeight
+const messages = ref<Message[]>([
+  { side: 'them', text: 'Hey Jane! Did you get a chance to look at the v2.4 candidate?', time: '10:38 AM' },
+  { side: 'me', text: 'Just finished going through it. Overall really solid — the new motion primitives are great.', time: '10:40 AM' },
+  { side: 'them', text: 'Glad you like them. Any concerns?', time: '10:40 AM' },
+  { side: 'me', text: 'Two small things: the success state on form inputs feels light, and the focus ring is barely visible on dark theme.', time: '10:41 AM' },
+  { side: 'them', text: 'Yeah, that focus ring issue has been bugging me too. I’ll bump the contrast and ping you for another look.', time: '10:42 AM' },
+  { side: 'me', text: 'Sounds good. Otherwise, ship it!', time: '10:42 AM' },
+])
+const draft = ref('')
+const messagesEl = ref<HTMLElement | null>(null)
 
-  form.addEventListener('submit', (e) => {
-    e.preventDefault()
-    const text = input.value.trim()
-    if (!text) return
-    const wrap = document.createElement('div')
-    wrap.className = 'chat-message me'
-    wrap.innerHTML = `<div class="chat-bubble"></div>`
-    ;(wrap.firstChild as HTMLElement).textContent = text
-    const time = document.createElement('span')
-    time.className = 'chat-time'
-    time.textContent = fmtTime()
-    ;(wrap.firstChild as HTMLElement).append(time)
-    list.append(wrap)
-    input.value = ''
-    list.scrollTop = list.scrollHeight
-  })
-})
+const fmtTime = () => new Date().toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })
+const scrollToEnd = () => {
+  if (messagesEl.value) messagesEl.value.scrollTop = messagesEl.value.scrollHeight
+}
+
+function send() {
+  const text = draft.value.trim()
+  if (!text) return
+  messages.value.push({ side: 'me', text, time: fmtTime() })
+  draft.value = ''
+  nextTick(scrollToEnd)
+}
+
+onMounted(scrollToEnd)
 </script>
 
 <template>
@@ -167,59 +167,26 @@ onMounted(() => {
                   </div>
                 </header>
 
-                <div class="chat-messages" id="chat-messages">
-                  <div class="chat-message them">
+                <div ref="messagesEl" class="chat-messages">
+                  <div v-for="(m, i) in messages" :key="i" :class="['chat-message', m.side]">
                     <div class="chat-bubble">
-                      Hey Jane! Did you get a chance to look at the v2.4 candidate?
-                      <span class="chat-time">10:38 AM</span>
-                    </div>
-                  </div>
-                  <div class="chat-message me">
-                    <div class="chat-bubble">
-                      Just finished going through it. Overall really solid — the new motion
-                      primitives are great.
-                      <span class="chat-time">10:40 AM</span>
-                    </div>
-                  </div>
-                  <div class="chat-message them">
-                    <div class="chat-bubble">
-                      Glad you like them. Any concerns?
-                      <span class="chat-time">10:40 AM</span>
-                    </div>
-                  </div>
-                  <div class="chat-message me">
-                    <div class="chat-bubble">
-                      Two small things: the success state on form inputs feels light, and the focus
-                      ring is barely visible on dark theme.
-                      <span class="chat-time">10:41 AM</span>
-                    </div>
-                  </div>
-                  <div class="chat-message them">
-                    <div class="chat-bubble">
-                      Yeah, that focus ring issue has been bugging me too. I’ll bump the contrast
-                      and ping you for another look.
-                      <span class="chat-time">10:42 AM</span>
-                    </div>
-                  </div>
-                  <div class="chat-message me">
-                    <div class="chat-bubble">
-                      Sounds good. Otherwise, ship it!
-                      <span class="chat-time">10:42 AM</span>
+                      {{ m.text }}
+                      <span class="chat-time">{{ m.time }}</span>
                     </div>
                   </div>
                 </div>
 
-                <form class="chat-composer" id="chat-composer">
+                <form class="chat-composer" @submit.prevent="send">
                   <div class="input-group">
                     <button class="btn btn-outline-secondary" type="button" title="Attach">
                       <i class="bi bi-paperclip" aria-hidden="true"></i>
                     </button>
                     <input
+                      v-model="draft"
                       type="text"
                       class="form-control"
                       placeholder="Type a message…"
                       aria-label="Type a message"
-                      id="chat-input"
                     />
                     <button class="btn btn-outline-secondary" type="button" title="Emoji">
                       <i class="bi bi-emoji-smile" aria-hidden="true"></i>
