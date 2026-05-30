@@ -1,77 +1,405 @@
 <script setup lang="ts">
-const sales = {
-  series: [{ name: 'This year', data: [28, 48, 40, 19, 86, 27, 90] }],
-  options: {
-    chart: { toolbar: { show: false } },
-    xaxis: { categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'] },
-    dataLabels: { enabled: false },
-    stroke: { curve: 'smooth' },
-    colors: ['#0d6efd'],
+import { onMounted, ref } from 'vue'
+
+// Sales Value area chart (mirrors the original AdminLTE 4 dashboard demo).
+const salesSeries = [
+  { name: 'Digital Goods', data: [28, 48, 40, 19, 86, 27, 90] },
+  { name: 'Electronics', data: [65, 59, 80, 81, 56, 55, 40] },
+]
+const salesOptions = {
+  chart: { toolbar: { show: false } },
+  legend: { show: false },
+  colors: ['#0d6efd', '#20c997'],
+  dataLabels: { enabled: false },
+  stroke: { curve: 'smooth' },
+  xaxis: {
+    type: 'datetime',
+    categories: [
+      '2023-01-01',
+      '2023-02-01',
+      '2023-03-01',
+      '2023-04-01',
+      '2023-05-01',
+      '2023-06-01',
+      '2023-07-01',
+    ],
   },
+  tooltip: { x: { format: 'MMMM yyyy' } },
 }
+
+// Footer sparklines for the world-map card.
+const sparkline1 = [1000, 1200, 920, 927, 931, 1027, 819, 930, 1021]
+const sparkline2 = [515, 519, 520, 522, 652, 810, 370, 627, 319, 630, 921]
+const sparkline3 = [15, 19, 20, 22, 33, 27, 31, 27, 19, 30, 21]
+
+// jsVectorMap needs its world map data registered before the map renders.
+const mapReady = ref(false)
+onMounted(async () => {
+  try {
+    await import('jsvectormap')
+    // @ts-expect-error — map data module has no types
+    await import('jsvectormap/dist/maps/world.js')
+    mapReady.value = true
+  } catch {
+    /* plugin not installed */
+  }
+})
 </script>
 
 <template>
-  <LteAppContent title="Dashboard" :breadcrumbs="[{ label: 'Home', href: '/' }, { label: 'Dashboard v1' }]">
+  <LteAppContent
+    title="Dashboard"
+    :breadcrumbs="[{ label: 'Home', href: '#' }, { label: 'Dashboard' }]"
+  >
     <!-- Small boxes -->
     <div class="row">
       <div class="col-lg-3 col-6">
-        <LteSmallBox title="150" text="New Orders" theme="primary" icon="bi-cart" url="#" />
+        <div class="small-box text-bg-primary">
+          <div class="inner">
+            <h3>150</h3>
+            <p>New Orders</p>
+          </div>
+          <svg
+            class="small-box-icon"
+            fill="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+          >
+            <path
+              d="M2.25 2.25a.75.75 0 000 1.5h1.386c.17 0 .318.114.362.278l2.558 9.592a3.752 3.752 0 00-2.806 3.63c0 .414.336.75.75.75h15.75a.75.75 0 000-1.5H5.378A2.25 2.25 0 017.5 15h11.218a.75.75 0 00.674-.421 60.358 60.358 0 002.96-7.228.75.75 0 00-.525-.965A60.864 60.864 0 005.68 4.509l-.232-.867A1.875 1.875 0 003.636 2.25H2.25zM3.75 20.25a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0zM16.5 20.25a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0z"
+            ></path>
+          </svg>
+          <a
+            href="#"
+            class="small-box-footer link-light link-underline-opacity-0 link-underline-opacity-50-hover"
+          >
+            More info <i class="bi bi-link-45deg"></i>
+          </a>
+        </div>
       </div>
       <div class="col-lg-3 col-6">
-        <LteSmallBox title="53%" text="Bounce Rate" theme="success" icon="bi-bar-chart-line" url="#" />
+        <div class="small-box text-bg-success">
+          <div class="inner">
+            <h3>53<sup class="fs-5">%</sup></h3>
+            <p>Bounce Rate</p>
+          </div>
+          <svg
+            class="small-box-icon"
+            fill="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+          >
+            <path
+              d="M18.375 2.25c-1.035 0-1.875.84-1.875 1.875v15.75c0 1.035.84 1.875 1.875 1.875h.75c1.035 0 1.875-.84 1.875-1.875V4.125c0-1.036-.84-1.875-1.875-1.875h-.75zM9.75 8.625c0-1.036.84-1.875 1.875-1.875h.75c1.036 0 1.875.84 1.875 1.875v11.25c0 1.035-.84 1.875-1.875 1.875h-.75a1.875 1.875 0 01-1.875-1.875V8.625zM3 13.125c0-1.036.84-1.875 1.875-1.875h.75c1.036 0 1.875.84 1.875 1.875v6.75c0 1.035-.84 1.875-1.875 1.875h-.75A1.875 1.875 0 013 19.875v-6.75z"
+            ></path>
+          </svg>
+          <a
+            href="#"
+            class="small-box-footer link-light link-underline-opacity-0 link-underline-opacity-50-hover"
+          >
+            More info <i class="bi bi-link-45deg"></i>
+          </a>
+        </div>
       </div>
       <div class="col-lg-3 col-6">
-        <LteSmallBox title="44" text="User Registrations" theme="warning" icon="bi-person-plus" url="#" />
+        <div class="small-box text-bg-warning">
+          <div class="inner">
+            <h3>44</h3>
+            <p>User Registrations</p>
+          </div>
+          <svg
+            class="small-box-icon"
+            fill="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+          >
+            <path
+              d="M6.25 6.375a4.125 4.125 0 118.25 0 4.125 4.125 0 01-8.25 0zM3.25 19.125a7.125 7.125 0 0114.25 0v.003l-.001.119a.75.75 0 01-.363.63 13.067 13.067 0 01-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 01-.364-.63l-.001-.122zM19.75 7.5a.75.75 0 00-1.5 0v2.25H16a.75.75 0 000 1.5h2.25v2.25a.75.75 0 001.5 0v-2.25H22a.75.75 0 000-1.5h-2.25V7.5z"
+            ></path>
+          </svg>
+          <a
+            href="#"
+            class="small-box-footer link-dark link-underline-opacity-0 link-underline-opacity-50-hover"
+          >
+            More info <i class="bi bi-link-45deg"></i>
+          </a>
+        </div>
       </div>
       <div class="col-lg-3 col-6">
-        <LteSmallBox title="65" text="Unique Visitors" theme="danger" icon="bi-pie-chart" url="#" />
+        <div class="small-box text-bg-danger">
+          <div class="inner">
+            <h3>65</h3>
+            <p>Unique Visitors</p>
+          </div>
+          <svg
+            class="small-box-icon"
+            fill="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+          >
+            <path
+              clip-rule="evenodd"
+              fill-rule="evenodd"
+              d="M2.25 13.5a8.25 8.25 0 018.25-8.25.75.75 0 01.75.75v6.75H18a.75.75 0 01.75.75 8.25 8.25 0 01-16.5 0z"
+            ></path>
+            <path
+              clip-rule="evenodd"
+              fill-rule="evenodd"
+              d="M12.75 3a.75.75 0 01.75-.75 8.25 8.25 0 018.25 8.25.75.75 0 01-.75.75h-7.5a.75.75 0 01-.75-.75V3z"
+            ></path>
+          </svg>
+          <a
+            href="#"
+            class="small-box-footer link-light link-underline-opacity-0 link-underline-opacity-50-hover"
+          >
+            More info <i class="bi bi-link-45deg"></i>
+          </a>
+        </div>
       </div>
     </div>
 
+    <!-- Main row -->
     <div class="row">
-      <div class="col-md-8">
-        <LteCard title="Sales Value" icon="bi-bar-chart" collapsible maximizable>
-          <ClientOnly>
-            <LteApexChart type="area" :height="320" :series="sales.series" :options="sales.options" />
-          </ClientOnly>
-        </LteCard>
-      </div>
-      <div class="col-md-4">
-        <LteInfoBox title="$53,000" text="Total Revenue" icon="bi-cash-stack" theme="success" :progress="70" progress-text="70% increase in 30 days" />
-        <LteInfoBox title="92,050" text="Pageviews" icon="bi-eye" theme="info" :progress="50" progress-text="50% increase in 30 days" />
-        <LteCard title="Progress">
-          <LteProgressGroup label="Add products to cart" :value="160" :max="200" theme="primary" />
-          <LteProgressGroup label="Complete purchase" :value="310" :max="400" theme="danger" />
-          <LteProgressGroup label="Visit premium page" :value="480" :max="800" theme="success" />
-        </LteCard>
-      </div>
-    </div>
+      <!-- Left col -->
+      <div class="col-lg-7 connectedSortable">
+        <div class="card mb-4">
+          <div class="card-header">
+            <h3 class="card-title">Sales Value</h3>
+          </div>
+          <div class="card-body">
+            <ClientOnly>
+              <LteApexChart
+                type="area"
+                :height="300"
+                :series="salesSeries"
+                :options="salesOptions"
+              />
+            </ClientOnly>
+          </div>
+        </div>
 
-    <div class="row">
-      <div class="col-md-6">
-        <LteCard title="Direct chat" theme="primary" variant="outline">
-          <LteDirectChat
-            :messages="[
-              { from: 'Alexander', image: 'https://www.gravatar.com/avatar/?d=mp', timestamp: '23 Jan 2:00 pm', text: 'Is this template really for free? That\'s unbelievable!' },
-              { from: 'Sarah', image: 'https://www.gravatar.com/avatar/?d=mp', timestamp: '23 Jan 2:05 pm', text: 'You better believe it!', isOwn: true },
-            ]"
-            :contacts="[
-              { name: 'Count Dracula', image: 'https://www.gravatar.com/avatar/?d=mp', date: '1/1/2024', preview: 'How have you been?' },
-            ]"
-          />
-        </LteCard>
+        <!-- DIRECT CHAT -->
+        <div class="card direct-chat direct-chat-primary mb-4">
+          <div class="card-header">
+            <h3 class="card-title">Direct Chat</h3>
+            <div class="card-tools">
+              <span title="3 New Messages" class="badge text-bg-primary">3</span>
+              <button type="button" class="btn btn-tool" data-lte-toggle="card-collapse">
+                <i data-lte-icon="expand" class="bi bi-plus-lg"></i>
+                <i data-lte-icon="collapse" class="bi bi-dash-lg"></i>
+              </button>
+              <button
+                type="button"
+                class="btn btn-tool"
+                title="Contacts"
+                data-lte-toggle="chat-pane"
+              >
+                <i class="bi bi-chat-text-fill"></i>
+              </button>
+              <button type="button" class="btn btn-tool" data-lte-toggle="card-remove">
+                <i class="bi bi-x-lg"></i>
+              </button>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="direct-chat-messages">
+              <div class="direct-chat-msg">
+                <div class="direct-chat-infos clearfix">
+                  <span class="direct-chat-name float-start">Alexander Pierce</span>
+                  <span class="direct-chat-timestamp float-end">23 Jan 2:00 pm</span>
+                </div>
+                <img
+                  class="direct-chat-img"
+                  src="/assets/img/user1-128x128.jpg"
+                  alt="message user image"
+                />
+                <div class="direct-chat-text">
+                  Is this template really for free? That's unbelievable!
+                </div>
+              </div>
+
+              <div class="direct-chat-msg end">
+                <div class="direct-chat-infos clearfix">
+                  <span class="direct-chat-name float-end">Sarah Bullock</span>
+                  <span class="direct-chat-timestamp float-start">23 Jan 2:05 pm</span>
+                </div>
+                <img
+                  class="direct-chat-img"
+                  src="/assets/img/user3-128x128.jpg"
+                  alt="message user image"
+                />
+                <div class="direct-chat-text">You better believe it!</div>
+              </div>
+
+              <div class="direct-chat-msg">
+                <div class="direct-chat-infos clearfix">
+                  <span class="direct-chat-name float-start">Alexander Pierce</span>
+                  <span class="direct-chat-timestamp float-end">23 Jan 5:37 pm</span>
+                </div>
+                <img
+                  class="direct-chat-img"
+                  src="/assets/img/user1-128x128.jpg"
+                  alt="message user image"
+                />
+                <div class="direct-chat-text">
+                  Working with AdminLTE on a great new app! Wanna join?
+                </div>
+              </div>
+
+              <div class="direct-chat-msg end">
+                <div class="direct-chat-infos clearfix">
+                  <span class="direct-chat-name float-end">Sarah Bullock</span>
+                  <span class="direct-chat-timestamp float-start">23 Jan 6:10 pm</span>
+                </div>
+                <img
+                  class="direct-chat-img"
+                  src="/assets/img/user3-128x128.jpg"
+                  alt="message user image"
+                />
+                <div class="direct-chat-text">I would love to.</div>
+              </div>
+            </div>
+
+            <div class="direct-chat-contacts">
+              <ul class="contacts-list">
+                <li>
+                  <a href="#">
+                    <img class="contacts-list-img" src="/assets/img/user1-128x128.jpg" alt="User Avatar" />
+                    <div class="contacts-list-info">
+                      <span class="contacts-list-name">
+                        Count Dracula
+                        <small class="contacts-list-date float-end">2/28/2023</small>
+                      </span>
+                      <span class="contacts-list-msg">How have you been? I was...</span>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img class="contacts-list-img" src="/assets/img/user7-128x128.jpg" alt="User Avatar" />
+                    <div class="contacts-list-info">
+                      <span class="contacts-list-name">
+                        Sarah Doe
+                        <small class="contacts-list-date float-end">2/23/2023</small>
+                      </span>
+                      <span class="contacts-list-msg">I will be waiting for...</span>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img class="contacts-list-img" src="/assets/img/user3-128x128.jpg" alt="User Avatar" />
+                    <div class="contacts-list-info">
+                      <span class="contacts-list-name">
+                        Nadia Jolie
+                        <small class="contacts-list-date float-end">2/20/2023</small>
+                      </span>
+                      <span class="contacts-list-msg">I'll call you back at...</span>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img class="contacts-list-img" src="/assets/img/user5-128x128.jpg" alt="User Avatar" />
+                    <div class="contacts-list-info">
+                      <span class="contacts-list-name">
+                        Nora S. Vans
+                        <small class="contacts-list-date float-end">2/10/2023</small>
+                      </span>
+                      <span class="contacts-list-msg">Where is your new...</span>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img class="contacts-list-img" src="/assets/img/user6-128x128.jpg" alt="User Avatar" />
+                    <div class="contacts-list-info">
+                      <span class="contacts-list-name">
+                        John K.
+                        <small class="contacts-list-date float-end">1/27/2023</small>
+                      </span>
+                      <span class="contacts-list-msg">Can I take a look at...</span>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img class="contacts-list-img" src="/assets/img/user8-128x128.jpg" alt="User Avatar" />
+                    <div class="contacts-list-info">
+                      <span class="contacts-list-name">
+                        Kenneth M.
+                        <small class="contacts-list-date float-end">1/4/2023</small>
+                      </span>
+                      <span class="contacts-list-msg">Never mind I found...</span>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="card-footer">
+            <form action="#" method="post">
+              <div class="input-group">
+                <input
+                  type="text"
+                  name="message"
+                  placeholder="Type Message ..."
+                  class="form-control"
+                />
+                <span class="input-group-append">
+                  <button type="button" class="btn btn-primary">Send</button>
+                </span>
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
-      <div class="col-md-6">
-        <LteCard title="Latest members" theme="info" variant="outline">
-          <LteTimeline
-            :items="[
-              { time: '12:05', icon: 'bi-envelope', iconTheme: 'primary', title: 'Support Team sent you an email' },
-              { time: '5 mins ago', icon: 'bi-person', iconTheme: 'success', title: 'New user registered' },
-              { time: '27 mins ago', icon: 'bi-cart', iconTheme: 'warning', title: 'New order received' },
-            ]"
-          />
-        </LteCard>
+
+      <!-- Right col -->
+      <div class="col-lg-5 connectedSortable">
+        <div class="card text-white bg-primary bg-gradient border-primary mb-4">
+          <div class="card-header border-0">
+            <h3 class="card-title">Sales Value</h3>
+            <div class="card-tools">
+              <button type="button" class="btn btn-primary btn-sm" data-lte-toggle="card-collapse">
+                <i data-lte-icon="expand" class="bi bi-plus-lg"></i>
+                <i data-lte-icon="collapse" class="bi bi-dash-lg"></i>
+              </button>
+            </div>
+          </div>
+          <div class="card-body">
+            <ClientOnly>
+              <LteVectorMap v-if="mapReady" map="world" height="220px" />
+              <div v-else style="height: 220px"></div>
+            </ClientOnly>
+          </div>
+          <div class="card-footer border-0">
+            <div class="row">
+              <div class="col-4 text-center">
+                <ClientOnly>
+                  <LteSparklineChart :data="sparkline1" color="#DCE6EC" :height="50" />
+                </ClientOnly>
+                <div class="text-white">Visitors</div>
+              </div>
+              <div class="col-4 text-center">
+                <ClientOnly>
+                  <LteSparklineChart :data="sparkline2" color="#DCE6EC" :height="50" />
+                </ClientOnly>
+                <div class="text-white">Online</div>
+              </div>
+              <div class="col-4 text-center">
+                <ClientOnly>
+                  <LteSparklineChart :data="sparkline3" color="#DCE6EC" :height="50" />
+                </ClientOnly>
+                <div class="text-white">Sales</div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </LteAppContent>
