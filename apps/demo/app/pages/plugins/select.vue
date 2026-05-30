@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import 'tom-select/dist/css/tom-select.bootstrap5.min.css'
 import { ref } from 'vue'
 const single = ref('vue')
 const multi = ref<string[]>(['vue', 'nuxt'])

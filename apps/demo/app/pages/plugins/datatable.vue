@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import 'tabulator-tables/dist/css/tabulator_bootstrap5.min.css'
 const columns = [
   { title: 'ID', field: 'id', width: 80, sorter: 'number' },
   { title: 'Name', field: 'name', headerFilter: 'input' },

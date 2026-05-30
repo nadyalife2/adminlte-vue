@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import 'jsvectormap/dist/jsvectormap.min.css'
 import { onMounted, ref } from 'vue'
 
 const ready = ref(false)

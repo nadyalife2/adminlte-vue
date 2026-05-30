@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import 'flatpickr/dist/flatpickr.min.css'
 import { ref } from 'vue'
 const date = ref('')
 const range = ref('')

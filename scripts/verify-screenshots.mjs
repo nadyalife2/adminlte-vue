@@ -41,7 +41,7 @@ async function shoot(url, file) {
 
 for (const t of targets) {
   await shoot(VUE + t.vue, `${OUT}/${t.name}-vue.png`)
-  await shoot(ORIG + t.orig, `${OUT}/${t.name}-orig.png`)
+  if (t.orig) await shoot(ORIG + t.orig, `${OUT}/${t.name}-orig.png`)
   console.log('captured', t.name)
 }
 

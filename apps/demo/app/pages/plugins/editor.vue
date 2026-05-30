@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import 'quill/dist/quill.snow.css'
 import { ref } from 'vue'
 const content = ref('<h3>Hello from Quill 👋</h3><p>This is a rich-text editor wrapper.</p>')
 </script>
