@@ -1,17 +1,33 @@
+<script setup lang="ts">
+definePageMeta({ layout: false })
+</script>
+
 <template>
-  <LteAppContent title="Maintenance" :breadcrumbs="[{ label: 'Pages', href: '#' }, { label: 'Maintenance' }]">
-    <div class="text-center py-5">
-      <h1 class="display-3 fw-bold text-info"><i class="bi bi-tools"></i></h1>
-      <h3 class="mt-3">We&rsquo;ll be back soon!</h3>
-      <p class="text-secondary">The site is under scheduled maintenance. Thanks for your patience.</p>
-      <div class="row justify-content-center mt-4">
-        <div class="col-md-6">
-          <div class="input-group">
-            <input type="email" class="form-control" placeholder="Notify me when it's ready" />
-            <LteButton theme="info" icon="bi-bell">Notify</LteButton>
+  <main class="d-flex align-items-center min-vh-100 py-5 bg-body-tertiary">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6 text-center">
+          <i class="bi bi-tools text-warning" style="font-size: 4rem" aria-hidden="true"></i>
+          <h1 class="h3 mt-3 mb-2">We&rsquo;ll be right back.</h1>
+          <p class="text-secondary mb-4">
+            The application is undergoing scheduled maintenance. We expect to be back online
+            shortly. Thanks for your patience.
+          </p>
+          <div class="card mx-auto" style="max-width: 24rem">
+            <div class="card-body text-start">
+              <p class="text-secondary small mb-2">Estimated completion</p>
+              <p class="fw-semibold mb-0">
+                <i class="bi bi-clock me-1" aria-hidden="true"></i>
+                In approximately 30 minutes
+              </p>
+            </div>
           </div>
+          <p class="text-secondary small mt-4 mb-0">
+            For urgent issues, reach us at
+            <a href="mailto:support@example.com">support@example.com</a>
+          </p>
         </div>
       </div>
     </div>
-  </LteAppContent>
+  </main>
 </template>

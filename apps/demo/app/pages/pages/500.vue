@@ -1,10 +1,30 @@
+<script setup lang="ts">
+definePageMeta({ layout: false })
+</script>
+
 <template>
-  <LteAppContent title="500 Error" :breadcrumbs="[{ label: 'Pages', href: '#' }, { label: '500' }]">
-    <div class="text-center py-5">
-      <h1 class="display-1 fw-bold text-danger"><i class="bi bi-bug"></i> 500</h1>
-      <h3 class="mt-3">Oops! Something went wrong.</h3>
-      <p class="text-secondary">We will work on fixing that right away. Meanwhile, you may return home.</p>
-      <NuxtLink to="/" class="btn btn-primary mt-2"><i class="bi bi-house me-1"></i>Return Home</NuxtLink>
+  <main class="d-flex align-items-center min-vh-100 py-5 bg-body-tertiary">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6 text-center">
+          <div class="display-1 fw-bold text-danger lh-1 mb-3">500</div>
+          <h1 class="h3 mb-3">Something went wrong on our end.</h1>
+          <p class="text-secondary mb-4">
+            The server encountered an unexpected condition. Our team has been notified. Please try
+            again in a moment, or contact support if the issue persists.
+          </p>
+          <div class="d-flex gap-2 justify-content-center">
+            <NuxtLink to="/" class="btn btn-primary">
+              <i class="bi bi-arrow-left me-1" aria-hidden="true"></i>
+              Back to dashboard
+            </NuxtLink>
+            <a href="mailto:support@example.com" class="btn btn-outline-secondary">
+              <i class="bi bi-life-preserver me-1" aria-hidden="true"></i>
+              Contact support
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
-  </LteAppContent>
+  </main>
 </template>

@@ -1,10 +1,37 @@
+<script setup lang="ts">
+definePageMeta({ layout: false })
+</script>
+
 <template>
-  <LteAppContent title="404 Error" :breadcrumbs="[{ label: 'Pages', href: '#' }, { label: '404' }]">
-    <div class="text-center py-5">
-      <h1 class="display-1 fw-bold text-warning"><i class="bi bi-exclamation-triangle"></i> 404</h1>
-      <h3 class="mt-3">Oops! Page not found.</h3>
-      <p class="text-secondary">We could not find the page you were looking for.</p>
-      <NuxtLink to="/" class="btn btn-primary mt-2"><i class="bi bi-house me-1"></i>Return Home</NuxtLink>
+  <main class="d-flex align-items-center min-vh-100 py-5 bg-body-tertiary">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6 text-center">
+          <div class="display-1 fw-bold text-primary lh-1 mb-3">404</div>
+          <h1 class="h3 mb-3">Oops! Page not found.</h1>
+          <p class="text-secondary mb-4">
+            We could not find the page you were looking for. Meanwhile, you may return to the
+            dashboard or try searching for what you need.
+          </p>
+          <form class="row g-2 justify-content-center mb-4" role="search">
+            <div class="col-sm-8">
+              <div class="input-group">
+                <span class="input-group-text bg-body">
+                  <i class="bi bi-search" aria-hidden="true"></i>
+                </span>
+                <input type="search" class="form-control" placeholder="Search…" aria-label="Search" />
+              </div>
+            </div>
+            <div class="col-sm-auto">
+              <button class="btn btn-primary w-100" type="submit">Search</button>
+            </div>
+          </form>
+          <NuxtLink to="/" class="btn btn-outline-secondary">
+            <i class="bi bi-arrow-left me-1" aria-hidden="true"></i>
+            Back to dashboard
+          </NuxtLink>
+        </div>
+      </div>
     </div>
-  </LteAppContent>
+  </main>
 </template>
