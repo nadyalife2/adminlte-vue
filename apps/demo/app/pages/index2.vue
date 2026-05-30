@@ -67,7 +67,16 @@ const members = [
   { img: 'user3-128x128.jpg', name: 'Nadia', when: '15 Jan' },
 ]
 
-const rightBoxes = [
+type Theme = 'primary' | 'success' | 'danger' | 'warning' | 'info'
+
+const topBoxes: Array<{ theme: Theme; icon: string; text: string; number: string; unit?: string }> = [
+  { theme: 'primary', icon: 'bi-gear-fill', text: 'CPU Traffic', number: '10', unit: '%' },
+  { theme: 'danger', icon: 'bi-hand-thumbs-up-fill', text: 'Likes', number: '41,410' },
+  { theme: 'success', icon: 'bi-cart-fill', text: 'Sales', number: '760' },
+  { theme: 'warning', icon: 'bi-people-fill', text: 'New Members', number: '2,000' },
+]
+
+const rightBoxes: Array<{ theme: Theme; icon: string; text: string; number: string }> = [
   { theme: 'warning', icon: 'bi-tag-fill', text: 'Inventory', number: '5,200' },
   { theme: 'success', icon: 'bi-heart-fill', text: 'Mentions', number: '92,050' },
   { theme: 'danger', icon: 'bi-cloud-download', text: 'Downloads', number: '114,381' },
@@ -89,49 +98,8 @@ const products = [
   >
     <!-- Info boxes -->
     <div class="row">
-      <div class="col-12 col-sm-6 col-md-3">
-        <div class="info-box">
-          <span class="info-box-icon text-bg-primary shadow-sm">
-            <i class="bi bi-gear-fill"></i>
-          </span>
-          <div class="info-box-content">
-            <span class="info-box-text">CPU Traffic</span>
-            <span class="info-box-number"> 10 <small>%</small> </span>
-          </div>
-        </div>
-      </div>
-      <div class="col-12 col-sm-6 col-md-3">
-        <div class="info-box">
-          <span class="info-box-icon text-bg-danger shadow-sm">
-            <i class="bi bi-hand-thumbs-up-fill"></i>
-          </span>
-          <div class="info-box-content">
-            <span class="info-box-text">Likes</span>
-            <span class="info-box-number">41,410</span>
-          </div>
-        </div>
-      </div>
-      <div class="col-12 col-sm-6 col-md-3">
-        <div class="info-box">
-          <span class="info-box-icon text-bg-success shadow-sm">
-            <i class="bi bi-cart-fill"></i>
-          </span>
-          <div class="info-box-content">
-            <span class="info-box-text">Sales</span>
-            <span class="info-box-number">760</span>
-          </div>
-        </div>
-      </div>
-      <div class="col-12 col-sm-6 col-md-3">
-        <div class="info-box">
-          <span class="info-box-icon text-bg-warning shadow-sm">
-            <i class="bi bi-people-fill"></i>
-          </span>
-          <div class="info-box-content">
-            <span class="info-box-text">New Members</span>
-            <span class="info-box-number">2,000</span>
-          </div>
-        </div>
+      <div v-for="(b, i) in topBoxes" :key="i" class="col-12 col-sm-6 col-md-3">
+        <LteInfoBox :theme="b.theme" :icon="b.icon" :text="b.text" :title="b.number" :unit="b.unit" />
       </div>
     </div>
 
@@ -490,19 +458,16 @@ const products = [
 
       <!-- Right col -->
       <div class="col-md-4">
-        <div
+        <LteInfoBox
           v-for="(b, i) in rightBoxes"
           :key="i"
-          :class="`info-box mb-3 text-bg-${b.theme}`"
-        >
-          <span class="info-box-icon">
-            <i :class="`bi ${b.icon}`"></i>
-          </span>
-          <div class="info-box-content">
-            <span class="info-box-text">{{ b.text }}</span>
-            <span class="info-box-number">{{ b.number }}</span>
-          </div>
-        </div>
+          variant="solid"
+          box-class="mb-3"
+          :theme="b.theme"
+          :icon="b.icon"
+          :text="b.text"
+          :title="b.number"
+        />
 
         <div class="card mb-4">
           <div class="card-header">
