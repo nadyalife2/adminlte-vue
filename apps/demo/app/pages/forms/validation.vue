@@ -1,42 +1,205 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { onBeforeUnmount, onMounted } from 'vue'
 
-const email = ref('')
-const password = ref('')
-const errors = ref<{ email?: string; password?: string }>({})
-
-function submit() {
-  errors.value = {}
-  if (!email.value.includes('@')) errors.value.email = 'Please enter a valid email.'
-  if (password.value.length < 6) errors.value.password = 'Password must be at least 6 characters.'
-}
+// Mirror the original page script: enable Bootstrap-style validation for
+// forms marked .needs-validation or .needs-validation-tooltip.
+let cleanups: Array<() => void> = []
+onMounted(() => {
+  document.querySelectorAll('.needs-validation, .needs-validation-tooltip').forEach((form) => {
+    const handler = (event: Event) => {
+      if (!(form as HTMLFormElement).checkValidity()) {
+        event.preventDefault()
+        event.stopPropagation()
+      }
+      form.classList.add('was-validated')
+    }
+    form.addEventListener('submit', handler, false)
+    cleanups.push(() => form.removeEventListener('submit', handler, false))
+  })
+})
+onBeforeUnmount(() => {
+  cleanups.forEach((fn) => fn())
+  cleanups = []
+})
 </script>
 
 <template>
-  <LteAppContent title="Validation" :breadcrumbs="[{ label: 'Forms', href: '#' }, { label: 'Validation' }]">
-    <div class="row">
-      <div class="col-md-6">
-        <LteCard title="Reactive validation">
-          <LteInput v-model="email" label="Email" type="email" :error="errors.email" placeholder="you@example.com" />
-          <LteInput v-model="password" label="Password" type="password" :error="errors.password" />
-          <LteButton theme="primary" @click="submit">Validate</LteButton>
-        </LteCard>
-      </div>
-      <div class="col-md-6">
-        <LteCard title="Bootstrap needs-validation">
-          <p class="text-secondary">
-            The dashboard layout auto-wires Bootstrap's <code>.needs-validation</code> behavior.
-          </p>
-          <form class="needs-validation" novalidate>
-            <div class="mb-3">
-              <label class="form-label">Username</label>
-              <input type="text" class="form-control" required />
-              <div class="invalid-feedback">Username is required.</div>
+  <LteAppContent
+    title="Form Validation"
+    :breadcrumbs="[{ label: 'Home', href: '#' }, { label: 'Forms', href: '#' }, { label: 'Validation' }]"
+  >
+            <div class="row g-4">
+              <div class="col-12">
+                <div class="callout callout-info">
+                  Built on
+                  <a
+                    href="https://getbootstrap.com/docs/5.3/forms/validation/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="callout-link"
+                    >Bootstrap's native form validation</a
+                  >
+                  — submit each form to see the feedback. The wiring script lives at the bottom of
+                  this page.
+                </div>
+              </div>
+
+              <!-- Custom validation -->
+              <div class="col-lg-6">
+                <div class="card card-info card-outline mb-4">
+                  <div class="card-header">
+                    <div class="card-title">Custom Validation</div>
+                  </div>
+                  <form class="needs-validation" novalidate>
+                    <div class="card-body">
+                      <div class="row g-3">
+                        <div class="col-md-6">
+                          <label for="validationCustom01" class="form-label">First name</label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="validationCustom01"
+                            value="Mark"
+                            required
+                          />
+                          <div class="valid-feedback">Looks good!</div>
+                        </div>
+                        <div class="col-md-6">
+                          <label for="validationCustom02" class="form-label">Last name</label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="validationCustom02"
+                            value="Otto"
+                            required
+                          />
+                          <div class="valid-feedback">Looks good!</div>
+                        </div>
+                        <div class="col-md-6">
+                          <label for="validationCustomUsername" class="form-label">Username</label>
+                          <div class="input-group has-validation">
+                            <span class="input-group-text" id="inputGroupPrepend">@</span>
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="validationCustomUsername"
+                              aria-describedby="inputGroupPrepend"
+                              required
+                            />
+                            <div class="invalid-feedback">Please choose a username.</div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <label for="validationCustom03" class="form-label">City</label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="validationCustom03"
+                            required
+                          />
+                          <div class="invalid-feedback">Please provide a valid city.</div>
+                        </div>
+                        <div class="col-md-6">
+                          <label for="validationCustom04" class="form-label">State</label>
+                          <select class="form-select" id="validationCustom04" required>
+                            <option selected disabled value="">Choose&hellip;</option>
+                            <option>California</option>
+                            <option>Washington</option>
+                            <option>Tennessee</option>
+                          </select>
+                          <div class="invalid-feedback">Please select a valid state.</div>
+                        </div>
+                        <div class="col-md-6">
+                          <label for="validationCustom05" class="form-label">Zip</label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="validationCustom05"
+                            required
+                          />
+                          <div class="invalid-feedback">Please provide a valid zip.</div>
+                        </div>
+                        <div class="col-12">
+                          <div class="form-check">
+                            <input
+                              class="form-check-input"
+                              type="checkbox"
+                              value=""
+                              id="invalidCheck"
+                              required
+                            />
+                            <label class="form-check-label" for="invalidCheck">
+                              Agree to terms and conditions
+                            </label>
+                            <div class="invalid-feedback">You must agree before submitting.</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card-footer">
+                      <button class="btn btn-info" type="submit">Submit form</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+
+              <!-- Browser-default validation + tooltips -->
+              <div class="col-lg-6">
+                <div class="card card-success card-outline mb-4">
+                  <div class="card-header">
+                    <div class="card-title">Browser Defaults &amp; Tooltips</div>
+                  </div>
+                  <div class="card-body">
+                    <p class="text-secondary small">
+                      For browser-native validation feedback, omit
+                      <code>novalidate</code> and the <code>.needs-validation</code> class.
+                    </p>
+                    <form>
+                      <div class="mb-3">
+                        <label class="form-label" for="defaultEmail">Email</label>
+                        <input type="email" class="form-control" id="defaultEmail" required />
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label" for="defaultUrl">URL</label>
+                        <input type="url" class="form-control" id="defaultUrl" required />
+                      </div>
+                      <button class="btn btn-success" type="submit">
+                        Submit (browser default)
+                      </button>
+                    </form>
+
+                    <hr class="my-4" />
+
+                    <p class="text-secondary small">
+                      Add <code>.needs-validation-tooltip</code> in place of
+                      <code>.needs-validation</code> to swap inline feedback for floating tooltips.
+                    </p>
+                    <form class="needs-validation-tooltip position-relative" novalidate>
+                      <div class="row g-3">
+                        <div class="col-md-6">
+                          <label for="vt-first" class="form-label">First name</label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="vt-first"
+                            value="Jane"
+                            required
+                          />
+                          <div class="valid-tooltip">Looks good!</div>
+                        </div>
+                        <div class="col-md-6">
+                          <label for="vt-username" class="form-label">Username</label>
+                          <input type="text" class="form-control" id="vt-username" required />
+                          <div class="invalid-tooltip">Please choose a username.</div>
+                        </div>
+                        <div class="col-12">
+                          <button class="btn btn-success" type="submit">Submit (tooltip)</button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
             </div>
-            <LteButton type="submit" theme="primary">Submit</LteButton>
-          </form>
-        </LteCard>
-      </div>
-    </div>
   </LteAppContent>
 </template>
