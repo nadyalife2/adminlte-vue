@@ -19,8 +19,7 @@
     "declaration": true,
     "declarationMap": true,
     "sourceMap": true,
-    "jsx": "preserve",
-    "baseUrl": "."
+    "jsx": "preserve"
   },
   "exclude": ["node_modules", "dist", ".nuxt", ".output", "build"]
 }
