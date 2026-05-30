@@ -102,6 +102,7 @@ useAccessibility()
       :accordion="accordion"
       :link-component="linkComponent"
     >
+      <template v-if="$slots['sidebar-brand']" #brand><slot name="sidebar-brand" /></template>
       <template v-if="$slots.logo" #logo><slot name="logo" /></template>
     </LteSidebar>
 

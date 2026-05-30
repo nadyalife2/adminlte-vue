@@ -88,6 +88,10 @@ function navigate(href: string) {
     :enable-sidebar-persistence="layout.enableSidebarPersistence"
     :dir="layout.dir"
   >
+    <template v-if="$slots['sidebar-brand']" #sidebar-brand>
+      <slot name="sidebar-brand" />
+    </template>
+
     <template #topbar-start>
       <li class="nav-item d-none d-md-block">
         <NuxtLink to="/" class="nav-link"><i class="bi bi-grid-1x2 me-1" aria-hidden="true" />Live preview</NuxtLink>
