@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, resolveComponent } from 'vue'
 import { menu } from '~/lib/menu'
-import type { NavMessage, NavNotification } from 'adminlte-vue'
+import type { MenuNode, NavMessage, NavNotification } from 'adminlte-vue'
 
 /**
  * Demo wrapper around <LteDashboardLayout>. Supplies the shared menu, branding,
@@ -18,6 +18,10 @@ const props = defineProps<{
   sidebarTheme?: 'light' | 'dark'
   sidebarBreakpoint?: 'lg' | 'md'
   dir?: 'ltr' | 'rtl'
+  /** Override the sidebar menu (defaults to the dashboard menu). */
+  menuItems?: MenuNode[]
+  /** Extra class on <body> (e.g. 'docs-page'). */
+  bodyClass?: string
 }>()
 
 const route = useRoute()
@@ -65,7 +69,8 @@ function navigate(href: string) {
 
 <template>
   <LteDashboardLayout
-    :menu-items="menu"
+    :menu-items="menuItems ?? menu"
+    :body-class="bodyClass"
     :current-path="route.path"
     :link-component="NuxtLink"
     :navigate="navigate"
