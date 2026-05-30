@@ -55,6 +55,12 @@ export interface DashboardLayoutProps {
  */
 export interface AuthLayoutProps {
   authType?: 'login' | 'register'
+  /**
+   * Visual treatment:
+   * - 'default' → logo above a plain card (AdminLTE v1 style)
+   * - 'v2'      → `card-outline card-primary` with the logo in the card header
+   */
+  variant?: 'default' | 'v2'
   logo?: string
   logoHref?: string
 }
