@@ -1,22 +1,24 @@
-<script setup lang="ts">
-const icons = [
-  'bi-house', 'bi-gear', 'bi-person', 'bi-bell', 'bi-envelope', 'bi-calendar',
-  'bi-cart', 'bi-bag', 'bi-heart', 'bi-star', 'bi-search', 'bi-trash',
-  'bi-pencil', 'bi-cloud', 'bi-camera', 'bi-chat', 'bi-graph-up', 'bi-pie-chart',
-  'bi-shield-lock', 'bi-globe', 'bi-printer', 'bi-paperclip', 'bi-bookmark', 'bi-flag',
-]
-</script>
-
 <template>
-  <LteAppContent title="Icons" :breadcrumbs="[{ label: 'UI', href: '#' }, { label: 'Icons' }]">
-    <LteCard title="Bootstrap Icons">
-      <p class="text-secondary">A sample of the Bootstrap Icons set used throughout the template.</p>
-      <div class="row g-3 text-center">
-        <div v-for="icon in icons" :key="icon" class="col-3 col-md-2 col-lg-1">
-          <i :class="['bi', icon, 'fs-3 d-block']"></i>
-          <small class="text-secondary">{{ icon.replace('bi-', '') }}</small>
+  <LteAppContent title="Icons" :breadcrumbs="[{ label: 'Home', href: '#' }, { label: 'Icons' }]">
+    <div class="row">
+      <div class="col-12">
+        <div class="col-12">
+          <div class="card card-primary card-outline">
+            <div class="card-header">
+              <h3 class="card-title">Icons</h3>
+            </div>
+            <div class="card-body">
+              <p>You can use any font library you like with AdminLTE 4.</p>
+              <strong>Recommendations</strong>
+              <ul class="mt-1">
+                <li><a href="https://fontawesome.com/" target="_blank">Font Awesome</a></li>
+                <li><a href="https://useiconic.com/open/" target="_blank">Iconic Icons</a></li>
+                <li><a href="https://ionicons.com/" target="_blank">Ion Icons</a></li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
-    </LteCard>
+    </div>
   </LteAppContent>
 </template>
