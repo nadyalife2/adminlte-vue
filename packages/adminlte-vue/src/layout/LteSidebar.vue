@@ -7,7 +7,7 @@ import LteSidebarBrand from './LteSidebarBrand.vue'
 import LteSidebarNav from './LteSidebarNav.vue'
 import LteSidebarOverlay from './LteSidebarOverlay.vue'
 
-const props = withDefaults(
+withDefaults(
   defineProps<{
     items: MenuNode[]
     logo?: string

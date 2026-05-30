@@ -16,7 +16,7 @@ export interface KanbanColumn {
   cards: KanbanCard[]
 }
 
-const props = defineProps<{ columns: KanbanColumn[] }>()
+defineProps<{ columns: KanbanColumn[] }>()
 const emit = defineEmits<{
   move: [payload: { card: string; from: string; to: string; newIndex: number }]
 }>()
