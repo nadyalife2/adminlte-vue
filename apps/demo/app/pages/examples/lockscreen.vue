@@ -1,21 +1,48 @@
 <script setup lang="ts">
 definePageMeta({ layout: 'auth' })
+useHead({ bodyAttrs: { class: 'lockscreen bg-body-secondary' } })
 </script>
 
 <template>
-  <LteAuthLayout auth-type="login">
-    <template #logo><b>Admin</b>LTE</template>
-    <div class="text-center mb-3">
-      <img src="https://www.gravatar.com/avatar/?d=mp" class="rounded-circle shadow" width="90" height="90" alt="avatar" />
-      <h5 class="mt-2 mb-0">Aigars Silkalns</h5>
-      <small class="text-secondary">Enter your password to unlock</small>
-    </div>
-    <form>
-      <div class="input-group mb-3">
-        <input type="password" class="form-control" placeholder="Password" />
-        <LteButton type="submit" theme="primary" icon="bi-arrow-right" />
+    <div class="lockscreen-wrapper">
+      <div class="lockscreen-logo">
+        <a href="/"><b>Admin</b>LTE</a>
       </div>
-    </form>
-    <NuxtLink to="/examples/login" class="text-center d-block">Or sign in as a different user</NuxtLink>
-  </LteAuthLayout>
+
+      <div class="lockscreen-name">John Doe</div>
+
+      <div class="lockscreen-item">
+        <div class="lockscreen-image">
+          <img src="/assets/img/user1-128x128.jpg" alt="User Image" />
+        </div>
+
+        <form class="lockscreen-credentials">
+          <div class="input-group">
+            <input type="password" class="form-control shadow-none" placeholder="password" />
+            <div class="input-group-text border-0 bg-transparent px-1">
+              <button type="button" class="btn shadow-none">
+                <i class="bi bi-box-arrow-right text-body-secondary"></i>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="help-block text-center">Enter your password to retrieve your session</div>
+      <div class="text-center">
+        <a href="/examples/login" class="text-decoration-none">Or sign in as a different user</a>
+      </div>
+      <div class="lockscreen-footer text-center">
+        Copyright © 2014-2026 &nbsp;
+        <b
+          ><a
+            href="https://adminlte.io"
+            class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+            >AdminLTE.io</a
+          ></b
+        >
+        <br />
+        All rights reserved
+      </div>
+    </div>
 </template>
