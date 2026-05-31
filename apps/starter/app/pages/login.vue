@@ -13,6 +13,14 @@ const password = ref('password')
 const error = ref('')
 const loading = ref(false)
 
+// Sets the demo credentials directly, bypassing any browser autofill that may
+// have clobbered the pre-filled fields on localhost.
+function useDemo() {
+  email.value = 'admin@example.com'
+  password.value = 'password'
+  error.value = ''
+}
+
 async function onSubmit() {
   error.value = ''
   loading.value = true
@@ -59,8 +67,13 @@ async function onSubmit() {
       </div>
     </form>
 
-    <p class="mt-3 mb-0 text-secondary small">
-      Demo credentials: <code>admin@example.com</code> / <code>password</code>
-    </p>
+    <div class="mt-3 d-flex align-items-center justify-content-between">
+      <span class="text-secondary small">
+        Demo: <code>admin@example.com</code> / <code>password</code>
+      </span>
+      <button type="button" class="btn btn-sm btn-outline-secondary" @click="useDemo">
+        Use demo credentials
+      </button>
+    </div>
   </LteAuthLayout>
 </template>
