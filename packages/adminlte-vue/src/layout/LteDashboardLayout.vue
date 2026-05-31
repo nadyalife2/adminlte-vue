@@ -75,6 +75,8 @@ provideSidebar({
 provideColorMode({ initialMode: props.initialColorMode })
 provideCommandPalette()
 
+const emit = defineEmits<{ logout: []; profile: [] }>()
+
 // Behaviors + accessibility for raw markup placed in slots.
 useLteBehaviors()
 useAccessibility()
@@ -86,6 +88,8 @@ useAccessibility()
       :user="user"
       :color-mode-toggle="colorModeToggle"
       :navbar-class="navbarClass"
+      @logout="emit('logout')"
+      @profile="emit('profile')"
     >
       <template #start><slot name="topbar-start" /></template>
       <template #end><slot name="topbar-end" /></template>

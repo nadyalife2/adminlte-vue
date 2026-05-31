@@ -1,0 +1,27 @@
+{
+  "name": "@adminlte/dashboard",
+  "version": "0.1.0",
+  "description": "AdminLTE 4 dashboard starter as a Nuxt Layer (shell + auth scaffolding)",
+  "license": "MIT",
+  "type": "module",
+  "main": "./nuxt.config.ts",
+  "files": [
+    "app",
+    "server",
+    "nuxt.config.ts"
+  ],
+  "scripts": {
+    "lint": "echo 'linting @adminlte/dashboard...'"
+  },
+  "dependencies": {
+    "@adminlte/nuxt": "workspace:*",
+    "adminlte-vue": "workspace:*",
+    "bootstrap": "^5.3.8",
+    "bootstrap-icons": "^1.13.1",
+    "overlayscrollbars": "^2.16.0"
+  },
+  "peerDependencies": {
+    "@pinia/nuxt": ">=0.5.0",
+    "pinia": "^2.2.0 || ^3.0.0"
+  }
+}

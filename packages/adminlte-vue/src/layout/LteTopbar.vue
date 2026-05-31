@@ -18,6 +18,8 @@ const props = withDefaults(
   { colorModeToggle: true, search: true, fullscreen: true }
 )
 
+const emit = defineEmits<{ logout: []; profile: [] }>()
+
 const { toggle } = useSidebar()
 const commandPalette = useCommandPalette()
 
@@ -77,8 +79,8 @@ const resolvedUser = computed<TopbarUser>(
               </div>
             </li>
             <li class="user-footer">
-              <a href="#" class="btn btn-outline-secondary">Profile</a>
-              <a href="#" class="btn btn-outline-danger float-end">Sign out</a>
+              <a href="#" class="btn btn-outline-secondary" @click.prevent="emit('profile')">Profile</a>
+              <a href="#" class="btn btn-outline-danger float-end" @click.prevent="emit('logout')">Sign out</a>
             </li>
           </ul>
         </li>
