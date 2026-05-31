@@ -7,18 +7,31 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 `adminlte-vue` — an **AdminLTE 4 / Bootstrap 5.3** admin dashboard for **Vue 3 & Nuxt**. It is a
 faithful port of the official React (`adminlte-react`) and Laravel (`adminlte-laravel`) editions.
 
-This is a **pnpm monorepo** (`pnpm-workspace.yaml` → `packages/*`, `apps/*`) with three packages:
+This is a **pnpm monorepo** (`pnpm-workspace.yaml` → `packages/*`, `apps/*`):
 
 - **`packages/adminlte-vue`** — the publishable, **framework-agnostic** Vue 3 component library
   (works in any Vite / Nuxt / Vue 3 app). Built with Vite library mode → ESM + `.d.ts`.
 - **`packages/nuxt`** (`@adminlte/nuxt`) — a thin Nuxt module that auto-registers the components,
   auto-imports the composables, injects the CSS, initializes Bootstrap's JS client-side, and adds an
   SSR-safe color-mode head script. Built with `@nuxt/module-builder`.
-- **`apps/demo`** — a Nuxt 4 demo/playground that dogfoods both packages via `workspace:*`.
+- **`packages/layer`** (`@adminlte/dashboard`) — a **Nuxt Layer** (the admin-template shell): apps
+  `extends` it to inherit the module preset + Pinia, a config-driven default dashboard layout + auth
+  layout, a cookie-backed Pinia auth store (re-exported via `app/composables` so it auto-imports
+  across the layer boundary), `auth` route middleware, a user-hydration plugin, and mock
+  `/api/auth/*` endpoints. Consumed as source — no build step.
+- **`apps/demo`** — a Nuxt 4 demo that dogfoods the library + module via `workspace:*`. **It is the
+  pristine 1:1 clone of the official AdminLTE demo (incl. 26 docs pages) — keep it that way; do not
+  refactor its pages.** Uses its own `DemoLayout`, not the layer.
+- **`apps/starter`** (`adminlte-starter`) — a clonable Nuxt 4 admin **template** that
+  `extends: ['@adminlte/dashboard']` and adds brand/menu (`app.config`), guarded pages that
+  `useFetch` mock `server/api/dashboard/*` (SSR) + `useSeoMeta`, a login page, `.env.example` and a
+  Nitro preset hook. This is the "real app spine" demonstrator.
 
-There is no test framework configured and the `lint` scripts are stubs. **`pnpm --filter
-adminlte-vue type-check`** (`vue-tsc --noEmit`) and **a successful demo build** (`pnpm build:demo`)
-are the real correctness gates.
+**Correctness gates** (all must pass): `pnpm --filter adminlte-vue type-check` (`vue-tsc --noEmit`),
+`pnpm --filter adminlte-vue test` (Vitest — jsdom + @vue/test-utils), `pnpm lint` (ESLint 9 flat
+config over `packages/*/src`; `apps/**` + `packages/layer/**` are excluded as they need
+`@nuxt/eslint`), `pnpm build:demo`, and a successful `apps/starter` build. `nuxi typecheck` (demo +
+starter) is also kept at **0 errors**.
 
 ## Commands
 
