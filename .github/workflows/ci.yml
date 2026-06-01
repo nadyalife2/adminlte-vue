@@ -43,3 +43,7 @@ jobs:
 
       - name: Build starter
         run: pnpm --filter adminlte-starter build
+
+      # Runs after the build so @nuxt/eslint's generated .nuxt config exists.
+      - name: Lint starter
+        run: pnpm --filter adminlte-starter lint

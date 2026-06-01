@@ -83,7 +83,7 @@ const columns = computed<{ key: SortKey; label: string }[]>(() => [
       <template #header>
         <div class="input-group input-group-sm" style="max-width: 320px">
           <span class="input-group-text"><i class="bi bi-search" /></span>
-          <input v-model="search" type="search" class="form-control" :placeholder="$t('users.searchPlaceholder')" />
+          <input v-model="search" type="search" class="form-control" :placeholder="$t('users.searchPlaceholder')" >
         </div>
         <div class="card-tools">
           <NuxtLink to="/users/new" class="btn btn-primary btn-sm">

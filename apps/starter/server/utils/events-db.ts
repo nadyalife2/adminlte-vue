@@ -20,7 +20,7 @@ function seed(): CalEvent[] {
   ]
 }
 
-let EVENTS: CalEvent[] = seed()
+const EVENTS: CalEvent[] = seed()
 let nextId = 100
 
 export function listEvents(): CalEvent[] {

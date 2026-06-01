@@ -11,7 +11,7 @@ export interface BoardColumn {
   cards: BoardCard[]
 }
 
-let BOARD: BoardColumn[] = [
+const BOARD: BoardColumn[] = [
   {
     id: 'todo',
     title: 'To do',

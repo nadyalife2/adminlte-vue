@@ -31,14 +31,14 @@ function onSave() {
           <form @submit.prevent="onSave">
             <div class="mb-3">
               <label class="form-label" for="name">Name</label>
-              <input id="name" v-model="form.name" type="text" class="form-control" />
+              <input id="name" v-model="form.name" type="text" class="form-control" >
             </div>
             <div class="mb-3">
               <label class="form-label" for="email">Email</label>
-              <input id="email" v-model="form.email" type="email" class="form-control" />
+              <input id="email" v-model="form.email" type="email" class="form-control" >
             </div>
             <div class="form-check form-switch mb-3">
-              <input id="notify" v-model="form.notifications" class="form-check-input" type="checkbox" />
+              <input id="notify" v-model="form.notifications" class="form-check-input" type="checkbox" >
               <label class="form-check-label" for="notify">Email notifications</label>
             </div>
             <button type="submit" class="btn btn-primary">Save changes</button>

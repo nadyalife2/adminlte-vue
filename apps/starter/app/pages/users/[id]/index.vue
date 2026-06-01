@@ -41,7 +41,7 @@ async function onDelete() {
       <div class="col-lg-5">
         <LteCard>
           <div class="text-center mb-3">
-            <img src="/assets/img/user2-160x160.jpg" class="rounded-circle shadow" width="96" height="96" :alt="user!.name" />
+            <img src="/assets/img/user2-160x160.jpg" class="rounded-circle shadow" width="96" height="96" :alt="user!.name" >
           </div>
           <h5 class="text-center mb-0">{{ user!.name }}</h5>
           <p class="text-center text-secondary">{{ user!.role }}</p>

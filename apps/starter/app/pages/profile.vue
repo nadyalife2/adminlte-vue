@@ -21,7 +21,7 @@ const auth = useAuthStore()
               width="96"
               height="96"
               :alt="auth.user?.name"
-            />
+            >
           </div>
           <h5 class="text-center mb-0">{{ auth.user?.name ?? 'Guest' }}</h5>
           <p class="text-center text-secondary">{{ auth.user?.role }}</p>

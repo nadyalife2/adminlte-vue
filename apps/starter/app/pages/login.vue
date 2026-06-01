@@ -45,17 +45,17 @@ async function onSubmit() {
 
     <form @submit.prevent="onSubmit">
       <div class="input-group mb-3">
-        <input v-model="email" type="email" class="form-control" :placeholder="$t('auth.email')" autocomplete="username" required />
+        <input v-model="email" type="email" class="form-control" :placeholder="$t('auth.email')" autocomplete="username" required >
         <div class="input-group-text"><span class="bi bi-envelope" /></div>
       </div>
       <div class="input-group mb-3">
-        <input v-model="password" type="password" class="form-control" :placeholder="$t('auth.password')" autocomplete="current-password" required />
+        <input v-model="password" type="password" class="form-control" :placeholder="$t('auth.password')" autocomplete="current-password" required >
         <div class="input-group-text"><span class="bi bi-lock-fill" /></div>
       </div>
       <div class="row">
         <div class="col-8 d-flex align-items-center">
           <div class="form-check">
-            <input id="remember" class="form-check-input" type="checkbox" />
+            <input id="remember" class="form-check-input" type="checkbox" >
             <label class="form-check-label" for="remember">{{ $t('auth.rememberMe') }}</label>
           </div>
         </div>

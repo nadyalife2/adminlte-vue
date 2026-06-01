@@ -20,7 +20,7 @@ const emit = defineEmits<{ submit: [] }>()
         type="text"
         class="form-control"
         :class="{ 'is-invalid': errors?.name }"
-      />
+      >
       <div v-if="errors?.name" class="invalid-feedback">{{ errors.name }}</div>
     </div>
 
@@ -32,7 +32,7 @@ const emit = defineEmits<{ submit: [] }>()
         type="email"
         class="form-control"
         :class="{ 'is-invalid': errors?.email }"
-      />
+      >
       <div v-if="errors?.email" class="invalid-feedback">{{ errors.email }}</div>
     </div>
 

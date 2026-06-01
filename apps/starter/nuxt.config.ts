@@ -6,7 +6,11 @@ export default defineNuxtConfig({
 
   extends: ['@adminlte/dashboard'],
 
-  modules: ['@nuxtjs/i18n'],
+  modules: ['@nuxtjs/i18n', '@nuxt/eslint'],
+
+  eslint: {
+    config: { stylistic: false },
+  },
 
   i18n: {
     defaultLocale: 'en',

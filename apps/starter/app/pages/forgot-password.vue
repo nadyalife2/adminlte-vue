@@ -37,7 +37,7 @@ async function onSubmit() {
       <div v-if="error" class="alert alert-danger py-2" role="alert">{{ error }}</div>
       <form @submit.prevent="onSubmit">
         <div class="input-group mb-3">
-          <input v-model="email" type="email" class="form-control" :placeholder="$t('auth.email')" autocomplete="email" required />
+          <input v-model="email" type="email" class="form-control" :placeholder="$t('auth.email')" autocomplete="email" required >
           <div class="input-group-text"><span class="bi bi-envelope" /></div>
         </div>
         <button type="submit" class="btn btn-primary w-100" :disabled="loading">

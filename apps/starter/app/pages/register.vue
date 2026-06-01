@@ -42,19 +42,19 @@ async function onSubmit() {
 
     <form @submit.prevent="onSubmit">
       <div class="input-group mb-3">
-        <input v-model="name" type="text" class="form-control" :placeholder="$t('auth.fullName')" required />
+        <input v-model="name" type="text" class="form-control" :placeholder="$t('auth.fullName')" required >
         <div class="input-group-text"><span class="bi bi-person" /></div>
       </div>
       <div class="input-group mb-3">
-        <input v-model="email" type="email" class="form-control" :placeholder="$t('auth.email')" autocomplete="email" required />
+        <input v-model="email" type="email" class="form-control" :placeholder="$t('auth.email')" autocomplete="email" required >
         <div class="input-group-text"><span class="bi bi-envelope" /></div>
       </div>
       <div class="input-group mb-3">
-        <input v-model="password" type="password" class="form-control" :placeholder="$t('auth.password')" autocomplete="new-password" required />
+        <input v-model="password" type="password" class="form-control" :placeholder="$t('auth.password')" autocomplete="new-password" required >
         <div class="input-group-text"><span class="bi bi-lock-fill" /></div>
       </div>
       <div class="input-group mb-3">
-        <input v-model="confirm" type="password" class="form-control" :placeholder="$t('auth.confirmPassword')" autocomplete="new-password" required />
+        <input v-model="confirm" type="password" class="form-control" :placeholder="$t('auth.confirmPassword')" autocomplete="new-password" required >
         <div class="input-group-text"><span class="bi bi-lock-fill" /></div>
       </div>
       <button type="submit" class="btn btn-primary w-100" :disabled="loading">

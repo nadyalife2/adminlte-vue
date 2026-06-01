@@ -43,7 +43,7 @@ async function onUnlock() {
 
     <div class="lockscreen-item">
       <div class="lockscreen-image">
-        <img :src="image" :alt="name" />
+        <img :src="image" :alt="name" >
       </div>
 
       <form class="lockscreen-credentials" @submit.prevent="onUnlock">
@@ -54,7 +54,7 @@ async function onUnlock() {
             class="form-control shadow-none"
             placeholder="password"
             autocomplete="current-password"
-          />
+          >
           <div class="input-group-text border-0 bg-transparent px-1">
             <button type="submit" class="btn shadow-none" :disabled="loading">
               <i class="bi bi-arrow-right-circle text-body-secondary" />
