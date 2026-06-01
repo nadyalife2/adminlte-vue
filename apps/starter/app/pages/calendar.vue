@@ -1,12 +1,13 @@
 <script setup lang="ts">
 definePageMeta({ middleware: 'auth' })
-useSeoMeta({ title: 'Calendar · AdminLTE Starter' })
+const { t } = useI18n()
+useSeoMeta({ title: () => `${t('calendar.title')} · AdminLTE Starter` })
 
 const { data: events, refresh } = await useFetch('/api/events')
 
 // Click a day to add a quick event (persisted via the mock API).
 async function onDateClick(arg: { dateStr: string }) {
-  const title = window.prompt(`New event on ${arg.dateStr}:`)
+  const title = window.prompt(t('calendar.prompt', { date: arg.dateStr }))
   if (!title) return
   await $fetch('/api/events', { method: 'POST', body: { title, start: arg.dateStr } })
   await refresh()
@@ -14,9 +15,9 @@ async function onDateClick(arg: { dateStr: string }) {
 </script>
 
 <template>
-  <LteAppContent title="Calendar" :breadcrumbs="[{ label: 'Home', href: '/' }, { label: 'Calendar' }]">
-    <LteCard title="Schedule" icon="bi-calendar3">
-      <p class="text-secondary small">Click a date to add an event, or drag an event to move it.</p>
+  <LteAppContent :title="$t('calendar.title')" :breadcrumbs="[{ label: $t('common.home'), href: '/' }, { label: $t('calendar.title') }]">
+    <LteCard :title="$t('calendar.schedule')" icon="bi-calendar3">
+      <p class="text-secondary small">{{ $t('calendar.hint') }}</p>
       <ClientOnly>
         <LteCalendar :events="events ?? []" @date-click="onDateClick" />
         <template #fallback>

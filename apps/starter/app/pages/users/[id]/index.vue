@@ -3,13 +3,14 @@ import { ref } from 'vue'
 import type { User } from '~/types/user'
 
 definePageMeta({ middleware: 'auth', roles: ['admin'] })
+const { t } = useI18n()
 
 const route = useRoute()
 const { data: user, error } = await useFetch<User>(`/api/users/${route.params.id}`)
 if (error.value || !user.value) {
   throw createError({ statusCode: 404, statusMessage: 'User not found' })
 }
-useSeoMeta({ title: `${user.value.name} · Users · AdminLTE Starter` })
+useSeoMeta({ title: `${user.value.name} · AdminLTE Starter` })
 
 const statusClass: Record<string, string> = {
   active: 'text-bg-success',
@@ -19,11 +20,11 @@ const statusClass: Record<string, string> = {
 
 const deleting = ref(false)
 async function onDelete() {
-  if (!confirm(`Delete ${user.value!.name}?`)) return
+  if (!confirm(t('users.deleteConfirm', { name: user.value!.name }))) return
   deleting.value = true
   try {
     await $fetch(`/api/users/${route.params.id}`, { method: 'DELETE' })
-    useToast().success(`${user.value!.name} was deleted.`)
+    useToast().success(t('users.deleted', { name: user.value!.name }))
     await navigateTo('/users')
   } finally {
     deleting.value = false
@@ -34,7 +35,7 @@ async function onDelete() {
 <template>
   <LteAppContent
     :title="user!.name"
-    :breadcrumbs="[{ label: 'Home', href: '/' }, { label: 'Users', href: '/users' }, { label: user!.name }]"
+    :breadcrumbs="[{ label: $t('common.home'), href: '/' }, { label: $t('users.title'), href: '/users' }, { label: user!.name }]"
   >
     <div class="row g-3">
       <div class="col-lg-5">
@@ -46,22 +47,22 @@ async function onDelete() {
           <p class="text-center text-secondary">{{ user!.role }}</p>
           <ul class="list-group list-group-flush">
             <li class="list-group-item d-flex justify-content-between px-0">
-              <span class="text-secondary">Email</span><span>{{ user!.email }}</span>
+              <span class="text-secondary">{{ $t('common.email') }}</span><span>{{ user!.email }}</span>
             </li>
             <li class="list-group-item d-flex justify-content-between px-0">
-              <span class="text-secondary">Status</span>
+              <span class="text-secondary">{{ $t('common.status') }}</span>
               <span class="badge" :class="statusClass[user!.status]">{{ user!.status }}</span>
             </li>
             <li class="list-group-item d-flex justify-content-between px-0">
-              <span class="text-secondary">Member since</span><span>{{ user!.createdAt }}</span>
+              <span class="text-secondary">{{ $t('common.created') }}</span><span>{{ user!.createdAt }}</span>
             </li>
           </ul>
           <div class="d-flex gap-2 mt-3">
-            <NuxtLink :to="`/users/${user!.id}/edit`" class="btn btn-primary"><i class="bi bi-pencil me-1" />Edit</NuxtLink>
+            <NuxtLink :to="`/users/${user!.id}/edit`" class="btn btn-primary"><i class="bi bi-pencil me-1" />{{ $t('common.edit') }}</NuxtLink>
             <button class="btn btn-outline-danger" :disabled="deleting" @click="onDelete">
-              <i class="bi bi-trash me-1" />Delete
+              <i class="bi bi-trash me-1" />{{ $t('common.delete') }}
             </button>
-            <NuxtLink to="/users" class="btn btn-outline-secondary ms-auto">Back</NuxtLink>
+            <NuxtLink to="/users" class="btn btn-outline-secondary ms-auto">{{ $t('common.back') }}</NuxtLink>
           </div>
         </LteCard>
       </div>

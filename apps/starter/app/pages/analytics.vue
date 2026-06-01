@@ -2,7 +2,8 @@
 import { computed } from 'vue'
 
 definePageMeta({ middleware: 'auth' })
-useSeoMeta({ title: 'Analytics · AdminLTE Starter', description: 'Revenue, sales and traffic charts.' })
+const { t } = useI18n()
+useSeoMeta({ title: () => `${t('analytics.title')} · AdminLTE Starter`, description: 'Revenue, sales and traffic charts.' })
 
 const { data } = await useFetch('/api/analytics')
 
@@ -32,7 +33,7 @@ const traffic = computed(() => ({
 </script>
 
 <template>
-  <LteAppContent title="Analytics" :breadcrumbs="[{ label: 'Home', href: '/' }, { label: 'Analytics' }]">
+  <LteAppContent :title="$t('analytics.title')" :breadcrumbs="[{ label: $t('common.home'), href: '/' }, { label: $t('analytics.title') }]">
     <div class="row g-3 mb-1">
       <div v-for="k in kpis" :key="k.label" class="col-6 col-lg-3">
         <LteInfoBox :theme="k.theme" :icon="k.icon" :title="k.label" :text="k.value" />
@@ -41,7 +42,7 @@ const traffic = computed(() => ({
 
     <div class="row g-3">
       <div class="col-lg-8">
-        <LteCard title="Revenue" icon="bi-graph-up">
+        <LteCard :title="$t('analytics.revenue')" icon="bi-graph-up">
           <ClientOnly>
             <LteApexChart type="area" :height="320" :series="revenue.series" :options="revenue.options" />
             <template #fallback><div class="text-center text-secondary py-5">Loading chart…</div></template>
@@ -49,7 +50,7 @@ const traffic = computed(() => ({
         </LteCard>
       </div>
       <div class="col-lg-4">
-        <LteCard title="Traffic sources" icon="bi-pie-chart">
+        <LteCard :title="$t('analytics.traffic')" icon="bi-pie-chart">
           <ClientOnly>
             <LteApexChart type="donut" :height="320" :series="traffic.series" :options="traffic.options" />
             <template #fallback><div class="text-center text-secondary py-5">Loading chart…</div></template>
@@ -57,7 +58,7 @@ const traffic = computed(() => ({
         </LteCard>
       </div>
       <div class="col-12">
-        <LteCard title="Weekly sales" icon="bi-bar-chart">
+        <LteCard :title="$t('analytics.weeklySales')" icon="bi-bar-chart">
           <ClientOnly>
             <LteApexChart type="bar" :height="300" :series="sales.series" :options="sales.options" />
             <template #fallback><div class="text-center text-secondary py-5">Loading chart…</div></template>

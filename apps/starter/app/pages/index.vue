@@ -2,8 +2,9 @@
 import { computed } from 'vue'
 
 definePageMeta({ middleware: 'auth' })
+const { t } = useI18n()
 useSeoMeta({
-  title: 'Dashboard · AdminLTE Starter',
+  title: () => `${t('dashboard.title')} · AdminLTE Starter`,
   description: 'Overview of orders, visitors and recent activity.',
 })
 
@@ -26,8 +27,8 @@ const timeline = computed(() =>
 
 <template>
   <LteAppContent
-    title="Dashboard"
-    :breadcrumbs="[{ label: 'Home', href: '/' }, { label: 'Dashboard' }]"
+    :title="$t('dashboard.title')"
+    :breadcrumbs="[{ label: $t('common.home'), href: '/' }, { label: $t('dashboard.title') }]"
   >
     <div class="row g-3 mb-2">
       <div v-for="s in stats" :key="s.label" class="col-12 col-sm-6 col-lg-3">
@@ -44,14 +45,14 @@ const timeline = computed(() =>
 
     <div class="row g-3">
       <div class="col-lg-7">
-        <LteCard title="Recent activity" icon="bi-activity">
+        <LteCard :title="$t('dashboard.recentActivity')" icon="bi-activity">
           <LteTimeline :items="timeline" />
         </LteCard>
       </div>
       <div class="col-lg-5">
-        <LteCard title="Welcome back" theme="primary" variant="outline">
+        <LteCard :title="$t('dashboard.welcome')" theme="primary" variant="outline">
           <p class="mb-1">
-            Signed in as <strong>{{ auth.user?.name ?? 'Guest' }}</strong>
+            {{ $t('dashboard.signedInAs', { name: auth.user?.name ?? 'Guest' }) }}
           </p>
           <p class="text-secondary mb-3">{{ auth.user?.email }}</p>
           <p class="mb-0">

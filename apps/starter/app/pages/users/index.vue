@@ -2,7 +2,8 @@
 import { computed, ref, watch } from 'vue'
 
 definePageMeta({ middleware: 'auth', roles: ['admin'] })
-useSeoMeta({ title: 'Users · AdminLTE Starter' })
+const { t } = useI18n()
+useSeoMeta({ title: () => `${t('users.title')} · AdminLTE Starter` })
 
 type SortKey = 'id' | 'name' | 'email' | 'role' | 'status' | 'createdAt'
 
@@ -54,11 +55,11 @@ const statusClass: Record<string, string> = {
 
 const deletingId = ref<number | null>(null)
 async function onDelete(id: number, name: string) {
-  if (!confirm(`Delete ${name}? This cannot be undone.`)) return
+  if (!confirm(t('users.deleteConfirm', { name }))) return
   deletingId.value = id
   try {
     await $fetch(`/api/users/${id}`, { method: 'DELETE' })
-    useToast().success(`${name} was deleted.`)
+    useToast().success(t('users.deleted', { name }))
     if (rows.value.length === 1 && page.value > 1) page.value -= 1
     await refresh()
   } finally {
@@ -66,27 +67,27 @@ async function onDelete(id: number, name: string) {
   }
 }
 
-const columns: { key: SortKey; label: string }[] = [
+const columns = computed<{ key: SortKey; label: string }[]>(() => [
   { key: 'id', label: '#' },
-  { key: 'name', label: 'Name' },
-  { key: 'email', label: 'Email' },
-  { key: 'role', label: 'Role' },
-  { key: 'status', label: 'Status' },
-  { key: 'createdAt', label: 'Created' },
-]
+  { key: 'name', label: t('common.name') },
+  { key: 'email', label: t('common.email') },
+  { key: 'role', label: t('common.role') },
+  { key: 'status', label: t('common.status') },
+  { key: 'createdAt', label: t('common.created') },
+])
 </script>
 
 <template>
-  <LteAppContent title="Users" :breadcrumbs="[{ label: 'Home', href: '/' }, { label: 'Users' }]">
+  <LteAppContent :title="$t('users.title')" :breadcrumbs="[{ label: $t('common.home'), href: '/' }, { label: $t('users.title') }]">
     <LteCard body-class="p-0">
       <template #header>
         <div class="input-group input-group-sm" style="max-width: 320px">
           <span class="input-group-text"><i class="bi bi-search" /></span>
-          <input v-model="search" type="search" class="form-control" placeholder="Search name or email…" />
+          <input v-model="search" type="search" class="form-control" :placeholder="$t('users.searchPlaceholder')" />
         </div>
         <div class="card-tools">
           <NuxtLink to="/users/new" class="btn btn-primary btn-sm">
-            <i class="bi bi-plus-lg me-1" />Add user
+            <i class="bi bi-plus-lg me-1" />{{ $t('users.add') }}
           </NuxtLink>
         </div>
       </template>
@@ -104,15 +105,15 @@ const columns: { key: SortKey; label: string }[] = [
               >
                 {{ c.label }} <i class="bi ms-1" :class="sortIcon(c.key)" />
               </th>
-              <th class="text-end">Actions</th>
+              <th class="text-end">{{ $t('common.actions') }}</th>
             </tr>
           </thead>
           <tbody>
             <tr v-if="pending && !rows.length">
-              <td colspan="7" class="text-center text-secondary py-4">Loading…</td>
+              <td colspan="7" class="text-center text-secondary py-4">{{ $t('common.loading') }}</td>
             </tr>
             <tr v-else-if="!rows.length">
-              <td colspan="7" class="text-center text-secondary py-4">No users match your search.</td>
+              <td colspan="7" class="text-center text-secondary py-4">{{ $t('users.empty') }}</td>
             </tr>
             <tr v-for="u in rows" :key="u.id">
               <td class="text-secondary">{{ u.id }}</td>
@@ -141,7 +142,7 @@ const columns: { key: SortKey; label: string }[] = [
 
       <template #footer>
         <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
-          <span class="text-secondary small">Showing {{ from }}–{{ to }} of {{ total }}</span>
+          <span class="text-secondary small">{{ $t('users.showing', { from, to, total }) }}</span>
           <nav>
             <ul class="pagination pagination-sm mb-0">
               <li class="page-item" :class="{ disabled: page <= 1 }">

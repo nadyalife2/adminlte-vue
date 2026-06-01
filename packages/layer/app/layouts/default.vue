@@ -15,12 +15,19 @@ const auth = useAuthStore()
 const route = useRoute()
 const NuxtLink = resolveComponent('NuxtLink')
 const { sidebarTheme } = useThemeCustomizer()
+const tr = useTr()
 
-// RBAC menu filtering: drop entries the signed-in user's roles can't access
-// (recursively; empty groups are removed). Items without `roles` are public.
+// RBAC menu filtering + i18n: drop entries the user's roles can't access
+// (recursively; empty groups removed), and translate labels (text may be an
+// i18n key like 'nav.dashboard'; falls back to the literal when no i18n).
 function filterByRole(nodes: AppMenuNode[]): AppMenuNode[] {
   return nodes
-    .map((n) => (n.type === 'group' ? { ...n, children: filterByRole(n.children as AppMenuNode[]) } : n))
+    .map((n) => {
+      const text = tr(n.text, n.text)
+      return n.type === 'group'
+        ? { ...n, text, children: filterByRole(n.children as AppMenuNode[]) }
+        : { ...n, text }
+    })
     .filter((n) => {
       if (n.roles && !auth.hasAnyRole(n.roles)) return false
       if (n.type === 'group' && n.children.length === 0) return false
@@ -68,6 +75,7 @@ async function onLogout() {
       <template #topbar-end>
         <LteNavMessages v-if="lte.messages?.length" :messages="lte.messages" />
         <LteNavNotifications v-if="lte.notifications?.length" :notifications="lte.notifications" />
+        <AppLangSwitcher />
         <li class="nav-item">
           <button
             type="button"

@@ -3,7 +3,8 @@ import { ref } from 'vue'
 import type { UserInput } from '~/types/user'
 
 definePageMeta({ middleware: 'auth', roles: ['admin'] })
-useSeoMeta({ title: 'New user · AdminLTE Starter' })
+const { t } = useI18n()
+useSeoMeta({ title: () => `${t('users.create')} · AdminLTE Starter` })
 
 const form = ref<UserInput>({ name: '', email: '', role: 'Viewer', status: 'active' })
 const errors = ref<Record<string, string>>({})
@@ -14,7 +15,7 @@ async function onSubmit() {
   submitting.value = true
   try {
     const created = await $fetch('/api/users', { method: 'POST', body: form.value })
-    useToast().success(`${created.name} was created.`)
+    useToast().success(t('users.created', { name: created.name }))
     await navigateTo(`/users/${created.id}`)
   } catch (e: unknown) {
     const err = e as { data?: { data?: { errors?: Record<string, string> } } }
@@ -27,13 +28,13 @@ async function onSubmit() {
 
 <template>
   <LteAppContent
-    title="New user"
-    :breadcrumbs="[{ label: 'Home', href: '/' }, { label: 'Users', href: '/users' }, { label: 'New' }]"
+    :title="$t('users.create')"
+    :breadcrumbs="[{ label: $t('common.home'), href: '/' }, { label: $t('users.title'), href: '/users' }, { label: $t('common.create') }]"
   >
     <div class="row">
       <div class="col-lg-7">
-        <LteCard title="Create user" icon="bi-person-plus">
-          <AppUserForm v-model="form" :errors="errors" :submitting="submitting" submit-label="Create user" @submit="onSubmit" />
+        <LteCard :title="$t('users.create')" icon="bi-person-plus">
+          <AppUserForm v-model="form" :errors="errors" :submitting="submitting" :submit-label="$t('users.create')" @submit="onSubmit" />
         </LteCard>
       </div>
     </div>

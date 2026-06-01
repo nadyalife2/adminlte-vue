@@ -2,8 +2,9 @@
 import { ref } from 'vue'
 
 definePageMeta({ layout: 'auth' })
+const { t } = useI18n()
 useHead({ bodyAttrs: { class: 'register-page bg-body-secondary' } })
-useSeoMeta({ title: 'Register · AdminLTE Starter' })
+useSeoMeta({ title: () => `${t('auth.register')} · AdminLTE Starter` })
 
 const auth = useAuthStore()
 
@@ -17,7 +18,7 @@ const loading = ref(false)
 async function onSubmit() {
   error.value = ''
   if (password.value !== confirm.value) {
-    error.value = 'Passwords do not match.'
+    error.value = t('auth.passwordsNoMatch')
     return
   }
   loading.value = true
@@ -35,33 +36,33 @@ async function onSubmit() {
 
 <template>
   <LteAuthLayout auth-type="register" variant="v2" logo-href="/">
-    <p class="register-box-msg">Register a new membership</p>
+    <p class="register-box-msg">{{ $t('auth.registerTitle') }}</p>
 
     <div v-if="error" class="alert alert-danger py-2" role="alert">{{ error }}</div>
 
     <form @submit.prevent="onSubmit">
       <div class="input-group mb-3">
-        <input v-model="name" type="text" class="form-control" placeholder="Full name" required />
+        <input v-model="name" type="text" class="form-control" :placeholder="$t('auth.fullName')" required />
         <div class="input-group-text"><span class="bi bi-person" /></div>
       </div>
       <div class="input-group mb-3">
-        <input v-model="email" type="email" class="form-control" placeholder="Email" autocomplete="email" required />
+        <input v-model="email" type="email" class="form-control" :placeholder="$t('auth.email')" autocomplete="email" required />
         <div class="input-group-text"><span class="bi bi-envelope" /></div>
       </div>
       <div class="input-group mb-3">
-        <input v-model="password" type="password" class="form-control" placeholder="Password" autocomplete="new-password" required />
+        <input v-model="password" type="password" class="form-control" :placeholder="$t('auth.password')" autocomplete="new-password" required />
         <div class="input-group-text"><span class="bi bi-lock-fill" /></div>
       </div>
       <div class="input-group mb-3">
-        <input v-model="confirm" type="password" class="form-control" placeholder="Confirm password" autocomplete="new-password" required />
+        <input v-model="confirm" type="password" class="form-control" :placeholder="$t('auth.confirmPassword')" autocomplete="new-password" required />
         <div class="input-group-text"><span class="bi bi-lock-fill" /></div>
       </div>
       <button type="submit" class="btn btn-primary w-100" :disabled="loading">
         <span v-if="loading" class="spinner-border spinner-border-sm me-1" aria-hidden="true" />
-        Register
+        {{ $t('auth.register') }}
       </button>
     </form>
 
-    <NuxtLink to="/login" class="d-block mt-3 text-center">I already have a membership</NuxtLink>
+    <NuxtLink to="/login" class="d-block mt-3 text-center">{{ $t('auth.haveMembership') }}</NuxtLink>
   </LteAuthLayout>
 </template>

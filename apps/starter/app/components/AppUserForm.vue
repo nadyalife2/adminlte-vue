@@ -13,7 +13,7 @@ const emit = defineEmits<{ submit: [] }>()
 <template>
   <form novalidate @submit.prevent="emit('submit')">
     <div class="mb-3">
-      <label class="form-label" for="f-name">Name</label>
+      <label class="form-label" for="f-name">{{ $t('common.name') }}</label>
       <input
         id="f-name"
         v-model="model.name"
@@ -25,7 +25,7 @@ const emit = defineEmits<{ submit: [] }>()
     </div>
 
     <div class="mb-3">
-      <label class="form-label" for="f-email">Email</label>
+      <label class="form-label" for="f-email">{{ $t('common.email') }}</label>
       <input
         id="f-email"
         v-model="model.email"
@@ -38,7 +38,7 @@ const emit = defineEmits<{ submit: [] }>()
 
     <div class="row">
       <div class="col-md-6 mb-3">
-        <label class="form-label" for="f-role">Role</label>
+        <label class="form-label" for="f-role">{{ $t('common.role') }}</label>
         <select id="f-role" v-model="model.role" class="form-select" :class="{ 'is-invalid': errors?.role }">
           <option>Admin</option>
           <option>Editor</option>
@@ -47,7 +47,7 @@ const emit = defineEmits<{ submit: [] }>()
         <div v-if="errors?.role" class="invalid-feedback">{{ errors.role }}</div>
       </div>
       <div class="col-md-6 mb-3">
-        <label class="form-label" for="f-status">Status</label>
+        <label class="form-label" for="f-status">{{ $t('common.status') }}</label>
         <select id="f-status" v-model="model.status" class="form-select" :class="{ 'is-invalid': errors?.status }">
           <option value="active">Active</option>
           <option value="invited">Invited</option>
@@ -60,9 +60,9 @@ const emit = defineEmits<{ submit: [] }>()
     <div class="d-flex gap-2 mt-2">
       <button type="submit" class="btn btn-primary" :disabled="submitting">
         <span v-if="submitting" class="spinner-border spinner-border-sm me-1" aria-hidden="true" />
-        {{ submitLabel ?? 'Save' }}
+        {{ submitLabel ?? $t('common.save') }}
       </button>
-      <NuxtLink to="/users" class="btn btn-outline-secondary">Cancel</NuxtLink>
+      <NuxtLink to="/users" class="btn btn-outline-secondary">{{ $t('common.cancel') }}</NuxtLink>
     </div>
   </form>
 </template>

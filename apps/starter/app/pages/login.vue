@@ -2,8 +2,9 @@
 import { ref } from 'vue'
 
 definePageMeta({ layout: 'auth' })
+const { t } = useI18n()
 useHead({ bodyAttrs: { class: 'login-page bg-body-secondary' } })
-useSeoMeta({ title: 'Sign in · AdminLTE Starter' })
+useSeoMeta({ title: () => `${t('auth.signIn')} · AdminLTE Starter` })
 
 const auth = useAuthStore()
 const route = useRoute()
@@ -38,48 +39,48 @@ async function onSubmit() {
 
 <template>
   <LteAuthLayout auth-type="login" variant="v2" logo-href="/">
-    <p class="login-box-msg">Sign in to start your session</p>
+    <p class="login-box-msg">{{ $t('auth.signInTitle') }}</p>
 
     <div v-if="error" class="alert alert-danger py-2" role="alert">{{ error }}</div>
 
     <form @submit.prevent="onSubmit">
       <div class="input-group mb-3">
-        <input v-model="email" type="email" class="form-control" placeholder="Email" autocomplete="username" required />
+        <input v-model="email" type="email" class="form-control" :placeholder="$t('auth.email')" autocomplete="username" required />
         <div class="input-group-text"><span class="bi bi-envelope" /></div>
       </div>
       <div class="input-group mb-3">
-        <input v-model="password" type="password" class="form-control" placeholder="Password" autocomplete="current-password" required />
+        <input v-model="password" type="password" class="form-control" :placeholder="$t('auth.password')" autocomplete="current-password" required />
         <div class="input-group-text"><span class="bi bi-lock-fill" /></div>
       </div>
       <div class="row">
         <div class="col-8 d-flex align-items-center">
           <div class="form-check">
             <input id="remember" class="form-check-input" type="checkbox" />
-            <label class="form-check-label" for="remember">Remember Me</label>
+            <label class="form-check-label" for="remember">{{ $t('auth.rememberMe') }}</label>
           </div>
         </div>
         <div class="col-4">
           <button type="submit" class="btn btn-primary w-100" :disabled="loading">
             <span v-if="loading" class="spinner-border spinner-border-sm me-1" aria-hidden="true" />
-            Sign In
+            {{ $t('auth.signIn') }}
           </button>
         </div>
       </div>
     </form>
 
     <p class="mt-3 mb-1">
-      <NuxtLink to="/forgot-password">I forgot my password</NuxtLink>
+      <NuxtLink to="/forgot-password">{{ $t('auth.forgot') }}</NuxtLink>
     </p>
     <p class="mb-0">
-      <NuxtLink to="/register">Register a new membership</NuxtLink>
+      <NuxtLink to="/register">{{ $t('auth.registerLink') }}</NuxtLink>
     </p>
 
     <div class="mt-3 d-flex align-items-center justify-content-between border-top pt-3">
       <span class="text-secondary small">
-        Demo: <code>admin@example.com</code> / <code>password</code>
+        {{ $t('auth.demoHint') }}: <code>admin@example.com</code> / <code>password</code>
       </span>
       <button type="button" class="btn btn-sm btn-outline-secondary" @click="useDemo">
-        Use demo credentials
+        {{ $t('auth.useDemo') }}
       </button>
     </div>
   </LteAuthLayout>

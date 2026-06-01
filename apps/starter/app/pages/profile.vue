@@ -1,14 +1,15 @@
 <script setup lang="ts">
 definePageMeta({ middleware: 'auth' })
-useSeoMeta({ title: 'Profile · AdminLTE Starter' })
+const { t } = useI18n()
+useSeoMeta({ title: () => `${t('profile.title')} · AdminLTE Starter` })
 
 const auth = useAuthStore()
 </script>
 
 <template>
   <LteAppContent
-    title="Profile"
-    :breadcrumbs="[{ label: 'Home', href: '/' }, { label: 'Profile' }]"
+    :title="$t('profile.title')"
+    :breadcrumbs="[{ label: $t('common.home'), href: '/' }, { label: $t('profile.title') }]"
   >
     <div class="row g-3">
       <div class="col-lg-4">

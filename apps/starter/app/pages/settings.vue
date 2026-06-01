@@ -2,7 +2,8 @@
 import { ref } from 'vue'
 
 definePageMeta({ middleware: 'auth' })
-useSeoMeta({ title: 'Settings · AdminLTE Starter' })
+const { t } = useI18n()
+useSeoMeta({ title: () => `${t('settings.title')} · AdminLTE Starter` })
 
 const auth = useAuthStore()
 const form = ref({
@@ -21,8 +22,8 @@ function onSave() {
 
 <template>
   <LteAppContent
-    title="Settings"
-    :breadcrumbs="[{ label: 'Home', href: '/' }, { label: 'Settings' }]"
+    :title="$t('settings.title')"
+    :breadcrumbs="[{ label: $t('common.home'), href: '/' }, { label: $t('settings.title') }]"
   >
     <div class="row">
       <div class="col-lg-8">

@@ -2,8 +2,9 @@
 import { ref, computed } from 'vue'
 
 definePageMeta({ layout: 'auth' })
+const { t } = useI18n()
 useHead({ bodyAttrs: { class: 'lockscreen bg-body-secondary' } })
-useSeoMeta({ title: 'Locked · AdminLTE Starter' })
+useSeoMeta({ title: () => `${t('auth.locked')} · AdminLTE Starter` })
 
 const auth = useAuthStore()
 const password = ref('')
@@ -64,9 +65,9 @@ async function onUnlock() {
     </div>
 
     <div v-if="error" class="text-danger text-center mb-2">{{ error }}</div>
-    <div class="help-block text-center">Enter your password to retrieve your session</div>
+    <div class="help-block text-center">{{ $t('auth.locked') }}</div>
     <div class="text-center">
-      <NuxtLink to="/login" class="text-decoration-none">Or sign in as a different user</NuxtLink>
+      <NuxtLink to="/login" class="text-decoration-none">{{ $t('auth.differentUser') }}</NuxtLink>
     </div>
   </div>
 </template>

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 definePageMeta({ middleware: 'auth' })
-useSeoMeta({ title: 'Board · AdminLTE Starter' })
+const { t } = useI18n()
+useSeoMeta({ title: () => `${t('board.title')} · AdminLTE Starter` })
 
 const { data: columns } = await useFetch('/api/board')
 
@@ -11,8 +12,8 @@ async function onMove(payload: { card: string; from: string; to: string; newInde
 </script>
 
 <template>
-  <LteAppContent title="Board" :breadcrumbs="[{ label: 'Home', href: '/' }, { label: 'Board' }]">
-    <p class="text-secondary small">Drag cards between columns — moves persist to the mock API.</p>
+  <LteAppContent :title="$t('board.title')" :breadcrumbs="[{ label: $t('common.home'), href: '/' }, { label: $t('board.title') }]">
+    <p class="text-secondary small">{{ $t('board.hint') }}</p>
     <ClientOnly>
       <LteKanban :columns="columns ?? []" @move="onMove" />
       <template #fallback>
