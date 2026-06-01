@@ -12,12 +12,14 @@ export default defineNuxtConfig({
   ],
 
   app: {
+    // Served under /docs so it can live at e.g. site.com/docs like other templates.
+    baseURL: '/docs/',
     head: {
       htmlAttrs: { lang: 'en' },
-      title: 'adminlte-vue · Docs',
+      title: 'AdminLTE Vue · Docs',
       meta: [
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { name: 'description', content: 'Documentation for adminlte-vue — AdminLTE 4 for Vue 3 & Nuxt.' },
+        { name: 'description', content: 'Documentation for AdminLTE Vue — AdminLTE 4 for Vue 3 & Nuxt.' },
       ],
     },
   },

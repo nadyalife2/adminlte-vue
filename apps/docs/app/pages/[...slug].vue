@@ -13,7 +13,7 @@ if (!doc.value) {
 const { data: pages } = await useDocsPages()
 
 useSeoMeta({
-  title: () => `${doc.value?.title ?? 'Docs'} · adminlte-vue`,
+  title: () => `${doc.value?.title ?? 'Docs'} · AdminLTE Vue`,
   description: () => doc.value?.description,
 })
 

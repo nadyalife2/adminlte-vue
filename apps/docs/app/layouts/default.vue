@@ -11,7 +11,7 @@ useHead({ htmlAttrs: { 'data-bs-theme': () => theme.value } })
       <div class="container-fluid px-3 px-lg-4 h-100 d-flex align-items-center">
         <NuxtLink to="/" class="navbar-brand">
           <span class="docs-brand-badge"><i class="bi bi-hexagon-fill" /></span>
-          adminlte-vue
+          AdminLTE Vue
           <span class="badge text-bg-secondary fw-normal ms-1" style="font-size: 0.62rem">docs</span>
         </NuxtLink>
 
