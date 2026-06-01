@@ -14,6 +14,7 @@ async function onSubmit() {
   submitting.value = true
   try {
     const created = await $fetch('/api/users', { method: 'POST', body: form.value })
+    useToast().success(`${created.name} was created.`)
     await navigateTo(`/users/${created.id}`)
   } catch (e: unknown) {
     const err = e as { data?: { data?: { errors?: Record<string, string> } } }

@@ -14,6 +14,7 @@ const lte = computed(() => appConfig.adminlte ?? {})
 const auth = useAuthStore()
 const route = useRoute()
 const NuxtLink = resolveComponent('NuxtLink')
+const { sidebarTheme } = useThemeCustomizer()
 
 // RBAC menu filtering: drop entries the signed-in user's roles can't access
 // (recursively; empty groups are removed). Items without `roles` are public.
@@ -49,23 +50,41 @@ async function onLogout() {
 </script>
 
 <template>
-  <LteDashboardLayout
-    :menu-items="menu"
-    :current-path="route.path"
-    :link-component="NuxtLink"
-    :navigate="navigate"
-    :logo="brand.logo"
-    :brand-text="brand.text"
-    :logo-href="brand.href ?? '/'"
-    :user="user"
-    @logout="onLogout"
-    @profile="navigate('/profile')"
-  >
-    <template v-if="(lte.messages?.length ?? 0) > 0" #topbar-end>
-      <LteNavMessages :messages="lte.messages!" />
-      <LteNavNotifications v-if="lte.notifications?.length" :notifications="lte.notifications!" />
-    </template>
+  <div>
+    <NuxtLoadingIndicator color="var(--bs-primary)" />
+    <LteDashboardLayout
+      :menu-items="menu"
+      :current-path="route.path"
+      :link-component="NuxtLink"
+      :navigate="navigate"
+      :logo="brand.logo"
+      :brand-text="brand.text"
+      :logo-href="brand.href ?? '/'"
+      :sidebar-theme="sidebarTheme"
+      :user="user"
+      @logout="onLogout"
+      @profile="navigate('/profile')"
+    >
+      <template #topbar-end>
+        <LteNavMessages v-if="lte.messages?.length" :messages="lte.messages" />
+        <LteNavNotifications v-if="lte.notifications?.length" :notifications="lte.notifications" />
+        <li class="nav-item">
+          <button
+            type="button"
+            class="nav-link"
+            title="Customize"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#themeCustomizer"
+          >
+            <i class="bi bi-palette" />
+          </button>
+        </li>
+      </template>
 
-    <slot />
-  </LteDashboardLayout>
+      <slot />
+      <!-- Inside the layout so it can inject color-mode state from LteDashboardLayout. -->
+      <AppThemeCustomizer />
+    </LteDashboardLayout>
+    <AppToaster />
+  </div>
 </template>

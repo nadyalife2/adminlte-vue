@@ -31,4 +31,39 @@ Sign in with the demo credentials: **admin@example.com** / **password**.
 2. Replace the mock endpoints in [`server/api`](server/api) and the layer's
    `/api/auth/*` with your backend.
 3. Add pages under [`app/pages`](app/pages); guard them with
-   `definePageMeta({ middleware: 'auth' })`.
+   `definePageMeta({ middleware: 'auth' })`, or restrict by role with
+   `definePageMeta({ middleware: 'auth', roles: ['admin'] })`.
+
+## What's inside
+
+| Area | Where |
+| --- | --- |
+| Auth (login/register/forgot/reset/lockscreen) + RBAC | inherited from `@adminlte/dashboard` |
+| Users CRUD (search/sort/paginate, validation) | `app/pages/users`, `server/api/users` |
+| Analytics / Calendar / Board (live, mock data) | `app/pages/{analytics,calendar,board}` |
+| Toasts, theme customizer, route transitions | inherited from the layer |
+
+## Testing
+
+```bash
+pnpm --filter adminlte-starter test    # Vitest — server util logic
+```
+
+## Deploy
+
+The build output is a standard Nitro server (`node-server` preset by default):
+
+```bash
+pnpm --filter adminlte-starter build
+node apps/starter/.output/server/index.mjs   # PORT=3000 HOST=0.0.0.0
+```
+
+- **Vercel / Netlify / Cloudflare** — auto-detected by their Nuxt support; or set
+  a preset in `nuxt.config.ts` (`nitro: { preset: 'vercel' }`, `'netlify'`,
+  `'cloudflare-pages'`, …).
+- **Docker** — build from the repo root:
+
+  ```bash
+  docker build -f apps/starter/Dockerfile -t adminlte-starter .
+  docker run -p 3000:3000 adminlte-starter
+  ```

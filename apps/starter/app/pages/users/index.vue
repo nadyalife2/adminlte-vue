@@ -58,6 +58,7 @@ async function onDelete(id: number, name: string) {
   deletingId.value = id
   try {
     await $fetch(`/api/users/${id}`, { method: 'DELETE' })
+    useToast().success(`${name} was deleted.`)
     if (rows.value.length === 1 && page.value > 1) page.value -= 1
     await refresh()
   } finally {

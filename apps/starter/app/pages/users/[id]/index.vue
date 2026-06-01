@@ -23,6 +23,7 @@ async function onDelete() {
   deleting.value = true
   try {
     await $fetch(`/api/users/${route.params.id}`, { method: 'DELETE' })
+    useToast().success(`${user.value!.name} was deleted.`)
     await navigateTo('/users')
   } finally {
     deleting.value = false

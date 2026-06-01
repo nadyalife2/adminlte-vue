@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      # Build the workspace packages first (lib → nuxt module); the apps consume
+      # the library's built dist.
+      - run: pnpm build
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Type-check (library)
+        run: pnpm --filter adminlte-vue type-check
+
+      - name: Unit tests (library)
+        run: pnpm --filter adminlte-vue test
+
+      - name: Unit tests (starter)
+        run: pnpm --filter adminlte-starter test
+
+      - name: Build demo
+        run: pnpm build:demo
+
+      - name: Build starter
+        run: pnpm --filter adminlte-starter build

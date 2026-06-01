@@ -26,6 +26,7 @@ async function onSubmit() {
   submitting.value = true
   try {
     await $fetch(`/api/users/${id}`, { method: 'PUT', body: form.value })
+    useToast().success('Changes saved.')
     await navigateTo(`/users/${id}`)
   } catch (e: unknown) {
     const err = e as { data?: { data?: { errors?: Record<string, string> } } }

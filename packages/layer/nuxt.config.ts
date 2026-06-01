@@ -4,10 +4,19 @@
 //   - the default dashboard + auth layouts, the auth store and route middleware
 //   - mock /api/auth/* endpoints (replace with a real backend in your app)
 // Apps override branding, the menu and the user via their own app.config.ts.
+import { fileURLToPath } from 'node:url'
+
+const r = (p: string) => fileURLToPath(new URL(p, import.meta.url))
+
 export default defineNuxtConfig({
   compatibilityDate: '2025-05-01',
 
   modules: ['@adminlte/nuxt', '@pinia/nuxt'],
+
+  // Smooth route transitions (CSS in app/assets/css/app.css).
+  app: {
+    pageTransition: { name: 'page', mode: 'out-in' },
+  },
 
   adminlte: {
     defaults: {
@@ -23,5 +32,6 @@ export default defineNuxtConfig({
   css: [
     'bootstrap-icons/font/bootstrap-icons.css',
     'overlayscrollbars/overlayscrollbars.css',
+    r('./app/assets/css/app.css'),
   ],
 })
