@@ -4,7 +4,7 @@ export default defineAppConfig({
   adminlte: {
     brand: {
       logo: '/assets/img/AdminLTELogo.png',
-      text: 'Starter',
+      text: 'AdminLTE',
       href: '/',
     },
     menu: [
