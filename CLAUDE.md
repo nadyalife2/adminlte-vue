@@ -143,6 +143,38 @@ composables are **auto-imported by the module** (no imports in pages). Route →
 `LteDashboardLayout`); `examples/*` use `layout: 'auth'`; the `layout/*` variant pages use
 `layout: false` and render `<DemoLayout :fixed-* …>` directly to showcase a flag.
 
+### Subpath static export (adminlte.io hosting)
+`pnpm --filter demo run export` runs `EXPORT=true nuxi generate` → a static `apps/demo/.output/public`
+configured for **`https://adminlte.io/themes/vue-nuxt/`** (sibling of the React edition's
+`/themes/next-react/` and the v4 HTML demo at `/themes/v4/`). The subpath is **gated behind the
+`EXPORT` env** so local `pnpm dev:demo` (and the plain `build:demo` SSR gate) stay at the domain root.
+Mechanics (all in the demo; the published library is untouched):
+- `nuxt.config.ts` sets `app.baseURL` to `/themes/vue-nuxt/` when `EXPORT=true`. Nuxt's `baseURL`
+  **natively** prefixes the router (every `NuxtLink`, the SSR-rendered hrefs, route payloads) and the
+  build assets (`_nuxt/`) — so unlike Next we need **no** asset-prefix config. It also exposes
+  `runtimeConfig.public.basePath` (for the shim) and a Vite `define` `__ADMINLTE_BASE__` (for `withBase`).
+- `app/utils/withBase.ts` `withBase()` (auto-imported) prefixes absolute paths using the **compile-time**
+  `__ADMINLTE_BASE__` constant — a literal define, not `useRuntimeConfig`, so it is safe in data arrays
+  **and** template expressions and is fully inlined / no-op at the root. Applied at the **source** to
+  every image that renders on initial load: `DemoLayout.vue` (topbar message avatars + brand `logo`)
+  and the `<img src="/assets/…">` in `index`/`index2`/`index3`/`ui/timeline`/`layout/logo-switch`/
+  `examples/lockscreen`/`docs/components/main-header`. **Gotcha:** a client shim can't fix these —
+  the browser fetches a server-rendered `<img src>` before any JS runs, so the first request 404s;
+  initial-render images must be prefixed at the source (this is the Vue analog of React's
+  `chart-data.ts`). Escaped `&quot;/assets…&quot;` inside docs code-blocks are snippets, left as-is.
+- `app/plugins/subpath-links.client.ts` is the idempotent after-paint shim (runs on `page:finish`),
+  prefixing the long tail of raw `<a href="/…">` and any stray `<img src="/assets/…">`. It is a safety
+  net only — a no-op at the root. Verified: `.output/public` served at the subpath renders home, the
+  dashboards, docs, and auth pages with **0 failed requests** (370 responses across 9 pages; SPA-nav clean).
+- **Deploy** (Hetzner, `ssh hetzner` → `/var/www/adminlte.io/public/themes/vue-nuxt/`, owner
+  `web_adminlte_io:www-data`): `COPYFILE_DISABLE=1 tar -C apps/demo/.output/public -czf - . | ssh hetzner
+  'DEST=/var/www/adminlte.io/public/themes/vue-nuxt; rm -rf $DEST && mkdir -p $DEST && tar -C $DEST -xzf -'`
+  then chown/chmod, then purge Cloudflare (token + zone id are in the server's `wp-config.php` — extract
+  with `awk -F"'" '/CLOUDFLARE_API_TOKEN/{print $4}'`). **Don't curl the URL before the files are
+  deployed** — Cloudflare caches the 404 (4h TTL). Mirror the React edition's custom nginx
+  `location /themes/vue-nuxt/` (in `sites-enabled/adminlte.io.conf`) so unmatched subpaths serve the
+  themed `404.html` instead of WordPress.
+
 ## Code style
 
 - `<script setup lang="ts">` SFCs. **`Lte` prefix** on every component (matches AdminLTE's `lte.*`

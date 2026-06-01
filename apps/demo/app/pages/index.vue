@@ -138,7 +138,7 @@ onMounted(async () => {
                 </div>
                 <img
                   class="direct-chat-img"
-                  src="/assets/img/user1-128x128.jpg"
+                  :src="withBase('/assets/img/user1-128x128.jpg')"
                   alt="message user image"
                 />
                 <div class="direct-chat-text">
@@ -153,7 +153,7 @@ onMounted(async () => {
                 </div>
                 <img
                   class="direct-chat-img"
-                  src="/assets/img/user3-128x128.jpg"
+                  :src="withBase('/assets/img/user3-128x128.jpg')"
                   alt="message user image"
                 />
                 <div class="direct-chat-text">You better believe it!</div>
@@ -166,7 +166,7 @@ onMounted(async () => {
                 </div>
                 <img
                   class="direct-chat-img"
-                  src="/assets/img/user1-128x128.jpg"
+                  :src="withBase('/assets/img/user1-128x128.jpg')"
                   alt="message user image"
                 />
                 <div class="direct-chat-text">
@@ -181,7 +181,7 @@ onMounted(async () => {
                 </div>
                 <img
                   class="direct-chat-img"
-                  src="/assets/img/user3-128x128.jpg"
+                  :src="withBase('/assets/img/user3-128x128.jpg')"
                   alt="message user image"
                 />
                 <div class="direct-chat-text">I would love to.</div>
@@ -192,7 +192,7 @@ onMounted(async () => {
               <ul class="contacts-list">
                 <li>
                   <a href="#">
-                    <img class="contacts-list-img" src="/assets/img/user1-128x128.jpg" alt="User Avatar" />
+                    <img class="contacts-list-img" :src="withBase('/assets/img/user1-128x128.jpg')" alt="User Avatar" />
                     <div class="contacts-list-info">
                       <span class="contacts-list-name">
                         Count Dracula
@@ -204,7 +204,7 @@ onMounted(async () => {
                 </li>
                 <li>
                   <a href="#">
-                    <img class="contacts-list-img" src="/assets/img/user7-128x128.jpg" alt="User Avatar" />
+                    <img class="contacts-list-img" :src="withBase('/assets/img/user7-128x128.jpg')" alt="User Avatar" />
                     <div class="contacts-list-info">
                       <span class="contacts-list-name">
                         Sarah Doe
@@ -216,7 +216,7 @@ onMounted(async () => {
                 </li>
                 <li>
                   <a href="#">
-                    <img class="contacts-list-img" src="/assets/img/user3-128x128.jpg" alt="User Avatar" />
+                    <img class="contacts-list-img" :src="withBase('/assets/img/user3-128x128.jpg')" alt="User Avatar" />
                     <div class="contacts-list-info">
                       <span class="contacts-list-name">
                         Nadia Jolie
@@ -228,7 +228,7 @@ onMounted(async () => {
                 </li>
                 <li>
                   <a href="#">
-                    <img class="contacts-list-img" src="/assets/img/user5-128x128.jpg" alt="User Avatar" />
+                    <img class="contacts-list-img" :src="withBase('/assets/img/user5-128x128.jpg')" alt="User Avatar" />
                     <div class="contacts-list-info">
                       <span class="contacts-list-name">
                         Nora S. Vans
@@ -240,7 +240,7 @@ onMounted(async () => {
                 </li>
                 <li>
                   <a href="#">
-                    <img class="contacts-list-img" src="/assets/img/user6-128x128.jpg" alt="User Avatar" />
+                    <img class="contacts-list-img" :src="withBase('/assets/img/user6-128x128.jpg')" alt="User Avatar" />
                     <div class="contacts-list-info">
                       <span class="contacts-list-name">
                         John K.
@@ -252,7 +252,7 @@ onMounted(async () => {
                 </li>
                 <li>
                   <a href="#">
-                    <img class="contacts-list-img" src="/assets/img/user8-128x128.jpg" alt="User Avatar" />
+                    <img class="contacts-list-img" :src="withBase('/assets/img/user8-128x128.jpg')" alt="User Avatar" />
                     <div class="contacts-list-info">
                       <span class="contacts-list-name">
                         Kenneth M.

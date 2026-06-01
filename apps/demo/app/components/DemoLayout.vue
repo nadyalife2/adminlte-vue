@@ -46,15 +46,15 @@ const layout = computed(() => ({
 
 const user = {
   name: 'Alexander Pierce',
-  image: '/assets/img/user2-160x160.jpg',
+  image: withBase('/assets/img/user2-160x160.jpg'),
   role: 'Web Developer',
   memberSince: 'Nov. 2023',
 }
 
 const messages: NavMessage[] = [
-  { from: 'Brad Diesel', text: 'Call me whenever you can...', time: '4 Hours Ago', star: 'danger', image: '/assets/img/user1-128x128.jpg' },
-  { from: 'John Pierce', text: 'I got your message bro', time: '4 Hours Ago', star: 'secondary', image: '/assets/img/user8-128x128.jpg' },
-  { from: 'Nora Silvester', text: 'The subject goes here', time: '4 Hours Ago', star: 'warning', image: '/assets/img/user3-128x128.jpg' },
+  { from: 'Brad Diesel', text: 'Call me whenever you can...', time: '4 Hours Ago', star: 'danger', image: withBase('/assets/img/user1-128x128.jpg') },
+  { from: 'John Pierce', text: 'I got your message bro', time: '4 Hours Ago', star: 'secondary', image: withBase('/assets/img/user8-128x128.jpg') },
+  { from: 'Nora Silvester', text: 'The subject goes here', time: '4 Hours Ago', star: 'warning', image: withBase('/assets/img/user3-128x128.jpg') },
 ]
 const notifications: NavNotification[] = [
   { text: '4 new messages', icon: 'bi-envelope', time: '3 mins' },
@@ -74,7 +74,7 @@ function navigate(href: string) {
     :current-path="route.path"
     :link-component="NuxtLink"
     :navigate="navigate"
-    logo="/assets/img/AdminLTELogo.png"
+    :logo="withBase('/assets/img/AdminLTELogo.png')"
     brand-text="AdminLTE 4"
     :user="user"
     :fixed-header="layout.fixedHeader"

@@ -106,7 +106,7 @@ const salesOptions = {
               <tr>
                 <td>
                   <img
-                    src="/assets/img/default-150x150.png"
+                    :src="withBase('/assets/img/default-150x150.png')"
                     alt="Product 1"
                     class="rounded-circle img-size-32 me-2"
                   />
@@ -126,7 +126,7 @@ const salesOptions = {
               <tr>
                 <td>
                   <img
-                    src="/assets/img/default-150x150.png"
+                    :src="withBase('/assets/img/default-150x150.png')"
                     alt="Product 1"
                     class="rounded-circle img-size-32 me-2"
                   />
@@ -146,7 +146,7 @@ const salesOptions = {
               <tr>
                 <td>
                   <img
-                    src="/assets/img/default-150x150.png"
+                    :src="withBase('/assets/img/default-150x150.png')"
                     alt="Product 1"
                     class="rounded-circle img-size-32 me-2"
                   />
@@ -166,7 +166,7 @@ const salesOptions = {
               <tr>
                 <td>
                   <img
-                    src="/assets/img/default-150x150.png"
+                    :src="withBase('/assets/img/default-150x150.png')"
                     alt="Product 1"
                     class="rounded-circle img-size-32 me-2"
                   />

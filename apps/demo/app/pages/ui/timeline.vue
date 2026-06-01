@@ -72,10 +72,10 @@
                       <span class="time"> <i class="bi bi-clock-fill"></i> 2 days ago </span>
                       <h3 class="timeline-header"><a href="#">Mina Lee</a> uploaded new photos</h3>
                       <div class="timeline-body">
-                        <img src="/assets/img/user1-128x128.jpg" alt="..." />
-                        <img src="/assets/img/user1-128x128.jpg" alt="..." />
-                        <img src="/assets/img/user1-128x128.jpg" alt="..." />
-                        <img src="/assets/img/user1-128x128.jpg" alt="..." />
+                        <img :src="withBase('/assets/img/user1-128x128.jpg')" alt="..." />
+                        <img :src="withBase('/assets/img/user1-128x128.jpg')" alt="..." />
+                        <img :src="withBase('/assets/img/user1-128x128.jpg')" alt="..." />
+                        <img :src="withBase('/assets/img/user1-128x128.jpg')" alt="..." />
                       </div>
                     </div>
                   </div>

@@ -8,12 +8,12 @@ definePageMeta({ layout: false })
       <div class="sidebar-brand">
         <NuxtLink to="/" class="brand-link logo-switch">
           <img
-            src="/assets/img/AdminLTELogo.png"
+            :src="withBase('/assets/img/AdminLTELogo.png')"
             alt="AdminLTE Logo Small"
             class="brand-image-xl logo-xs opacity-75 shadow"
           />
           <img
-            src="/assets/img/AdminLTEFullLogo.png"
+            :src="withBase('/assets/img/AdminLTEFullLogo.png')"
             alt="AdminLTE Logo Large"
             class="brand-image-xs logo-xl opacity-75"
           />

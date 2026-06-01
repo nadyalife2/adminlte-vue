@@ -13,7 +13,7 @@ useHead({ bodyAttrs: { class: 'lockscreen bg-body-secondary' } })
 
       <div class="lockscreen-item">
         <div class="lockscreen-image">
-          <img src="/assets/img/user1-128x128.jpg" alt="User Image" />
+          <img :src="withBase('/assets/img/user1-128x128.jpg')" alt="User Image" />
         </div>
 
         <form class="lockscreen-credentials">

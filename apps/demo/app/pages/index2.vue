@@ -241,7 +241,7 @@ const products = [
                       <span class="direct-chat-name float-start">Alexander Pierce</span>
                       <span class="direct-chat-timestamp float-end">23 Jan 2:00 pm</span>
                     </div>
-                    <img class="direct-chat-img" src="/assets/img/user1-128x128.jpg" alt="message user image" />
+                    <img class="direct-chat-img" :src="withBase('/assets/img/user1-128x128.jpg')" alt="message user image" />
                     <div class="direct-chat-text">
                       Is this template really for free? That's unbelievable!
                     </div>
@@ -251,7 +251,7 @@ const products = [
                       <span class="direct-chat-name float-end">Sarah Bullock</span>
                       <span class="direct-chat-timestamp float-start">23 Jan 2:05 pm</span>
                     </div>
-                    <img class="direct-chat-img" src="/assets/img/user3-128x128.jpg" alt="message user image" />
+                    <img class="direct-chat-img" :src="withBase('/assets/img/user3-128x128.jpg')" alt="message user image" />
                     <div class="direct-chat-text">You better believe it!</div>
                   </div>
                   <div class="direct-chat-msg">
@@ -259,7 +259,7 @@ const products = [
                       <span class="direct-chat-name float-start">Alexander Pierce</span>
                       <span class="direct-chat-timestamp float-end">23 Jan 5:37 pm</span>
                     </div>
-                    <img class="direct-chat-img" src="/assets/img/user1-128x128.jpg" alt="message user image" />
+                    <img class="direct-chat-img" :src="withBase('/assets/img/user1-128x128.jpg')" alt="message user image" />
                     <div class="direct-chat-text">
                       Working with AdminLTE on a great new app! Wanna join?
                     </div>
@@ -269,7 +269,7 @@ const products = [
                       <span class="direct-chat-name float-end">Sarah Bullock</span>
                       <span class="direct-chat-timestamp float-start">23 Jan 6:10 pm</span>
                     </div>
-                    <img class="direct-chat-img" src="/assets/img/user3-128x128.jpg" alt="message user image" />
+                    <img class="direct-chat-img" :src="withBase('/assets/img/user3-128x128.jpg')" alt="message user image" />
                     <div class="direct-chat-text">I would love to.</div>
                   </div>
                 </div>
@@ -277,7 +277,7 @@ const products = [
                   <ul class="contacts-list">
                     <li>
                       <a href="#">
-                        <img class="contacts-list-img" src="/assets/img/user1-128x128.jpg" alt="User Avatar" />
+                        <img class="contacts-list-img" :src="withBase('/assets/img/user1-128x128.jpg')" alt="User Avatar" />
                         <div class="contacts-list-info">
                           <span class="contacts-list-name">
                             Count Dracula
@@ -289,7 +289,7 @@ const products = [
                     </li>
                     <li>
                       <a href="#">
-                        <img class="contacts-list-img" src="/assets/img/user7-128x128.jpg" alt="User Avatar" />
+                        <img class="contacts-list-img" :src="withBase('/assets/img/user7-128x128.jpg')" alt="User Avatar" />
                         <div class="contacts-list-info">
                           <span class="contacts-list-name">
                             Sarah Doe
@@ -301,7 +301,7 @@ const products = [
                     </li>
                     <li>
                       <a href="#">
-                        <img class="contacts-list-img" src="/assets/img/user3-128x128.jpg" alt="User Avatar" />
+                        <img class="contacts-list-img" :src="withBase('/assets/img/user3-128x128.jpg')" alt="User Avatar" />
                         <div class="contacts-list-info">
                           <span class="contacts-list-name">
                             Nadia Jolie
@@ -313,7 +313,7 @@ const products = [
                     </li>
                     <li>
                       <a href="#">
-                        <img class="contacts-list-img" src="/assets/img/user5-128x128.jpg" alt="User Avatar" />
+                        <img class="contacts-list-img" :src="withBase('/assets/img/user5-128x128.jpg')" alt="User Avatar" />
                         <div class="contacts-list-info">
                           <span class="contacts-list-name">
                             Nora S. Vans
@@ -325,7 +325,7 @@ const products = [
                     </li>
                     <li>
                       <a href="#">
-                        <img class="contacts-list-img" src="/assets/img/user6-128x128.jpg" alt="User Avatar" />
+                        <img class="contacts-list-img" :src="withBase('/assets/img/user6-128x128.jpg')" alt="User Avatar" />
                         <div class="contacts-list-info">
                           <span class="contacts-list-name">
                             John K.
@@ -337,7 +337,7 @@ const products = [
                     </li>
                     <li>
                       <a href="#">
-                        <img class="contacts-list-img" src="/assets/img/user8-128x128.jpg" alt="User Avatar" />
+                        <img class="contacts-list-img" :src="withBase('/assets/img/user8-128x128.jpg')" alt="User Avatar" />
                         <div class="contacts-list-info">
                           <span class="contacts-list-name">
                             Kenneth M.
@@ -381,7 +381,7 @@ const products = [
               </template>
               <div class="row text-center m-1">
                 <div v-for="(m, i) in members" :key="i" class="col-3 p-2">
-                  <img class="img-fluid rounded-circle" :src="`/assets/img/${m.img}`" alt="User Image" />
+                  <img class="img-fluid rounded-circle" :src="withBase(`/assets/img/${m.img}`)" alt="User Image" />
                   <a class="btn fw-bold fs-7 text-secondary text-truncate w-100 p-0" href="#">
                     {{ m.name }}
                   </a>
@@ -493,7 +493,7 @@ const products = [
           <div class="px-2">
             <div v-for="(p, i) in products" :key="i" class="d-flex border-top py-2 px-1">
                 <div class="col-2">
-                  <img src="/assets/img/default-150x150.png" alt="Product Image" class="img-size-50" />
+                  <img :src="withBase('/assets/img/default-150x150.png')" alt="Product Image" class="img-size-50" />
                 </div>
                 <div class="col-10">
                   <a href="javascript:void(0)" class="fw-bold">
