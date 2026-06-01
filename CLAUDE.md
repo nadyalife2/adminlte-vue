@@ -14,22 +14,9 @@ This is a **pnpm monorepo** (`pnpm-workspace.yaml` → `packages/*`, `apps/*`):
 - **`packages/nuxt`** (`@adminlte/nuxt`) — a thin Nuxt module that auto-registers the components,
   auto-imports the composables, injects the CSS, initializes Bootstrap's JS client-side, and adds an
   SSR-safe color-mode head script. Built with `@nuxt/module-builder`.
-- **`packages/layer`** (`@adminlte/dashboard`) — a **Nuxt Layer** (the admin-template shell): apps
-  `extends` it to inherit the module preset + Pinia, a config-driven default dashboard layout + auth
-  layout, a cookie-backed Pinia auth store (re-exported via `app/composables` so it auto-imports
-  across the layer boundary), `auth` route middleware, a user-hydration plugin, and mock
-  `/api/auth/*` endpoints. Consumed as source — no build step.
 - **`apps/demo`** — a Nuxt 4 demo that dogfoods the library + module via `workspace:*`. **It is the
   pristine 1:1 clone of the official AdminLTE demo (incl. 26 docs pages) — keep it that way; do not
-  refactor its pages.** Uses its own `DemoLayout`, not the layer.
-- **`apps/starter`** (`adminlte-starter`) — a clonable Nuxt 4 admin **template** that
-  `extends: ['@adminlte/dashboard']`. The real app spine: a full **auth suite** (login/register/
-  forgot/reset/lockscreen) + **RBAC** (`definePageMeta({ roles })` → 403, role-filtered menu; seeded
-  admin/editor users); an admin-only **Users CRUD** module with server-side search/sort/pagination,
-  validation, toasts; live **feature pages** (ApexCharts / FullCalendar / Kanban) on mock
-  `server/api/*`; **i18n** (`@nuxtjs/i18n`, en + es, language switcher); a **theme customizer**;
-  `useSeoMeta`; `.env.example` + Nitro/Docker deploy. Tested with **Vitest** (server utils) +
-  **Playwright e2e** (`test:e2e`), linted with **`@nuxt/eslint`**.
+  refactor its pages.** Uses its own `DemoLayout`.
 - **`apps/docs`** (`adminlte-docs`) — the documentation site (Nuxt 4 + **@nuxt/content v3**,
   better-sqlite3). Markdown lives in `content/**` (numeric-prefixed for order; `section` front-matter
   drives the sidebar grouping); a custom docs layout provides header/search/color-mode, a
@@ -38,9 +25,7 @@ This is a **pnpm monorepo** (`pnpm-workspace.yaml` → `packages/*`, `apps/*`):
 
 **Correctness gates** (all must pass): `pnpm --filter adminlte-vue type-check` (`vue-tsc --noEmit`),
 `pnpm --filter adminlte-vue test` (Vitest — jsdom + @vue/test-utils), `pnpm lint` (ESLint 9 flat
-config over `packages/*/src`; `apps/**` + `packages/layer/**` are excluded as they need
-`@nuxt/eslint`), `pnpm build:demo`, and a successful `apps/starter` build. `nuxi typecheck` (demo +
-starter) is also kept at **0 errors**.
+config over `packages/*/src`; `apps/**` excluded), `pnpm build:demo`, and `pnpm build:docs`.
 
 ## Commands
 

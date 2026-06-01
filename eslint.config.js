@@ -15,9 +15,6 @@ export default tseslint.config(
       '**/node_modules/**',
       '**/*.d.ts',
       'apps/**',
-      // The dashboard layer is a Nuxt app (auto-imports, SFC TS) — lint it with
-      // @nuxt/eslint, same rationale as apps/**.
-      'packages/layer/**',
       'scripts/**',
       '**/*.config.{js,ts,mjs}',
     ],
