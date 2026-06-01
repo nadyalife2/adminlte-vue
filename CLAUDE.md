@@ -23,9 +23,13 @@ This is a **pnpm monorepo** (`pnpm-workspace.yaml` → `packages/*`, `apps/*`):
   pristine 1:1 clone of the official AdminLTE demo (incl. 26 docs pages) — keep it that way; do not
   refactor its pages.** Uses its own `DemoLayout`, not the layer.
 - **`apps/starter`** (`adminlte-starter`) — a clonable Nuxt 4 admin **template** that
-  `extends: ['@adminlte/dashboard']` and adds brand/menu (`app.config`), guarded pages that
-  `useFetch` mock `server/api/dashboard/*` (SSR) + `useSeoMeta`, a login page, `.env.example` and a
-  Nitro preset hook. This is the "real app spine" demonstrator.
+  `extends: ['@adminlte/dashboard']`. The real app spine: a full **auth suite** (login/register/
+  forgot/reset/lockscreen) + **RBAC** (`definePageMeta({ roles })` → 403, role-filtered menu; seeded
+  admin/editor users); an admin-only **Users CRUD** module with server-side search/sort/pagination,
+  validation, toasts; live **feature pages** (ApexCharts / FullCalendar / Kanban) on mock
+  `server/api/*`; **i18n** (`@nuxtjs/i18n`, en + es, language switcher); a **theme customizer**;
+  `useSeoMeta`; `.env.example` + Nitro/Docker deploy. Tested with **Vitest** (server utils) +
+  **Playwright e2e** (`test:e2e`), linted with **`@nuxt/eslint`**.
 
 **Correctness gates** (all must pass): `pnpm --filter adminlte-vue type-check` (`vue-tsc --noEmit`),
 `pnpm --filter adminlte-vue test` (Vitest — jsdom + @vue/test-utils), `pnpm lint` (ESLint 9 flat
