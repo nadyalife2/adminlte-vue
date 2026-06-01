@@ -166,14 +166,24 @@ Mechanics (all in the demo; the published library is untouched):
   prefixing the long tail of raw `<a href="/…">` and any stray `<img src="/assets/…">`. It is a safety
   net only — a no-op at the root. Verified: `.output/public` served at the subpath renders home, the
   dashboards, docs, and auth pages with **0 failed requests** (370 responses across 9 pages; SPA-nav clean).
+- **Docs site (`apps/docs`)** ships at **`/themes/vue-nuxt/docs/`** — the real Vue/Nuxt API docs
+  (`@nuxt/content`). `pnpm --filter adminlte-docs run export` runs `EXPORT=true nuxi generate` with
+  `app.baseURL` gated to `/themes/vue-nuxt/docs/` (dev stays `/docs/`). It **takes over** the demo's
+  `/docs` path: the demo's own cloned AdminLTE docs pages are **excluded from the demo deploy**
+  (`tar --exclude='./docs'`), and the demo's two "Documentation" links (`DemoLayout` topbar +
+  `menu.ts`) open it with `target="_blank"` (full page load into the separate app — not an in-SPA
+  route). Note `nuxi generate` crawls links and fails on any 404, so docs internal links must resolve.
 - **Deploy** (Hetzner, `ssh hetzner` → `/var/www/adminlte.io/public/themes/vue-nuxt/`, owner
-  `web_adminlte_io:www-data`): `COPYFILE_DISABLE=1 tar -C apps/demo/.output/public -czf - . | ssh hetzner
-  'DEST=/var/www/adminlte.io/public/themes/vue-nuxt; rm -rf $DEST && mkdir -p $DEST && tar -C $DEST -xzf -'`
-  then chown/chmod, then purge Cloudflare (token + zone id are in the server's `wp-config.php` — extract
-  with `awk -F"'" '/CLOUDFLARE_API_TOKEN/{print $4}'`). **Don't curl the URL before the files are
-  deployed** — Cloudflare caches the 404 (4h TTL). Mirror the React edition's custom nginx
-  `location /themes/vue-nuxt/` (in `sites-enabled/adminlte.io.conf`) so unmatched subpaths serve the
-  themed `404.html` instead of WordPress.
+  `web_adminlte_io:www-data`, dirs 750 / files 640). Two static apps share the prefix, so deploy in two
+  steps: (1) demo **without** its docs — `COPYFILE_DISABLE=1 tar --exclude='./docs' -C
+  apps/demo/.output/public -czf - . | ssh hetzner 'DEST=…/themes/vue-nuxt; rm -rf $DEST && mkdir -p
+  $DEST && tar -C $DEST -xzf -'`; (2) docs into `docs/` — `tar -C apps/docs/.output/public -czf - . |
+  ssh hetzner 'tar -C …/themes/vue-nuxt/docs -xzf -'`; then chown/chmod and purge Cloudflare (token +
+  zone id in the server's `wp-config.php` — `awk -F"'" '/CLOUDFLARE_API_TOKEN/{print $4}'`; **purge the
+  changed/old URLs, including any previously-cached cloned `/docs/` pages**). **Don't curl a URL before
+  its files are deployed** — Cloudflare caches the 404 (4h TTL). nginx (`sites-enabled/adminlte.io.conf`):
+  `location /themes/vue-nuxt/` plus a nested `location /themes/vue-nuxt/docs/`, each `try_files $uri
+  $uri/ =404` with its own themed `404.html`, so unmatched subpaths don't fall through to WordPress.
 
 ## Code style
 

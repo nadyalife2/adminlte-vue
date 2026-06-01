@@ -187,5 +187,7 @@ export const menu: MenuNode[] = [
     ],
   },
   { type: 'header', text: 'DOCS' },
-  { type: 'item', text: 'Documentation', href: '/docs', icon: 'bi-book' },
+  // The real Vue/Nuxt docs are a separate app deployed at /docs; open in a new
+  // tab (full page load) so it doesn't try to client-route within the demo SPA.
+  { type: 'item', text: 'Documentation', href: '/docs', icon: 'bi-book', target: '_blank' },
 ]

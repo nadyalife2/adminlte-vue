@@ -224,15 +224,17 @@ already in `<LteTopbar>`) for a light/dark/auto switcher.
 
 ## Documentation
 
-A full API reference for every component and composable lives in the **docs site** (`apps/docs`,
-built with [@nuxt/content](https://content.nuxt.com)):
+A full API reference for every component and composable — Installation, Guide (Nuxt module, color
+mode, SSR-safety, routing), Components, Composables, and Resources — lives in the **docs site**
+(`apps/docs`, built with [@nuxt/content](https://content.nuxt.com)):
+
+**📖 [adminlte.io/themes/vue-nuxt/docs](https://adminlte.io/themes/vue-nuxt/docs/)** — or run it locally:
 
 ```bash
 pnpm dev:docs     # http://localhost:3000/docs/
 ```
 
-The condensed reference above plus the [live demo](https://adminlte.io/themes/vue-nuxt/) cover the
-essentials, and [CLAUDE.md](./CLAUDE.md) documents the architecture and build pipeline.
+[CLAUDE.md](./CLAUDE.md) documents the architecture and build pipeline.
 
 ## Development
 

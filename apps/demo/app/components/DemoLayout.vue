@@ -97,7 +97,7 @@ function navigate(href: string) {
         <NuxtLink to="/" class="nav-link"><i class="bi bi-grid-1x2 me-1" aria-hidden="true" />Live preview</NuxtLink>
       </li>
       <li class="nav-item d-none d-md-block">
-        <NuxtLink to="/docs" class="nav-link"><i class="bi bi-book me-1" aria-hidden="true" />Documentation</NuxtLink>
+        <NuxtLink to="/docs" target="_blank" rel="noopener" class="nav-link"><i class="bi bi-book me-1" aria-hidden="true" />Documentation</NuxtLink>
       </li>
     </template>
 

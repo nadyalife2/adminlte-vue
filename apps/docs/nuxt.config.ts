@@ -1,4 +1,11 @@
 // adminlte-vue documentation site (Nuxt 4 + @nuxt/content v3).
+
+// Local dev stays at /docs/. `EXPORT=true nuxi generate` (the `export` script)
+// builds for https://adminlte.io/themes/vue-nuxt/docs/ — it takes over the demo's
+// /docs path (the demo's cloned AdminLTE docs are excluded from its deploy).
+const isExport = process.env.EXPORT === 'true'
+const base = isExport ? '/themes/vue-nuxt/docs/' : '/docs/'
+
 export default defineNuxtConfig({
   compatibilityDate: '2025-05-01',
   devtools: { enabled: false },
@@ -13,7 +20,7 @@ export default defineNuxtConfig({
 
   app: {
     // Served under /docs so it can live at e.g. site.com/docs like other templates.
-    baseURL: '/docs/',
+    baseURL: base,
     head: {
       htmlAttrs: { lang: 'en' },
       title: 'AdminLTE Vue · Docs',
