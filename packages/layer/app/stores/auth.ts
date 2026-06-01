@@ -6,6 +6,8 @@ export interface AuthUser {
   email: string
   image?: string
   role?: string
+  /** Role keys used for RBAC checks (e.g. ['admin']). */
+  roles?: string[]
 }
 
 /**
@@ -22,9 +24,25 @@ export const useAuthStore = defineStore('auth', () => {
   const user = useState<AuthUser | null>('auth:user', () => null)
 
   const isAuthenticated = computed(() => !!token.value)
+  const roles = computed(() => user.value?.roles ?? [])
+  const isAdmin = computed(() => roles.value.includes('admin'))
+
+  function hasRole(role: string) {
+    return roles.value.includes(role)
+  }
+  function hasAnyRole(required: string[]) {
+    return required.length === 0 || required.some((r) => roles.value.includes(r))
+  }
 
   async function login(email: string, password: string) {
     const res = await $fetch('/api/auth/login', { method: 'POST', body: { email, password } })
+    token.value = res.token
+    user.value = res.user
+    return res.user
+  }
+
+  async function register(payload: { name: string; email: string; password: string }) {
+    const res = await $fetch('/api/auth/register', { method: 'POST', body: payload })
     token.value = res.token
     user.value = res.user
     return res.user
@@ -49,5 +67,17 @@ export const useAuthStore = defineStore('auth', () => {
     user.value = null
   }
 
-  return { token, user, isAuthenticated, login, fetchUser, logout }
+  return {
+    token,
+    user,
+    isAuthenticated,
+    roles,
+    isAdmin,
+    hasRole,
+    hasAnyRole,
+    login,
+    register,
+    fetchUser,
+    logout,
+  }
 })

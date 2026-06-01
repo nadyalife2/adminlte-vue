@@ -1,5 +1,8 @@
 import type { MenuNode, NavMessage, NavNotification } from 'adminlte-vue'
 
+/** A menu node that may be restricted to certain roles (RBAC menu filtering). */
+export type AppMenuNode = MenuNode & { roles?: string[] }
+
 /** Sidebar / topbar branding. */
 export interface AdminlteBrand {
   logo?: string
@@ -24,7 +27,7 @@ export interface AdminlteUser {
 export interface AdminlteAppConfig {
   brand?: AdminlteBrand
   user?: AdminlteUser
-  menu?: MenuNode[]
+  menu?: AppMenuNode[]
   messages?: NavMessage[]
   notifications?: NavNotification[]
 }

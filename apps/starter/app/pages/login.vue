@@ -67,7 +67,14 @@ async function onSubmit() {
       </div>
     </form>
 
-    <div class="mt-3 d-flex align-items-center justify-content-between">
+    <p class="mt-3 mb-1">
+      <NuxtLink to="/forgot-password">I forgot my password</NuxtLink>
+    </p>
+    <p class="mb-0">
+      <NuxtLink to="/register">Register a new membership</NuxtLink>
+    </p>
+
+    <div class="mt-3 d-flex align-items-center justify-content-between border-top pt-3">
       <span class="text-secondary small">
         Demo: <code>admin@example.com</code> / <code>password</code>
       </span>

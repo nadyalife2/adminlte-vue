@@ -1,20 +1,14 @@
-// Mock login. Replace with a real credential check + session/JWT in your app.
-// Demo credentials: admin@example.com / password
-const DEMO_USER = {
-  name: 'Alexander Pierce',
-  email: 'admin@example.com',
-  image: '/assets/img/user2-160x160.jpg',
-  role: 'Administrator',
-}
+import { MOCK_USERS, issueToken } from '../../utils/auth-mock'
 
+// Mock login. Replace with a real credential check + session/JWT in your app.
+// Demo credentials: admin@example.com or editor@example.com — password "password".
 export default defineEventHandler(async (event) => {
   const { email, password } = await readBody<{ email?: string; password?: string }>(event)
+  const record = email ? MOCK_USERS[email] : undefined
 
-  if (email !== DEMO_USER.email || password !== 'password') {
+  if (!record || record.password !== password) {
     throw createError({ statusCode: 401, statusMessage: 'Invalid email or password' })
   }
 
-  // A real app would sign a JWT / create a session here.
-  const token = `mock.${Buffer.from(email).toString('base64url')}`
-  return { token, user: DEMO_USER }
+  return { token: issueToken(record.user.email), user: record.user }
 })

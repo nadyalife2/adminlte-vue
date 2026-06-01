@@ -12,6 +12,8 @@ export default defineAppConfig({
       { type: 'header', text: 'ACCOUNT' },
       { type: 'item', text: 'Profile', href: '/profile', icon: 'bi-person' },
       { type: 'item', text: 'Settings', href: '/settings', icon: 'bi-gear' },
+      { type: 'header', text: 'ADMIN' },
+      { type: 'item', text: 'Administration', href: '/admin', icon: 'bi-shield-lock', roles: ['admin'] },
     ],
     notifications: [
       { text: 'New sale recorded', icon: 'bi-bag-check', time: '3 mins' },

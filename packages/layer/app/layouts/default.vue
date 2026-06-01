@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, resolveComponent } from 'vue'
-import type { AdminlteAppConfig } from '../types/app-config'
+import type { AdminlteAppConfig, AppMenuNode } from '../types/app-config'
 import { useAuthStore } from '../stores/auth'
 
 /**
@@ -14,6 +14,19 @@ const lte = computed(() => appConfig.adminlte ?? {})
 const auth = useAuthStore()
 const route = useRoute()
 const NuxtLink = resolveComponent('NuxtLink')
+
+// RBAC menu filtering: drop entries the signed-in user's roles can't access
+// (recursively; empty groups are removed). Items without `roles` are public.
+function filterByRole(nodes: AppMenuNode[]): AppMenuNode[] {
+  return nodes
+    .map((n) => (n.type === 'group' ? { ...n, children: filterByRole(n.children as AppMenuNode[]) } : n))
+    .filter((n) => {
+      if (n.roles && !auth.hasAnyRole(n.roles)) return false
+      if (n.type === 'group' && n.children.length === 0) return false
+      return true
+    })
+}
+const menu = computed(() => filterByRole(lte.value.menu ?? []))
 
 const brand = computed(() => lte.value.brand ?? { text: 'AdminLTE 4', href: '/' })
 const user = computed(
@@ -37,7 +50,7 @@ async function onLogout() {
 
 <template>
   <LteDashboardLayout
-    :menu-items="lte.menu ?? []"
+    :menu-items="menu"
     :current-path="route.path"
     :link-component="NuxtLink"
     :navigate="navigate"
