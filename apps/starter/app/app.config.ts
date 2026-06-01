@@ -13,6 +13,7 @@ export default defineAppConfig({
       { type: 'item', text: 'Profile', href: '/profile', icon: 'bi-person' },
       { type: 'item', text: 'Settings', href: '/settings', icon: 'bi-gear' },
       { type: 'header', text: 'ADMIN' },
+      { type: 'item', text: 'Users', href: '/users', icon: 'bi-people', roles: ['admin'] },
       { type: 'item', text: 'Administration', href: '/admin', icon: 'bi-shield-lock', roles: ['admin'] },
     ],
     notifications: [
