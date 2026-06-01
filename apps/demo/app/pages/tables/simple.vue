@@ -5,12 +5,7 @@
   >
             <div class="row">
               <div class="col-md-6">
-                <div class="card mb-4">
-                  <div class="card-header">
-                    <h3 class="card-title">Bordered Table</h3>
-                  </div>
-                  <!-- /.card-header -->
-                  <div class="card-body">
+                <LteCard class="mb-4" title="Bordered Table" footer-class="clearfix">
                     <table class="table table-bordered">
                       <thead>
                         <tr>
@@ -72,9 +67,7 @@
                         </tr>
                       </tbody>
                     </table>
-                  </div>
-                  <!-- /.card-body -->
-                  <div class="card-footer clearfix">
+                  <template #footer>
                     <ul class="pagination pagination-sm m-0 float-end">
                       <li class="page-item">
                         <a class="page-link" href="#">&laquo;</a>
@@ -92,16 +85,11 @@
                         <a class="page-link" href="#">&raquo;</a>
                       </li>
                     </ul>
-                  </div>
-                </div>
+                  </template>
+                </LteCard>
                 <!-- /.card -->
 
-                <div class="card mb-4">
-                  <div class="card-header">
-                    <h3 class="card-title">Condensed Full Width Table</h3>
-                  </div>
-                  <!-- /.card-header -->
-                  <div class="card-body p-0">
+                <LteCard class="mb-4" title="Condensed Full Width Table" body-class="p-0">
                     <table class="table table-sm">
                       <thead>
                         <tr>
@@ -163,15 +151,13 @@
                         </tr>
                       </tbody>
                     </table>
-                  </div>
-                  <!-- /.card-body -->
-                </div>
+                </LteCard>
                 <!-- /.card -->
               </div>
               <!-- /.col -->
               <div class="col-md-6">
-                <div class="card mb-4">
-                  <div class="card-header">
+                <LteCard class="mb-4" body-class="p-0">
+                  <template #header>
                     <h3 class="card-title">Simple Full Width Table</h3>
 
                     <div class="card-tools">
@@ -193,9 +179,7 @@
                         </li>
                       </ul>
                     </div>
-                  </div>
-                  <!-- /.card-header -->
-                  <div class="card-body p-0">
+                  </template>
                     <table class="table">
                       <thead>
                         <tr>
@@ -257,17 +241,10 @@
                         </tr>
                       </tbody>
                     </table>
-                  </div>
-                  <!-- /.card-body -->
-                </div>
+                </LteCard>
                 <!-- /.card -->
 
-                <div class="card mb-4">
-                  <div class="card-header">
-                    <h3 class="card-title">Striped Full Width Table</h3>
-                  </div>
-                  <!-- /.card-header -->
-                  <div class="card-body p-0">
+                <LteCard class="mb-4" title="Striped Full Width Table" body-class="p-0">
                     <table class="table table-striped">
                       <thead>
                         <tr>
@@ -329,9 +306,7 @@
                         </tr>
                       </tbody>
                     </table>
-                  </div>
-                  <!-- /.card-body -->
-                </div>
+                </LteCard>
                 <!-- /.card -->
               </div>
               <!-- /.col -->

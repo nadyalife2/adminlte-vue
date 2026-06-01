@@ -40,7 +40,7 @@ onBeforeUnmount(() => {
             <div class="row g-4">
               <!--begin::Col-->
               <div class="col-12">
-                <div class="callout callout-info">
+                <LteCallout theme="info">
                   For detailed documentation of Components visit
                   <a
                     href="https://getbootstrap.com/docs/5.3/components/"
@@ -50,20 +50,13 @@ onBeforeUnmount(() => {
                   >
                     Bootstrap Components
                   </a>
-                </div>
+                </LteCallout>
               </div>
               <!--end::Col-->
               <!--begin::Col-->
               <div class="col-md-6">
                 <!--begin::Accordion-->
-                <div class="card card-primary card-outline mb-4">
-                  <!--begin::Header-->
-                  <div class="card-header">
-                    <div class="card-title">Accordion</div>
-                  </div>
-                  <!--end::Header-->
-                  <!--begin::Body-->
-                  <div class="card-body">
+                <LteCard theme="primary" variant="outline" title="Accordion" class="mb-4">
                     <div class="accordion" id="accordionExample">
                       <div class="accordion-item">
                         <h2 class="accordion-header">
@@ -155,19 +148,10 @@ onBeforeUnmount(() => {
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <!--end::Body-->
-                </div>
+                </LteCard>
                 <!--end::Accordion-->
                 <!--begin::Alert-->
-                <div class="card card-success card-outline mb-4">
-                  <!--begin::Header-->
-                  <div class="card-header">
-                    <div class="card-title">Alert</div>
-                  </div>
-                  <!--end::Header-->
-                  <!--begin::Body-->
-                  <div class="card-body">
+                <LteCard theme="success" variant="outline" title="Alert" class="mb-4">
                     <div class="alert alert-primary" role="alert">
                       A simple primary alert with
                       <a href="#" class="alert-link">an example link</a>. Give it a click if you
@@ -204,19 +188,10 @@ onBeforeUnmount(() => {
                       A simple dark alert with <a href="#" class="alert-link">an example link</a>.
                       Give it a click if you like.
                     </div>
-                  </div>
-                  <!--end::Body-->
-                </div>
+                </LteCard>
                 <!--end::Alert-->
                 <!--begin::Badge-->
-                <div class="card card-warning card-outline mb-4">
-                  <!--begin::Header-->
-                  <div class="card-header">
-                    <div class="card-title">Badge</div>
-                  </div>
-                  <!--end::Header-->
-                  <!--begin::Body-->
-                  <div class="card-body">
+                <LteCard theme="warning" variant="outline" title="Badge" class="mb-4">
                     <h1>Example heading <span class="badge bg-secondary">New</span></h1>
                     <h2>Example heading <span class="badge bg-secondary">New</span></h2>
                     <h3>Example heading <span class="badge bg-secondary">New</span></h3>
@@ -264,19 +239,10 @@ onBeforeUnmount(() => {
                     <span class="badge rounded-pill text-bg-info">Info</span>
                     <span class="badge rounded-pill text-bg-light">Light</span>
                     <span class="badge rounded-pill text-bg-dark">Dark</span>
-                  </div>
-                  <!--end::Body-->
-                </div>
+                </LteCard>
                 <!--end::Badge-->
                 <!--begin::Button-->
-                <div class="card card-danger card-outline mb-4">
-                  <!--begin::Header-->
-                  <div class="card-header">
-                    <div class="card-title">Button</div>
-                  </div>
-                  <!--end::Header-->
-                  <!--begin::Body-->
-                  <div class="card-body">
+                <LteCard theme="danger" variant="outline" title="Button" class="mb-4">
                     <button type="button" class="btn btn-primary mb-2">Primary</button>
                     <button type="button" class="btn btn-secondary mb-2">Secondary</button>
                     <button type="button" class="btn btn-success mb-2">Success</button>
@@ -328,23 +294,14 @@ onBeforeUnmount(() => {
                     >
                       Custom button
                     </button>
-                  </div>
-                  <!--end::Body-->
-                </div>
+                </LteCard>
                 <!--end::Button-->
               </div>
               <!--end::Col-->
               <!--begin::Col-->
               <div class="col-md-6">
                 <!--begin::Button Group-->
-                <div class="card card-info card-outline mb-4">
-                  <!--begin::Header-->
-                  <div class="card-header">
-                    <div class="card-title">Button Group</div>
-                  </div>
-                  <!--end::Header-->
-                  <!--begin::Body-->
-                  <div class="card-body">
+                <LteCard theme="info" variant="outline" title="Button Group" class="mb-4">
                     <div class="btn-group mb-2" role="group" aria-label="Basic example">
                       <button type="button" class="btn btn-primary">Left</button>
                       <button type="button" class="btn btn-primary">Middle</button>
@@ -439,19 +396,10 @@ onBeforeUnmount(() => {
                         </ul>
                       </div>
                     </div>
-                  </div>
-                  <!--end::Body-->
-                </div>
+                </LteCard>
                 <!--end::Button Group-->
                 <!--begin::Collapse-->
-                <div class="card card-primary card-outline mb-4">
-                  <!--begin::Header-->
-                  <div class="card-header">
-                    <div class="card-title">Collapse</div>
-                  </div>
-                  <!--end::Header-->
-                  <!--begin::Body-->
-                  <div class="card-body">
+                <LteCard theme="primary" variant="outline" title="Collapse" class="mb-4">
                     <p class="d-inline-flex gap-1">
                       <a
                         class="btn btn-primary"
@@ -480,19 +428,10 @@ onBeforeUnmount(() => {
                         default but revealed when the user activates the relevant trigger.
                       </div>
                     </div>
-                  </div>
-                  <!--end::Body-->
-                </div>
+                </LteCard>
                 <!--end::Collapse-->
                 <!--begin::Dropdowns-->
-                <div class="card card-success card-outline mb-4">
-                  <!--begin::Header-->
-                  <div class="card-header">
-                    <div class="card-title">Dropdowns</div>
-                  </div>
-                  <!--end::Header-->
-                  <!--begin::Body-->
-                  <div class="card-body">
+                <LteCard theme="success" variant="outline" title="Dropdowns" class="mb-4">
                     <div class="btn-group">
                       <button
                         type="button"
@@ -596,19 +535,10 @@ onBeforeUnmount(() => {
                         </li>
                       </ul>
                     </div>
-                  </div>
-                  <!--end::Body-->
-                </div>
+                </LteCard>
                 <!--end::Dropdowns-->
                 <!--begin::List Group-->
-                <div class="card card-warning card-outline mb-4">
-                  <!--begin::Header-->
-                  <div class="card-header">
-                    <div class="card-title">List Group</div>
-                  </div>
-                  <!--end::Header-->
-                  <!--begin::Body-->
-                  <div class="card-body">
+                <LteCard theme="warning" variant="outline" title="List Group" class="mb-4">
                     <div class="list-group">
                       <a
                         href="#"
@@ -632,19 +562,10 @@ onBeforeUnmount(() => {
                         >A disabled link item</a
                       >
                     </div>
-                  </div>
-                  <!--end::Body-->
-                </div>
+                </LteCard>
                 <!--end::List Group-->
                 <!--begin::Navbar-->
-                <div class="card card-danger card-outline mb-4">
-                  <!--begin::Header-->
-                  <div class="card-header">
-                    <div class="card-title">Navbar</div>
-                  </div>
-                  <!--end::Header-->
-                  <!--begin::Body-->
-                  <div class="card-body">
+                <LteCard theme="danger" variant="outline" title="Navbar" class="mb-4">
                     <nav class="navbar navbar-expand-lg bg-body-tertiary">
                       <div class="container-fluid">
                         <a class="navbar-brand" href="#">Navbar</a>
@@ -708,19 +629,10 @@ onBeforeUnmount(() => {
                         </div>
                       </div>
                     </nav>
-                  </div>
-                  <!--end::Body-->
-                </div>
+                </LteCard>
                 <!--end::Navbar-->
                 <!--begin::Pagination-->
-                <div class="card card-info card-outline mb-4">
-                  <!--begin::Header-->
-                  <div class="card-header">
-                    <div class="card-title">Pagination</div>
-                  </div>
-                  <!--end::Header-->
-                  <!--begin::Body-->
-                  <div class="card-body">
+                <LteCard theme="info" variant="outline" title="Pagination" class="mb-4">
                     <nav aria-label="Page navigation example">
                       <ul class="pagination">
                         <li class="page-item">
@@ -784,19 +696,10 @@ onBeforeUnmount(() => {
                         </li>
                       </ul>
                     </nav>
-                  </div>
-                  <!--end::Body-->
-                </div>
+                </LteCard>
                 <!--end::Pagination-->
                 <!--begin::Placeholder-->
-                <div class="card card-secondary card-outline mb-4">
-                  <!--begin::Header-->
-                  <div class="card-header">
-                    <div class="card-title">Placeholder</div>
-                  </div>
-                  <!--end::Header-->
-                  <!--begin::Body-->
-                  <div class="card-body">
+                <LteCard theme="secondary" variant="outline" title="Placeholder" class="mb-4">
                     <div class="card" aria-hidden="true">
                       <div class="card-body">
                         <h5 class="card-title placeholder-glow">
@@ -811,19 +714,10 @@ onBeforeUnmount(() => {
                         </p>
                       </div>
                     </div>
-                  </div>
-                  <!--end::Body-->
-                </div>
+                </LteCard>
                 <!--end::Placeholder-->
                 <!--begin::Progress-->
-                <div class="card card-primary card-outline mb-4">
-                  <!--begin::Header-->
-                  <div class="card-header">
-                    <div class="card-title">Progress</div>
-                  </div>
-                  <!--end::Header-->
-                  <!--begin::Body-->
-                  <div class="card-body">
+                <LteCard theme="primary" variant="outline" title="Progress" class="mb-4">
                     <div
                       class="progress mb-2"
                       role="progressbar"
@@ -886,19 +780,10 @@ onBeforeUnmount(() => {
                         style="width: 100%; border-radius: 0.375rem"
                       ></div>
                     </div>
-                  </div>
-                  <!--end::Body-->
-                </div>
+                </LteCard>
                 <!--end::Progress-->
                 <!--begin::Toast-->
-                <div class="card card-primary card-outline mb-4">
-                  <!--begin::Header-->
-                  <div class="card-header">
-                    <div class="card-title">Toast</div>
-                  </div>
-                  <!--end::Header-->
-                  <!--begin::Body-->
-                  <div class="card-body">
+                <LteCard theme="primary" variant="outline" title="Toast" class="mb-4">
                     <button
                       type="button"
                       class="btn btn-primary mb-2"
@@ -1154,19 +1039,10 @@ onBeforeUnmount(() => {
                         <div class="toast-body">Hello, world! This is a toast message.</div>
                       </div>
                     </div>
-                  </div>
-                  <!--end::Body-->
-                </div>
+                </LteCard>
                 <!--end::Toast-->
                 <!--begin::Tooltip-->
-                <div class="card card-primary card-outline mb-4">
-                  <!--begin::Header-->
-                  <div class="card-header">
-                    <div class="card-title">Tooltip</div>
-                  </div>
-                  <!--end::Header-->
-                  <!--begin::Body-->
-                  <div class="card-body">
+                <LteCard theme="primary" variant="outline" title="Tooltip" class="mb-4">
                     <p class="muted">
                       Placeholder text to demonstrate some
                       <a href="#" data-bs-toggle="tooltip" data-bs-title="Default tooltip"
@@ -1187,19 +1063,10 @@ onBeforeUnmount(() => {
                       >
                       site or project.
                     </p>
-                  </div>
-                  <!--end::Body-->
-                </div>
+                </LteCard>
                 <!--end::Toast-->
                 <!--begin::Spinner-->
-                <div class="card card-success card-outline mb-4">
-                  <!--begin::Header-->
-                  <div class="card-header">
-                    <div class="card-title">Spinner</div>
-                  </div>
-                  <!--end::Header-->
-                  <!--begin::Body-->
-                  <div class="card-body">
+                <LteCard theme="success" variant="outline" title="Spinner" class="mb-4">
                     <div class="spinner-border text-primary" role="status">
                       <span class="visually-hidden">Loading...</span>
                     </div>
@@ -1224,9 +1091,7 @@ onBeforeUnmount(() => {
                     <div class="spinner-border text-dark" role="status">
                       <span class="visually-hidden">Loading...</span>
                     </div>
-                  </div>
-                  <!--end::Body-->
-                </div>
+                </LteCard>
                 <!--end::Spinner-->
               </div>
               <!--end::Col-->

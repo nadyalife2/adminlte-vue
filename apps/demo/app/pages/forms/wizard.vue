@@ -76,8 +76,7 @@ function onSubmit() {
   >
     <div class="row justify-content-center">
       <div class="col-lg-10 col-xl-8">
-        <div class="card">
-          <div class="card-body p-4">
+        <LteCard body-class="p-4">
             <!-- Step indicators -->
             <ol class="wizard-steps mb-4">
               <li
@@ -285,8 +284,7 @@ function onSubmit() {
                 </button>
               </div>
             </form>
-          </div>
-        </div>
+        </LteCard>
       </div>
     </div>
   </LteAppContent>

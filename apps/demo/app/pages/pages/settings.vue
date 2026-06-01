@@ -61,11 +61,7 @@
                 <div class="tab-content">
                   <!-- Account -->
                   <div class="tab-pane fade show active" id="account" role="tabpanel">
-                    <div class="card">
-                      <div class="card-header">
-                        <h3 class="card-title">Account</h3>
-                      </div>
-                      <div class="card-body">
+                    <LteCard title="Account">
                         <form class="row g-3">
                           <div class="col-md-6">
                             <label class="form-label" for="settings-name"> Full name </label>
@@ -107,17 +103,12 @@
                             <button type="submit" class="btn btn-primary">Save changes</button>
                           </div>
                         </form>
-                      </div>
-                    </div>
+                    </LteCard>
                   </div>
 
                   <!-- Notifications -->
                   <div class="tab-pane fade" id="notifications" role="tabpanel">
-                    <div class="card">
-                      <div class="card-header">
-                        <h3 class="card-title">Notifications</h3>
-                      </div>
-                      <div class="card-body">
+                    <LteCard title="Notifications">
                         <p class="text-secondary">Choose what to be notified about.</p>
                         <div
                           class="d-flex justify-content-between align-items-start py-2 border-bottom"
@@ -200,17 +191,12 @@
                           </div>
                         </div>
                         <button class="btn btn-primary mt-3">Save preferences</button>
-                      </div>
-                    </div>
+                    </LteCard>
                   </div>
 
                   <!-- Security -->
                   <div class="tab-pane fade" id="security" role="tabpanel">
-                    <div class="card">
-                      <div class="card-header">
-                        <h3 class="card-title">Password</h3>
-                      </div>
-                      <div class="card-body">
+                    <LteCard title="Password">
                         <form class="row g-3">
                           <div class="col-md-12">
                             <label class="form-label" for="pwd-current"> Current password </label>
@@ -230,13 +216,12 @@
                             <button type="submit" class="btn btn-primary">Update password</button>
                           </div>
                         </form>
-                      </div>
-                    </div>
-                    <div class="card mt-3">
-                      <div class="card-header">
-                        <h3 class="card-title">Two-factor authentication</h3>
-                      </div>
-                      <div class="card-body d-flex justify-content-between align-items-center">
+                    </LteCard>
+                    <LteCard
+                      title="Two-factor authentication"
+                      class="mt-3"
+                      body-class="d-flex justify-content-between align-items-center"
+                    >
                         <div>
                           <p class="mb-0 fw-semibold">Authenticator app</p>
                           <small class="text-secondary">
@@ -244,17 +229,12 @@
                           </small>
                         </div>
                         <button class="btn btn-outline-primary">Enable</button>
-                      </div>
-                    </div>
+                    </LteCard>
                   </div>
 
                   <!-- Billing -->
                   <div class="tab-pane fade" id="billing" role="tabpanel">
-                    <div class="card">
-                      <div class="card-header">
-                        <h3 class="card-title">Current plan</h3>
-                      </div>
-                      <div class="card-body">
+                    <LteCard title="Current plan">
                         <div class="d-flex justify-content-between align-items-center mb-3">
                           <div>
                             <p class="mb-0 fw-semibold">Pro plan</p>
@@ -273,17 +253,15 @@
                           </div>
                           <a href="#" class="btn btn-link btn-sm">Update</a>
                         </div>
-                      </div>
-                    </div>
+                    </LteCard>
                   </div>
 
                   <!-- Danger zone -->
                   <div class="tab-pane fade" id="danger" role="tabpanel">
-                    <div class="card border-danger">
-                      <div class="card-header bg-danger-subtle">
+                    <LteCard class="border-danger" header-class="bg-danger-subtle">
+                      <template #header>
                         <h3 class="card-title text-danger">Danger zone</h3>
-                      </div>
-                      <div class="card-body">
+                      </template>
                         <div class="d-flex justify-content-between align-items-start mb-3">
                           <div>
                             <p class="mb-0 fw-semibold">Export account data</p>
@@ -304,8 +282,7 @@
                           </div>
                           <button class="btn btn-danger">Delete account</button>
                         </div>
-                      </div>
-                    </div>
+                    </LteCard>
                   </div>
                 </div>
               </div>

@@ -3,8 +3,11 @@
     title="Read Message"
     :breadcrumbs="[{ label: 'Home', href: '#' }, { label: 'Mailbox', href: '/mailbox/inbox' }, { label: 'Read' }]"
   >
-            <div class="card">
-              <div class="card-header d-flex justify-content-between align-items-center">
+            <LteCard
+              header-class="d-flex justify-content-between align-items-center"
+              footer-class="d-flex gap-2"
+            >
+              <template #header>
                 <h3 class="card-title">Re: design system v2.4 sign-off</h3>
                 <div class="btn-group btn-group-sm">
                   <a
@@ -21,9 +24,8 @@
                     <i class="bi bi-chevron-down" aria-hidden="true"></i>
                   </button>
                 </div>
-              </div>
-              <div class="card-body">
-                <!-- Sender meta -->
+              </template>
+              <!-- Sender meta -->
                 <div class="d-flex gap-3 align-items-start mb-4">
                   <div
                     class="flex-shrink-0 rounded-circle bg-primary-subtle text-primary d-flex align-items-center justify-content-center"
@@ -71,42 +73,37 @@
                 <h6 class="fw-semibold">Attachments (2)</h6>
                 <div class="row g-2 mb-3">
                   <div class="col-md-6">
-                    <div class="card">
-                      <div class="card-body py-2 px-3 d-flex align-items-center gap-2">
-                        <i
-                          class="bi bi-file-earmark-pdf-fill text-danger fs-3"
-                          aria-hidden="true"
-                        ></i>
-                        <div class="flex-grow-1">
-                          <p class="mb-0 small fw-semibold">design-review.pdf</p>
-                          <small class="text-secondary">1.4 MB</small>
-                        </div>
-                        <a href="#" class="btn btn-sm btn-outline-secondary">
-                          <i class="bi bi-download" aria-hidden="true"></i>
-                        </a>
+                    <LteCard body-class="py-2 px-3 d-flex align-items-center gap-2">
+                      <i
+                        class="bi bi-file-earmark-pdf-fill text-danger fs-3"
+                        aria-hidden="true"
+                      ></i>
+                      <div class="flex-grow-1">
+                        <p class="mb-0 small fw-semibold">design-review.pdf</p>
+                        <small class="text-secondary">1.4 MB</small>
                       </div>
-                    </div>
+                      <a href="#" class="btn btn-sm btn-outline-secondary">
+                        <i class="bi bi-download" aria-hidden="true"></i>
+                      </a>
+                    </LteCard>
                   </div>
                   <div class="col-md-6">
-                    <div class="card">
-                      <div class="card-body py-2 px-3 d-flex align-items-center gap-2">
-                        <i
-                          class="bi bi-file-earmark-image-fill text-primary fs-3"
-                          aria-hidden="true"
-                        ></i>
-                        <div class="flex-grow-1">
-                          <p class="mb-0 small fw-semibold">focus-ring-dark.png</p>
-                          <small class="text-secondary">320 KB</small>
-                        </div>
-                        <a href="#" class="btn btn-sm btn-outline-secondary">
-                          <i class="bi bi-download" aria-hidden="true"></i>
-                        </a>
+                    <LteCard body-class="py-2 px-3 d-flex align-items-center gap-2">
+                      <i
+                        class="bi bi-file-earmark-image-fill text-primary fs-3"
+                        aria-hidden="true"
+                      ></i>
+                      <div class="flex-grow-1">
+                        <p class="mb-0 small fw-semibold">focus-ring-dark.png</p>
+                        <small class="text-secondary">320 KB</small>
                       </div>
-                    </div>
+                      <a href="#" class="btn btn-sm btn-outline-secondary">
+                        <i class="bi bi-download" aria-hidden="true"></i>
+                      </a>
+                    </LteCard>
                   </div>
                 </div>
-              </div>
-              <div class="card-footer d-flex gap-2">
+              <template #footer>
                 <a href="../mailbox/compose.html" class="btn btn-primary">
                   <i class="bi bi-reply me-1" aria-hidden="true"></i>Reply
                 </a>
@@ -120,7 +117,7 @@
                 <button class="btn btn-outline-danger" type="button">
                   <i class="bi bi-trash me-1" aria-hidden="true"></i>Delete
                 </button>
-              </div>
-            </div>
+              </template>
+            </LteCard>
   </LteAppContent>
 </template>

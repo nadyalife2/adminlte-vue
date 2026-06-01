@@ -5,16 +5,15 @@ useHead({ bodyAttrs: { class: 'login-page bg-body-secondary' } })
 
 <template>
     <div class="login-box">
-      <div class="card card-outline card-primary">
-        <div class="card-header">
+      <LteCard theme="primary" variant="outline" body-class="login-card-body">
+        <template #header>
           <a
             href="/"
             class="link-dark text-center link-offset-2 link-opacity-100 link-opacity-50-hover"
           >
             <h1 class="mb-0"><b>Admin</b>LTE</h1>
           </a>
-        </div>
-        <div class="card-body login-card-body">
+        </template>
           <p class="login-box-msg">Sign in to start your session</p>
 
           <form action="#" method="post">
@@ -72,8 +71,7 @@ useHead({ bodyAttrs: { class: 'login-page bg-body-secondary' } })
           <p class="mb-0">
             <a href="/examples/register" class="text-center"> Register a new membership </a>
           </p>
-        </div>
         <!-- /.login-card-body -->
-      </div>
+      </LteCard>
     </div>
 </template>

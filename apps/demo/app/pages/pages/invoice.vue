@@ -16,8 +16,7 @@
               </a>
             </div>
 
-            <div class="card">
-              <div class="card-body p-4 p-md-5">
+            <LteCard body-class="p-4 p-md-5">
                 <!-- Header -->
                 <div class="row mb-4">
                   <div class="col-sm-6">
@@ -120,7 +119,6 @@
                   about this invoice, please contact
                   <a href="mailto:billing@example.com">billing@example.com</a>.
                 </p>
-              </div>
-            </div>
+            </LteCard>
   </LteAppContent>
 </template>

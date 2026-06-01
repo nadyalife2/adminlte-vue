@@ -84,33 +84,8 @@ onBeforeUnmount(() => {
               <!--begin::Col-->
               <div class="col-12">
                 <!--begin::Card-->
-                <div class="card">
-                  <!--begin::Card Header-->
-                  <div class="card-header">
-                    <!--begin::Card Title-->
-                    <h3 class="card-title">Sidebar Theme</h3>
-                    <!--end::Card Title-->
-
-                    <!--begin::Card Toolbar-->
-                    <div class="card-tools">
-                      <button type="button" class="btn btn-tool" data-lte-toggle="card-collapse">
-                        <i data-lte-icon="expand" class="bi bi-plus-lg"></i>
-                        <i data-lte-icon="collapse" class="bi bi-dash-lg"></i>
-                      </button>
-                      <button
-                        type="button"
-                        class="btn btn-tool"
-                        data-lte-toggle="card-remove"
-                        title="Remove"
-                      >
-                        <i class="bi bi-x-lg"></i>
-                      </button>
-                    </div>
-                    <!--end::Card Toolbar-->
-                  </div>
-                  <!--end::Card Header-->
+                <LteCard title="Sidebar Theme" collapsible removable>
                   <!--begin::Card Body-->
-                  <div class="card-body">
                     <!--begin::Row-->
                     <div class="row">
                       <!--begin::Col-->
@@ -144,10 +119,9 @@ onBeforeUnmount(() => {
                       <!--end::Col-->
                     </div>
                     <!--end::Row-->
-                  </div>
                   <!--end::Card Body-->
                   <!--begin::Card Footer-->
-                  <div class="card-footer">
+                  <template #footer>
                     Check more color in
                     <a
                       href="https://getbootstrap.com/docs/5.3/utilities/background/"
@@ -155,39 +129,14 @@ onBeforeUnmount(() => {
                       class="link-primary"
                       >Bootstrap Background Colors</a
                     >
-                  </div>
+                  </template>
                   <!--end::Card Footer-->
-                </div>
+                </LteCard>
                 <!--end::Card-->
 
                 <!--begin::Card-->
-                <div class="card mt-4">
-                  <!--begin::Card Header-->
-                  <div class="card-header">
-                    <!--begin::Card Title-->
-                    <h3 class="card-title">Navbar Theme</h3>
-                    <!--end::Card Title-->
-
-                    <!--begin::Card Toolbar-->
-                    <div class="card-tools">
-                      <button type="button" class="btn btn-tool" data-lte-toggle="card-collapse">
-                        <i data-lte-icon="expand" class="bi bi-plus-lg"></i>
-                        <i data-lte-icon="collapse" class="bi bi-dash-lg"></i>
-                      </button>
-                      <button
-                        type="button"
-                        class="btn btn-tool"
-                        data-lte-toggle="card-remove"
-                        title="Remove"
-                      >
-                        <i class="bi bi-x-lg"></i>
-                      </button>
-                    </div>
-                    <!--end::Card Toolbar-->
-                  </div>
-                  <!--end::Card Header-->
+                <LteCard title="Navbar Theme" collapsible removable class="mt-4">
                   <!--begin::Card Body-->
-                  <div class="card-body">
                     <!--begin::Row-->
                     <div class="row">
                       <!--begin::Col-->
@@ -221,10 +170,9 @@ onBeforeUnmount(() => {
                       <!--end::Col-->
                     </div>
                     <!--end::Row-->
-                  </div>
                   <!--end::Card Body-->
                   <!--begin::Card Footer-->
-                  <div class="card-footer">
+                  <template #footer>
                     Check more color in
                     <a
                       href="https://getbootstrap.com/docs/5.3/utilities/background/"
@@ -232,39 +180,14 @@ onBeforeUnmount(() => {
                       class="link-primary"
                       >Bootstrap Background Colors</a
                     >
-                  </div>
+                  </template>
                   <!--end::Card Footer-->
-                </div>
+                </LteCard>
                 <!--end::Card-->
 
                 <!--begin::Card-->
-                <div class="card mt-4">
-                  <!--begin::Card Header-->
-                  <div class="card-header">
-                    <!--begin::Card Title-->
-                    <h3 class="card-title">Footer Theme</h3>
-                    <!--end::Card Title-->
-
-                    <!--begin::Card Toolbar-->
-                    <div class="card-tools">
-                      <button type="button" class="btn btn-tool" data-lte-toggle="card-collapse">
-                        <i data-lte-icon="expand" class="bi bi-plus-lg"></i>
-                        <i data-lte-icon="collapse" class="bi bi-dash-lg"></i>
-                      </button>
-                      <button
-                        type="button"
-                        class="btn btn-tool"
-                        data-lte-toggle="card-remove"
-                        title="Remove"
-                      >
-                        <i class="bi bi-x-lg"></i>
-                      </button>
-                    </div>
-                    <!--end::Card Toolbar-->
-                  </div>
-                  <!--end::Card Header-->
+                <LteCard title="Footer Theme" collapsible removable class="mt-4">
                   <!--begin::Card Body-->
-                  <div class="card-body">
                     <!--begin::Row-->
                     <div class="row">
                       <!--begin::Col-->
@@ -298,10 +221,9 @@ onBeforeUnmount(() => {
                       <!--end::Col-->
                     </div>
                     <!--end::Row-->
-                  </div>
                   <!--end::Card Body-->
                   <!--begin::Card Footer-->
-                  <div class="card-footer">
+                  <template #footer>
                     Check more color in
                     <a
                       href="https://getbootstrap.com/docs/5.3/utilities/background/"
@@ -309,9 +231,9 @@ onBeforeUnmount(() => {
                       class="link-primary"
                       >Bootstrap Background Colors</a
                     >
-                  </div>
+                  </template>
                   <!--end::Card Footer-->
-                </div>
+                </LteCard>
                 <!--end::Card-->
               </div>
               <!--end::Col-->

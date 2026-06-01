@@ -6,42 +6,38 @@
             <!-- Summary cards -->
             <div class="row g-3 mb-3">
               <div class="col-md-3 col-6">
-                <div class="card h-100">
-                  <div class="card-body">
-                    <p class="text-secondary small mb-1">Active projects</p>
-                    <h3 class="mb-0 fw-bold">6</h3>
-                  </div>
-                </div>
+                <LteCard class="h-100">
+                  <p class="text-secondary small mb-1">Active projects</p>
+                  <h3 class="mb-0 fw-bold">6</h3>
+                </LteCard>
               </div>
               <div class="col-md-3 col-6">
-                <div class="card h-100">
-                  <div class="card-body">
-                    <p class="text-secondary small mb-1">On track</p>
-                    <h3 class="mb-0 fw-bold text-success">3</h3>
-                  </div>
-                </div>
+                <LteCard class="h-100">
+                  <p class="text-secondary small mb-1">On track</p>
+                  <h3 class="mb-0 fw-bold text-success">3</h3>
+                </LteCard>
               </div>
               <div class="col-md-3 col-6">
-                <div class="card h-100">
-                  <div class="card-body">
-                    <p class="text-secondary small mb-1">At risk / delayed</p>
-                    <h3 class="mb-0 fw-bold text-warning">2</h3>
-                  </div>
-                </div>
+                <LteCard class="h-100">
+                  <p class="text-secondary small mb-1">At risk / delayed</p>
+                  <h3 class="mb-0 fw-bold text-warning">2</h3>
+                </LteCard>
               </div>
               <div class="col-md-3 col-6">
-                <div class="card h-100">
-                  <div class="card-body">
-                    <p class="text-secondary small mb-1">Completed</p>
-                    <h3 class="mb-0 fw-bold text-secondary">1</h3>
-                  </div>
-                </div>
+                <LteCard class="h-100">
+                  <p class="text-secondary small mb-1">Completed</p>
+                  <h3 class="mb-0 fw-bold text-secondary">1</h3>
+                </LteCard>
               </div>
             </div>
 
             <!-- Toolbar -->
-            <div class="card">
-              <div class="card-header d-flex flex-wrap gap-2 align-items-center">
+            <LteCard
+              body-class="p-0"
+              header-class="d-flex flex-wrap gap-2 align-items-center"
+              footer-class="d-flex justify-content-between align-items-center"
+            >
+              <template #header>
                 <h3 class="card-title mb-0 me-auto">All projects</h3>
                 <div class="input-group input-group-sm" style="width: 16rem">
                   <span class="input-group-text">
@@ -69,8 +65,7 @@
                   <i class="bi bi-plus-lg me-1" aria-hidden="true"></i>
                   New project
                 </button>
-              </div>
-              <div class="card-body p-0">
+              </template>
                 <div class="table-responsive">
                   <table class="table align-middle mb-0">
                     <thead>
@@ -549,8 +544,7 @@
                     </tbody>
                   </table>
                 </div>
-              </div>
-              <div class="card-footer d-flex justify-content-between align-items-center">
+              <template #footer>
                 <small class="text-secondary"> Showing 6 of 6 </small>
                 <nav aria-label="Pagination">
                   <ul class="pagination pagination-sm mb-0">
@@ -565,7 +559,7 @@
                     </li>
                   </ul>
                 </nav>
-              </div>
-            </div>
+              </template>
+            </LteCard>
   </LteAppContent>
 </template>

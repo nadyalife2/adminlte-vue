@@ -6,16 +6,15 @@ useHead({ bodyAttrs: { class: 'register-page bg-body-secondary' } })
 <template>
     <div class="register-box">
       <!-- /.register-logo -->
-      <div class="card card-outline card-primary">
-        <div class="card-header">
+      <LteCard theme="primary" variant="outline" body-class="register-card-body">
+        <template #header>
           <a
             href="/"
             class="link-dark text-center link-offset-2 link-opacity-100 link-opacity-50-hover"
           >
             <h1 class="mb-0"><b>Admin</b>LTE</h1>
           </a>
-        </div>
-        <div class="card-body register-card-body">
+        </template>
           <p class="register-box-msg">Register a new membership</p>
 
           <form action="#" method="post">
@@ -81,8 +80,7 @@ useHead({ bodyAttrs: { class: 'register-page bg-body-secondary' } })
           <p class="mb-0">
             <a href="/examples/login" class="link-primary text-center"> I already have a membership </a>
           </p>
-        </div>
         <!-- /.register-card-body -->
-      </div>
+      </LteCard>
     </div>
 </template>

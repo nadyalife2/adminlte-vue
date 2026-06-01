@@ -7,8 +7,7 @@
               <!-- Profile sidebar -->
               <div class="col-md-3">
                 <!-- About card -->
-                <div class="card">
-                  <div class="card-body text-center">
+                <LteCard body-class="text-center">
                     <div
                       class="rounded-circle bg-primary-subtle text-primary d-inline-flex align-items-center justify-content-center mb-3"
                       style="width: 96px; height: 96px; font-size: 2rem"
@@ -36,14 +35,9 @@
                       <i class="bi bi-person-plus me-1" aria-hidden="true"></i>
                       Follow
                     </a>
-                  </div>
-                </div>
+                </LteCard>
                 <!-- About details -->
-                <div class="card mt-3">
-                  <div class="card-header">
-                    <h3 class="card-title">About</h3>
-                  </div>
-                  <div class="card-body small">
+                <LteCard class="mt-3" title="About" body-class="small">
                     <p class="fw-semibold mb-1">
                       <i class="bi bi-mortarboard me-1 text-secondary" aria-hidden="true"></i>
                       Education
@@ -74,14 +68,13 @@
                       Lorem ipsum represents a long-held tradition for designers, typographers and
                       the like.
                     </p>
-                  </div>
-                </div>
+                </LteCard>
               </div>
 
               <!-- Tabbed content -->
               <div class="col-md-9">
-                <div class="card">
-                  <div class="card-header p-0 border-bottom-0">
+                <LteCard header-class="p-0 border-bottom-0">
+                  <template #header>
                     <ul class="nav nav-tabs" id="profile-tabs" role="tablist">
                       <li class="nav-item" role="presentation">
                         <button
@@ -123,8 +116,7 @@
                         </button>
                       </li>
                     </ul>
-                  </div>
-                  <div class="card-body">
+                  </template>
                     <div class="tab-content">
                       <!-- Activity tab -->
                       <div
@@ -300,8 +292,7 @@ Designer with a soft spot for design tokens and accessibility.</textarea
                         </form>
                       </div>
                     </div>
-                  </div>
-                </div>
+                </LteCard>
               </div>
             </div>
   </LteAppContent>

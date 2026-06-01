@@ -95,21 +95,16 @@ onMounted(async () => {
     <div class="row">
       <!-- Left col -->
       <div class="col-lg-7 connectedSortable">
-        <div class="card mb-4">
-          <div class="card-header">
-            <h3 class="card-title">Sales Value</h3>
-          </div>
-          <div class="card-body">
-            <ClientOnly>
-              <LteApexChart
-                type="area"
-                :height="300"
-                :series="salesSeries"
-                :options="salesOptions"
-              />
-            </ClientOnly>
-          </div>
-        </div>
+        <LteCard title="Sales Value" class="mb-4">
+          <ClientOnly>
+            <LteApexChart
+              type="area"
+              :height="300"
+              :series="salesSeries"
+              :options="salesOptions"
+            />
+          </ClientOnly>
+        </LteCard>
 
         <!-- DIRECT CHAT -->
         <div class="card direct-chat direct-chat-primary mb-4">

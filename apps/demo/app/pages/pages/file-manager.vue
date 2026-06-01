@@ -145,8 +145,7 @@ onMounted(() => {
                     </a>
                   </div>
                 </div>
-                <div class="card mt-3">
-                  <div class="card-body">
+                <LteCard class="mt-3">
                     <p class="fw-semibold mb-2 small">
                       <i class="bi bi-cloud me-1" aria-hidden="true"></i>
                       Storage
@@ -162,14 +161,16 @@ onMounted(() => {
                       ></div>
                     </div>
                     <small class="text-secondary"> 6.2 GB of 10 GB used </small>
-                  </div>
-                </div>
+                </LteCard>
               </div>
 
               <!-- File browser -->
               <div class="col-lg-9">
-                <div class="card">
-                  <div class="card-header d-flex flex-wrap gap-2 align-items-center">
+                <LteCard
+                  header-class="d-flex flex-wrap gap-2 align-items-center"
+                  footer-class="text-secondary small"
+                >
+                  <template #header>
                     <nav aria-label="breadcrumb" class="flex-grow-1">
                       <ol class="breadcrumb mb-0">
                         <li class="breadcrumb-item">
@@ -204,8 +205,7 @@ onMounted(() => {
                         <i class="bi bi-list-ul" aria-hidden="true"></i>
                       </label>
                     </div>
-                  </div>
-                  <div class="card-body">
+                  </template>
                     <!-- Grid view -->
                     <div id="grid-view" class="row row-cols-2 row-cols-md-3 row-cols-xl-4 g-3">
                       <div class="col">
@@ -758,9 +758,8 @@ onMounted(() => {
                         </table>
                       </div>
                     </div>
-                  </div>
-                  <div class="card-footer text-secondary small">9 items</div>
-                </div>
+                  <template #footer>9 items</template>
+                </LteCard>
               </div>
             </div>
   </LteAppContent>

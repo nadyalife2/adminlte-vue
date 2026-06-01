@@ -5,7 +5,7 @@
   >
             <div class="row g-4">
               <div class="col-12">
-                <div class="callout callout-info">
+                <LteCallout theme="info">
                   Layout patterns built on Bootstrap's grid +
                   <a
                     href="https://getbootstrap.com/docs/5.3/forms/layout/"
@@ -15,7 +15,7 @@
                     >form layout</a
                   >
                   utilities.
-                </div>
+                </LteCallout>
               </div>
 
               <!-- Horizontal Form -->
@@ -98,95 +98,80 @@
 
               <!-- Inline Form -->
               <div class="col-md-6">
-                <div class="card card-primary card-outline mb-4">
-                  <div class="card-header">
-                    <div class="card-title">Inline Form</div>
-                  </div>
-                  <div class="card-body">
-                    <form class="row row-cols-lg-auto g-3 align-items-center">
-                      <div class="col-12">
-                        <label class="visually-hidden" for="inlineUser">Username</label>
-                        <div class="input-group">
-                          <div class="input-group-text">@</div>
-                          <input
-                            type="text"
-                            class="form-control"
-                            id="inlineUser"
-                            placeholder="Username"
-                          />
-                        </div>
+                <LteCard theme="primary" variant="outline" title="Inline Form" class="mb-4">
+                  <form class="row row-cols-lg-auto g-3 align-items-center">
+                    <div class="col-12">
+                      <label class="visually-hidden" for="inlineUser">Username</label>
+                      <div class="input-group">
+                        <div class="input-group-text">@</div>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="inlineUser"
+                          placeholder="Username"
+                        />
                       </div>
-                      <div class="col-12">
-                        <label class="visually-hidden" for="inlineSelect">Preference</label>
-                        <select class="form-select" id="inlineSelect">
-                          <option selected>Choose&hellip;</option>
-                          <option>One</option>
-                          <option>Two</option>
-                        </select>
+                    </div>
+                    <div class="col-12">
+                      <label class="visually-hidden" for="inlineSelect">Preference</label>
+                      <select class="form-select" id="inlineSelect">
+                        <option selected>Choose&hellip;</option>
+                        <option>One</option>
+                        <option>Two</option>
+                      </select>
+                    </div>
+                    <div class="col-12">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="inlineCheck" />
+                        <label class="form-check-label" for="inlineCheck">Remember me</label>
                       </div>
-                      <div class="col-12">
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" id="inlineCheck" />
-                          <label class="form-check-label" for="inlineCheck">Remember me</label>
-                        </div>
-                      </div>
-                      <div class="col-12">
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                      </div>
-                    </form>
-                  </div>
-                </div>
+                    </div>
+                    <div class="col-12">
+                      <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                  </form>
+                </LteCard>
               </div>
 
               <!-- Different Height -->
               <div class="col-md-6">
-                <div class="card card-secondary card-outline mb-4">
-                  <div class="card-header">
-                    <div class="card-title">Different Height</div>
-                  </div>
-                  <div class="card-body">
-                    <input
-                      class="form-control form-control-lg mb-3"
-                      type="text"
-                      placeholder=".form-control-lg"
-                      aria-label=".form-control-lg example"
-                    />
-                    <input
-                      class="form-control mb-3"
-                      type="text"
-                      placeholder="Default input"
-                      aria-label="default input example"
-                    />
-                    <input
-                      class="form-control form-control-sm"
-                      type="text"
-                      placeholder=".form-control-sm"
-                      aria-label=".form-control-sm example"
-                    />
-                  </div>
-                </div>
+                <LteCard theme="secondary" variant="outline" title="Different Height" class="mb-4">
+                  <input
+                    class="form-control form-control-lg mb-3"
+                    type="text"
+                    placeholder=".form-control-lg"
+                    aria-label=".form-control-lg example"
+                  />
+                  <input
+                    class="form-control mb-3"
+                    type="text"
+                    placeholder="Default input"
+                    aria-label="default input example"
+                  />
+                  <input
+                    class="form-control form-control-sm"
+                    type="text"
+                    placeholder=".form-control-sm"
+                    aria-label=".form-control-sm example"
+                  />
+                </LteCard>
               </div>
 
               <!-- Different Width -->
               <div class="col-md-6">
-                <div class="card card-danger card-outline mb-4">
-                  <div class="card-header">
-                    <div class="card-title">Different Width</div>
-                  </div>
-                  <div class="card-body">
-                    <div class="row g-2">
-                      <div class="col-3">
-                        <input type="text" class="form-control" placeholder=".col-3" />
-                      </div>
-                      <div class="col-4">
-                        <input type="text" class="form-control" placeholder=".col-4" />
-                      </div>
-                      <div class="col-5">
-                        <input type="text" class="form-control" placeholder=".col-5" />
-                      </div>
+                <LteCard theme="danger" variant="outline" title="Different Width" class="mb-4">
+                  <div class="row g-2">
+                    <div class="col-3">
+                      <input type="text" class="form-control" placeholder=".col-3" />
+                    </div>
+                    <div class="col-4">
+                      <input type="text" class="form-control" placeholder=".col-4" />
+                    </div>
+                    <div class="col-5">
+                      <input type="text" class="form-control" placeholder=".col-5" />
                     </div>
                   </div>
-                </div>
+                </LteCard>
               </div>
             </div>
   </LteAppContent>

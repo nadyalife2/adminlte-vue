@@ -88,11 +88,7 @@ onBeforeUnmount(() => {
             <div class="row g-3">
               <!-- Sidebar: draggable events -->
               <div class="col-lg-3">
-                <div class="card">
-                  <div class="card-header">
-                    <h3 class="card-title">Draggable events</h3>
-                  </div>
-                  <div class="card-body">
+                <LteCard title="Draggable events">
                     <p class="text-secondary small mb-3">
                       Drag an event to the calendar to schedule it.
                     </p>
@@ -145,23 +141,20 @@ onBeforeUnmount(() => {
                         Remove from list after dropping
                       </label>
                     </div>
-                  </div>
-                </div>
+                </LteCard>
               </div>
               <!-- Calendar -->
               <div class="col-lg-9">
-                <div class="card">
-                  <div class="card-body">
+                <LteCard footer-class="text-secondary small">
                     <div id="calendar"></div>
-                  </div>
-                  <div class="card-footer text-secondary small">
+                  <template #footer>
                     Powered by
                     <a href="https://fullcalendar.io/" target="_blank" rel="noopener"
                       >FullCalendar 6</a
                     >
                     &mdash; MIT licensed, jQuery-free.
-                  </div>
-                </div>
+                  </template>
+                </LteCard>
               </div>
             </div>
   </LteAppContent>

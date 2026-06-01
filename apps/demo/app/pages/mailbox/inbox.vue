@@ -10,11 +10,7 @@
                   <i class="bi bi-pencil-square me-1" aria-hidden="true"></i>
                   Compose
                 </a>
-                <div class="card">
-                  <div class="card-header">
-                    <h3 class="card-title">Folders</h3>
-                  </div>
-                  <div class="card-body p-0">
+                <LteCard title="Folders" body-class="p-0">
                     <ul class="nav nav-pills flex-column mb-0">
                       <li class="nav-item">
                         <a
@@ -61,13 +57,8 @@
                         </a>
                       </li>
                     </ul>
-                  </div>
-                </div>
-                <div class="card mt-3">
-                  <div class="card-header">
-                    <h3 class="card-title">Labels</h3>
-                  </div>
-                  <div class="card-body p-0">
+                </LteCard>
+                <LteCard class="mt-3" title="Labels" body-class="p-0">
                     <ul class="nav flex-column mb-0">
                       <li class="nav-item">
                         <a href="#" class="nav-link">
@@ -100,14 +91,13 @@
                         </a>
                       </li>
                     </ul>
-                  </div>
-                </div>
+                </LteCard>
               </div>
 
               <!-- Inbox list -->
               <div class="col-lg-9">
-                <div class="card">
-                  <div class="card-header">
+                <LteCard body-class="p-0">
+                  <template #header>
                     <h3 class="card-title">Inbox</h3>
                     <div class="card-tools">
                       <div class="input-group input-group-sm" style="width: 16rem">
@@ -122,8 +112,7 @@
                         />
                       </div>
                     </div>
-                  </div>
-                  <div class="card-body p-0">
+                  </template>
                     <div class="d-flex align-items-center px-3 py-2 border-bottom">
                       <div class="form-check mb-0">
                         <input class="form-check-input" type="checkbox" id="select-all" />
@@ -420,8 +409,7 @@
                         </a>
                       </li>
                     </ul>
-                  </div>
-                </div>
+                </LteCard>
               </div>
             </div>
   </LteAppContent>

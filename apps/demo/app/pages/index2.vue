@@ -106,8 +106,8 @@ const products = [
     <!-- Monthly Recap Report -->
     <div class="row">
       <div class="col-md-12">
-        <div class="card mb-4">
-          <div class="card-header">
+        <LteCard class="mb-4">
+          <template #header>
             <h5 class="card-title">Monthly Recap Report</h5>
             <div class="card-tools">
               <button type="button" class="btn btn-tool" data-lte-toggle="card-collapse">
@@ -130,9 +130,8 @@ const products = [
                 <i class="bi bi-x-lg"></i>
               </button>
             </div>
-          </div>
-          <div class="card-body">
-            <div class="row">
+          </template>
+          <div class="row">
               <div class="col-md-8">
                 <p class="text-center"><strong>Sales: 1 Jan, 2023 - 30 Jul, 2023</strong></p>
                 <ClientOnly>
@@ -176,8 +175,7 @@ const products = [
                 </div>
               </div>
             </div>
-          </div>
-          <div class="card-footer">
+          <template #footer>
             <div class="row">
               <div class="col-md-3 col-6">
                 <div class="text-center border-end">
@@ -208,8 +206,8 @@ const products = [
                 </div>
               </div>
             </div>
-          </div>
-        </div>
+          </template>
+        </LteCard>
       </div>
     </div>
 
@@ -367,8 +365,8 @@ const products = [
 
           <div class="col-md-6">
             <!-- USERS LIST -->
-            <div class="card">
-              <div class="card-header">
+            <LteCard body-class="p-0" footer-class="text-center">
+              <template #header>
                 <h3 class="card-title">Latest Members</h3>
                 <div class="card-tools">
                   <span class="badge text-bg-danger"> 8 New Members </span>
@@ -380,41 +378,26 @@ const products = [
                     <i class="bi bi-x-lg"></i>
                   </button>
                 </div>
-              </div>
-              <div class="card-body p-0">
-                <div class="row text-center m-1">
-                  <div v-for="(m, i) in members" :key="i" class="col-3 p-2">
-                    <img class="img-fluid rounded-circle" :src="`/assets/img/${m.img}`" alt="User Image" />
-                    <a class="btn fw-bold fs-7 text-secondary text-truncate w-100 p-0" href="#">
-                      {{ m.name }}
-                    </a>
-                    <div class="fs-8">{{ m.when }}</div>
-                  </div>
+              </template>
+              <div class="row text-center m-1">
+                <div v-for="(m, i) in members" :key="i" class="col-3 p-2">
+                  <img class="img-fluid rounded-circle" :src="`/assets/img/${m.img}`" alt="User Image" />
+                  <a class="btn fw-bold fs-7 text-secondary text-truncate w-100 p-0" href="#">
+                    {{ m.name }}
+                  </a>
+                  <div class="fs-8">{{ m.when }}</div>
                 </div>
               </div>
-              <div class="card-footer text-center">
+              <template #footer>
                 <a href="javascript:" class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">View All Users</a>
-              </div>
-            </div>
+              </template>
+            </LteCard>
           </div>
         </div>
 
         <!-- Latest Orders -->
-        <div class="card">
-          <div class="card-header">
-            <h3 class="card-title">Latest Orders</h3>
-            <div class="card-tools">
-              <button type="button" class="btn btn-tool" data-lte-toggle="card-collapse">
-                <i data-lte-icon="expand" class="bi bi-plus-lg"></i>
-                <i data-lte-icon="collapse" class="bi bi-dash-lg"></i>
-              </button>
-              <button type="button" class="btn btn-tool" data-lte-toggle="card-remove">
-                <i class="bi bi-x-lg"></i>
-              </button>
-            </div>
-          </div>
-          <div class="card-body p-0">
-            <div class="table-responsive">
+        <LteCard title="Latest Orders" collapsible removable body-class="p-0" footer-class="clearfix">
+          <div class="table-responsive">
               <table class="table m-0">
                 <thead>
                   <tr>
@@ -448,12 +431,11 @@ const products = [
                 </tbody>
               </table>
             </div>
-          </div>
-          <div class="card-footer clearfix">
+          <template #footer>
             <a href="javascript:void(0)" class="btn btn-sm btn-primary float-start"> Place New Order </a>
             <a href="javascript:void(0)" class="btn btn-sm btn-secondary float-end"> View All Orders </a>
-          </div>
-        </div>
+          </template>
+        </LteCard>
       </div>
 
       <!-- Right col -->
@@ -469,34 +451,20 @@ const products = [
           :title="b.number"
         />
 
-        <div class="card mb-4">
-          <div class="card-header">
-            <h3 class="card-title">Browser Usage</h3>
-            <div class="card-tools">
-              <button type="button" class="btn btn-tool" data-lte-toggle="card-collapse">
-                <i data-lte-icon="expand" class="bi bi-plus-lg"></i>
-                <i data-lte-icon="collapse" class="bi bi-dash-lg"></i>
-              </button>
-              <button type="button" class="btn btn-tool" data-lte-toggle="card-remove">
-                <i class="bi bi-x-lg"></i>
-              </button>
+        <LteCard title="Browser Usage" collapsible removable class="mb-4" footer-class="p-0">
+          <div class="row">
+            <div class="col-12">
+              <ClientOnly>
+                <LteApexChart
+                  type="donut"
+                  :height="350"
+                  :series="browserSeries"
+                  :options="browserOptions"
+                />
+              </ClientOnly>
             </div>
           </div>
-          <div class="card-body">
-            <div class="row">
-              <div class="col-12">
-                <ClientOnly>
-                  <LteApexChart
-                    type="donut"
-                    :height="350"
-                    :series="browserSeries"
-                    :options="browserOptions"
-                  />
-                </ClientOnly>
-              </div>
-            </div>
-          </div>
-          <div class="card-footer p-0">
+          <template #footer>
             <ul class="nav nav-pills flex-column">
               <li class="nav-item">
                 <a href="#" class="nav-link">
@@ -517,26 +485,13 @@ const products = [
                 </a>
               </li>
             </ul>
-          </div>
-        </div>
+          </template>
+        </LteCard>
 
         <!-- PRODUCT LIST -->
-        <div class="card">
-          <div class="card-header">
-            <h3 class="card-title">Recently Added Products</h3>
-            <div class="card-tools">
-              <button type="button" class="btn btn-tool" data-lte-toggle="card-collapse">
-                <i data-lte-icon="expand" class="bi bi-plus-lg"></i>
-                <i data-lte-icon="collapse" class="bi bi-dash-lg"></i>
-              </button>
-              <button type="button" class="btn btn-tool" data-lte-toggle="card-remove">
-                <i class="bi bi-x-lg"></i>
-              </button>
-            </div>
-          </div>
-          <div class="card-body p-0">
-            <div class="px-2">
-              <div v-for="(p, i) in products" :key="i" class="d-flex border-top py-2 px-1">
+        <LteCard title="Recently Added Products" collapsible removable body-class="p-0" footer-class="text-center">
+          <div class="px-2">
+            <div v-for="(p, i) in products" :key="i" class="d-flex border-top py-2 px-1">
                 <div class="col-2">
                   <img src="/assets/img/default-150x150.png" alt="Product Image" class="img-size-50" />
                 </div>
@@ -549,11 +504,10 @@ const products = [
                 </div>
               </div>
             </div>
-          </div>
-          <div class="card-footer text-center">
+          <template #footer>
             <a href="javascript:void(0)" class="uppercase"> View All Products </a>
-          </div>
-        </div>
+          </template>
+        </LteCard>
       </div>
     </div>
   </LteAppContent>

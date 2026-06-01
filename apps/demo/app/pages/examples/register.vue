@@ -9,8 +9,7 @@ useHead({ bodyAttrs: { class: 'register-page bg-body-secondary' } })
         <a href="/"><b>Admin</b>LTE</a>
       </div>
       <!-- /.register-logo -->
-      <div class="card">
-        <div class="card-body register-card-body">
+      <LteCard body-class="register-card-body">
           <p class="register-box-msg">Register a new membership</p>
 
           <form action="#" method="post">
@@ -67,8 +66,7 @@ useHead({ bodyAttrs: { class: 'register-page bg-body-secondary' } })
           <p class="mb-0">
             <a href="/examples/login" class="text-center"> I already have a membership </a>
           </p>
-        </div>
         <!-- /.register-card-body -->
-      </div>
+      </LteCard>
     </div>
 </template>

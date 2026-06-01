@@ -9,8 +9,7 @@ useHead({ bodyAttrs: { class: 'login-page bg-body-secondary' } })
         <a href="/"><b>Admin</b>LTE</a>
       </div>
       <!-- /.login-logo -->
-      <div class="card">
-        <div class="card-body login-card-body">
+      <LteCard body-class="login-card-body">
           <p class="login-box-msg">Sign in to start your session</p>
 
           <form action="#" method="post">
@@ -62,8 +61,7 @@ useHead({ bodyAttrs: { class: 'login-page bg-body-secondary' } })
           <p class="mb-0">
             <a href="/examples/register" class="text-center"> Register a new membership </a>
           </p>
-        </div>
         <!-- /.login-card-body -->
-      </div>
+      </LteCard>
     </div>
 </template>

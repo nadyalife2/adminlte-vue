@@ -30,7 +30,7 @@ onBeforeUnmount(() => {
   >
             <div class="row g-4">
               <div class="col-12">
-                <div class="callout callout-info">
+                <LteCallout theme="info">
                   Built on
                   <a
                     href="https://getbootstrap.com/docs/5.3/forms/validation/"
@@ -41,7 +41,7 @@ onBeforeUnmount(() => {
                   >
                   — submit each form to see the feedback. The wiring script lives at the bottom of
                   this page.
-                </div>
+                </LteCallout>
               </div>
 
               <!-- Custom validation -->
@@ -145,11 +145,10 @@ onBeforeUnmount(() => {
 
               <!-- Browser-default validation + tooltips -->
               <div class="col-lg-6">
-                <div class="card card-success card-outline mb-4">
-                  <div class="card-header">
+                <LteCard theme="success" variant="outline" class="mb-4">
+                  <template #header>
                     <div class="card-title">Browser Defaults &amp; Tooltips</div>
-                  </div>
-                  <div class="card-body">
+                  </template>
                     <p class="text-secondary small">
                       For browser-native validation feedback, omit
                       <code>novalidate</code> and the <code>.needs-validation</code> class.
@@ -197,8 +196,7 @@ onBeforeUnmount(() => {
                         </div>
                       </div>
                     </form>
-                  </div>
-                </div>
+                </LteCard>
               </div>
             </div>
   </LteAppContent>

@@ -13,15 +13,13 @@ definePageMeta({ layout: false })
             The application is undergoing scheduled maintenance. We expect to be back online
             shortly. Thanks for your patience.
           </p>
-          <div class="card mx-auto" style="max-width: 24rem">
-            <div class="card-body text-start">
-              <p class="text-secondary small mb-2">Estimated completion</p>
-              <p class="fw-semibold mb-0">
-                <i class="bi bi-clock me-1" aria-hidden="true"></i>
-                In approximately 30 minutes
-              </p>
-            </div>
-          </div>
+          <LteCard class="mx-auto" style="max-width: 24rem" body-class="text-start">
+            <p class="text-secondary small mb-2">Estimated completion</p>
+            <p class="fw-semibold mb-0">
+              <i class="bi bi-clock me-1" aria-hidden="true"></i>
+              In approximately 30 minutes
+            </p>
+          </LteCard>
           <p class="text-secondary small mt-4 mb-0">
             For urgent issues, reach us at
             <a href="mailto:support@example.com">support@example.com</a>

@@ -27,8 +27,7 @@
             <div class="row g-4 row-cols-1 row-cols-md-3 mb-4">
               <!-- Starter -->
               <div class="col">
-                <div class="card h-100">
-                  <div class="card-body p-4">
+                <LteCard class="h-100" body-class="p-4">
                     <h5 class="fw-semibold">Starter</h5>
                     <p class="text-secondary small mb-3">For individuals getting started.</p>
                     <div class="mb-3">
@@ -54,8 +53,7 @@
                         Advanced analytics
                       </li>
                     </ul>
-                  </div>
-                </div>
+                </LteCard>
               </div>
               <!-- Pro (highlighted) -->
               <div class="col">
@@ -95,8 +93,7 @@
               </div>
               <!-- Enterprise -->
               <div class="col">
-                <div class="card h-100">
-                  <div class="card-body p-4">
+                <LteCard class="h-100" body-class="p-4">
                     <h5 class="fw-semibold">Enterprise</h5>
                     <p class="text-secondary small mb-3">For organizations with custom needs.</p>
                     <div class="mb-3">
@@ -121,17 +118,12 @@
                         Custom SLA
                       </li>
                     </ul>
-                  </div>
-                </div>
+                </LteCard>
               </div>
             </div>
 
             <!-- Feature comparison table -->
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">Compare features</h3>
-              </div>
-              <div class="card-body p-0">
+            <LteCard title="Compare features" body-class="p-0">
                 <div class="table-responsive">
                   <table class="table mb-0 align-middle">
                     <thead>
@@ -200,7 +192,6 @@
                     </tbody>
                   </table>
                 </div>
-              </div>
-            </div>
+            </LteCard>
   </LteAppContent>
 </template>

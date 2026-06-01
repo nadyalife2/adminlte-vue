@@ -32,12 +32,11 @@
 
             <div class="row g-4">
               <div class="col-lg-12">
-                <div class="card">
-                  <div class="card-header d-flex align-items-center">
+                <LteCard header-class="d-flex align-items-center">
+                  <template #header>
                     <i class="bi bi-rocket-takeoff fs-4 text-primary me-2" aria-hidden="true"></i>
                     <h3 class="card-title mb-0">Getting started</h3>
-                  </div>
-                  <div class="card-body">
+                  </template>
                     <div class="accordion accordion-flush" id="faq-0">
                       <div class="accordion-item">
                         <h2 class="accordion-header">
@@ -114,16 +113,14 @@
                         </div>
                       </div>
                     </div>
-                  </div>
-                </div>
+                </LteCard>
               </div>
               <div class="col-lg-12">
-                <div class="card">
-                  <div class="card-header d-flex align-items-center">
+                <LteCard header-class="d-flex align-items-center">
+                  <template #header>
                     <i class="bi bi-credit-card fs-4 text-primary me-2" aria-hidden="true"></i>
                     <h3 class="card-title mb-0">Billing &amp; plans</h3>
-                  </div>
-                  <div class="card-body">
+                  </template>
                     <div class="accordion accordion-flush" id="faq-1">
                       <div class="accordion-item">
                         <h2 class="accordion-header">
@@ -198,16 +195,14 @@
                         </div>
                       </div>
                     </div>
-                  </div>
-                </div>
+                </LteCard>
               </div>
               <div class="col-lg-12">
-                <div class="card">
-                  <div class="card-header d-flex align-items-center">
+                <LteCard header-class="d-flex align-items-center">
+                  <template #header>
                     <i class="bi bi-shield-lock fs-4 text-primary me-2" aria-hidden="true"></i>
                     <h3 class="card-title mb-0">Security &amp; privacy</h3>
-                  </div>
-                  <div class="card-body">
+                  </template>
                     <div class="accordion accordion-flush" id="faq-2">
                       <div class="accordion-item">
                         <h2 class="accordion-header">
@@ -283,14 +278,12 @@
                         </div>
                       </div>
                     </div>
-                  </div>
-                </div>
+                </LteCard>
               </div>
             </div>
 
             <!-- Still need help? -->
-            <div class="card mt-4">
-              <div class="card-body text-center py-4">
+            <LteCard class="mt-4" body-class="text-center py-4">
                 <i
                   class="bi bi-chat-dots text-primary"
                   style="font-size: 2.5rem"
@@ -304,7 +297,6 @@
                   <i class="bi bi-envelope me-1" aria-hidden="true"></i>
                   Contact support
                 </a>
-              </div>
-            </div>
+            </LteCard>
   </LteAppContent>
 </template>

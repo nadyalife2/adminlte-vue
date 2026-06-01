@@ -3,11 +3,7 @@
     title="Compose Message"
     :breadcrumbs="[{ label: 'Home', href: '#' }, { label: 'Mailbox', href: '/mailbox/inbox' }, { label: 'Compose' }]"
   >
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">New Message</h3>
-              </div>
-              <div class="card-body">
+            <LteCard title="New Message" footer-class="d-flex gap-2">
                 <form class="row g-3">
                   <div class="col-12">
                     <label class="form-label" for="mail-to">To</label>
@@ -57,8 +53,7 @@
                     <input type="file" class="form-control" id="mail-attach" multiple />
                   </div>
                 </form>
-              </div>
-              <div class="card-footer d-flex gap-2">
+              <template #footer>
                 <button class="btn btn-primary" type="button">
                   <i class="bi bi-send me-1" aria-hidden="true"></i>Send
                 </button>
@@ -69,7 +64,7 @@
                 <button class="btn btn-outline-danger ms-auto" type="button">
                   <i class="bi bi-x-lg me-1" aria-hidden="true"></i>Discard
                 </button>
-              </div>
-            </div>
+              </template>
+            </LteCard>
   </LteAppContent>
 </template>
