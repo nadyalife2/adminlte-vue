@@ -9,6 +9,10 @@ export default defineAppConfig({
     },
     menu: [
       { type: 'item', text: 'Dashboard', href: '/', icon: 'bi-speedometer2' },
+      { type: 'header', text: 'FEATURES' },
+      { type: 'item', text: 'Analytics', href: '/analytics', icon: 'bi-graph-up' },
+      { type: 'item', text: 'Calendar', href: '/calendar', icon: 'bi-calendar3' },
+      { type: 'item', text: 'Board', href: '/board', icon: 'bi-kanban' },
       { type: 'header', text: 'ACCOUNT' },
       { type: 'item', text: 'Profile', href: '/profile', icon: 'bi-person' },
       { type: 'item', text: 'Settings', href: '/settings', icon: 'bi-gear' },
