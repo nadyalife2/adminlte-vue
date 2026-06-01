@@ -29,3 +29,6 @@ coverage/
 test-results/
 playwright-report/
 .last-run.json
+
+# nuxt content local db
+.data/

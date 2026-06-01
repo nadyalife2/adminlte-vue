@@ -30,6 +30,11 @@ This is a **pnpm monorepo** (`pnpm-workspace.yaml` → `packages/*`, `apps/*`):
   `server/api/*`; **i18n** (`@nuxtjs/i18n`, en + es, language switcher); a **theme customizer**;
   `useSeoMeta`; `.env.example` + Nitro/Docker deploy. Tested with **Vitest** (server utils) +
   **Playwright e2e** (`test:e2e`), linted with **`@nuxt/eslint`**.
+- **`apps/docs`** (`adminlte-docs`) — the documentation site (Nuxt 4 + **@nuxt/content v3**,
+  better-sqlite3). Markdown lives in `content/**` (numeric-prefixed for order; `section` front-matter
+  drives the sidebar grouping); a custom docs layout provides header/search/color-mode, a
+  section-grouped sidebar, a TOC, and reading-order prev/next (via `useDocsPages`). Documents the
+  Vue/Nuxt port itself. Run with `pnpm dev:docs` / `pnpm build:docs`.
 
 **Correctness gates** (all must pass): `pnpm --filter adminlte-vue type-check` (`vue-tsc --noEmit`),
 `pnpm --filter adminlte-vue test` (Vitest — jsdom + @vue/test-utils), `pnpm lint` (ESLint 9 flat
