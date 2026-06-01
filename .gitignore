@@ -24,3 +24,8 @@ pnpm-debug.log*
 # misc
 *.map
 coverage/
+
+# playwright
+test-results/
+playwright-report/
+.last-run.json

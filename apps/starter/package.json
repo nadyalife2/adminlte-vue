@@ -10,6 +10,7 @@
     "preview": "nuxi preview",
     "type-check": "nuxi typecheck",
     "test": "vitest run",
+    "test:e2e": "playwright test",
     "lint": "echo 'linting starter...'"
   },
   "dependencies": {
@@ -24,6 +25,7 @@
   "devDependencies": {
     "@nuxtjs/i18n": "^9",
     "@pinia/nuxt": "^0.11.2",
+    "@playwright/test": "^1.60.0",
     "nuxt": "^4.4.6",
     "pinia": "^3.0.3",
     "vitest": "^4.1.7",

@@ -13,9 +13,10 @@ export default defineNuxtConfig({
 
   modules: ['@adminlte/nuxt', '@pinia/nuxt'],
 
-  // Smooth route transitions (CSS in app/assets/css/app.css).
+  // Smooth route transitions (CSS in app/assets/css/app.css). No `out-in` mode:
+  // it blanks pages that use top-level `await` (Suspense) on client-side nav.
   app: {
-    pageTransition: { name: 'page', mode: 'out-in' },
+    pageTransition: { name: 'page' },
   },
 
   adminlte: {
