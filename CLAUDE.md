@@ -26,6 +26,7 @@ This is a **pnpm monorepo** (`pnpm-workspace.yaml` → `packages/*`, `apps/*`):
 **Correctness gates** (all must pass): `pnpm --filter adminlte-vue type-check` (`vue-tsc --noEmit`),
 `pnpm --filter adminlte-vue test` (Vitest — jsdom + @vue/test-utils), `pnpm lint` (ESLint 9 flat
 config over `packages/*/src`; `apps/**` excluded), `pnpm build:demo`, and `pnpm build:docs`.
+CI (`.github/workflows/ci.yml`) runs exactly these on every push/PR, after `pnpm build`.
 
 ## Commands
 
@@ -38,6 +39,18 @@ pnpm build:demo           # production build of the demo (the strongest SSR/hydr
 pnpm dev                  # parallel watch of all packages
 pnpm dev:demo             # run the Nuxt demo (nuxi dev)
 pnpm type-check           # type-check every package
+pnpm test                 # library unit tests (vitest run)
+pnpm lint                 # ESLint over packages/*/src
+```
+
+Tests are co-located `*.test.ts` files under `packages/adminlte-vue/src/**` (config in
+`vitest.config.ts` — deliberately separate from the lib-mode `vite.config.ts`). To run a single
+test file or watch:
+
+```bash
+pnpm --filter adminlte-vue exec vitest run src/widget/LteCard.test.ts   # one file
+pnpm --filter adminlte-vue exec vitest run -t 'collapses'               # by test name
+pnpm --filter adminlte-vue test:watch                                   # watch mode
 ```
 
 Per package:
@@ -68,7 +81,10 @@ The demo consumes the library's built `dist/`. After editing library source, reb
    (exposed as the `./css` and `./css/rtl` exports). Mirrors the React port's `copy-css` step.
 
 Output is **ESM-only** with **two entries**: `index` (`.`) and `plugins` (`./plugins`). The split
-keeps the heavy plugin libs out of the default import.
+keeps the heavy plugin libs out of the default import. The build uses **`preserveModules: true`**
+(per-module files mirroring `src/`, root `dist/`), so plain-Vite consumers tree-shake at file
+granularity instead of relying on export-level shaking of one bundled chunk. The `./plugins` types
+live at `dist/plugins/index.d.ts` (the entry JS stays `dist/plugins.js`).
 
 > **Gotcha — `build.minify: false`.** Vite lib-mode esbuild minification produced a duplicate-
 > identifier collision in a shared chunk (`LteTomSelect`). Libraries should ship readable ESM and let
@@ -142,6 +158,18 @@ composables are **auto-imported by the module** (no imports in pages). Route →
 `definePageMeta({ layout })`: dashboard pages use the default layout (`DemoLayout` wraps
 `LteDashboardLayout`); `examples/*` use `layout: 'auth'`; the `layout/*` variant pages use
 `layout: false` and render `<DemoLayout :fixed-* …>` directly to showcase a flag.
+
+### Demo-fidelity tooling (`scripts/`)
+
+Two utilities support the "pristine 1:1 clone" mandate:
+
+- `node scripts/clone-doc.mjs <slug> [...]` — clones an original AdminLTE 4 docs page (from the
+  `admin-lte` package's `dist/docs`) into `apps/demo/app/pages/docs/`, rewriting intra-doc links to
+  `/docs/*` routes and relative asset paths to `/assets/...`.
+- `node scripts/verify-screenshots.mjs '<json targets>'` — Playwright side-by-side screenshots of
+  the Vue demo (`:3000`) vs the original AdminLTE dist (`:8899`), theme forced before any script
+  runs (`THEME=light|dark`, `WIDTH=<px>` env vars). Output goes to `/tmp/lte-verify`. Reference
+  screenshots live in `docs/screenshots/`.
 
 ### Subpath static export (adminlte.io hosting)
 `pnpm --filter demo run export` runs `EXPORT=true nuxi generate` → a static `apps/demo/.output/public`

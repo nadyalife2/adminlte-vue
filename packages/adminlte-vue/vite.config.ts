@@ -88,7 +88,13 @@ export default defineConfig({
         /^@fullcalendar\//,
       ],
       output: {
-        preserveModules: false,
+        // Per-module output: consumers importing one widget pull only that
+        // module's graph instead of relying on export-level tree-shaking of a
+        // single bundled chunk. Also keeps the .js layout aligned with the
+        // .d.ts tree (dist/plugins/index.js ↔ dist/plugins/index.d.ts).
+        preserveModules: true,
+        preserveModulesRoot: 'src',
+        entryFileNames: '[name].js',
         assetFileNames: 'css/[name][extname]',
       },
     },
