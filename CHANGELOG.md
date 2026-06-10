@@ -10,6 +10,64 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 _No unreleased changes yet._
 
+## [0.2.0] - 2026-06-10
+
+A code-review hardening pass: correctness fixes, performance work on the dataset-heavy plugin
+wrappers, a modern-Vue (3.5) sweep, and accessibility upgrades for the modal and command palette.
+
+### Fixed
+
+- **Form control ids** — `useId()` was called inside a `computed` in all 8 form components, minting
+  a new id on every re-evaluation. A new shared `useControlId(prefix, () => props.id)` composable
+  captures one SSR-safe id during `setup()` (exported from the library).
+- **Sidebar body classes leaked** — `provideSidebar` now diffs the applied `<body>` classes on every
+  update and removes all of them on unmount, so switching layout variants or navigating
+  dashboard → auth no longer leaves stale `sidebar-collapse` / `fixed-*` classes behind.
+- **`sidebarBreakpoint` was a mount-time snapshot** — `ProvideSidebarOptions.sidebarBreakpoint` now
+  accepts `MaybeRefOrGetter<number>` and `SidebarApi.sidebarBreakpoint` is a `ComputedRef<number>`;
+  changing `LteDashboardLayout`'s `sidebarBreakpoint` prop after mount now works.
+- **`LteApexChart` ignored `width` changes** — `width` joined the options watcher.
+- **`LteModal` fade never animated** — the `<Transition>` now drives Bootstrap's own `.fade`/`.show`
+  classes via JS hooks (the library ships no CSS of its own, so the old named transition classes
+  did not exist anywhere).
+- **`./plugins` types path** — `package.json` pointed at `dist/plugins.d.ts`, which was never
+  emitted; it now points at the real `dist/plugins/index.d.ts`.
+
+### Changed
+
+- **Dataset props are watched by reference** — `series` (`LteApexChart`), `data` (`LteDatatable`),
+  and `events` (`LteCalendar`) no longer use `deep: true` (a recursive traversal of potentially
+  thousands of rows per flush). Replace arrays immutably to trigger updates, or set the new
+  opt-in `deepWatch` prop to keep mutating in place.
+- **Post-mount prop changes now apply** — `columns` (`LteDatatable` → `setColumns()`),
+  `initialView` (`LteCalendar` → `changeView()`), and `options` (`LteCalendar` → `setOption()` per
+  key) are reactive after mount; Tabulator's `options`/`height` are documented as mount-only.
+- **Library build uses `preserveModules`** — dist is per-module ESM mirroring `src/`, so plain-Vite
+  consumers tree-shake at file granularity. Entries (`.`, `./plugins`, `./css`) are unchanged.
+- **Modern Vue 3.5 sweep** — `defineModel()` in every `v-model` component (8 form components,
+  `LteModal`, `LteFlatpickr`, `LteTomSelect`, `LteEditor`, `LteSortable`; also fixes `LteInput`'s
+  `string | number` prop vs `string` emit mismatch), `useTemplateRef()` in the plugin wrappers,
+  and reactive props destructure in `LteDashboardLayout` / `LteCard`. No public API changes.
+- **Stable sidebar nav keys** — menu nodes are keyed by `href` (items) / `type:text`
+  (headers, groups) instead of array index.
+
+### Accessibility
+
+- **`LteModal` focus management** — focus moves into the dialog on open, Tab/Shift-Tab are trapped
+  within it, and focus returns to the opener on close (dependency-free).
+- **`LteCommandPalette`** — arrow-keying now scrolls the active option into view, and the results
+  list exposes proper combobox/listbox semantics (`role="combobox"`, `aria-activedescendant`,
+  `role="option"`, `aria-selected`).
+
+### Demo & docs
+
+- Demo: `preconnect` to `fonts.gstatic.com` (with `crossorigin`) — the font files come from gstatic,
+  not googleapis, so the old preconnect never warmed the right connection.
+- Docs: new `deepWatch` / reactivity notes on the plugin pages, updated `SidebarApi` /
+  `ProvideSidebarOptions` types, the body-class lifecycle in the SSR-safety guide, and a
+  name-collision note (`useColorMode` vs `@nuxtjs/color-mode` / VueUse) with the
+  `adminlte: { composables: false }` escape hatch.
+
 ## [0.1.0] - 2026-05-29
 
 Initial release — an AdminLTE 4 / Bootstrap 5.3 admin dashboard for Vue 3 and Nuxt, ported from the
@@ -78,5 +136,6 @@ React and Laravel editions.
 - Library JS ships only `dist/css/adminlte.css`; consumers provide Bootstrap Icons, OverlayScrollbars,
   fonts, and plugin CSS (see the demo's `nuxt.config.ts`).
 
-[Unreleased]: https://github.com/ColorlibHQ/adminlte-vue/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/ColorlibHQ/adminlte-vue/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/ColorlibHQ/adminlte-vue/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/ColorlibHQ/adminlte-vue/releases/tag/v0.1.0
