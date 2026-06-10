@@ -24,7 +24,7 @@ export function flattenMenuToCommands(nodes: MenuNode[]): CommandItem[] {
 </script>
 
 <script setup lang="ts">
-import { computed, nextTick, ref, watch, type CSSProperties } from 'vue'
+import { computed, nextTick, ref, useId, useTemplateRef, watch, type CSSProperties } from 'vue'
 import { biClass } from '../lib/class-name'
 import { useCommandPalette } from '../composables/use-command-palette'
 
@@ -48,7 +48,10 @@ const allItems = computed<CommandItem[]>(
 
 const query = ref('')
 const active = ref(0)
-const input = ref<HTMLInputElement | null>(null)
+const input = useTemplateRef('input')
+
+const listboxId = useId()
+const optionId = (idx: number) => `${listboxId}-opt-${idx}`
 
 const results = computed(() => {
   const q = query.value.trim().toLowerCase()
@@ -65,6 +68,13 @@ watch(isOpen, (open) => {
   nextTick(() => setTimeout(() => input.value?.focus(), 20))
 })
 watch(query, () => (active.value = 0))
+
+// Keep the active option visible when arrow-keying past the scroll viewport.
+watch(active, (idx) => {
+  nextTick(() => {
+    document.getElementById(optionId(idx))?.scrollIntoView({ block: 'nearest' })
+  })
+})
 
 function go(item?: CommandItem) {
   const target = item ?? results.value[active.value]
@@ -127,18 +137,26 @@ const panelStyle: CSSProperties = {
             class="form-control border-0 shadow-none"
             :placeholder="placeholder"
             aria-label="Search"
+            role="combobox"
+            aria-expanded="true"
+            aria-autocomplete="list"
+            :aria-controls="listboxId"
+            :aria-activedescendant="results.length > 0 ? optionId(active) : undefined"
             @keydown="onKeydown"
           />
         </div>
 
-        <div class="list-group list-group-flush" style="overflow-y: auto">
+        <div :id="listboxId" role="listbox" class="list-group list-group-flush" style="overflow-y: auto">
           <div v-if="results.length === 0" class="text-secondary text-center py-4 small">
             No results for “{{ query }}”
           </div>
           <button
             v-for="(item, idx) in results"
+            :id="optionId(idx)"
             :key="item.href"
             type="button"
+            role="option"
+            :aria-selected="idx === active"
             :class="[
               'list-group-item list-group-item-action d-flex align-items-center gap-2',
               idx === active && 'active',
