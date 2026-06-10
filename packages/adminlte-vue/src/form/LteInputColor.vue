@@ -1,18 +1,17 @@
 <script setup lang="ts">
-import { computed, useId } from 'vue'
 import { cn } from '../lib/class-name'
+import { useControlId } from '../composables/use-control-id'
 
 const props = defineProps<{
-  modelValue?: string
   label?: string
   id?: string
   fgroupClass?: string
   disabled?: boolean
 }>()
-defineEmits<{ 'update:modelValue': [value: string] }>()
+const model = defineModel<string>()
 defineOptions({ inheritAttrs: false })
 
-const inputId = computed(() => props.id ?? `lte-color-${useId()}`)
+const inputId = useControlId('lte-color', () => props.id)
 </script>
 
 <template>
@@ -22,10 +21,10 @@ const inputId = computed(() => props.id ?? `lte-color-${useId()}`)
       :id="inputId"
       type="color"
       class="form-control form-control-color"
-      :value="modelValue"
+      :value="model"
       :disabled="disabled"
       v-bind="$attrs"
-      @input="$emit('update:modelValue', ($event.target as HTMLInputElement).value)"
+      @input="model = ($event.target as HTMLInputElement).value"
     />
   </div>
 </template>

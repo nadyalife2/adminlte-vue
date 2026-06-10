@@ -1,10 +1,9 @@
 <script setup lang="ts">
-import { computed, useId } from 'vue'
 import { cn } from '../lib/class-name'
+import { useControlId } from '../composables/use-control-id'
 
 const props = withDefaults(
   defineProps<{
-    modelValue?: string
     label?: string
     id?: string
     rows?: number
@@ -15,10 +14,10 @@ const props = withDefaults(
   }>(),
   { rows: 4 }
 )
-defineEmits<{ 'update:modelValue': [value: string] }>()
+const model = defineModel<string>()
 defineOptions({ inheritAttrs: false })
 
-const inputId = computed(() => props.id ?? `lte-textarea-${useId()}`)
+const inputId = useControlId('lte-textarea', () => props.id)
 </script>
 
 <template>
@@ -29,10 +28,10 @@ const inputId = computed(() => props.id ?? `lte-textarea-${useId()}`)
       :rows="rows"
       :placeholder="placeholder"
       :disabled="disabled"
-      :value="modelValue"
+      :value="model"
       :class="cn('form-control', error && 'is-invalid')"
       v-bind="$attrs"
-      @input="$emit('update:modelValue', ($event.target as HTMLTextAreaElement).value)"
+      @input="model = ($event.target as HTMLTextAreaElement).value"
     ></textarea>
     <div v-if="error" class="invalid-feedback d-block">{{ error }}</div>
   </div>

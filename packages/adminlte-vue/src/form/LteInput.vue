@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { computed, useId } from 'vue'
+import { computed } from 'vue'
 import type { ComponentSize } from '../types/theme'
 import { cn } from '../lib/class-name'
+import { useControlId } from '../composables/use-control-id'
 
 const props = withDefaults(
   defineProps<{
-    modelValue?: string | number
     label?: string
     type?: string
     id?: string
@@ -20,10 +20,10 @@ const props = withDefaults(
   }>(),
   { type: 'text' }
 )
-defineEmits<{ 'update:modelValue': [value: string] }>()
+const model = defineModel<string | number>()
 defineOptions({ inheritAttrs: false })
 
-const inputId = computed(() => props.id ?? `lte-input-${useId()}`)
+const inputId = useControlId('lte-input', () => props.id)
 const hasGroup = computed(() => !!props.prepend || !!props.append || !!props.error)
 </script>
 
@@ -36,13 +36,13 @@ const hasGroup = computed(() => !!props.prepend || !!props.append || !!props.err
       <input
         :id="inputId"
         :type="type"
-        :value="modelValue"
+        :value="model"
         :placeholder="placeholder"
         :disabled="disabled"
         :required="required"
         :class="cn('form-control', error && 'is-invalid')"
         v-bind="$attrs"
-        @input="$emit('update:modelValue', ($event.target as HTMLInputElement).value)"
+        @input="model = ($event.target as HTMLInputElement).value"
       />
       <span v-if="append" class="input-group-text">{{ append }}</span>
       <div v-if="error" class="invalid-feedback">{{ error }}</div>

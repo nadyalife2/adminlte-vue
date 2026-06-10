@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { computed, useId } from 'vue'
 import { cn } from '../lib/class-name'
+import { useControlId } from '../composables/use-control-id'
 
 interface SelectOption {
   value: string | number
@@ -9,7 +9,6 @@ interface SelectOption {
 
 const props = withDefaults(
   defineProps<{
-    modelValue?: string | number | Array<string | number>
     label?: string
     id?: string
     options?: SelectOption[]
@@ -20,23 +19,14 @@ const props = withDefaults(
   }>(),
   { options: () => [] }
 )
-const emit = defineEmits<{
-  'update:modelValue': [value: string | number | Array<string | number>]
-}>()
+const model = defineModel<string | number | Array<string | number>>()
 defineOptions({ inheritAttrs: false })
 
-const inputId = computed(() => props.id ?? `lte-select-${useId()}`)
+const inputId = useControlId('lte-select', () => props.id)
 
 function onChange(event: Event) {
   const el = event.target as HTMLSelectElement
-  if (props.multiple) {
-    emit(
-      'update:modelValue',
-      Array.from(el.selectedOptions, (o) => o.value)
-    )
-  } else {
-    emit('update:modelValue', el.value)
-  }
+  model.value = props.multiple ? Array.from(el.selectedOptions, (o) => o.value) : el.value
 }
 </script>
 
@@ -56,7 +46,7 @@ function onChange(event: Event) {
           v-for="opt in options"
           :key="opt.value"
           :value="opt.value"
-          :selected="Array.isArray(modelValue) ? modelValue.includes(opt.value) : modelValue === opt.value"
+          :selected="Array.isArray(model) ? model.includes(opt.value) : model === opt.value"
         >
           {{ opt.label }}
         </option>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { computed, useId } from 'vue'
 import { cn } from '../lib/class-name'
+import { useControlId } from '../composables/use-control-id'
 
 const props = defineProps<{
   label?: string
@@ -10,10 +10,10 @@ const props = defineProps<{
   fgroupClass?: string
   disabled?: boolean
 }>()
-defineEmits<{ 'update:modelValue': [value: FileList | null] }>()
+const model = defineModel<FileList | null>()
 defineOptions({ inheritAttrs: false })
 
-const inputId = computed(() => props.id ?? `lte-file-${useId()}`)
+const inputId = useControlId('lte-file', () => props.id)
 </script>
 
 <template>
@@ -27,7 +27,7 @@ const inputId = computed(() => props.id ?? `lte-file-${useId()}`)
       :multiple="multiple"
       :disabled="disabled"
       v-bind="$attrs"
-      @change="$emit('update:modelValue', ($event.target as HTMLInputElement).files)"
+      @change="model = ($event.target as HTMLInputElement).files"
     />
   </div>
 </template>

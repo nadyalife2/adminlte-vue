@@ -29,6 +29,7 @@ export {
   useCommandPalette,
   type CommandPaletteApi,
 } from './use-command-palette'
+export { useControlId } from './use-control-id'
 export { useLteBehaviors } from './use-lte-behaviors'
 export { useAccessibility, type AccessibilityOptions } from './use-accessibility'
 export { useWindowWidth } from './use-window-width'

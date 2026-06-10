@@ -1,18 +1,17 @@
 <script setup lang="ts">
-import { computed, useId } from 'vue'
 import type { BootstrapTheme } from '../types/theme'
+import { useControlId } from '../composables/use-control-id'
 
 const props = defineProps<{
-  modelValue?: boolean
   label?: string
   id?: string
   theme?: BootstrapTheme
   disabled?: boolean
 }>()
-defineEmits<{ 'update:modelValue': [value: boolean] }>()
+const model = defineModel<boolean>()
 defineOptions({ inheritAttrs: false })
 
-const inputId = computed(() => props.id ?? `lte-switch-${useId()}`)
+const inputId = useControlId('lte-switch', () => props.id)
 </script>
 
 <template>
@@ -22,10 +21,10 @@ const inputId = computed(() => props.id ?? `lte-switch-${useId()}`)
       class="form-check-input"
       type="checkbox"
       role="switch"
-      :checked="modelValue"
+      :checked="model"
       :disabled="disabled"
       v-bind="$attrs"
-      @change="$emit('update:modelValue', ($event.target as HTMLInputElement).checked)"
+      @change="model = ($event.target as HTMLInputElement).checked"
     />
     <label v-if="label" class="form-check-label" :for="inputId">{{ label }}</label>
   </div>

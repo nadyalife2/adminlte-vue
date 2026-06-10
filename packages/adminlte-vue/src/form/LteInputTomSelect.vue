@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { computed, useId } from 'vue'
 import { cn } from '../lib/class-name'
+import { useControlId } from '../composables/use-control-id'
 import LteTomSelect from '../plugins/LteTomSelect.vue'
 
 interface TomOption {
@@ -9,7 +9,6 @@ interface TomOption {
 }
 
 const props = defineProps<{
-  modelValue?: string | string[]
   label?: string
   id?: string
   options?: TomOption[]
@@ -17,20 +16,19 @@ const props = defineProps<{
   placeholder?: string
   fgroupClass?: string
 }>()
-defineEmits<{ 'update:modelValue': [value: string | string[]] }>()
+const model = defineModel<string | string[]>()
 
-const inputId = computed(() => props.id ?? `lte-tomselect-${useId()}`)
+const inputId = useControlId('lte-tomselect', () => props.id)
 </script>
 
 <template>
   <div :class="cn('mb-3', fgroupClass)">
     <label v-if="label" :for="inputId" class="form-label">{{ label }}</label>
     <LteTomSelect
-      :model-value="modelValue"
+      v-model="model"
       :options="options"
       :multiple="multiple"
       :placeholder="placeholder"
-      @update:model-value="$emit('update:modelValue', $event)"
     />
   </div>
 </template>
