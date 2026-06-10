@@ -15,7 +15,7 @@ export default defineNuxtConfig({
   // Off so the showcase matches the original 1:1 (no floating dev overlay).
   devtools: { enabled: false },
 
-  modules: ['@adminlte/nuxt'],
+  modules: ['@colorlib/adminlte-nuxt'],
 
   // Exposed (client-side) for the subpath link/asset shim (runs after paint).
   // Empty at the domain root → the shim becomes a no-op.
@@ -48,7 +48,7 @@ export default defineNuxtConfig({
   },
 
   // Consumer-side CSS the library doesn't bundle (icons + sidebar scrollbar).
-  // `adminlte-vue/css` is injected by the module before these.
+  // `@colorlib/adminlte-vue/css` is injected by the module before these.
   css: [
     'bootstrap-icons/font/bootstrap-icons.css',
     'overlayscrollbars/overlayscrollbars.css',

@@ -70,8 +70,8 @@ This is a pnpm monorepo:
 
 | Package | Path | Description |
 | --- | --- | --- |
-| [`adminlte-vue`](./packages/adminlte-vue) | `packages/adminlte-vue` | Framework-agnostic Vue 3 component library — works in any Vite / Nuxt / Vue 3 app. |
-| [`@adminlte/nuxt`](./packages/nuxt) | `packages/nuxt` | Nuxt module: auto-imports, CSS injection, Bootstrap init, SSR-safe dark mode. |
+| [`@colorlib/adminlte-vue`](./packages/adminlte-vue) | `packages/adminlte-vue` | Framework-agnostic Vue 3 component library — works in any Vite / Nuxt / Vue 3 app. |
+| [`@colorlib/adminlte-nuxt`](./packages/nuxt) | `packages/nuxt` | Nuxt module: auto-imports, CSS injection, Bootstrap init, SSR-safe dark mode. |
 | `demo` | `apps/demo` | Nuxt 4 demo — a 1:1 clone of the official AdminLTE 4 demo, built from the library's own components. |
 | `docs` | `apps/docs` | [@nuxt/content](https://content.nuxt.com) documentation site (API reference for every component & composable). |
 
@@ -89,13 +89,13 @@ This is a pnpm monorepo:
 ## Quick start — Nuxt
 
 ```bash
-npm i @adminlte/nuxt adminlte-vue bootstrap
+npm i @colorlib/adminlte-nuxt @colorlib/adminlte-vue bootstrap
 ```
 
 ```ts
 // nuxt.config.ts
 export default defineNuxtConfig({
-  modules: ['@adminlte/nuxt'],
+  modules: ['@colorlib/adminlte-nuxt'],
   adminlte: {
     defaults: { sidebarTheme: 'dark', fixedHeader: true, fixedSidebar: true, initialColorMode: 'auto' },
   },
@@ -106,7 +106,7 @@ export default defineNuxtConfig({
 ```vue
 <!-- app/layouts/default.vue -->
 <script setup lang="ts">
-import type { MenuNode } from 'adminlte-vue'
+import type { MenuNode } from '@colorlib/adminlte-vue'
 const route = useRoute()
 const NuxtLink = resolveComponent('NuxtLink')
 const menu: MenuNode[] = [
@@ -141,14 +141,14 @@ Components and composables are auto-imported by the module — no `import` state
 ## Quick start — plain Vue 3 (Vite)
 
 ```bash
-npm i adminlte-vue bootstrap
+npm i @colorlib/adminlte-vue bootstrap
 ```
 
 ```ts
 // main.ts
 import { createApp } from 'vue'
-import AdminLteVue from 'adminlte-vue'
-import 'adminlte-vue/css'
+import AdminLteVue from '@colorlib/adminlte-vue'
+import '@colorlib/adminlte-vue/css'
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import 'bootstrap' // dropdowns/modals/offcanvas
 import App from './App.vue'
@@ -176,7 +176,7 @@ module just automates the wiring above.
 
 **Tools** — `LteModal`, `LteWizard`, `LteWizardStep`
 
-**Plugins** (`adminlte-vue/plugins`) — `LteApexChart`, `LteSparklineChart`, `LteDatatable`,
+**Plugins** (`@colorlib/adminlte-vue/plugins`) — `LteApexChart`, `LteSparklineChart`, `LteDatatable`,
 `LteEditor`, `LteFlatpickr`, `LteTomSelect`, `LteCalendar`, `LteVectorMap`, `LteSortable`,
 `LteKanban`
 
@@ -254,62 +254,62 @@ Modern evergreen browsers (Chrome, Firefox, Safari, Edge). Same matrix as Bootst
 This library is free and MIT-licensed. When you need a **production dashboard with a real backend,
 many more pages, and dedicated support** — server-driven CRUD, authentication, role-based access,
 and dozens of polished screens out of the box — these commercial **Vue & Nuxt** editions from
-[DashboardPack](https://dashboardpack.com/?utm_source=github&utm_medium=readme&utm_campaign=adminlte-vue)
+[DashboardPack](https://dashboardpack.com/?utm_source=github&utm_medium=readme&utm_campaign=@colorlib/adminlte-vue)
 pick up where the free toolkit leaves off.
 
 <table>
   <tr>
     <td align="center" width="50%">
-      <a href="https://dashboardpack.com/theme-details/haze-dashboard-nuxt/?utm_source=github&utm_medium=readme&utm_campaign=adminlte-vue">
+      <a href="https://dashboardpack.com/theme-details/haze-dashboard-nuxt/?utm_source=github&utm_medium=readme&utm_campaign=@colorlib/adminlte-vue">
         <img src="docs/screenshots/dashboardpack/haze.png" alt="Haze — premium Nuxt 4 admin dashboard" width="100%">
       </a>
       <br>
-      <a href="https://dashboardpack.com/theme-details/haze-dashboard-nuxt/?utm_source=github&utm_medium=readme&utm_campaign=adminlte-vue"><strong>Haze — Nuxt</strong></a>
+      <a href="https://dashboardpack.com/theme-details/haze-dashboard-nuxt/?utm_source=github&utm_medium=readme&utm_campaign=@colorlib/adminlte-vue"><strong>Haze — Nuxt</strong></a>
       <br>
       <sub>Nuxt 4 + Vue 3 + Nuxt UI v4 + Tailwind CSS v4. 92+ pages, 7 layouts, 5 dashboards, full CRUD with a mock API, i18n, RTL, live theme customizer.</sub>
     </td>
     <td align="center" width="50%">
-      <a href="https://dashboardpack.com/theme-details/architectui-dashboard-vue-pro/?utm_source=github&utm_medium=readme&utm_campaign=adminlte-vue">
+      <a href="https://dashboardpack.com/theme-details/architectui-dashboard-vue-pro/?utm_source=github&utm_medium=readme&utm_campaign=@colorlib/adminlte-vue">
         <img src="docs/screenshots/dashboardpack/architectui-vue.png" alt="ArchitectUI — premium Vue 3 + Vuetify admin dashboard" width="100%">
       </a>
       <br>
-      <a href="https://dashboardpack.com/theme-details/architectui-dashboard-vue-pro/?utm_source=github&utm_medium=readme&utm_campaign=adminlte-vue"><strong>ArchitectUI — Vue Pro</strong></a>
+      <a href="https://dashboardpack.com/theme-details/architectui-dashboard-vue-pro/?utm_source=github&utm_medium=readme&utm_campaign=@colorlib/adminlte-vue"><strong>ArchitectUI — Vue Pro</strong></a>
       <br>
       <sub>Vue 3.5 + Vuetify 4 (Material Design 3) + Vite 7 + Pinia. 9 dashboard layouts, 50+ components, 9 color schemes, dark mode.</sub>
     </td>
   </tr>
   <tr>
     <td align="center" width="50%">
-      <a href="https://dashboardpack.com/theme-details/apex-dashboard-nextjs/?utm_source=github&utm_medium=readme&utm_campaign=adminlte-vue">
+      <a href="https://dashboardpack.com/theme-details/apex-dashboard-nextjs/?utm_source=github&utm_medium=readme&utm_campaign=@colorlib/adminlte-vue">
         <img src="docs/screenshots/dashboardpack/apex.png" alt="Apex Dashboard — Next.js admin template with shadcn/ui" width="100%">
       </a>
       <br>
-      <a href="https://dashboardpack.com/theme-details/apex-dashboard-nextjs/?utm_source=github&utm_medium=readme&utm_campaign=adminlte-vue"><strong>Apex Dashboard — Next.js</strong></a>
+      <a href="https://dashboardpack.com/theme-details/apex-dashboard-nextjs/?utm_source=github&utm_medium=readme&utm_campaign=@colorlib/adminlte-vue"><strong>Apex Dashboard — Next.js</strong></a>
       <br>
       <sub>Next.js 16 + React 19 + Tailwind CSS v4 + shadcn/ui. 5 dashboard variants, 20+ app pages, 125+ routes, full CRUD.</sub>
     </td>
     <td align="center" width="50%">
-      <a href="https://dashboardpack.com/theme-details/admindek-html/?utm_source=github&utm_medium=readme&utm_campaign=adminlte-vue">
+      <a href="https://dashboardpack.com/theme-details/admindek-html/?utm_source=github&utm_medium=readme&utm_campaign=@colorlib/adminlte-vue">
         <img src="docs/screenshots/dashboardpack/admindek.png" alt="Admindek — feature-rich Bootstrap 5 dashboard" width="100%">
       </a>
       <br>
-      <a href="https://dashboardpack.com/theme-details/admindek-html/?utm_source=github&utm_medium=readme&utm_campaign=adminlte-vue"><strong>Admindek — HTML</strong></a>
+      <a href="https://dashboardpack.com/theme-details/admindek-html/?utm_source=github&utm_medium=readme&utm_campaign=@colorlib/adminlte-vue"><strong>Admindek — HTML</strong></a>
       <br>
       <sub>Bootstrap 5 + vanilla JS. 100+ components, dark/light modes, RTL support, 10 color presets.</sub>
     </td>
   </tr>
 </table>
 
-<sub>Prefer the official AdminLTE-branded premium themes? Browse <a href="https://adminlte.io/premium?utm_source=github&utm_medium=readme&utm_campaign=adminlte-vue">AdminLTE Premium</a>.</sub>
+<sub>Prefer the official AdminLTE-branded premium themes? Browse <a href="https://adminlte.io/premium?utm_source=github&utm_medium=readme&utm_campaign=@colorlib/adminlte-vue">AdminLTE Premium</a>.</sub>
 
 <p align="center">
-  <a href="https://dashboardpack.com/?utm_source=github&utm_medium=readme&utm_campaign=adminlte-vue"><strong>View All Premium Templates →</strong></a>
+  <a href="https://dashboardpack.com/?utm_source=github&utm_medium=readme&utm_campaign=@colorlib/adminlte-vue"><strong>View All Premium Templates →</strong></a>
 </p>
 
 ## Contributing
 
-Issues and PRs welcome. After changes, run `pnpm --filter adminlte-vue type-check`,
-`pnpm --filter adminlte-vue test`, `pnpm lint`, and `pnpm build:demo` (the SSR/hydration gate). See
+Issues and PRs welcome. After changes, run `pnpm --filter @colorlib/adminlte-vue type-check`,
+`pnpm --filter @colorlib/adminlte-vue test`, `pnpm lint`, and `pnpm build:demo` (the SSR/hydration gate). See
 [CLAUDE.md](./CLAUDE.md) for where things live and the three touch-points for adding a component.
 
 ## License

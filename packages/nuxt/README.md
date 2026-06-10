@@ -1,19 +1,19 @@
-# @adminlte/nuxt
+# @colorlib/adminlte-nuxt
 
-The Nuxt module for [`adminlte-vue`](../adminlte-vue). Auto-registers all components, auto-imports
+The Nuxt module for [`@colorlib/adminlte-vue`](../adminlte-vue). Auto-registers all components, auto-imports
 the composables, injects the CSS, initializes Bootstrap's JS client-side, and sets up **SSR-safe
 dark mode** (no flash).
 
 ## Install
 
 ```bash
-npm i @adminlte/nuxt adminlte-vue bootstrap
+npm i @colorlib/adminlte-nuxt @colorlib/adminlte-vue bootstrap
 ```
 
 ```ts
 // nuxt.config.ts
 export default defineNuxtConfig({
-  modules: ['@adminlte/nuxt'],
+  modules: ['@colorlib/adminlte-nuxt'],
   adminlte: {
     defaults: {
       sidebarTheme: 'dark',
@@ -39,7 +39,7 @@ runtime with `useAdminlteConfig()`.
 | `prefix` | `'Lte'` | Component name prefix used for auto-registration. |
 | `components` | `true` | Auto-register all components globally. |
 | `composables` | `true` | Auto-import the composables. |
-| `css` | `true` | Inject `adminlte-vue/css`. |
+| `css` | `true` | Inject `@colorlib/adminlte-vue/css`. |
 | `bootstrap` | `true` | Load Bootstrap's JS bundle client-side. |
 | `themeScript` | `true` | Inject a blocking head script that sets `data-bs-theme` before first paint (avoids FOUC). |
 | `defaults` | see config | Layout/theme defaults, surfaced via `useAdminlteConfig()`. |

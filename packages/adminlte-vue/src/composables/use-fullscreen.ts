@@ -24,14 +24,14 @@ export function useFullscreen(): FullscreenApi {
     try {
       await document.documentElement.requestFullscreen()
     } catch (err) {
-      console.error('[adminlte-vue] failed to enter fullscreen:', err)
+      console.error('[@colorlib/adminlte-vue] failed to enter fullscreen:', err)
     }
   }
   const exitFullscreen = async () => {
     try {
       if (document.fullscreenElement) await document.exitFullscreen()
     } catch (err) {
-      console.error('[adminlte-vue] failed to exit fullscreen:', err)
+      console.error('[@colorlib/adminlte-vue] failed to exit fullscreen:', err)
     }
   }
   const toggleFullscreen = async () => {

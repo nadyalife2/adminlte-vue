@@ -36,7 +36,7 @@ function systemPrefersDark(): boolean {
  * Writes Bootstrap's `data-bs-theme` attribute on `<html>` and persists the
  * preference under the `lte-theme` localStorage key.
  *
- * In Nuxt, a blocking inline head script (added by `@adminlte/nuxt`) sets
+ * In Nuxt, a blocking inline head script (added by `@colorlib/adminlte-nuxt`) sets
  * `data-bs-theme` before first paint to avoid a flash; this composable owns the
  * reactive updates thereafter.
  */
@@ -95,7 +95,7 @@ export function provideColorMode(options: ProvideColorModeOptions = {}): ColorMo
 export function useColorMode(): ColorModeApi {
   const api = inject(ColorModeKey)
   if (!api) {
-    throw new Error('[adminlte-vue] useColorMode() must be used within <LteDashboardLayout>.')
+    throw new Error('[@colorlib/adminlte-vue] useColorMode() must be used within <LteDashboardLayout>.')
   }
   return api
 }

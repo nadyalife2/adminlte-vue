@@ -4,7 +4,7 @@ import { onBeforeUnmount, onMounted } from 'vue'
 // The original General UI page initializes Bootstrap tooltips and wires the
 // toast trigger buttons via a page script — replicate that here. (Static
 // markup matches the original; collapse/accordion/dropdown work via the
-// Bootstrap data-API already loaded by @adminlte/nuxt.)
+// Bootstrap data-API already loaded by @colorlib/adminlte-nuxt.)
 let tooltips: Array<{ dispose: () => void }> = []
 let cleanups: Array<() => void> = []
 

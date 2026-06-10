@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
-import { useSidebar } from 'adminlte-vue'
+import { useSidebar } from '@colorlib/adminlte-vue'
 
 // Rendered inside <LteDashboardLayout>, so the sidebar injection resolves.
 // Collapses the sidebar once mounted — used by the "Collapsed Sidebar" demo

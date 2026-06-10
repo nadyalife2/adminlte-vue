@@ -1,7 +1,7 @@
 {
-  "name": "@adminlte/nuxt",
+  "name": "@colorlib/adminlte-nuxt",
   "version": "0.2.0",
-  "description": "Nuxt module for adminlte-vue — auto-imports, CSS, Bootstrap init, and SSR-safe theming",
+  "description": "Nuxt module for adminlte-vue \u2014 auto-imports, CSS, Bootstrap init, and SSR-safe theming",
   "license": "MIT",
   "type": "module",
   "main": "./dist/module.mjs",
@@ -15,7 +15,14 @@
   "files": [
     "dist"
   ],
-  "keywords": ["nuxt", "nuxt-module", "adminlte", "vue", "bootstrap", "dashboard"],
+  "keywords": [
+    "nuxt",
+    "nuxt-module",
+    "adminlte",
+    "vue",
+    "bootstrap",
+    "dashboard"
+  ],
   "scripts": {
     "build": "nuxt-module-build build",
     "dev": "nuxt-module-build build --stub",
@@ -25,8 +32,8 @@
   },
   "dependencies": {
     "@nuxt/kit": "^4.0.0",
-    "adminlte-vue": "workspace:*",
-    "defu": "^6.1.4"
+    "defu": "^6.1.4",
+    "@colorlib/adminlte-vue": "workspace:*"
   },
   "devDependencies": {
     "@nuxt/module-builder": "^1.0.2",
@@ -39,6 +46,16 @@
     "bootstrap": "^5.3.0"
   },
   "peerDependenciesMeta": {
-    "bootstrap": { "optional": true }
-  }
+    "bootstrap": {
+      "optional": true
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ColorlibHQ/adminlte-vue.git"
+  },
+  "homepage": "https://adminlte.io/themes/vue-nuxt/"
 }

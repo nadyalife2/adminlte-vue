@@ -149,7 +149,7 @@ export function provideSidebar(options: ProvideSidebarOptions = {}): SidebarApi 
 export function useSidebar(): SidebarApi {
   const api = inject(SidebarKey)
   if (!api) {
-    throw new Error('[adminlte-vue] useSidebar() must be used within <LteDashboardLayout>.')
+    throw new Error('[@colorlib/adminlte-vue] useSidebar() must be used within <LteDashboardLayout>.')
   }
   return api
 }

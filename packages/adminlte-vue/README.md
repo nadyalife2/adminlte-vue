@@ -1,13 +1,13 @@
-# adminlte-vue
+# @colorlib/adminlte-vue
 
 [AdminLTE 4](https://adminlte.io) as a **framework-agnostic Vue 3 component library**. Works in
-any Vue 3 app (Vite, Nuxt, Vue CLI). For Nuxt, prefer [`@adminlte/nuxt`](../nuxt) which auto-imports
+any Vue 3 app (Vite, Nuxt, Vue CLI). For Nuxt, prefer [`@colorlib/adminlte-nuxt`](../nuxt) which auto-imports
 everything and handles SSR-safe theming.
 
 ## Install
 
 ```bash
-npm i adminlte-vue bootstrap
+npm i @colorlib/adminlte-vue bootstrap
 # optional plugin libs, only if you use the matching components:
 # apexcharts tabulator-tables quill flatpickr tom-select sortablejs jsvectormap overlayscrollbars @fullcalendar/core @fullcalendar/daygrid @fullcalendar/interaction
 ```
@@ -17,8 +17,8 @@ npm i adminlte-vue bootstrap
 ```ts
 // main.ts
 import { createApp } from 'vue'
-import AdminLteVue from 'adminlte-vue'
-import 'adminlte-vue/css'          // prebuilt AdminLTE + Bootstrap CSS
+import AdminLteVue from '@colorlib/adminlte-vue'
+import '@colorlib/adminlte-vue/css'          // prebuilt AdminLTE + Bootstrap CSS
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import App from './App.vue'
 
@@ -27,7 +27,7 @@ createApp(App).use(AdminLteVue).mount('#app')
 
 ```vue
 <script setup lang="ts">
-import type { MenuNode } from 'adminlte-vue'
+import type { MenuNode } from '@colorlib/adminlte-vue'
 const menu: MenuNode[] = [
   { type: 'item', text: 'Dashboard', href: '/', icon: 'bi-speedometer' },
   { type: 'group', text: 'Pages', icon: 'bi-files', children: [
@@ -48,18 +48,18 @@ const menu: MenuNode[] = [
 You can also import components individually (tree-shakeable):
 
 ```ts
-import { LteCard, useSidebar } from 'adminlte-vue'
-import { LteApexChart } from 'adminlte-vue/plugins'
+import { LteCard, useSidebar } from '@colorlib/adminlte-vue'
+import { LteApexChart } from '@colorlib/adminlte-vue/plugins'
 ```
 
 ## Exports
 
 | Entry | Contents |
 | --- | --- |
-| `adminlte-vue` | ~45 core components + composables + the install plugin (default export) |
-| `adminlte-vue/plugins` | Plugin wrappers (charts, datatable, editor, datepicker, select, calendar, vector map, sortable, kanban). Heavy libs are lazy-loaded and listed as optional peer deps. |
-| `adminlte-vue/css` | Prebuilt AdminLTE + Bootstrap CSS |
-| `adminlte-vue/css/rtl` | RTL CSS variant |
+| `@colorlib/adminlte-vue` | ~45 core components + composables + the install plugin (default export) |
+| `@colorlib/adminlte-vue/plugins` | Plugin wrappers (charts, datatable, editor, datepicker, select, calendar, vector map, sortable, kanban). Heavy libs are lazy-loaded and listed as optional peer deps. |
+| `@colorlib/adminlte-vue/css` | Prebuilt AdminLTE + Bootstrap CSS |
+| `@colorlib/adminlte-vue/css/rtl` | RTL CSS variant |
 
 ## Composables
 

@@ -27,7 +27,7 @@ export interface AdminlteModuleOptions {
   components?: boolean
   /** Auto-import the composables (useSidebar, useColorMode, …). Default true. */
   composables?: boolean
-  /** Inject `adminlte-vue/css` automatically. Default true. */
+  /** Inject `@colorlib/adminlte-vue/css` automatically. Default true. */
   css?: boolean
   /** Load Bootstrap's JS bundle client-side (dropdowns/modals/offcanvas). Default true. */
   bootstrap?: boolean
@@ -37,7 +37,7 @@ export interface AdminlteModuleOptions {
   defaults?: AdminlteLayoutDefaults
 }
 
-/** Core components exported from `adminlte-vue` (the `.` entry). */
+/** Core components exported from `@colorlib/adminlte-vue` (the `.` entry). */
 const CORE_COMPONENTS = [
   'LteDashboardLayout',
   'LteAuthLayout',
@@ -87,7 +87,7 @@ const CORE_COMPONENTS = [
   'LteWizardStep',
 ] as const
 
-/** Plugin-wrapper components exported from `adminlte-vue/plugins`. */
+/** Plugin-wrapper components exported from `@colorlib/adminlte-vue/plugins`. */
 const PLUGIN_COMPONENTS = [
   'LteApexChart',
   'LteSparklineChart',
@@ -114,7 +114,7 @@ const COMPOSABLES = [
 
 export default defineNuxtModule<AdminlteModuleOptions>({
   meta: {
-    name: '@adminlte/nuxt',
+    name: '@colorlib/adminlte-nuxt',
     configKey: 'adminlte',
     compatibility: { nuxt: '>=3.0.0' },
   },
@@ -138,7 +138,7 @@ export default defineNuxtModule<AdminlteModuleOptions>({
 
     // The SFC library ships compiled ESM that uses Vue runtime helpers — must be
     // transpiled by the consumer's build, not externalized by Nitro.
-    nuxt.options.build.transpile.push('adminlte-vue')
+    nuxt.options.build.transpile.push('@colorlib/adminlte-vue')
     nuxt.options.vite ||= {}
     nuxt.options.vite.optimizeDeps ||= {}
     nuxt.options.vite.optimizeDeps.include ||= []
@@ -149,23 +149,23 @@ export default defineNuxtModule<AdminlteModuleOptions>({
       const prefix = options.prefix ?? 'Lte'
       const named = (n: string) => (prefix === 'Lte' ? n : n.replace(/^Lte/, prefix))
       for (const name of CORE_COMPONENTS) {
-        addComponent({ name: named(name), export: name, filePath: 'adminlte-vue' })
+        addComponent({ name: named(name), export: name, filePath: '@colorlib/adminlte-vue' })
       }
       for (const name of PLUGIN_COMPONENTS) {
-        addComponent({ name: named(name), export: name, filePath: 'adminlte-vue/plugins' })
+        addComponent({ name: named(name), export: name, filePath: '@colorlib/adminlte-vue/plugins' })
       }
     }
 
     // Auto-import composables.
     if (options.composables !== false) {
       for (const name of COMPOSABLES) {
-        addImports({ name, from: 'adminlte-vue' })
+        addImports({ name, from: '@colorlib/adminlte-vue' })
       }
     }
 
     // Inject the library CSS.
     if (options.css !== false) {
-      nuxt.options.css.push('adminlte-vue/css')
+      nuxt.options.css.push('@colorlib/adminlte-vue/css')
     }
 
     // Surface layout defaults to the runtime + the useAdminlteConfig() composable.

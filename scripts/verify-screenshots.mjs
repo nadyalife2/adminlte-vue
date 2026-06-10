@@ -31,7 +31,7 @@ const ctx = await browser.newContext({
 await ctx.addInitScript((theme) => {
   try {
     localStorage.setItem('theme', theme) // original AdminLTE (Bootstrap pattern)
-    localStorage.setItem('lte-theme', theme) // adminlte-vue useColorMode
+    localStorage.setItem('lte-theme', theme) // @colorlib/adminlte-vue useColorMode
   } catch {}
 }, THEME)
 const page = await ctx.newPage()

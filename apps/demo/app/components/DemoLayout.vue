@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, resolveComponent } from 'vue'
 import { menu } from '~/lib/menu'
-import type { MenuNode, NavMessage, NavNotification } from 'adminlte-vue'
+import type { MenuNode, NavMessage, NavNotification } from '@colorlib/adminlte-vue'
 
 /**
  * Demo wrapper around <LteDashboardLayout>. Supplies the shared menu, branding,

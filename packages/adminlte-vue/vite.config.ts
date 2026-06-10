@@ -15,7 +15,7 @@ const r = (p: string) => fileURLToPath(new URL(p, import.meta.url))
  */
 function copyAdminLteCss() {
   return {
-    name: 'adminlte-vue:copy-css',
+    name: '@colorlib/adminlte-vue:copy-css',
     closeBundle() {
       const fromRoots = [
         (id: string) => fileURLToPath(new URL(`./node_modules/${id}`, import.meta.url)),
@@ -37,7 +37,7 @@ function copyAdminLteCss() {
           }
         }
         if (css == null) {
-          console.warn(`[adminlte-vue] could not read ${from}`)
+          console.warn(`[@colorlib/adminlte-vue] could not read ${from}`)
           continue
         }
         const stripped = css.replace(/\n?\/\*#\s*sourceMappingURL=.*?\*\/\s*$/, '\n')

@@ -1,4 +1,4 @@
-// adminlte-vue documentation site (Nuxt 4 + @nuxt/content v3).
+// @colorlib/adminlte-vue documentation site (Nuxt 4 + @nuxt/content v3).
 
 // Local dev stays at /docs/. `EXPORT=true nuxi generate` (the `export` script)
 // builds for https://adminlte.io/themes/vue-nuxt/docs/ — it takes over the demo's

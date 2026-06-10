@@ -10,7 +10,7 @@ const props = defineProps<{
 
 const ctx = inject(WizardKey)
 if (!ctx) {
-  throw new Error('[adminlte-vue] <LteWizardStep> must be used inside <LteWizard>.')
+  throw new Error('[@colorlib/adminlte-vue] <LteWizardStep> must be used inside <LteWizard>.')
 }
 
 const isActive = computed(() => ctx!.isActive(props.id))

@@ -4,14 +4,14 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-`adminlte-vue` — an **AdminLTE 4 / Bootstrap 5.3** admin dashboard for **Vue 3 & Nuxt**. It is a
+`@colorlib/adminlte-vue` — an **AdminLTE 4 / Bootstrap 5.3** admin dashboard for **Vue 3 & Nuxt**. It is a
 faithful port of the official React (`adminlte-react`) and Laravel (`adminlte-laravel`) editions.
 
 This is a **pnpm monorepo** (`pnpm-workspace.yaml` → `packages/*`, `apps/*`):
 
 - **`packages/adminlte-vue`** — the publishable, **framework-agnostic** Vue 3 component library
   (works in any Vite / Nuxt / Vue 3 app). Built with Vite library mode → ESM + `.d.ts`.
-- **`packages/nuxt`** (`@adminlte/nuxt`) — a thin Nuxt module that auto-registers the components,
+- **`packages/nuxt`** (`@colorlib/adminlte-nuxt`) — a thin Nuxt module that auto-registers the components,
   auto-imports the composables, injects the CSS, initializes Bootstrap's JS client-side, and adds an
   SSR-safe color-mode head script. Built with `@nuxt/module-builder`.
 - **`apps/demo`** — a Nuxt 4 demo that dogfoods the library + module via `workspace:*`. **It is the
@@ -23,8 +23,8 @@ This is a **pnpm monorepo** (`pnpm-workspace.yaml` → `packages/*`, `apps/*`):
   section-grouped sidebar, a TOC, and reading-order prev/next (via `useDocsPages`). Documents the
   Vue/Nuxt port itself. Run with `pnpm dev:docs` / `pnpm build:docs`.
 
-**Correctness gates** (all must pass): `pnpm --filter adminlte-vue type-check` (`vue-tsc --noEmit`),
-`pnpm --filter adminlte-vue test` (Vitest — jsdom + @vue/test-utils), `pnpm lint` (ESLint 9 flat
+**Correctness gates** (all must pass): `pnpm --filter @colorlib/adminlte-vue type-check` (`vue-tsc --noEmit`),
+`pnpm --filter @colorlib/adminlte-vue test` (Vitest — jsdom + @vue/test-utils), `pnpm lint` (ESLint 9 flat
 config over `packages/*/src`; `apps/**` excluded), `pnpm build:demo`, and `pnpm build:docs`.
 CI (`.github/workflows/ci.yml`) runs exactly these on every push/PR, after `pnpm build`.
 
@@ -48,23 +48,23 @@ Tests are co-located `*.test.ts` files under `packages/adminlte-vue/src/**` (con
 test file or watch:
 
 ```bash
-pnpm --filter adminlte-vue exec vitest run src/widget/LteCard.test.ts   # one file
-pnpm --filter adminlte-vue exec vitest run -t 'collapses'               # by test name
-pnpm --filter adminlte-vue test:watch                                   # watch mode
+pnpm --filter @colorlib/adminlte-vue exec vitest run src/widget/LteCard.test.ts   # one file
+pnpm --filter @colorlib/adminlte-vue exec vitest run -t 'collapses'               # by test name
+pnpm --filter @colorlib/adminlte-vue test:watch                                   # watch mode
 ```
 
 Per package:
 
 ```bash
-pnpm --filter adminlte-vue build        # vite build (ESM + dts + copy-css)
-pnpm --filter adminlte-vue dev          # vite build --watch
-pnpm --filter adminlte-vue type-check   # vue-tsc --noEmit  ← primary library gate
-pnpm --filter @adminlte/nuxt build      # nuxt-module-build
-pnpm --filter @adminlte/nuxt dev        # nuxt-module-build --stub (live src in the demo)
+pnpm --filter @colorlib/adminlte-vue build        # vite build (ESM + dts + copy-css)
+pnpm --filter @colorlib/adminlte-vue dev          # vite build --watch
+pnpm --filter @colorlib/adminlte-vue type-check   # vue-tsc --noEmit  ← primary library gate
+pnpm --filter @colorlib/adminlte-nuxt build      # nuxt-module-build
+pnpm --filter @colorlib/adminlte-nuxt dev        # nuxt-module-build --stub (live src in the demo)
 ```
 
 The demo consumes the library's built `dist/`. After editing library source, rebuild it (or keep
-`pnpm --filter adminlte-vue dev` running) before the demo reflects the change. To verify end to end:
+`pnpm --filter @colorlib/adminlte-vue dev` running) before the demo reflects the change. To verify end to end:
 `pnpm build:demo` then `node apps/demo/.output/server/index.mjs`.
 
 ## The build pipeline
@@ -114,7 +114,7 @@ Every browser-API access (`window`, `document`, `localStorage`, `matchMedia`) is
 Specific patterns:
 
 - **Color mode** writes `data-bs-theme` on `<html>` and persists the preference under the
-  **`lte-theme`** localStorage key. To avoid a flash, `@adminlte/nuxt` injects a **blocking inline
+  **`lte-theme`** localStorage key. To avoid a flash, `@colorlib/adminlte-nuxt` injects a **blocking inline
   head script** (the `themeScript` option) that sets the attribute before first paint;
   `useColorMode` only owns reactive updates after hydration. The toggle glyph is rendered under
   `<ClientOnly>` in the demo.
@@ -145,11 +145,11 @@ reference implementation.** In the demo, wrap these components in **`<ClientOnly
 `#fallback`. Consumers install the matching lib as their own dep + load its CSS.
 
 ### Nuxt module (`packages/nuxt/src/module.ts`)
-`defineNuxtModule` with `configKey: 'adminlte'`. It: pushes `adminlte-vue` into `build.transpile`
+`defineNuxtModule` with `configKey: 'adminlte'`. It: pushes `@colorlib/adminlte-vue` into `build.transpile`
 (mandatory — SFC ESM breaks SSR externalization otherwise); adds `bootstrap`/`@popperjs/core` to
 `vite.optimizeDeps.include`; auto-registers components via `addComponent({ export, filePath:
-'adminlte-vue' | 'adminlte-vue/plugins' })`; auto-imports composables via `addImports`; pushes
-`adminlte-vue/css` into `nuxt.options.css`; injects the theme head script; and adds a `.client`
+'@colorlib/adminlte-vue' | '@colorlib/adminlte-vue/plugins' })`; auto-imports composables via `addImports`; pushes
+`@colorlib/adminlte-vue/css` into `nuxt.options.css`; injects the theme head script; and adds a `.client`
 plugin that imports `bootstrap` (its data-API delegation powers dropdowns/modals/offcanvas).
 
 ### Demo (Nuxt 4, `apps/demo`)
@@ -232,4 +232,4 @@ Mechanics (all in the demo; the published library is untouched):
    Nuxt module auto-registers it.
 
 Add public types to `src/types/*` (re-exported by `src/types/index.ts`). After any library change,
-run `pnpm --filter adminlte-vue type-check` and `pnpm build:demo`.
+run `pnpm --filter @colorlib/adminlte-vue type-check` and `pnpm build:demo`.

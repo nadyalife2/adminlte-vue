@@ -11,7 +11,7 @@ const props = defineProps<{
 
 const ctx = inject(TabsKey)
 if (!ctx) {
-  throw new Error('[adminlte-vue] <LteTab> must be used inside <LteTabs>.')
+  throw new Error('[@colorlib/adminlte-vue] <LteTab> must be used inside <LteTabs>.')
 }
 
 const isActive = computed(() => ctx!.activeId.value === props.id)

@@ -11,7 +11,7 @@ const props = defineProps<{
 
 const ctx = inject(AccordionKey)
 if (!ctx) {
-  throw new Error('[adminlte-vue] <LteAccordionItem> must be used inside <LteAccordion>.')
+  throw new Error('[@colorlib/adminlte-vue] <LteAccordionItem> must be used inside <LteAccordion>.')
 }
 
 const isOpen = computed(() => ctx!.isOpen(props.id))

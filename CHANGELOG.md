@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to **adminlte-vue** (the library, the `@adminlte/nuxt` module, and the demo)
+All notable changes to **@colorlib/adminlte-vue** (the library, the `@colorlib/adminlte-nuxt` module, and the demo)
 are documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
@@ -73,7 +73,7 @@ wrappers, a modern-Vue (3.5) sweep, and accessibility upgrades for the modal and
 Initial release — an AdminLTE 4 / Bootstrap 5.3 admin dashboard for Vue 3 and Nuxt, ported from the
 React and Laravel editions.
 
-### Added — `adminlte-vue` (core library)
+### Added — `@colorlib/adminlte-vue` (core library)
 
 #### Layout
 - `LteDashboardLayout` — the application shell and single provider host. Provides the sidebar,
@@ -100,7 +100,7 @@ React and Laravel editions.
 #### Tools
 - `LteModal` (`v-model`, teleported, ESC/backdrop), `LteWizard` / `LteWizardStep`.
 
-#### Plugins (`adminlte-vue/plugins`)
+#### Plugins (`@colorlib/adminlte-vue/plugins`)
 - `LteApexChart`, `LteSparklineChart`, `LteDatatable`, `LteEditor`, `LteFlatpickr`, `LteTomSelect`,
   `LteCalendar`, `LteVectorMap`, `LteSortable`, `LteKanban` — each lazy-loads its library via dynamic
   `import()` and is SSR-safe.
@@ -119,9 +119,9 @@ React and Laravel editions.
   (`.` and `./plugins`), and `./css` + `./css/rtl` exports (prebuilt AdminLTE CSS copied at build).
 - All heavy plugin libs + `vue`/`bootstrap` are externalized and declared optional peer dependencies.
 
-### Added — `@adminlte/nuxt` (module)
+### Added — `@colorlib/adminlte-nuxt` (module)
 - Auto-registers all components (prefix configurable), auto-imports the composables, injects
-  `adminlte-vue/css`, and loads Bootstrap's JS bundle on the client.
+  `@colorlib/adminlte-vue/css`, and loads Bootstrap's JS bundle on the client.
 - A blocking inline head script sets `data-bs-theme` before first paint (no FOUC).
 - `defaults` option (mirrors the Laravel config) surfaced via `useAdminlteConfig()`.
 

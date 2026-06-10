@@ -1,4 +1,4 @@
-import type { MenuNode } from 'adminlte-vue'
+import type { MenuNode } from '@colorlib/adminlte-vue'
 
 /** Sidebar menu for the documentation section (mirrors the AdminLTE 4 docs nav). */
 export const docsMenu: MenuNode[] = [
