@@ -13,36 +13,43 @@ import LteSidebar from './LteSidebar.vue'
 import LteFooter from './LteFooter.vue'
 import LteCommandPalette from '../widget/LteCommandPalette.vue'
 
-const props = withDefaults(
-  defineProps<
-    DashboardLayoutProps & {
-      /** Brand text shown next to the logo in the sidebar. */
-      brandText?: string
-      /** Link component for sidebar/palette nav (e.g. NuxtLink). Default `<a>`. */
-      linkComponent?: string | Component
-      /** Accordion treeview (one open group per parent). Default false. */
-      accordion?: boolean
-      /** Navigation callback for the command palette (e.g. router.push). */
-      navigate?: (href: string) => void
-    }
-  >(),
-  {
-    logoHref: '/',
-    sidebarTheme: 'dark',
-    sidebarBreakpoint: 'lg',
-    sidebarMini: false,
-    fixedHeader: false,
-    fixedSidebar: false,
-    fixedFooter: false,
-    layoutFixed: true,
-    colorModeToggle: true,
-    initialColorMode: 'auto',
-    enableSidebarPersistence: false,
-    currentPath: '/',
-    linkComponent: 'a',
-    accordion: false,
+// Reactive props destructure (Vue 3.5) — destructured names stay reactive when
+// read inside computed getters / the template.
+const {
+  menuItems,
+  logo,
+  logoHref = '/',
+  user,
+  sidebarTheme = 'dark',
+  sidebarClass,
+  sidebarBreakpoint = 'lg',
+  sidebarMini = false,
+  fixedHeader = false,
+  fixedSidebar = false,
+  fixedFooter = false,
+  layoutFixed = true,
+  colorModeToggle = true,
+  initialColorMode = 'auto',
+  enableSidebarPersistence = false,
+  navbarClass,
+  bodyClass,
+  currentPath = '/',
+  brandText,
+  linkComponent = 'a',
+  accordion = false,
+  navigate,
+} = defineProps<
+  DashboardLayoutProps & {
+    /** Brand text shown next to the logo in the sidebar. */
+    brandText?: string
+    /** Link component for sidebar/palette nav (e.g. NuxtLink). Default `<a>`. */
+    linkComponent?: string | Component
+    /** Accordion treeview (one open group per parent). Default false. */
+    accordion?: boolean
+    /** Navigation callback for the command palette (e.g. router.push). */
+    navigate?: (href: string) => void
   }
-)
+>()
 
 const BREAKPOINT_PX: Record<BreakpointSize, number> = {
   sm: 576,
@@ -51,28 +58,28 @@ const BREAKPOINT_PX: Record<BreakpointSize, number> = {
   xl: 1200,
   xxl: 1400,
 }
-const breakpointPx = computed(() => BREAKPOINT_PX[props.sidebarBreakpoint] ?? 992)
+const breakpointPx = computed(() => BREAKPOINT_PX[sidebarBreakpoint] ?? 992)
 
 const staticBodyClasses = computed(() =>
   cn(
-    props.layoutFixed && 'layout-fixed',
-    `sidebar-expand-${props.sidebarBreakpoint}`,
-    props.fixedHeader && 'fixed-header',
-    props.fixedSidebar && 'fixed-sidebar',
-    props.fixedFooter && 'fixed-footer',
+    layoutFixed && 'layout-fixed',
+    `sidebar-expand-${sidebarBreakpoint}`,
+    fixedHeader && 'fixed-header',
+    fixedSidebar && 'fixed-sidebar',
+    fixedFooter && 'fixed-footer',
     'bg-body-tertiary',
-    props.bodyClass
+    bodyClass
   )
 )
 
 // Provide shared state (sidebar / color mode / command palette) to all descendants.
 provideSidebar({
-  sidebarMini: props.sidebarMini,
-  enablePersistence: props.enableSidebarPersistence,
-  sidebarBreakpoint: breakpointPx.value,
+  sidebarMini,
+  enablePersistence: enableSidebarPersistence,
+  sidebarBreakpoint: breakpointPx,
   staticBodyClasses,
 })
-provideColorMode({ initialMode: props.initialColorMode })
+provideColorMode({ initialMode: initialColorMode })
 provideCommandPalette()
 
 const emit = defineEmits<{ logout: []; profile: [] }>()

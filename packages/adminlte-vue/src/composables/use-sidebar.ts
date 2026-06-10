@@ -2,6 +2,7 @@ import {
   computed,
   inject,
   onMounted,
+  onScopeDispose,
   provide,
   ref,
   toValue,
@@ -25,8 +26,8 @@ export interface SidebarApi {
   isMiniMode: Ref<boolean>
   /** Reactive: is the viewport at/below the sidebar breakpoint? */
   isMobile: ComputedRef<boolean>
-  /** The breakpoint, in pixels. */
-  sidebarBreakpoint: number
+  /** The breakpoint, in pixels (reactive — follows the option it was created with). */
+  sidebarBreakpoint: ComputedRef<number>
   /** On mobile toggles the overlay; on desktop toggles the collapse state. */
   toggle: () => void
   collapse: () => void
@@ -37,7 +38,7 @@ export interface ProvideSidebarOptions {
   sidebarMini?: boolean
   enablePersistence?: boolean
   /** Breakpoint in pixels below which the sidebar behaves as a mobile overlay. */
-  sidebarBreakpoint?: number
+  sidebarBreakpoint?: MaybeRefOrGetter<number>
   /**
    * Static body classes (e.g. `layout-fixed sidebar-expand-lg fixed-header`) to
    * reflect onto `<body>` alongside the dynamic state classes. Lets plain-Vue
@@ -63,8 +64,9 @@ export function provideSidebar(options: ProvideSidebarOptions = {}): SidebarApi 
   const isMiniMode = ref(sidebarMini)
   const windowWidth = useWindowWidth()
 
+  const breakpointPx = computed(() => toValue(sidebarBreakpoint))
   // Treat unknown width (SSR / pre-mount) as desktop.
-  const isMobile = computed(() => (windowWidth.value ?? 9999) <= sidebarBreakpoint)
+  const isMobile = computed(() => (windowWidth.value ?? 9999) <= breakpointPx.value)
 
   onMounted(() => {
     if (!enablePersistence) return
@@ -89,21 +91,29 @@ export function provideSidebar(options: ProvideSidebarOptions = {}): SidebarApi 
 
   // Reflect state onto <body>. The body element lives outside the Vue app tree,
   // so imperative classList mutation is hydration-safe. No-ops on the server.
+  // Diffed against the previously applied set so classes that turn off (or
+  // static classes that change between layout variants) are removed, and fully
+  // cleared on dispose so a dashboard mount doesn't leak onto e.g. auth pages.
+  let appliedBodyClasses = new Set<string>()
   watchEffect(() => {
     if (typeof document === 'undefined') return
     const body = document.body
-    const dynamic = {
-      'sidebar-collapse': isCollapsed.value,
-      'sidebar-open': isMobileOpen.value,
-      'sidebar-mini': isMiniMode.value,
-    }
-    for (const [cls, on] of Object.entries(dynamic)) body.classList.toggle(cls, on)
-
+    const next = new Set<string>()
+    if (isCollapsed.value) next.add('sidebar-collapse')
+    if (isMobileOpen.value) next.add('sidebar-open')
+    if (isMiniMode.value) next.add('sidebar-mini')
     if (staticBodyClasses != null) {
-      for (const cls of toValue(staticBodyClasses).split(/\s+/).filter(Boolean)) {
-        body.classList.add(cls)
-      }
+      for (const cls of toValue(staticBodyClasses).split(/\s+/).filter(Boolean)) next.add(cls)
     }
+    for (const cls of appliedBodyClasses) if (!next.has(cls)) body.classList.remove(cls)
+    for (const cls of next) body.classList.add(cls)
+    appliedBodyClasses = next
+  })
+
+  onScopeDispose(() => {
+    if (typeof document === 'undefined') return
+    for (const cls of appliedBodyClasses) document.body.classList.remove(cls)
+    appliedBodyClasses = new Set()
   })
 
   const toggle = () => {
@@ -124,7 +134,7 @@ export function provideSidebar(options: ProvideSidebarOptions = {}): SidebarApi 
     isMobileOpen,
     isMiniMode,
     isMobile,
-    sidebarBreakpoint,
+    sidebarBreakpoint: breakpointPx,
     toggle,
     collapse,
     expand,
