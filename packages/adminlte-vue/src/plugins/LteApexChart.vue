@@ -1,20 +1,25 @@
 <script setup lang="ts">
-import { onBeforeUnmount, onMounted, ref, watch } from 'vue'
+import { onBeforeUnmount, onMounted, useTemplateRef, watch } from 'vue'
 import type { ApexOptions } from 'apexcharts'
 
 const props = withDefaults(
   defineProps<{
     type?: string
     series: unknown[]
-    /** Extra ApexCharts options merged over { chart: { type, height }, series }. */
+    /** Extra ApexCharts options merged over { chart: { type, height, width }, series }. */
     options?: ApexOptions
     height?: number | string
     width?: number | string
+    /**
+     * Watch `series` deeply (recursive traversal — costly for large datasets).
+     * Off by default: replace the array immutably to trigger an update.
+     */
+    deepWatch?: boolean
   }>(),
   { type: 'line', height: 350 }
 )
 
-const el = ref<HTMLElement | null>(null)
+const el = useTemplateRef('el')
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 let chart: any = null
 
@@ -43,10 +48,10 @@ onMounted(async () => {
 watch(
   () => props.series,
   (series) => chart?.updateSeries(series),
-  { deep: true }
+  { deep: props.deepWatch }
 )
 watch(
-  () => [props.options, props.type, props.height],
+  () => [props.options, props.type, props.height, props.width],
   () => chart?.updateOptions(buildOptions()),
   { deep: true }
 )

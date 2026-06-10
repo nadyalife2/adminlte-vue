@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onBeforeUnmount, onMounted, ref, watch } from 'vue'
+import { onBeforeUnmount, onMounted, useTemplateRef, watch } from 'vue'
 
 interface TomOption {
   value: string
@@ -8,8 +8,6 @@ interface TomOption {
 
 const props = withDefaults(
   defineProps<{
-    /** v-model — selected value(s). */
-    modelValue?: string | string[]
     options?: TomOption[]
     multiple?: boolean
     placeholder?: string
@@ -18,9 +16,11 @@ const props = withDefaults(
   }>(),
   { options: () => [] }
 )
-const emit = defineEmits<{ 'update:modelValue': [value: string | string[]] }>()
 
-const el = ref<HTMLSelectElement | null>(null)
+/** v-model — selected value(s). */
+const model = defineModel<string | string[]>()
+
+const el = useTemplateRef('el')
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 let instance: any = null
 
@@ -32,17 +32,14 @@ onMounted(async () => {
     options: props.options,
     placeholder: props.placeholder,
     ...props.settings,
-    onChange: (value: string | string[]) => emit('update:modelValue', value),
+    onChange: (value: string | string[]) => (model.value = value),
   })
-  if (props.modelValue != null) instance.setValue(props.modelValue as string, true)
+  if (model.value != null) instance.setValue(model.value as string, true)
 })
 
-watch(
-  () => props.modelValue,
-  (value) => {
-    if (instance && value != null) instance.setValue(value as string, true)
-  }
-)
+watch(model, (value) => {
+  if (instance && value != null) instance.setValue(value as string, true)
+})
 
 onBeforeUnmount(() => {
   instance?.destroy()

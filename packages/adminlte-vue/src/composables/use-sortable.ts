@@ -16,7 +16,7 @@ export interface SortableApi {
  * Returns a `destroy` handle; cleanup also runs automatically on unmount.
  */
 export function useSortable(
-  target: Ref<HTMLElement | null>,
+  target: Readonly<Ref<HTMLElement | null>>,
   options: UseSortableOptions = {}
 ): SortableApi {
   let instance: Sortable | null = null

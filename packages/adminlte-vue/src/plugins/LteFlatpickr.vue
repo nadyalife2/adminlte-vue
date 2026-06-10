@@ -1,20 +1,17 @@
 <script setup lang="ts">
-import { onBeforeUnmount, onMounted, ref, watch } from 'vue'
+import { onBeforeUnmount, onMounted, useTemplateRef, watch } from 'vue'
 import type { Instance } from 'flatpickr/dist/types/instance'
 import type { Options } from 'flatpickr/dist/types/options'
 
-const props = withDefaults(
-  defineProps<{
-    /** v-model — selected date(s) as a string. */
-    modelValue?: string
-    placeholder?: string
-    options?: Partial<Options>
-  }>(),
-  { modelValue: '' }
-)
-const emit = defineEmits<{ 'update:modelValue': [value: string] }>()
+const props = defineProps<{
+  placeholder?: string
+  options?: Partial<Options>
+}>()
 
-const el = ref<HTMLInputElement | null>(null)
+/** v-model — selected date(s) as a string. */
+const model = defineModel<string>({ default: '' })
+
+const el = useTemplateRef('el')
 let picker: Instance | null = null
 
 onMounted(async () => {
@@ -23,17 +20,14 @@ onMounted(async () => {
   if (!el.value) return
   picker = flatpickr(el.value, {
     ...props.options,
-    defaultDate: props.modelValue || undefined,
-    onChange: (_dates, dateStr) => emit('update:modelValue', dateStr),
+    defaultDate: model.value || undefined,
+    onChange: (_dates, dateStr) => (model.value = dateStr),
   })
 })
 
-watch(
-  () => props.modelValue,
-  (value) => {
-    if (picker && value !== el.value?.value) picker.setDate(value, false)
-  }
-)
+watch(model, (value) => {
+  if (picker && value !== el.value?.value) picker.setDate(value, false)
+})
 
 onBeforeUnmount(() => {
   picker?.destroy()
@@ -42,5 +36,5 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <input ref="el" type="text" class="form-control" :placeholder="placeholder" :value="modelValue" />
+  <input ref="el" type="text" class="form-control" :placeholder="placeholder" :value="model" />
 </template>

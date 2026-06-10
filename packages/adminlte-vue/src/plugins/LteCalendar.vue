@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onBeforeUnmount, onMounted, ref, watch } from 'vue'
+import { onBeforeUnmount, onMounted, useTemplateRef, watch } from 'vue'
 import type { PropType } from 'vue'
 import type {
   Calendar,
@@ -16,8 +16,15 @@ import type { DateClickArg } from '@fullcalendar/interaction'
 // `Array as PropType<…>` emits `type: Array`, keeping the element type intact.
 const props = defineProps({
   events: { type: Array as PropType<EventInput[]>, default: () => [] },
+  /** Reactive after mount — changes are applied via `calendar.changeView()`. */
   initialView: { type: String, default: 'dayGridMonth' },
+  /** Reactive after mount — changed keys are applied via `calendar.setOption()`. */
   options: { type: Object as PropType<Partial<CalendarOptions>>, default: undefined },
+  /**
+   * Watch `events` deeply (recursive traversal — costly for large datasets).
+   * Off by default: replace the array immutably to trigger an update.
+   */
+  deepWatch: { type: Boolean, default: false },
 })
 
 const emit = defineEmits<{
@@ -26,7 +33,7 @@ const emit = defineEmits<{
   eventDrop: [arg: EventDropArg]
 }>()
 
-const el = ref<HTMLElement | null>(null)
+const el = useTemplateRef('el')
 let calendar: Calendar | null = null
 
 onMounted(async () => {
@@ -63,7 +70,20 @@ watch(
     calendar.removeAllEvents()
     calendar.addEventSource(events)
   },
-  { deep: true }
+  { deep: props.deepWatch }
+)
+watch(
+  () => props.initialView,
+  (view) => calendar?.changeView(view)
+)
+watch(
+  () => props.options,
+  (options) => {
+    if (!calendar || !options) return
+    for (const [key, value] of Object.entries(options)) {
+      calendar.setOption(key as keyof CalendarOptions, value as never)
+    }
+  }
 )
 
 onBeforeUnmount(() => {

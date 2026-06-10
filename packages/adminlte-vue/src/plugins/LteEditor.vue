@@ -1,22 +1,22 @@
 <script setup lang="ts">
-import { onBeforeUnmount, onMounted, ref, watch } from 'vue'
+import { onBeforeUnmount, onMounted, useTemplateRef, watch } from 'vue'
 import type QuillType from 'quill'
 
 const props = withDefaults(
   defineProps<{
-    /** v-model — HTML string. */
-    modelValue?: string
     placeholder?: string
     theme?: string
     /** Quill modules option (e.g. custom toolbar). */
     modules?: Record<string, unknown>
     readOnly?: boolean
   }>(),
-  { modelValue: '', theme: 'snow' }
+  { theme: 'snow' }
 )
-const emit = defineEmits<{ 'update:modelValue': [html: string] }>()
 
-const el = ref<HTMLElement | null>(null)
+/** v-model — HTML string. */
+const model = defineModel<string>({ default: '' })
+
+const el = useTemplateRef('el')
 let quill: QuillType | null = null
 
 onMounted(async () => {
@@ -35,18 +35,15 @@ onMounted(async () => {
       ],
     },
   })
-  if (props.modelValue) quill.root.innerHTML = props.modelValue
+  if (model.value) quill.root.innerHTML = model.value
   quill.on('text-change', () => {
-    emit('update:modelValue', quill!.root.innerHTML)
+    model.value = quill!.root.innerHTML
   })
 })
 
-watch(
-  () => props.modelValue,
-  (html) => {
-    if (quill && html !== quill.root.innerHTML) quill.root.innerHTML = html ?? ''
-  }
-)
+watch(model, (html) => {
+  if (quill && html !== quill.root.innerHTML) quill.root.innerHTML = html ?? ''
+})
 
 onBeforeUnmount(() => {
   quill = null

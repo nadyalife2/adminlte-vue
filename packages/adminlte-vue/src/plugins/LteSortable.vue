@@ -1,20 +1,23 @@
 <script setup lang="ts" generic="T">
-import { ref } from 'vue'
+import { useTemplateRef } from 'vue'
 import type { PropType } from 'vue'
 import type { Options, SortableEvent } from 'sortablejs'
 import { useSortable } from '../composables/use-sortable'
 
-// Runtime prop declaration (see LteCalendar): emits a runtime `type: Array` so
-// the auto-imported v-model resolves to `T[]` rather than `never[]`.
 const props = defineProps({
-  /** v-model — the ordered list. */
-  modelValue: { type: Array as PropType<T[]>, default: () => [] },
   tag: { type: String, default: 'div' },
   options: { type: Object as PropType<Options>, default: undefined },
 })
-const emit = defineEmits<{ 'update:modelValue': [value: T[]]; end: [event: SortableEvent] }>()
+const emit = defineEmits<{ end: [event: SortableEvent] }>()
 
-const el = ref<HTMLElement | null>(null)
+// Runtime `type: Array` (see LteCalendar): keeps the auto-imported v-model
+// resolving to `T[]` rather than `never[]` under Volar.
+/** v-model — the ordered list. */
+const model = defineModel({ type: Array as PropType<T[]>, default: () => [] })
+
+// Explicit generic: the ref sits on a dynamic `<component :is>`, so the
+// element type can't be inferred from the template.
+const el = useTemplateRef<HTMLElement>('el')
 
 useSortable(el, {
   options: {
@@ -23,9 +26,9 @@ useSortable(el, {
     onEnd: (event: SortableEvent) => {
       const { oldIndex, newIndex } = event
       if (oldIndex != null && newIndex != null && oldIndex !== newIndex) {
-        const next = [...props.modelValue]
+        const next = [...model.value]
         next.splice(newIndex, 0, next.splice(oldIndex, 1)[0]!)
-        emit('update:modelValue', next)
+        model.value = next
       }
       emit('end', event)
     },

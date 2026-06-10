@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onBeforeUnmount, onMounted, ref } from 'vue'
+import { onBeforeUnmount, onMounted, useTemplateRef } from 'vue'
 import type Sortable from 'sortablejs'
 import type { SortableEvent } from 'sortablejs'
 import type { BootstrapTheme } from '../types/theme'
@@ -21,7 +21,7 @@ const emit = defineEmits<{
   move: [payload: { card: string; from: string; to: string; newIndex: number }]
 }>()
 
-const root = ref<HTMLElement | null>(null)
+const root = useTemplateRef('root')
 const instances: Sortable[] = []
 
 onMounted(async () => {

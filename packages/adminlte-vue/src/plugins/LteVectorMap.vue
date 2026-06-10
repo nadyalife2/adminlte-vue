@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onBeforeUnmount, onMounted, ref } from 'vue'
+import { onBeforeUnmount, onMounted, useTemplateRef } from 'vue'
 
 const props = withDefaults(
   defineProps<{
@@ -11,7 +11,7 @@ const props = withDefaults(
   { map: 'world', height: '400px' }
 )
 
-const el = ref<HTMLElement | null>(null)
+const el = useTemplateRef('el')
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 let instance: any = null
 
