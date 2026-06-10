@@ -120,8 +120,8 @@ const transition = computed(() => treeviewTransition(props.animationSpeed))
     <Transition v-bind="transition">
       <ul v-show="isOpen" class="nav nav-treeview">
         <LteSidebarNavItem
-          v-for="(child, idx) in item.children"
-          :key="idx"
+          v-for="child in item.children"
+          :key="child.type === 'item' ? child.href : `${child.type}:${child.text}`"
           :item="child"
           :current-path="currentPath"
           :depth="depth + 1"

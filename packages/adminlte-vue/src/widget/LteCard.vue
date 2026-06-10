@@ -5,52 +5,62 @@ import { biClass, cn } from '../lib/class-name'
 import { useCardWidget } from '../composables/use-card-widget'
 import { treeviewTransition } from '../composables/use-treeview'
 
-const props = withDefaults(
-  defineProps<{
-    title?: string
-    icon?: string
-    theme?: BootstrapTheme
-    /**
-     * Color treatment when `theme` is set:
-     * - 'default' → colored header (`card-{theme}`)
-     * - 'outline' → colored top border (`card-outline card-{theme}`)
-     * - 'solid'   → fully colored card (`text-bg-{theme}`)
-     */
-    variant?: 'default' | 'outline' | 'solid'
-    /** Add `bg-gradient` to the card (most visible with `variant: 'solid'`). */
-    gradient?: boolean
-    collapsible?: boolean
-    defaultCollapsed?: boolean
-    removable?: boolean
-    maximizable?: boolean
-    bodyClass?: string
-    headerClass?: string
-    footerClass?: string
-  }>(),
-  { variant: 'default' }
-)
+// Reactive props destructure (Vue 3.5) — destructured names stay reactive when
+// read inside computed getters / the template.
+const {
+  title,
+  icon,
+  theme,
+  variant = 'default',
+  gradient,
+  collapsible,
+  defaultCollapsed,
+  removable,
+  maximizable,
+  bodyClass,
+  headerClass,
+  footerClass,
+} = defineProps<{
+  title?: string
+  icon?: string
+  theme?: BootstrapTheme
+  /**
+   * Color treatment when `theme` is set:
+   * - 'default' → colored header (`card-{theme}`)
+   * - 'outline' → colored top border (`card-outline card-{theme}`)
+   * - 'solid'   → fully colored card (`text-bg-{theme}`)
+   */
+  variant?: 'default' | 'outline' | 'solid'
+  /** Add `bg-gradient` to the card (most visible with `variant: 'solid'`). */
+  gradient?: boolean
+  collapsible?: boolean
+  defaultCollapsed?: boolean
+  removable?: boolean
+  maximizable?: boolean
+  bodyClass?: string
+  headerClass?: string
+  footerClass?: string
+}>()
 
 const { isCollapsed, isMaximized, isRemoved, toggleCollapse, toggleMaximize, remove } =
-  useCardWidget({ defaultCollapsed: props.defaultCollapsed })
+  useCardWidget({ defaultCollapsed })
 
 const cardClass = computed(() => {
   let base = 'card'
-  if (props.theme) {
-    if (props.variant === 'outline') base = `card card-outline card-${props.theme}`
-    else if (props.variant === 'solid') base = `card text-bg-${props.theme}`
-    else base = `card card-${props.theme}`
+  if (theme) {
+    if (variant === 'outline') base = `card card-outline card-${theme}`
+    else if (variant === 'solid') base = `card text-bg-${theme}`
+    else base = `card card-${theme}`
   }
   return cn(
     base,
-    props.gradient && props.theme && 'bg-gradient',
+    gradient && theme && 'bg-gradient',
     isCollapsed.value && 'collapsed-card',
     isMaximized.value && 'maximized-card'
   )
 })
 
-const hasTools = computed(
-  () => props.collapsible || props.removable || props.maximizable
-)
+const hasTools = computed(() => collapsible || removable || maximizable)
 const transition = treeviewTransition(300)
 </script>
 

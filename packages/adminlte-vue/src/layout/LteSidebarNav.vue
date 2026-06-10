@@ -27,8 +27,8 @@ provideTreeviewRegistry(props.accordion)
       :data-accordion="accordion ? 'true' : 'false'"
     >
       <LteSidebarNavItem
-        v-for="(item, idx) in items"
-        :key="idx"
+        v-for="item in items"
+        :key="item.type === 'item' ? item.href : `${item.type}:${item.text}`"
         :item="item"
         :current-path="currentPath"
         :depth="0"
