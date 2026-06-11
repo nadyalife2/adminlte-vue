@@ -35,15 +35,15 @@ importers:
       '@adminlte/nuxt':
         specifier: workspace:*
         version: link:../../packages/nuxt
+      '@adminlte/vue':
+        specifier: workspace:*
+        version: link:../../packages/adminlte-vue
       '@fullcalendar/list':
         specifier: 6.1.20
         version: 6.1.20(@fullcalendar/core@6.1.20)
       '@fullcalendar/timegrid':
         specifier: 6.1.20
         version: 6.1.20(@fullcalendar/core@6.1.20)
-      adminlte-vue:
-        specifier: workspace:*
-        version: link:../../packages/adminlte-vue
       bootstrap:
         specifier: ^5.3.8
         version: 5.3.8(@popperjs/core@2.11.8)
@@ -193,12 +193,12 @@ importers:
 
   packages/nuxt:
     dependencies:
+      '@adminlte/vue':
+        specifier: workspace:*
+        version: link:../adminlte-vue
       '@nuxt/kit':
         specifier: ^4.0.0
         version: 4.4.6(magicast@0.5.3)
-      adminlte-vue:
-        specifier: workspace:*
-        version: link:../adminlte-vue
       bootstrap:
         specifier: ^5.3.0
         version: 5.3.8(@popperjs/core@2.11.8)

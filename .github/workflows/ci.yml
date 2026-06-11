@@ -30,10 +30,10 @@ jobs:
         run: pnpm lint
 
       - name: Type-check (library)
-        run: pnpm --filter adminlte-vue type-check
+        run: pnpm --filter @adminlte/vue type-check
 
       - name: Unit tests (library)
-        run: pnpm --filter adminlte-vue test
+        run: pnpm --filter @adminlte/vue test
 
       - name: Build demo
         run: pnpm build:demo

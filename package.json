@@ -13,7 +13,7 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "type-check": "pnpm -r run type-check",
-    "test": "pnpm --filter adminlte-vue test"
+    "test": "pnpm --filter @adminlte/vue test"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

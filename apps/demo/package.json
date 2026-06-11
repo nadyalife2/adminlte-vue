@@ -16,7 +16,7 @@
     "@adminlte/nuxt": "workspace:*",
     "@fullcalendar/list": "6.1.20",
     "@fullcalendar/timegrid": "6.1.20",
-    "adminlte-vue": "workspace:*",
+    "@adminlte/vue": "workspace:*",
     "bootstrap": "^5.3.8"
   },
   "devDependencies": {

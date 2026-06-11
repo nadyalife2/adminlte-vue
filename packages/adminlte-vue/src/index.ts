@@ -164,8 +164,8 @@ export const components: Record<string, Component> = {
  * Vue plugin — globally registers all core components.
  *
  * ```ts
- * import AdminLteVue from 'adminlte-vue'
- * import 'adminlte-vue/css'
+ * import AdminLteVue from '@adminlte/vue'
+ * import '@adminlte/vue/css'
  * app.use(AdminLteVue)
  * ```
  */

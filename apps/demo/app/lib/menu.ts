@@ -1,4 +1,4 @@
-import type { MenuNode } from 'adminlte-vue'
+import type { MenuNode } from '@adminlte/vue'
 
 /**
  * The demo sidebar menu. Mirrors the official AdminLTE 4 `index.html` sidebar

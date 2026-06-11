@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const sections = [
-  { icon: 'bi-rocket-takeoff', title: 'Getting started', text: 'Install adminlte-vue or @adminlte/nuxt and import the CSS.' },
+  { icon: 'bi-rocket-takeoff', title: 'Getting started', text: 'Install @adminlte/vue or @adminlte/nuxt and import the CSS.' },
   { icon: 'bi-layout-sidebar', title: 'Layout', text: 'Use <LteDashboardLayout> with a MenuNode[] and slots for the topbar.' },
   { icon: 'bi-moon-stars', title: 'Color mode', text: 'Dark mode via data-bs-theme, with an SSR-safe head script.' },
   { icon: 'bi-puzzle', title: 'Composables', text: 'useSidebar, useColorMode, useCardWidget, useFullscreen and more.' },
@@ -24,10 +24,10 @@ const sections = [
     </div>
     <LteCard title="Install">
       <pre class="bg-body-secondary p-3 rounded mb-0"><code># Vue 3 (any Vite app)
-npm i adminlte-vue bootstrap
+npm i @adminlte/vue bootstrap
 
 # Nuxt
-npm i @adminlte/nuxt adminlte-vue bootstrap
+npm i @adminlte/nuxt @adminlte/vue bootstrap
 # nuxt.config.ts → modules: ['@adminlte/nuxt']</code></pre>
     </LteCard>
   </LteAppContent>

@@ -70,7 +70,7 @@ This is a pnpm monorepo:
 
 | Package | Path | Description |
 | --- | --- | --- |
-| [`adminlte-vue`](./packages/adminlte-vue) | `packages/adminlte-vue` | Framework-agnostic Vue 3 component library — works in any Vite / Nuxt / Vue 3 app. |
+| [`@adminlte/vue`](./packages/adminlte-vue) | `packages/adminlte-vue` | Framework-agnostic Vue 3 component library — works in any Vite / Nuxt / Vue 3 app. |
 | [`@adminlte/nuxt`](./packages/nuxt) | `packages/nuxt` | Nuxt module: auto-imports, CSS injection, Bootstrap init, SSR-safe dark mode. |
 | `demo` | `apps/demo` | Nuxt 4 demo — a 1:1 clone of the official AdminLTE 4 demo, built from the library's own components. |
 | `docs` | `apps/docs` | [@nuxt/content](https://content.nuxt.com) documentation site (API reference for every component & composable). |
@@ -89,7 +89,7 @@ This is a pnpm monorepo:
 ## Quick start — Nuxt
 
 ```bash
-npm i @adminlte/nuxt adminlte-vue bootstrap
+npm i @adminlte/nuxt @adminlte/vue bootstrap
 ```
 
 ```ts
@@ -106,7 +106,7 @@ export default defineNuxtConfig({
 ```vue
 <!-- app/layouts/default.vue -->
 <script setup lang="ts">
-import type { MenuNode } from 'adminlte-vue'
+import type { MenuNode } from '@adminlte/vue'
 const route = useRoute()
 const NuxtLink = resolveComponent('NuxtLink')
 const menu: MenuNode[] = [
@@ -141,14 +141,14 @@ Components and composables are auto-imported by the module — no `import` state
 ## Quick start — plain Vue 3 (Vite)
 
 ```bash
-npm i adminlte-vue bootstrap
+npm i @adminlte/vue bootstrap
 ```
 
 ```ts
 // main.ts
 import { createApp } from 'vue'
-import AdminLteVue from 'adminlte-vue'
-import 'adminlte-vue/css'
+import AdminLteVue from '@adminlte/vue'
+import '@adminlte/vue/css'
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import 'bootstrap' // dropdowns/modals/offcanvas
 import App from './App.vue'
@@ -176,7 +176,7 @@ module just automates the wiring above.
 
 **Tools** — `LteModal`, `LteWizard`, `LteWizardStep`
 
-**Plugins** (`adminlte-vue/plugins`) — `LteApexChart`, `LteSparklineChart`, `LteDatatable`,
+**Plugins** (`@adminlte/vue/plugins`) — `LteApexChart`, `LteSparklineChart`, `LteDatatable`,
 `LteEditor`, `LteFlatpickr`, `LteTomSelect`, `LteCalendar`, `LteVectorMap`, `LteSortable`,
 `LteKanban`
 
