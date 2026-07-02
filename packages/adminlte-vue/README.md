@@ -7,7 +7,7 @@ everything and handles SSR-safe theming.
 ## Install
 
 ```bash
-npm i adminlte-vue bootstrap
+npm i @adminlte/vue bootstrap
 # optional plugin libs, only if you use the matching components:
 # apexcharts tabulator-tables quill flatpickr tom-select sortablejs jsvectormap overlayscrollbars @fullcalendar/core @fullcalendar/daygrid @fullcalendar/interaction
 ```

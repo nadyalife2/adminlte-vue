@@ -6,7 +6,12 @@
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs'
 import { dirname } from 'node:path'
 
-const DIST = 'node_modules/.pnpm/admin-lte@4.0.0/node_modules/admin-lte/dist/docs'
+// Since admin-lte 4.0.4 the npm package no longer ships the demo/docs HTML
+// (deliberate packaging fix), so the docs must come from a core repo checkout
+// (after `npm run build`) or an extracted GitHub release zip:
+//
+//   ADMINLTE_DIST_DOCS=../AdminLTE/dist/docs node scripts/clone-doc.mjs <slug> ...
+const DIST = process.env.ADMINLTE_DIST_DOCS ?? 'packages/adminlte-vue/node_modules/admin-lte/dist/docs'
 const OUT = 'apps/demo/app/pages/docs'
 
 function balancedInner(html, openTag) {
@@ -62,7 +67,13 @@ function jsStr(s) {
 for (const slug of process.argv.slice(2)) {
   const html = readFileSync(`${DIST}/${slug}.html`, 'utf8')
 
-  const title = decodeEntities((html.match(/<h3 class="mb-0">([\s\S]*?)<\/h3>/)?.[1] ?? slug).trim())
+  // Core 4.1.0 promoted page titles from <h3 class="mb-0"> to
+  // <h1 class="mb-0 fs-3"> (one real h1 per page); accept both.
+  const title = decodeEntities(
+    (html.match(/<h1 class="mb-0[^"]*">([\s\S]*?)<\/h1>/)?.[1] ??
+      html.match(/<h3 class="mb-0">([\s\S]*?)<\/h3>/)?.[1] ??
+      slug).trim()
+  )
 
   // breadcrumb items from the app-content-header
   const crumbBlock = html.match(/<ol class="breadcrumb[^"]*">([\s\S]*?)<\/ol>/)?.[1] ?? ''

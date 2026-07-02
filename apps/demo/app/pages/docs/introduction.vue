@@ -4,9 +4,10 @@ definePageMeta({ layout: 'docs' })
 
 <template>
   <LteAppContent
-    title="Introduction"
+    title='Introduction'
     :breadcrumbs="[{ label: 'Docs', href: '#' }, { label: 'Introduction' }]"
   >
+
             <div class="row">
               <div class="col-12">
                 <div class="card">
@@ -31,7 +32,6 @@ definePageMeta({ layout: 'docs' })
                     </p>
                     <h2 id="installation-paths">Installation paths</h2>
                     <p>Pick the path that matches how you’ll actually use AdminLTE:</p>
-
                     <table>
                       <thead>
                         <tr>
@@ -73,16 +73,16 @@ definePageMeta({ layout: 'docs' })
                       style="background-color: #1e1e1e; color: #d4d4d4; overflow-x: auto"
                       tabindex="0"
                       data-language="html"
-                    ><code><span class="line"><span style="color:#6A9955">&lt;!-- In &lt;head&gt; --&gt;</span></span>
-<span class="line"><span style="color:#808080">&lt;</span><span style="color:#569CD6">link</span><span style="color:#9CDCFE"> rel</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;stylesheet&quot;</span><span style="color:#9CDCFE"> href</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css&quot;</span><span style="color:#808080"> /&gt;</span></span>
-<span class="line"><span style="color:#808080">&lt;</span><span style="color:#569CD6">link</span><span style="color:#9CDCFE"> rel</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;stylesheet&quot;</span><span style="color:#9CDCFE"> href</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;https://cdn.jsdelivr.net/npm/overlayscrollbars@2.11.0/styles/overlayscrollbars.min.css&quot;</span><span style="color:#808080"> /&gt;</span></span>
-<span class="line"><span style="color:#808080">&lt;</span><span style="color:#569CD6">link</span><span style="color:#9CDCFE"> rel</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;stylesheet&quot;</span><span style="color:#9CDCFE"> href</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;https://cdn.jsdelivr.net/npm/admin-lte@4.0.0/dist/css/adminlte.min.css&quot;</span><span style="color:#808080"> /&gt;</span></span>
+                    ><code><span class="line"><span style="color:#6A9955">&#x3C;!-- In &#x3C;head> --></span></span>
+<span class="line"><span style="color:#808080">&#x3C;</span><span style="color:#569CD6">link</span><span style="color:#9CDCFE"> rel</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"stylesheet"</span><span style="color:#9CDCFE"> href</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"</span><span style="color:#808080"> /></span></span>
+<span class="line"><span style="color:#808080">&#x3C;</span><span style="color:#569CD6">link</span><span style="color:#9CDCFE"> rel</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"stylesheet"</span><span style="color:#9CDCFE"> href</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"https://cdn.jsdelivr.net/npm/overlayscrollbars@2.11.0/styles/overlayscrollbars.min.css"</span><span style="color:#808080"> /></span></span>
+<span class="line"><span style="color:#808080">&#x3C;</span><span style="color:#569CD6">link</span><span style="color:#9CDCFE"> rel</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"stylesheet"</span><span style="color:#9CDCFE"> href</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"https://cdn.jsdelivr.net/npm/admin-lte@4.0.0/dist/css/adminlte.min.css"</span><span style="color:#808080"> /></span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#6A9955">&lt;!-- Before &lt;/body&gt; --&gt;</span></span>
-<span class="line"><span style="color:#808080">&lt;</span><span style="color:#569CD6">script</span><span style="color:#9CDCFE"> src</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js&quot;</span><span style="color:#808080">&gt;&lt;/</span><span style="color:#569CD6">script</span><span style="color:#808080">&gt;</span></span>
-<span class="line"><span style="color:#808080">&lt;</span><span style="color:#569CD6">script</span><span style="color:#9CDCFE"> src</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js&quot;</span><span style="color:#808080">&gt;&lt;/</span><span style="color:#569CD6">script</span><span style="color:#808080">&gt;</span></span>
-<span class="line"><span style="color:#808080">&lt;</span><span style="color:#569CD6">script</span><span style="color:#9CDCFE"> src</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;https://cdn.jsdelivr.net/npm/overlayscrollbars@2.11.0/browser/overlayscrollbars.browser.es6.min.js&quot;</span><span style="color:#808080">&gt;&lt;/</span><span style="color:#569CD6">script</span><span style="color:#808080">&gt;</span></span>
-<span class="line"><span style="color:#808080">&lt;</span><span style="color:#569CD6">script</span><span style="color:#9CDCFE"> src</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;https://cdn.jsdelivr.net/npm/admin-lte@4.0.0/dist/js/adminlte.min.js&quot;</span><span style="color:#808080">&gt;&lt;/</span><span style="color:#569CD6">script</span><span style="color:#808080">&gt;</span></span></code></pre>
+<span class="line"><span style="color:#6A9955">&#x3C;!-- Before &#x3C;/body> --></span></span>
+<span class="line"><span style="color:#808080">&#x3C;</span><span style="color:#569CD6">script</span><span style="color:#9CDCFE"> src</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"</span><span style="color:#808080">>&#x3C;/</span><span style="color:#569CD6">script</span><span style="color:#808080">></span></span>
+<span class="line"><span style="color:#808080">&#x3C;</span><span style="color:#569CD6">script</span><span style="color:#9CDCFE"> src</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js"</span><span style="color:#808080">>&#x3C;/</span><span style="color:#569CD6">script</span><span style="color:#808080">></span></span>
+<span class="line"><span style="color:#808080">&#x3C;</span><span style="color:#569CD6">script</span><span style="color:#9CDCFE"> src</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"https://cdn.jsdelivr.net/npm/overlayscrollbars@2.11.0/browser/overlayscrollbars.browser.es6.min.js"</span><span style="color:#808080">>&#x3C;/</span><span style="color:#569CD6">script</span><span style="color:#808080">></span></span>
+<span class="line"><span style="color:#808080">&#x3C;</span><span style="color:#569CD6">script</span><span style="color:#9CDCFE"> src</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"https://cdn.jsdelivr.net/npm/admin-lte@4.0.0/dist/js/adminlte.min.js"</span><span style="color:#808080">>&#x3C;/</span><span style="color:#569CD6">script</span><span style="color:#808080">></span></span></code></pre>
                     <p>
                       Then copy any
                       <a href="https://github.com/ColorlibHQ/AdminLTE/tree/master/dist"
@@ -109,14 +109,14 @@ definePageMeta({ layout: 'docs' })
                       tabindex="0"
                       data-language="js"
                     ><code><span class="line"><span style="color:#6A9955">// CSS</span></span>
-<span class="line"><span style="color:#C586C0">import</span><span style="color:#CE9178"> &quot;admin-lte/dist/css/adminlte.min.css&quot;</span></span>
+<span class="line"><span style="color:#C586C0">import</span><span style="color:#CE9178"> "admin-lte/dist/css/adminlte.min.css"</span></span>
 <span class="line"><span style="color:#6A9955">// Plus Bootstrap and dependency CSS</span></span>
-<span class="line"><span style="color:#C586C0">import</span><span style="color:#CE9178"> &quot;bootstrap-icons/font/bootstrap-icons.css&quot;</span></span>
-<span class="line"><span style="color:#C586C0">import</span><span style="color:#CE9178"> &quot;overlayscrollbars/styles/overlayscrollbars.css&quot;</span></span>
+<span class="line"><span style="color:#C586C0">import</span><span style="color:#CE9178"> "bootstrap-icons/font/bootstrap-icons.css"</span></span>
+<span class="line"><span style="color:#C586C0">import</span><span style="color:#CE9178"> "overlayscrollbars/styles/overlayscrollbars.css"</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#6A9955">// JS</span></span>
-<span class="line"><span style="color:#C586C0">import</span><span style="color:#CE9178"> &quot;bootstrap&quot;</span></span>
-<span class="line"><span style="color:#C586C0">import</span><span style="color:#CE9178"> &quot;admin-lte&quot;</span></span></code></pre>
+<span class="line"><span style="color:#C586C0">import</span><span style="color:#CE9178"> "bootstrap"</span></span>
+<span class="line"><span style="color:#C586C0">import</span><span style="color:#CE9178"> "admin-lte"</span></span></code></pre>
                     <p>
                       Yarn and pnpm work the same way — substitute <code>yarn add</code> or
                       <code>pnpm add</code> for the install.
@@ -139,7 +139,7 @@ definePageMeta({ layout: 'docs' })
                     <p>
                       The compiled output lands in <code>dist/</code>. Edit
                       <code>src/scss/_variables.scss</code> or
-                      <code>src/scss/_bootstrap-variables.scss</code>, then rerun the build. See
+                      <code>src/scss/_bootstrap-overrides.scss</code>, then rerun the build. See
                       <a href="/docs/customization">Customization &amp; Theming</a> for which
                       variables matter.
                     </p>
@@ -150,13 +150,12 @@ definePageMeta({ layout: 'docs' })
                       style="background-color: #1e1e1e; color: #d4d4d4; overflow-x: auto"
                       tabindex="0"
                       data-language="bash"
-                    ><code><span class="line"><span style="color:#DCDCAA">composer</span><span style="color:#CE9178"> require</span><span style="color:#CE9178"> &quot;almasaeed2010/adminlte=4.0.0&quot;</span></span></code></pre>
+                    ><code><span class="line"><span style="color:#DCDCAA">composer</span><span style="color:#CE9178"> require</span><span style="color:#CE9178"> "almasaeed2010/adminlte=4.0.0"</span></span></code></pre>
                     <p>
                       The package is published from the same source tree — you get the
                       <code>dist/</code> folder ready to serve.
                     </p>
                     <h2 id="prerequisites">Prerequisites</h2>
-
                     <table>
                       <thead>
                         <tr>

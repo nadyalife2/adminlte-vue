@@ -38,14 +38,14 @@ definePageMeta({ layout: 'docs' })
                       tabindex="0"
                       data-language="css"
                     ><code><span class="line"><span style="color:#D7BA7D">:root</span><span style="color:#D4D4D4">,</span></span>
-<span class="line"><span style="color:#D4D4D4">[</span><span style="color:#9CDCFE">data-bs-theme</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;light&quot;</span><span style="color:#D4D4D4">] {</span></span>
-<span class="line"><span style="color:#9CDCFE">  --bs-primary</span><span style="color:#D4D4D4">: </span><span style="color:#CE9178">#6610f2</span><span style="color:#D4D4D4">;        </span><span style="color:#6A9955">/* swap Bootstrap&#39;s blue for purple */</span></span>
+<span class="line"><span style="color:#D4D4D4">[</span><span style="color:#9CDCFE">data-bs-theme</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"light"</span><span style="color:#D4D4D4">] {</span></span>
+<span class="line"><span style="color:#9CDCFE">  --bs-primary</span><span style="color:#D4D4D4">: </span><span style="color:#CE9178">#6610f2</span><span style="color:#D4D4D4">;        </span><span style="color:#6A9955">/* swap Bootstrap's blue for purple */</span></span>
 <span class="line"><span style="color:#9CDCFE">  --bs-primary-rgb</span><span style="color:#D4D4D4">: </span><span style="color:#B5CEA8">102</span><span style="color:#D4D4D4">, </span><span style="color:#B5CEA8">16</span><span style="color:#D4D4D4">, </span><span style="color:#B5CEA8">242</span><span style="color:#D4D4D4">;</span></span>
 <span class="line"><span style="color:#9CDCFE">  --bs-body-bg</span><span style="color:#D4D4D4">: </span><span style="color:#CE9178">#f3f4f6</span><span style="color:#D4D4D4">;</span></span>
 <span class="line"><span style="color:#D4D4D4">}</span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#D4D4D4">[</span><span style="color:#9CDCFE">data-bs-theme</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;dark&quot;</span><span style="color:#D4D4D4">] {</span></span>
-<span class="line"><span style="color:#9CDCFE">  --bs-body-bg</span><span style="color:#D4D4D4">: </span><span style="color:#CE9178">#14171c</span><span style="color:#D4D4D4">;        </span><span style="color:#6A9955">/* darker than Bootstrap&#39;s default */</span></span>
+<span class="line"><span style="color:#D4D4D4">[</span><span style="color:#9CDCFE">data-bs-theme</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"dark"</span><span style="color:#D4D4D4">] {</span></span>
+<span class="line"><span style="color:#9CDCFE">  --bs-body-bg</span><span style="color:#D4D4D4">: </span><span style="color:#CE9178">#14171c</span><span style="color:#D4D4D4">;        </span><span style="color:#6A9955">/* darker than Bootstrap's default */</span></span>
 <span class="line"><span style="color:#9CDCFE">  --bs-body-color</span><span style="color:#D4D4D4">: </span><span style="color:#CE9178">#e9ecef</span><span style="color:#D4D4D4">;</span></span>
 <span class="line"><span style="color:#D4D4D4">}</span></span></code></pre>
                     <p>
@@ -53,7 +53,6 @@ definePageMeta({ layout: 'docs' })
                       pick this up automatically.
                     </p>
                     <h6 id="common-variables-worth-knowing">Common variables worth knowing</h6>
-
                     <table>
                       <thead>
                         <tr>
@@ -142,13 +141,13 @@ definePageMeta({ layout: 'docs' })
 <span class="line"><span style="color:#9CDCFE">$lte-transition-speed</span><span style="color:#D4D4D4">:       </span><span style="color:#B5CEA8">.3s</span><span style="color:#D4D4D4">;</span></span>
 <span class="line"><span style="color:#9CDCFE">$lte-transition-fn</span><span style="color:#D4D4D4">:          </span><span style="color:#CE9178">ease-in-out</span><span style="color:#D4D4D4">;</span></span></code></pre>
                     <p>
-                      Bootstrap’s own variables (button colours, font sizes, spacing scale,
-                      breakpoints) live in
+                      AdminLTE changes about ten Bootstrap defaults in
                       <a
-                        href="https://github.com/ColorlibHQ/AdminLTE/blob/master/src/scss/_bootstrap-variables.scss"
-                        ><code>src/scss/_bootstrap-variables.scss</code></a
-                      >. All values use <code>!default</code>, so override them in your own SCSS
-                      file <em>before</em> the import:
+                        href="https://github.com/ColorlibHQ/AdminLTE/blob/master/src/scss/_bootstrap-overrides.scss"
+                        ><code>src/scss/_bootstrap-overrides.scss</code></a
+                      >; every other Bootstrap variable (button colours, spacing scale, breakpoints)
+                      keeps its stock default. All values use <code>!default</code>, so override
+                      them in your own SCSS file <em>before</em> the import:
                     </p>
                     <pre
                       class="astro-code dark-plus"
@@ -163,7 +162,21 @@ definePageMeta({ layout: 'docs' })
 <span class="line"><span style="color:#9CDCFE">$border-radius</span><span style="color:#D4D4D4">:          </span><span style="color:#B5CEA8">.25rem</span><span style="color:#D4D4D4">;</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#6A9955">// 2. Then import AdminLTE (which imports Bootstrap)</span></span>
-<span class="line"><span style="color:#C586C0">@import</span><span style="color:#CE9178"> &quot;node_modules/admin-lte/src/scss/adminlte&quot;</span><span style="color:#D4D4D4">;</span></span></code></pre>
+<span class="line"><span style="color:#C586C0">@import</span><span style="color:#CE9178"> "node_modules/admin-lte/src/scss/adminlte"</span><span style="color:#D4D4D4">;</span></span></code></pre>
+                    <blockquote>
+                      <p>
+                        <strong>Note:</strong> compiling the Sass source requires
+                        <code>bootstrap</code> to be installed — it is a peer dependency of
+                        <code>admin-lte</code> since 4.1 (npm installs it automatically alongside).
+                        Make sure your Sass compiler can resolve bare
+                        <code>bootstrap/...</code> imports by adding <code>node_modules</code> to
+                        its load paths, e.g. <code>sass --load-path=node_modules</code> or, in Vite,
+                        <code
+                          >css: { preprocessorOptions: { scss: { loadPaths:
+                          [&quot;node_modules&quot;] } } }</code
+                        >.
+                      </p>
+                    </blockquote>
                     <h5 id="recompiling-scss">Recompiling SCSS</h5>
                     <p>If you cloned the repo, the build pipeline is already wired:</p>
                     <pre
@@ -184,7 +197,7 @@ definePageMeta({ layout: 'docs' })
                       tabindex="0"
                       data-language="js"
                     ><code><span class="line"><span style="color:#6A9955">// Vite / Rollup / Webpack</span></span>
-<span class="line"><span style="color:#C586C0">import</span><span style="color:#CE9178"> &quot;admin-lte/src/scss/adminlte.scss&quot;</span></span></code></pre>
+<span class="line"><span style="color:#C586C0">import</span><span style="color:#CE9178"> "admin-lte/src/scss/adminlte.scss"</span></span></code></pre>
                     <h5 id="custom-sidebar-branding">Custom sidebar branding</h5>
                     <p>
                       The <code>.sidebar-brand</code> element accepts text, an image, or both.
@@ -195,12 +208,12 @@ definePageMeta({ layout: 'docs' })
                       style="background-color: #1e1e1e; color: #d4d4d4; overflow-x: auto"
                       tabindex="0"
                       data-language="html"
-                    ><code><span class="line"><span style="color:#808080">&lt;</span><span style="color:#569CD6">div</span><span style="color:#9CDCFE"> class</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;sidebar-brand&quot;</span><span style="color:#808080">&gt;</span></span>
-<span class="line"><span style="color:#808080">  &lt;</span><span style="color:#569CD6">a</span><span style="color:#9CDCFE"> href</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;/&quot;</span><span style="color:#9CDCFE"> class</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;brand-link&quot;</span><span style="color:#808080">&gt;</span></span>
-<span class="line"><span style="color:#808080">    &lt;</span><span style="color:#569CD6">img</span><span style="color:#9CDCFE"> src</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;/assets/logo.svg&quot;</span><span style="color:#9CDCFE"> alt</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;Logo&quot;</span><span style="color:#9CDCFE"> class</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;brand-image opacity-75 shadow&quot;</span><span style="color:#808080"> /&gt;</span></span>
-<span class="line"><span style="color:#808080">    &lt;</span><span style="color:#569CD6">span</span><span style="color:#9CDCFE"> class</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;brand-text fw-light&quot;</span><span style="color:#808080">&gt;</span><span style="color:#D4D4D4">My Dashboard</span><span style="color:#808080">&lt;/</span><span style="color:#569CD6">span</span><span style="color:#808080">&gt;</span></span>
-<span class="line"><span style="color:#808080">  &lt;/</span><span style="color:#569CD6">a</span><span style="color:#808080">&gt;</span></span>
-<span class="line"><span style="color:#808080">&lt;/</span><span style="color:#569CD6">div</span><span style="color:#808080">&gt;</span></span></code></pre>
+                    ><code><span class="line"><span style="color:#808080">&#x3C;</span><span style="color:#569CD6">div</span><span style="color:#9CDCFE"> class</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"sidebar-brand"</span><span style="color:#808080">></span></span>
+<span class="line"><span style="color:#808080">  &#x3C;</span><span style="color:#569CD6">a</span><span style="color:#9CDCFE"> href</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"/"</span><span style="color:#9CDCFE"> class</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"brand-link"</span><span style="color:#808080">></span></span>
+<span class="line"><span style="color:#808080">    &#x3C;</span><span style="color:#569CD6">img</span><span style="color:#9CDCFE"> src</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"/assets/logo.svg"</span><span style="color:#9CDCFE"> alt</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"Logo"</span><span style="color:#9CDCFE"> class</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"brand-image opacity-75 shadow"</span><span style="color:#808080"> /></span></span>
+<span class="line"><span style="color:#808080">    &#x3C;</span><span style="color:#569CD6">span</span><span style="color:#9CDCFE"> class</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"brand-text fw-light"</span><span style="color:#808080">></span><span style="color:#D4D4D4">My Dashboard</span><span style="color:#808080">&#x3C;/</span><span style="color:#569CD6">span</span><span style="color:#808080">></span></span>
+<span class="line"><span style="color:#808080">  &#x3C;/</span><span style="color:#569CD6">a</span><span style="color:#808080">></span></span>
+<span class="line"><span style="color:#808080">&#x3C;/</span><span style="color:#569CD6">div</span><span style="color:#808080">></span></span></code></pre>
                     <p>
                       To swap the logo when the sidebar collapses to its mini state, AdminLTE
                       provides a built-in pattern — see the
@@ -218,7 +231,7 @@ definePageMeta({ layout: 'docs' })
                       style="background-color: #1e1e1e; color: #d4d4d4; overflow-x: auto"
                       tabindex="0"
                       data-language="css"
-                    ><code><span class="line"><span style="color:#D4D4D4">[</span><span style="color:#9CDCFE">data-bs-theme</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;dark&quot;</span><span style="color:#D4D4D4">] {</span></span>
+                    ><code><span class="line"><span style="color:#D4D4D4">[</span><span style="color:#9CDCFE">data-bs-theme</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"dark"</span><span style="color:#D4D4D4">] {</span></span>
 <span class="line"><span style="color:#9CDCFE">  --bs-primary</span><span style="color:#D4D4D4">: </span><span style="color:#CE9178">#4dabf7</span><span style="color:#D4D4D4">;          </span><span style="color:#6A9955">/* lighter primary for dark backgrounds */</span></span>
 <span class="line"><span style="color:#9CDCFE">  --lte-sidebar-color</span><span style="color:#D4D4D4">: </span><span style="color:#CE9178">#e9ecef</span><span style="color:#D4D4D4">;</span></span>
 <span class="line"><span style="color:#9CDCFE">  --lte-sidebar-active-color</span><span style="color:#D4D4D4">: </span><span style="color:#CE9178">#fff</span><span style="color:#D4D4D4">;</span></span>
@@ -238,23 +251,23 @@ definePageMeta({ layout: 'docs' })
                       style="background-color: #1e1e1e; color: #d4d4d4; overflow-x: auto"
                       tabindex="0"
                       data-language="html"
-                    ><code><span class="line"><span style="color:#6A9955">&lt;!-- Light page, dark sidebar (the demo pattern) --&gt;</span></span>
-<span class="line"><span style="color:#808080">&lt;</span><span style="color:#569CD6">body</span><span style="color:#9CDCFE"> class</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;bg-body-tertiary&quot;</span><span style="color:#808080">&gt;</span></span>
-<span class="line"><span style="color:#808080">  &lt;</span><span style="color:#569CD6">aside</span><span style="color:#9CDCFE"> class</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;app-sidebar bg-body-secondary shadow&quot;</span><span style="color:#9CDCFE"> data-bs-theme</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;dark&quot;</span><span style="color:#808080">&gt;</span></span>
+                    ><code><span class="line"><span style="color:#6A9955">&#x3C;!-- Light page, dark sidebar (the demo pattern) --></span></span>
+<span class="line"><span style="color:#808080">&#x3C;</span><span style="color:#569CD6">body</span><span style="color:#9CDCFE"> class</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"bg-body-tertiary"</span><span style="color:#808080">></span></span>
+<span class="line"><span style="color:#808080">  &#x3C;</span><span style="color:#569CD6">aside</span><span style="color:#9CDCFE"> class</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"app-sidebar bg-body-secondary shadow"</span><span style="color:#9CDCFE"> data-bs-theme</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"dark"</span><span style="color:#808080">></span></span>
 <span class="line"><span style="color:#D4D4D4">    ...</span></span>
-<span class="line"><span style="color:#808080">  &lt;/</span><span style="color:#569CD6">aside</span><span style="color:#808080">&gt;</span></span>
-<span class="line"><span style="color:#808080">&lt;/</span><span style="color:#569CD6">body</span><span style="color:#808080">&gt;</span></span></code></pre>
+<span class="line"><span style="color:#808080">  &#x3C;/</span><span style="color:#569CD6">aside</span><span style="color:#808080">></span></span>
+<span class="line"><span style="color:#808080">&#x3C;/</span><span style="color:#569CD6">body</span><span style="color:#808080">></span></span></code></pre>
                     <pre
                       class="astro-code dark-plus"
                       style="background-color: #1e1e1e; color: #d4d4d4; overflow-x: auto"
                       tabindex="0"
                       data-language="html"
-                    ><code><span class="line"><span style="color:#6A9955">&lt;!-- Light page, light sidebar --&gt;</span></span>
-<span class="line"><span style="color:#808080">&lt;</span><span style="color:#569CD6">body</span><span style="color:#9CDCFE"> class</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;bg-body-tertiary&quot;</span><span style="color:#808080">&gt;</span></span>
-<span class="line"><span style="color:#808080">  &lt;</span><span style="color:#569CD6">aside</span><span style="color:#9CDCFE"> class</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;app-sidebar bg-body shadow border-end&quot;</span><span style="color:#808080">&gt;</span></span>
+                    ><code><span class="line"><span style="color:#6A9955">&#x3C;!-- Light page, light sidebar --></span></span>
+<span class="line"><span style="color:#808080">&#x3C;</span><span style="color:#569CD6">body</span><span style="color:#9CDCFE"> class</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"bg-body-tertiary"</span><span style="color:#808080">></span></span>
+<span class="line"><span style="color:#808080">  &#x3C;</span><span style="color:#569CD6">aside</span><span style="color:#9CDCFE"> class</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"app-sidebar bg-body shadow border-end"</span><span style="color:#808080">></span></span>
 <span class="line"><span style="color:#D4D4D4">    ...</span></span>
-<span class="line"><span style="color:#808080">  &lt;/</span><span style="color:#569CD6">aside</span><span style="color:#808080">&gt;</span></span>
-<span class="line"><span style="color:#808080">&lt;/</span><span style="color:#569CD6">body</span><span style="color:#808080">&gt;</span></span></code></pre>
+<span class="line"><span style="color:#808080">  &#x3C;/</span><span style="color:#569CD6">aside</span><span style="color:#808080">></span></span>
+<span class="line"><span style="color:#808080">&#x3C;/</span><span style="color:#569CD6">body</span><span style="color:#808080">></span></span></code></pre>
                     <h5 id="compact-mode">Compact mode</h5>
                     <p>
                       Add <code>.compact-mode</code> to <code>.app-wrapper</code> (or anywhere up
@@ -267,13 +280,12 @@ definePageMeta({ layout: 'docs' })
                       style="background-color: #1e1e1e; color: #d4d4d4; overflow-x: auto"
                       tabindex="0"
                       data-language="html"
-                    ><code><span class="line"><span style="color:#808080">&lt;</span><span style="color:#569CD6">div</span><span style="color:#9CDCFE"> class</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;app-wrapper compact-mode&quot;</span><span style="color:#808080">&gt;</span></span>
-<span class="line"><span style="color:#6A9955">  &lt;!-- header, sidebar, main content with tighter spacing --&gt;</span></span>
-<span class="line"><span style="color:#808080">&lt;/</span><span style="color:#569CD6">div</span><span style="color:#808080">&gt;</span></span></code></pre>
+                    ><code><span class="line"><span style="color:#808080">&#x3C;</span><span style="color:#569CD6">div</span><span style="color:#9CDCFE"> class</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"app-wrapper compact-mode"</span><span style="color:#808080">></span></span>
+<span class="line"><span style="color:#6A9955">  &#x3C;!-- header, sidebar, main content with tighter spacing --></span></span>
+<span class="line"><span style="color:#808080">&#x3C;/</span><span style="color:#569CD6">div</span><span style="color:#808080">></span></span></code></pre>
                     <h5 id="when-to-recompile-vs-override-at-runtime">
                       When to recompile vs. override at runtime
                     </h5>
-
                     <table>
                       <thead>
                         <tr>

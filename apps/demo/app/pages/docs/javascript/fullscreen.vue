@@ -27,12 +27,11 @@ definePageMeta({ layout: 'docs' })
                       style="background-color: #1e1e1e; color: #d4d4d4; overflow-x: auto"
                       tabindex="0"
                       data-language="html"
-                    ><code><span class="line"><span style="color:#808080">&lt;</span><span style="color:#569CD6">button</span><span style="color:#9CDCFE"> type</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;button&quot;</span><span style="color:#9CDCFE"> class</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;btn&quot;</span><span style="color:#9CDCFE"> data-lte-toggle</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;fullscreen&quot;</span><span style="color:#808080">&gt;</span></span>
-<span class="line"><span style="color:#808080">  &lt;</span><span style="color:#569CD6">i</span><span style="color:#9CDCFE"> data-lte-icon</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;maximize&quot;</span><span style="color:#9CDCFE"> class</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;bi bi-arrows-fullscreen&quot;</span><span style="color:#808080">&gt;&lt;/</span><span style="color:#569CD6">i</span><span style="color:#808080">&gt;</span></span>
-<span class="line"><span style="color:#808080">  &lt;</span><span style="color:#569CD6">i</span><span style="color:#9CDCFE"> data-lte-icon</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;minimize&quot;</span><span style="color:#9CDCFE"> class</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;bi bi-fullscreen-exit d-none&quot;</span><span style="color:#808080">&gt;&lt;/</span><span style="color:#569CD6">i</span><span style="color:#808080">&gt;</span></span>
-<span class="line"><span style="color:#808080">&lt;/</span><span style="color:#569CD6">button</span><span style="color:#808080">&gt;</span></span></code></pre>
+                    ><code><span class="line"><span style="color:#808080">&#x3C;</span><span style="color:#569CD6">button</span><span style="color:#9CDCFE"> type</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"button"</span><span style="color:#9CDCFE"> class</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"btn"</span><span style="color:#9CDCFE"> data-lte-toggle</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"fullscreen"</span><span style="color:#808080">></span></span>
+<span class="line"><span style="color:#808080">  &#x3C;</span><span style="color:#569CD6">i</span><span style="color:#9CDCFE"> data-lte-icon</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"maximize"</span><span style="color:#9CDCFE"> class</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"bi bi-arrows-fullscreen"</span><span style="color:#808080">>&#x3C;/</span><span style="color:#569CD6">i</span><span style="color:#808080">></span></span>
+<span class="line"><span style="color:#808080">  &#x3C;</span><span style="color:#569CD6">i</span><span style="color:#9CDCFE"> data-lte-icon</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"minimize"</span><span style="color:#9CDCFE"> class</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"bi bi-fullscreen-exit d-none"</span><span style="color:#808080">>&#x3C;/</span><span style="color:#569CD6">i</span><span style="color:#808080">></span></span>
+<span class="line"><span style="color:#808080">&#x3C;/</span><span style="color:#569CD6">button</span><span style="color:#808080">></span></span></code></pre>
                     <h5 id="events">Events</h5>
-
                     <table>
                       <thead>
                         <tr>
@@ -57,16 +56,15 @@ definePageMeta({ layout: 'docs' })
                       style="background-color: #1e1e1e; color: #d4d4d4; overflow-x: auto"
                       tabindex="0"
                       data-language="js"
-                    ><code><span class="line"><span style="color:#C586C0">import</span><span style="color:#D4D4D4"> { </span><span style="color:#9CDCFE">FullScreen</span><span style="color:#D4D4D4"> } </span><span style="color:#C586C0">from</span><span style="color:#CE9178"> &quot;admin-lte&quot;</span></span>
+                    ><code><span class="line"><span style="color:#C586C0">import</span><span style="color:#D4D4D4"> { </span><span style="color:#9CDCFE">FullScreen</span><span style="color:#D4D4D4"> } </span><span style="color:#C586C0">from</span><span style="color:#CE9178"> "admin-lte"</span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#569CD6">const</span><span style="color:#4FC1FF"> btn</span><span style="color:#D4D4D4"> = </span><span style="color:#9CDCFE">document</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">querySelector</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">&#39;[data-lte-toggle=&quot;fullscreen&quot;]&#39;</span><span style="color:#D4D4D4">)</span></span>
+<span class="line"><span style="color:#569CD6">const</span><span style="color:#4FC1FF"> btn</span><span style="color:#D4D4D4"> = </span><span style="color:#9CDCFE">document</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">querySelector</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">'[data-lte-toggle="fullscreen"]'</span><span style="color:#D4D4D4">)</span></span>
 <span class="line"><span style="color:#569CD6">const</span><span style="color:#4FC1FF"> fs</span><span style="color:#D4D4D4"> = </span><span style="color:#569CD6">new</span><span style="color:#DCDCAA"> FullScreen</span><span style="color:#D4D4D4">(</span><span style="color:#9CDCFE">btn</span><span style="color:#D4D4D4">)</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#9CDCFE">fs</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">toggleFullScreen</span><span style="color:#D4D4D4">()  </span><span style="color:#6A9955">// enter or exit based on current state</span></span>
 <span class="line"><span style="color:#9CDCFE">fs</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">inFullScreen</span><span style="color:#D4D4D4">()      </span><span style="color:#6A9955">// request fullscreen</span></span>
 <span class="line"><span style="color:#9CDCFE">fs</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">outFullscreen</span><span style="color:#D4D4D4">()     </span><span style="color:#6A9955">// exit fullscreen</span></span></code></pre>
                     <h6 id="methods">Methods</h6>
-
                     <table>
                       <thead>
                         <tr>
@@ -89,18 +87,21 @@ definePageMeta({ layout: 'docs' })
                           <td><code>inFullScreen()</code></td>
                           <td><code>void</code></td>
                           <td>
-                            Calls <code>document.documentElement.requestFullscreen()</code>, toggles
-                            <code>.d-none</code> on the maximize/minimize icons. Fires
-                            <code>maximized.lte.fullscreen</code>.
+                            Calls <code>document.documentElement.requestFullscreen()</code>. The
+                            icon <code>.d-none</code> toggle and
+                            <code>maximized.lte.fullscreen</code> event are driven by the resulting
+                            <code>fullscreenchange</code> event, so a denied request leaves the UI
+                            untouched.
                           </td>
                         </tr>
                         <tr>
                           <td><code>outFullscreen()</code></td>
                           <td><code>void</code></td>
                           <td>
-                            Calls <code>document.exitFullscreen()</code>, toggles
-                            <code>.d-none</code> on the maximize/minimize icons. Fires
-                            <code>minimized.lte.fullscreen</code>.
+                            Calls <code>document.exitFullscreen()</code>. The icon
+                            <code>.d-none</code> toggle and
+                            <code>minimized.lte.fullscreen</code> event are driven by the resulting
+                            <code>fullscreenchange</code> event.
                           </td>
                         </tr>
                       </tbody>
@@ -113,6 +114,12 @@ definePageMeta({ layout: 'docs' })
                         <a href="https://developer.mozilla.org/docs/Web/API/Fullscreen_API"
                           >Fullscreen API</a
                         >. Check <code>document.fullscreenEnabled</code> before invoking.
+                      </li>
+                      <li>
+                        Icon state and events are synced from the native
+                        <code>fullscreenchange</code> event, so they stay correct when the user
+                        exits fullscreen with <kbd>ESC</kbd> or <kbd>F11</kbd>, and a request denied
+                        by the browser leaves the icons unchanged.
                       </li>
                       <li>
                         The maximize icon is hidden via the <code>d-none</code> Bootstrap utility

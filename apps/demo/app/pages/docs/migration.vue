@@ -19,7 +19,6 @@ definePageMeta({ layout: 'docs' })
                       the ones most likely to bite.
                     </p>
                     <h5 id="the-high-level-summary">The high-level summary</h5>
-
                     <table>
                       <thead>
                         <tr>
@@ -77,7 +76,6 @@ definePageMeta({ layout: 'docs' })
                     </p>
                     <h5 id="class-renames">Class renames</h5>
                     <p>The most common find-and-replace work:</p>
-
                     <table>
                       <thead>
                         <tr>
@@ -153,7 +151,6 @@ definePageMeta({ layout: 'docs' })
                     <p>
                       These come from Bootstrap itself, not AdminLTE, but they affect every page:
                     </p>
-
                     <table>
                       <thead>
                         <tr>
@@ -243,8 +240,8 @@ definePageMeta({ layout: 'docs' })
                       tabindex="0"
                       data-language="js"
                     ><code><span class="line"><span style="color:#6A9955">// AdminLTE 3</span></span>
-<span class="line"><span style="color:#DCDCAA">$</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">&#39;.sidebar-toggle&#39;</span><span style="color:#D4D4D4">).</span><span style="color:#DCDCAA">on</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">&#39;click&#39;</span><span style="color:#D4D4D4">, </span><span style="color:#569CD6">function</span><span style="color:#D4D4D4"> () {</span></span>
-<span class="line"><span style="color:#DCDCAA">  $</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">&#39;body&#39;</span><span style="color:#D4D4D4">).</span><span style="color:#DCDCAA">toggleClass</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">&#39;sidebar-collapse&#39;</span><span style="color:#D4D4D4">)</span></span>
+<span class="line"><span style="color:#DCDCAA">$</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">'.sidebar-toggle'</span><span style="color:#D4D4D4">).</span><span style="color:#DCDCAA">on</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">'click'</span><span style="color:#D4D4D4">, </span><span style="color:#569CD6">function</span><span style="color:#D4D4D4"> () {</span></span>
+<span class="line"><span style="color:#DCDCAA">  $</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">'body'</span><span style="color:#D4D4D4">).</span><span style="color:#DCDCAA">toggleClass</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">'sidebar-collapse'</span><span style="color:#D4D4D4">)</span></span>
 <span class="line"><span style="color:#D4D4D4">})</span></span></code></pre>
                     <pre
                       class="astro-code dark-plus"
@@ -252,16 +249,16 @@ definePageMeta({ layout: 'docs' })
                       tabindex="0"
                       data-language="js"
                     ><code><span class="line"><span style="color:#6A9955">// AdminLTE 4 — the data-API does this for you</span></span>
-<span class="line"><span style="color:#6A9955">// &lt;a href=&quot;#&quot; data-lte-toggle=&quot;sidebar&quot;&gt;...&lt;/a&gt;</span></span></code></pre>
+<span class="line"><span style="color:#6A9955">// &#x3C;a href="#" data-lte-toggle="sidebar">...&#x3C;/a></span></span></code></pre>
                     <p>If you need programmatic control, import the plugin class directly:</p>
                     <pre
                       class="astro-code dark-plus"
                       style="background-color: #1e1e1e; color: #d4d4d4; overflow-x: auto"
                       tabindex="0"
                       data-language="js"
-                    ><code><span class="line"><span style="color:#C586C0">import</span><span style="color:#D4D4D4"> { </span><span style="color:#9CDCFE">PushMenu</span><span style="color:#D4D4D4"> } </span><span style="color:#C586C0">from</span><span style="color:#CE9178"> &quot;admin-lte&quot;</span></span>
+                    ><code><span class="line"><span style="color:#C586C0">import</span><span style="color:#D4D4D4"> { </span><span style="color:#9CDCFE">PushMenu</span><span style="color:#D4D4D4"> } </span><span style="color:#C586C0">from</span><span style="color:#CE9178"> "admin-lte"</span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#569CD6">new</span><span style="color:#DCDCAA"> PushMenu</span><span style="color:#D4D4D4">(</span><span style="color:#9CDCFE">document</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">querySelector</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">&quot;.sidebar-toggle&quot;</span><span style="color:#D4D4D4">)).</span><span style="color:#DCDCAA">toggle</span><span style="color:#D4D4D4">()</span></span></code></pre>
+<span class="line"><span style="color:#569CD6">new</span><span style="color:#DCDCAA"> PushMenu</span><span style="color:#D4D4D4">(</span><span style="color:#9CDCFE">document</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">querySelector</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">".sidebar-toggle"</span><span style="color:#D4D4D4">)).</span><span style="color:#DCDCAA">toggle</span><span style="color:#D4D4D4">()</span></span></code></pre>
                     <p>
                       All seven JS plugins (<code>Layout</code>, <code>CardWidget</code>,
                       <code>Treeview</code>, <code>DirectChat</code>, <code>FullScreen</code>,
@@ -281,11 +278,11 @@ definePageMeta({ layout: 'docs' })
                       style="background-color: #1e1e1e; color: #d4d4d4; overflow-x: auto"
                       tabindex="0"
                       data-language="html"
-                    ><code><span class="line"><span style="color:#6A9955">&lt;!-- AdminLTE 3 --&gt;</span></span>
-<span class="line"><span style="color:#808080">&lt;</span><span style="color:#569CD6">body</span><span style="color:#9CDCFE"> class</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;dark-mode&quot;</span><span style="color:#808080">&gt;</span></span>
+                    ><code><span class="line"><span style="color:#6A9955">&#x3C;!-- AdminLTE 3 --></span></span>
+<span class="line"><span style="color:#808080">&#x3C;</span><span style="color:#569CD6">body</span><span style="color:#9CDCFE"> class</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"dark-mode"</span><span style="color:#808080">></span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#6A9955">&lt;!-- AdminLTE 4 --&gt;</span></span>
-<span class="line"><span style="color:#808080">&lt;</span><span style="color:#569CD6">html</span><span style="color:#9CDCFE"> data-bs-theme</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;dark&quot;</span><span style="color:#808080">&gt;</span></span></code></pre>
+<span class="line"><span style="color:#6A9955">&#x3C;!-- AdminLTE 4 --></span></span>
+<span class="line"><span style="color:#808080">&#x3C;</span><span style="color:#569CD6">html</span><span style="color:#9CDCFE"> data-bs-theme</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"dark"</span><span style="color:#808080">></span></span></code></pre>
                     <p>
                       The included <a href="/docs/color-mode">Color Mode</a> widget reads/writes this
                       attribute and persists the user’s choice in <code>localStorage</code>. See the
@@ -305,11 +302,11 @@ definePageMeta({ layout: 'docs' })
                       style="background-color: #1e1e1e; color: #d4d4d4; overflow-x: auto"
                       tabindex="0"
                       data-language="html"
-                    ><code><span class="line"><span style="color:#6A9955">&lt;!-- AdminLTE 3 --&gt;</span></span>
-<span class="line"><span style="color:#808080">&lt;</span><span style="color:#569CD6">div</span><span style="color:#9CDCFE"> class</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;card bg-navy&quot;</span><span style="color:#808080">&gt;</span><span style="color:#D4D4D4">…</span><span style="color:#808080">&lt;/</span><span style="color:#569CD6">div</span><span style="color:#808080">&gt;</span></span>
+                    ><code><span class="line"><span style="color:#6A9955">&#x3C;!-- AdminLTE 3 --></span></span>
+<span class="line"><span style="color:#808080">&#x3C;</span><span style="color:#569CD6">div</span><span style="color:#9CDCFE"> class</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"card bg-navy"</span><span style="color:#808080">></span><span style="color:#D4D4D4">…</span><span style="color:#808080">&#x3C;/</span><span style="color:#569CD6">div</span><span style="color:#808080">></span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#6A9955">&lt;!-- AdminLTE 4 — use Bootstrap utilities + CSS variables --&gt;</span></span>
-<span class="line"><span style="color:#808080">&lt;</span><span style="color:#569CD6">div</span><span style="color:#9CDCFE"> class</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;card text-bg-primary&quot;</span><span style="color:#808080">&gt;</span><span style="color:#D4D4D4">…</span><span style="color:#808080">&lt;/</span><span style="color:#569CD6">div</span><span style="color:#808080">&gt;</span></span></code></pre>
+<span class="line"><span style="color:#6A9955">&#x3C;!-- AdminLTE 4 — use Bootstrap utilities + CSS variables --></span></span>
+<span class="line"><span style="color:#808080">&#x3C;</span><span style="color:#569CD6">div</span><span style="color:#9CDCFE"> class</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"card text-bg-primary"</span><span style="color:#808080">></span><span style="color:#D4D4D4">…</span><span style="color:#808080">&#x3C;/</span><span style="color:#569CD6">div</span><span style="color:#808080">></span></span></code></pre>
                     <p>
                       For full retheming, override <code>--bs-primary</code> etc. on
                       <code>:root</code>. See <a href="/docs/customization">Customization</a>.
@@ -325,11 +322,11 @@ definePageMeta({ layout: 'docs' })
                       style="background-color: #1e1e1e; color: #d4d4d4; overflow-x: auto"
                       tabindex="0"
                       data-language="html"
-                    ><code><span class="line"><span style="color:#6A9955">&lt;!-- AdminLTE 3 --&gt;</span></span>
-<span class="line"><span style="color:#808080">&lt;</span><span style="color:#569CD6">i</span><span style="color:#9CDCFE"> class</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;fas fa-home&quot;</span><span style="color:#808080">&gt;&lt;/</span><span style="color:#569CD6">i</span><span style="color:#808080">&gt;</span></span>
+                    ><code><span class="line"><span style="color:#6A9955">&#x3C;!-- AdminLTE 3 --></span></span>
+<span class="line"><span style="color:#808080">&#x3C;</span><span style="color:#569CD6">i</span><span style="color:#9CDCFE"> class</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"fas fa-home"</span><span style="color:#808080">>&#x3C;/</span><span style="color:#569CD6">i</span><span style="color:#808080">></span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#6A9955">&lt;!-- AdminLTE 4 --&gt;</span></span>
-<span class="line"><span style="color:#808080">&lt;</span><span style="color:#569CD6">i</span><span style="color:#9CDCFE"> class</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;bi bi-house&quot;</span><span style="color:#808080">&gt;&lt;/</span><span style="color:#569CD6">i</span><span style="color:#808080">&gt;</span></span></code></pre>
+<span class="line"><span style="color:#6A9955">&#x3C;!-- AdminLTE 4 --></span></span>
+<span class="line"><span style="color:#808080">&#x3C;</span><span style="color:#569CD6">i</span><span style="color:#9CDCFE"> class</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"bi bi-house"</span><span style="color:#808080">>&#x3C;/</span><span style="color:#569CD6">i</span><span style="color:#808080">></span></span></code></pre>
                     <p>
                       If you’d rather stick with FontAwesome (or use Lucide, Tabler Icons, Material
                       Symbols, etc.), nothing in AdminLTE 4 forces Bootstrap Icons — load whichever

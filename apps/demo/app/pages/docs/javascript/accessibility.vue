@@ -17,7 +17,6 @@ definePageMeta({ layout: 'docs' })
                       automatically initialized when AdminLTE loads.
                     </p>
                     <h5 id="features">Features</h5>
-
                     <table>
                       <thead>
                         <tr>
@@ -35,7 +34,9 @@ definePageMeta({ layout: 'docs' })
                         <tr>
                           <td>Focus Management</td>
                           <td>2.4.3 &amp; 2.4.7</td>
-                          <td>Tab cycling, focus trapping in modals, and focus restoration.</td>
+                          <td>
+                            Modal focus restoration to the triggering element and Escape handling.
+                          </td>
                         </tr>
                         <tr>
                           <td>Keyboard Navigation</td>
@@ -92,19 +93,19 @@ definePageMeta({ layout: 'docs' })
                       style="background-color: #1e1e1e; color: #d4d4d4; overflow-x: auto"
                       tabindex="0"
                       data-language="js"
-                    ><code><span class="line"><span style="color:#C586C0">import</span><span style="color:#D4D4D4"> { </span><span style="color:#9CDCFE">initAccessibility</span><span style="color:#D4D4D4"> } </span><span style="color:#C586C0">from</span><span style="color:#CE9178"> &#39;admin-lte&#39;</span></span>
+                    ><code><span class="line"><span style="color:#C586C0">import</span><span style="color:#D4D4D4"> { </span><span style="color:#9CDCFE">initAccessibility</span><span style="color:#D4D4D4"> } </span><span style="color:#C586C0">from</span><span style="color:#CE9178"> 'admin-lte'</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#569CD6">const</span><span style="color:#4FC1FF"> a11y</span><span style="color:#D4D4D4"> = </span><span style="color:#DCDCAA">initAccessibility</span><span style="color:#D4D4D4">()</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#6A9955">// Announce a message to screen readers</span></span>
-<span class="line"><span style="color:#9CDCFE">a11y</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">announce</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">&#39;Item saved successfully&#39;</span><span style="color:#D4D4D4">, </span><span style="color:#CE9178">&#39;polite&#39;</span><span style="color:#D4D4D4">)</span></span>
-<span class="line"><span style="color:#9CDCFE">a11y</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">announce</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">&#39;Form has errors&#39;</span><span style="color:#D4D4D4">, </span><span style="color:#CE9178">&#39;assertive&#39;</span><span style="color:#D4D4D4">)</span></span>
+<span class="line"><span style="color:#9CDCFE">a11y</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">announce</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">'Item saved successfully'</span><span style="color:#D4D4D4">, </span><span style="color:#CE9178">'polite'</span><span style="color:#D4D4D4">)</span></span>
+<span class="line"><span style="color:#9CDCFE">a11y</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">announce</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">'Form has errors'</span><span style="color:#D4D4D4">, </span><span style="color:#CE9178">'assertive'</span><span style="color:#D4D4D4">)</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#6A9955">// Focus a specific element</span></span>
-<span class="line"><span style="color:#9CDCFE">a11y</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">focusElement</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">&#39;#my-input&#39;</span><span style="color:#D4D4D4">)</span></span>
+<span class="line"><span style="color:#9CDCFE">a11y</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">focusElement</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">'#my-input'</span><span style="color:#D4D4D4">)</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#6A9955">// Trap focus inside a container (useful for custom modals/dialogs)</span></span>
-<span class="line"><span style="color:#9CDCFE">a11y</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">trapFocus</span><span style="color:#D4D4D4">(</span><span style="color:#9CDCFE">document</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">querySelector</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">&#39;.my-dialog&#39;</span><span style="color:#D4D4D4">))</span></span>
+<span class="line"><span style="color:#9CDCFE">a11y</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">trapFocus</span><span style="color:#D4D4D4">(</span><span style="color:#9CDCFE">document</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">querySelector</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">'.my-dialog'</span><span style="color:#D4D4D4">))</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#6A9955">// Add semantic landmarks to the page</span></span>
 <span class="line"><span style="color:#9CDCFE">a11y</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">addLandmarks</span><span style="color:#D4D4D4">()</span></span></code></pre>
@@ -114,19 +115,18 @@ definePageMeta({ layout: 'docs' })
                       style="background-color: #1e1e1e; color: #d4d4d4; overflow-x: auto"
                       tabindex="0"
                       data-language="js"
-                    ><code><span class="line"><span style="color:#C586C0">import</span><span style="color:#D4D4D4"> { </span><span style="color:#9CDCFE">accessibilityUtils</span><span style="color:#D4D4D4"> } </span><span style="color:#C586C0">from</span><span style="color:#CE9178"> &#39;admin-lte&#39;</span></span>
+                    ><code><span class="line"><span style="color:#C586C0">import</span><span style="color:#D4D4D4"> { </span><span style="color:#9CDCFE">accessibilityUtils</span><span style="color:#D4D4D4"> } </span><span style="color:#C586C0">from</span><span style="color:#CE9178"> 'admin-lte'</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#6A9955">// Check color contrast ratio (WCAG 1.4.3)</span></span>
-<span class="line"><span style="color:#569CD6">const</span><span style="color:#4FC1FF"> result</span><span style="color:#D4D4D4"> = </span><span style="color:#9CDCFE">accessibilityUtils</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">checkColorContrast</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">&#39;rgb(0,0,0)&#39;</span><span style="color:#D4D4D4">, </span><span style="color:#CE9178">&#39;rgb(255,255,255)&#39;</span><span style="color:#D4D4D4">)</span></span>
+<span class="line"><span style="color:#569CD6">const</span><span style="color:#4FC1FF"> result</span><span style="color:#D4D4D4"> = </span><span style="color:#9CDCFE">accessibilityUtils</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">checkColorContrast</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">'rgb(0,0,0)'</span><span style="color:#D4D4D4">, </span><span style="color:#CE9178">'rgb(255,255,255)'</span><span style="color:#D4D4D4">)</span></span>
 <span class="line"><span style="color:#6A9955">// { ratio: 21, passes: true }</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#6A9955">// Check if an element is focusable</span></span>
 <span class="line"><span style="color:#9CDCFE">accessibilityUtils</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">isFocusable</span><span style="color:#D4D4D4">(</span><span style="color:#9CDCFE">element</span><span style="color:#D4D4D4">)</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#6A9955">// Generate a unique ID for ARIA attributes</span></span>
-<span class="line"><span style="color:#9CDCFE">accessibilityUtils</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">generateId</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">&#39;modal&#39;</span><span style="color:#D4D4D4">) </span><span style="color:#6A9955">// &quot;modal-x7k2m9p4q&quot;</span></span></code></pre>
+<span class="line"><span style="color:#9CDCFE">accessibilityUtils</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">generateId</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">'modal'</span><span style="color:#D4D4D4">) </span><span style="color:#6A9955">// "modal-x7k2m9p4q"</span></span></code></pre>
                     <h5 id="css-classes">CSS Classes</h5>
-
                     <table>
                       <thead>
                         <tr>

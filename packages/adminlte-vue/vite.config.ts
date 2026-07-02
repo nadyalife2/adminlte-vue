@@ -24,6 +24,10 @@ function copyAdminLteCss() {
       const pairs: Array<[string, string]> = [
         ['admin-lte/dist/css/adminlte.css', 'dist/css/adminlte.css'],
         ['admin-lte/dist/css/adminlte.rtl.css', 'dist/css/adminlte.rtl.css'],
+        // Docs-site styles: split out of adminlte.css in core 4.1.0.
+        // Applications never need this file — only the demo's cloned docs
+        // pages load it (exported as `@adminlte/vue/css/docs`).
+        ['admin-lte/dist/css/adminlte-docs.css', 'dist/css/adminlte-docs.css'],
       ]
       for (const [from, to] of pairs) {
         const dest = r(`./${to}`)
@@ -37,8 +41,9 @@ function copyAdminLteCss() {
           }
         }
         if (css == null) {
-          console.warn(`[adminlte-vue] could not read ${from}`)
-          continue
+          // A missing file means the published package would silently lack a
+          // stylesheet the exports map promises — fail the build instead.
+          throw new Error(`[adminlte-vue] could not read ${from}`)
         }
         const stripped = css.replace(/\n?\/\*#\s*sourceMappingURL=.*?\*\/\s*$/, '\n')
         mkdirSync(dirname(dest), { recursive: true })

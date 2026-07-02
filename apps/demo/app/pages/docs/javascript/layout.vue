@@ -37,7 +37,6 @@ definePageMeta({ layout: 'docs' })
                       </li>
                     </ol>
                     <h5 id="css-classes">CSS Classes</h5>
-
                     <table>
                       <thead>
                         <tr>
@@ -88,15 +87,14 @@ definePageMeta({ layout: 'docs' })
                       style="background-color: #1e1e1e; color: #d4d4d4; overflow-x: auto"
                       tabindex="0"
                       data-language="js"
-                    ><code><span class="line"><span style="color:#C586C0">import</span><span style="color:#D4D4D4"> { </span><span style="color:#9CDCFE">Layout</span><span style="color:#D4D4D4"> } </span><span style="color:#C586C0">from</span><span style="color:#CE9178"> &quot;admin-lte&quot;</span></span>
+                    ><code><span class="line"><span style="color:#C586C0">import</span><span style="color:#D4D4D4"> { </span><span style="color:#9CDCFE">Layout</span><span style="color:#D4D4D4"> } </span><span style="color:#C586C0">from</span><span style="color:#CE9178"> "admin-lte"</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#569CD6">const</span><span style="color:#4FC1FF"> layout</span><span style="color:#D4D4D4"> = </span><span style="color:#569CD6">new</span><span style="color:#DCDCAA"> Layout</span><span style="color:#D4D4D4">(</span><span style="color:#9CDCFE">document</span><span style="color:#D4D4D4">.</span><span style="color:#9CDCFE">body</span><span style="color:#D4D4D4">)</span></span>
 <span class="line"><span style="color:#9CDCFE">layout</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">holdTransition</span><span style="color:#D4D4D4">(</span><span style="color:#B5CEA8">200</span><span style="color:#D4D4D4">)   </span><span style="color:#6A9955">// disable transitions for 200ms</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#6A9955">// ... do something that would otherwise animate awkwardly</span></span>
-<span class="line"><span style="color:#9CDCFE">document</span><span style="color:#D4D4D4">.</span><span style="color:#9CDCFE">body</span><span style="color:#D4D4D4">.</span><span style="color:#9CDCFE">classList</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">toggle</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">&quot;sidebar-mini&quot;</span><span style="color:#D4D4D4">)</span></span></code></pre>
+<span class="line"><span style="color:#9CDCFE">document</span><span style="color:#D4D4D4">.</span><span style="color:#9CDCFE">body</span><span style="color:#D4D4D4">.</span><span style="color:#9CDCFE">classList</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">toggle</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">"sidebar-mini"</span><span style="color:#D4D4D4">)</span></span></code></pre>
                     <h6 id="methods">Methods</h6>
-
                     <table>
                       <thead>
                         <tr>

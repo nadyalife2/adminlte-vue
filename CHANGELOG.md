@@ -10,6 +10,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 _No unreleased changes yet._
 
+## [0.3.0] - 2026-07-02
+
+### Changed
+
+- **AdminLTE core upgraded to 4.1.0.** The bundled stylesheets (`@adminlte/vue/css`, `@adminlte/vue/css/rtl`) pick up everything from core [4.0.4](https://github.com/ColorlibHQ/AdminLTE/blob/master/CHANGELOG.md#404---2026-07-02) and [4.1.0](https://github.com/ColorlibHQ/AdminLTE/blob/master/CHANGELOG.md#410---2026-07-02): ~6 KB gzip smaller (duplicate docs styles removed and the docs/FAQ styling split into a separate stylesheet applications never needed), WCAG AA contrast fix for breadcrumb links on the content-header background, and repaired callout link/code colors.
+
+### Added
+
+- **`@adminlte/vue/css/docs` export** — core 4.1.0 moved the documentation-site styles out of `adminlte.css` into their own file; the demo's docs layout now loads it explicitly, and consumers who clone docs-style pages can too. The library build fails loudly if any promised stylesheet can't be copied (previously a silent warning).
+
+### Fixed
+
+- `scripts/clone-doc.mjs` no longer hardcodes the pnpm store path for `admin-lte@4.0.0`; the docs source directory is configurable via `ADMINLTE_DIST_DOCS` (the npm package intentionally stopped shipping the demo/docs HTML in core 4.0.4).
+- Package READMEs showed the pre-rename `npm i adminlte-vue` install command; both now install the scoped `@adminlte/vue`.
+
+### Docs
+
+- All 25 cloned documentation pages refreshed from core 4.1.0 — picks up the new component-lifecycle API docs (`getInstance`/`getOrCreateInstance`/`dispose`, delegated data-api, bubbling + cancelable events), the rewritten ColorMode page, and 4.x-accurate install snippets.
+
+### Notes
+
+- Core 4.1.0's new JavaScript (ESM bundle, TypeScript declarations, lifecycle, ColorMode module) does not affect this port at runtime: behavior is re-implemented natively in Vue and `adminlte.js` is never loaded. Theme preferences continue to interoperate with core via the shared `lte-theme` storage key.
+
 ## [0.2.0] - 2026-06-10
 
 A code-review hardening pass: correctness fixes, performance work on the dataset-heavy plugin

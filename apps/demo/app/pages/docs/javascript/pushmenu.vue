@@ -32,13 +32,12 @@ definePageMeta({ layout: 'docs' })
                       style="background-color: #1e1e1e; color: #d4d4d4; overflow-x: auto"
                       tabindex="0"
                       data-language="html"
-                    ><code><span class="line"><span style="color:#808080">&lt;</span><span style="color:#569CD6">a</span><span style="color:#9CDCFE"> href</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;#&quot;</span><span style="color:#9CDCFE"> data-lte-toggle</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;sidebar&quot;</span><span style="color:#808080">&gt;</span><span style="color:#D4D4D4">Toggle Sidebar</span><span style="color:#808080">&lt;/</span><span style="color:#569CD6">a</span><span style="color:#808080">&gt;</span></span></code></pre>
+                    ><code><span class="line"><span style="color:#808080">&#x3C;</span><span style="color:#569CD6">a</span><span style="color:#9CDCFE"> href</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"#"</span><span style="color:#9CDCFE"> data-lte-toggle</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"sidebar"</span><span style="color:#808080">></span><span style="color:#D4D4D4">Toggle Sidebar</span><span style="color:#808080">&#x3C;/</span><span style="color:#569CD6">a</span><span style="color:#808080">></span></span></code></pre>
                     <h5 id="configuration">Configuration</h5>
                     <p>
                       Configure the sidebar via data attributes on the
                       <code>.app-sidebar</code> element:
                     </p>
-
                     <table>
                       <thead>
                         <tr>
@@ -50,7 +49,7 @@ definePageMeta({ layout: 'docs' })
                       <tbody>
                         <tr>
                           <td><code>data-sidebar-breakpoint</code></td>
-                          <td><code>992</code></td>
+                          <td><code>991.98</code></td>
                           <td>Screen width (px) below which the sidebar is considered mobile.</td>
                         </tr>
                         <tr>
@@ -65,9 +64,9 @@ definePageMeta({ layout: 'docs' })
                       style="background-color: #1e1e1e; color: #d4d4d4; overflow-x: auto"
                       tabindex="0"
                       data-language="html"
-                    ><code><span class="line"><span style="color:#808080">&lt;</span><span style="color:#569CD6">aside</span><span style="color:#9CDCFE"> class</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;app-sidebar&quot;</span><span style="color:#9CDCFE"> data-enable-persistence</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;true&quot;</span><span style="color:#9CDCFE"> data-sidebar-breakpoint</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;768&quot;</span><span style="color:#808080">&gt;</span></span>
-<span class="line"><span style="color:#6A9955">  &lt;!-- sidebar content --&gt;</span></span>
-<span class="line"><span style="color:#808080">&lt;/</span><span style="color:#569CD6">aside</span><span style="color:#808080">&gt;</span></span></code></pre>
+                    ><code><span class="line"><span style="color:#808080">&#x3C;</span><span style="color:#569CD6">aside</span><span style="color:#9CDCFE"> class</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"app-sidebar"</span><span style="color:#9CDCFE"> data-enable-persistence</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"true"</span><span style="color:#9CDCFE"> data-sidebar-breakpoint</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"768"</span><span style="color:#808080">></span></span>
+<span class="line"><span style="color:#6A9955">  &#x3C;!-- sidebar content --></span></span>
+<span class="line"><span style="color:#808080">&#x3C;/</span><span style="color:#569CD6">aside</span><span style="color:#808080">></span></span></code></pre>
                     <h5 id="responsive-behavior">Responsive Behavior</h5>
                     <ul>
                       <li>
@@ -81,7 +80,6 @@ definePageMeta({ layout: 'docs' })
                       </li>
                     </ul>
                     <h5 id="css-classes">CSS Classes</h5>
-
                     <table>
                       <thead>
                         <tr>
@@ -122,7 +120,6 @@ definePageMeta({ layout: 'docs' })
                       </tbody>
                     </table>
                     <h5 id="events">Events</h5>
-
                     <table>
                       <thead>
                         <tr>
@@ -147,8 +144,8 @@ definePageMeta({ layout: 'docs' })
                       style="background-color: #1e1e1e; color: #d4d4d4; overflow-x: auto"
                       tabindex="0"
                       data-language="js"
-                    ><code><span class="line"><span style="color:#9CDCFE">document</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">addEventListener</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">&quot;open.lte.push-menu&quot;</span><span style="color:#D4D4D4">, () </span><span style="color:#569CD6">=&gt;</span><span style="color:#D4D4D4"> {</span></span>
-<span class="line"><span style="color:#9CDCFE">  console</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">log</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">&quot;Sidebar opened&quot;</span><span style="color:#D4D4D4">)</span></span>
+                    ><code><span class="line"><span style="color:#9CDCFE">document</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">addEventListener</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">"open.lte.push-menu"</span><span style="color:#D4D4D4">, () </span><span style="color:#569CD6">=></span><span style="color:#D4D4D4"> {</span></span>
+<span class="line"><span style="color:#9CDCFE">  console</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">log</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">"Sidebar opened"</span><span style="color:#D4D4D4">)</span></span>
 <span class="line"><span style="color:#D4D4D4">})</span></span></code></pre>
                     <h5 id="programmatic-api">Programmatic API</h5>
                     <p>
@@ -160,14 +157,13 @@ definePageMeta({ layout: 'docs' })
                       style="background-color: #1e1e1e; color: #d4d4d4; overflow-x: auto"
                       tabindex="0"
                       data-language="js"
-                    ><code><span class="line"><span style="color:#C586C0">import</span><span style="color:#D4D4D4"> { </span><span style="color:#9CDCFE">PushMenu</span><span style="color:#D4D4D4"> } </span><span style="color:#C586C0">from</span><span style="color:#CE9178"> &quot;admin-lte&quot;</span></span>
+                    ><code><span class="line"><span style="color:#C586C0">import</span><span style="color:#D4D4D4"> { </span><span style="color:#9CDCFE">PushMenu</span><span style="color:#D4D4D4"> } </span><span style="color:#C586C0">from</span><span style="color:#CE9178"> "admin-lte"</span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#569CD6">const</span><span style="color:#4FC1FF"> sidebar</span><span style="color:#D4D4D4"> = </span><span style="color:#569CD6">new</span><span style="color:#DCDCAA"> PushMenu</span><span style="color:#D4D4D4">(</span><span style="color:#9CDCFE">document</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">querySelector</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">&#39;[data-lte-toggle=&quot;sidebar&quot;]&#39;</span><span style="color:#D4D4D4">), {</span></span>
-<span class="line"><span style="color:#9CDCFE">  sidebarBreakpoint:</span><span style="color:#B5CEA8"> 992</span><span style="color:#D4D4D4">,</span></span>
+<span class="line"><span style="color:#569CD6">const</span><span style="color:#4FC1FF"> sidebar</span><span style="color:#D4D4D4"> = </span><span style="color:#569CD6">new</span><span style="color:#DCDCAA"> PushMenu</span><span style="color:#D4D4D4">(</span><span style="color:#9CDCFE">document</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">querySelector</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">'[data-lte-toggle="sidebar"]'</span><span style="color:#D4D4D4">), {</span></span>
+<span class="line"><span style="color:#9CDCFE">  sidebarBreakpoint:</span><span style="color:#B5CEA8"> 991.98</span><span style="color:#D4D4D4">,</span></span>
 <span class="line"><span style="color:#9CDCFE">  enablePersistence:</span><span style="color:#569CD6"> false</span></span>
 <span class="line"><span style="color:#D4D4D4">})</span></span></code></pre>
                     <h6 id="methods">Methods</h6>
-
                     <table>
                       <thead>
                         <tr>

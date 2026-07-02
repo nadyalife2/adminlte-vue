@@ -52,7 +52,6 @@ definePageMeta({ layout: 'docs' })
                       files are useful in development for readable source-map debugging — never
                       serve them to users.
                     </p>
-
                     <table>
                       <thead>
                         <tr>
@@ -129,8 +128,8 @@ definePageMeta({ layout: 'docs' })
                           style="background-color: #1e1e1e; color: #d4d4d4; overflow-x: auto"
                           tabindex="0"
                           data-language="html"
-                        ><code><span class="line"><span style="color:#808080">&lt;</span><span style="color:#569CD6">link</span><span style="color:#9CDCFE"> rel</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;stylesheet&quot;</span><span style="color:#9CDCFE"> href</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;/dist/css/adminlte.min.css?v=4.0.0&quot;</span><span style="color:#808080"> /&gt;</span></span>
-<span class="line"><span style="color:#808080">&lt;</span><span style="color:#569CD6">script</span><span style="color:#9CDCFE"> src</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;/dist/js/adminlte.min.js?v=4.0.0&quot;</span><span style="color:#808080">&gt;&lt;/</span><span style="color:#569CD6">script</span><span style="color:#808080">&gt;</span></span></code></pre>
+                        ><code><span class="line"><span style="color:#808080">&#x3C;</span><span style="color:#569CD6">link</span><span style="color:#9CDCFE"> rel</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"stylesheet"</span><span style="color:#9CDCFE"> href</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"/dist/css/adminlte.min.css?v=4.0.0"</span><span style="color:#808080"> /></span></span>
+<span class="line"><span style="color:#808080">&#x3C;</span><span style="color:#569CD6">script</span><span style="color:#9CDCFE"> src</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"/dist/js/adminlte.min.js?v=4.0.0"</span><span style="color:#808080">>&#x3C;/</span><span style="color:#569CD6">script</span><span style="color:#808080">></span></span></code></pre>
                         <p>
                           Set <code>Cache-Control: public, max-age=86400</code> (1 day) at the
                           server. Bump <code>?v=</code> on every release to force cache
@@ -162,12 +161,12 @@ definePageMeta({ layout: 'docs' })
                       style="background-color: #1e1e1e; color: #d4d4d4; overflow-x: auto"
                       tabindex="0"
                       data-language="html"
-                    ><code><span class="line"><span style="color:#808080">&lt;</span><span style="color:#569CD6">link</span></span>
-<span class="line"><span style="color:#9CDCFE">  rel</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;stylesheet&quot;</span></span>
-<span class="line"><span style="color:#9CDCFE">  href</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;https://cdn.jsdelivr.net/npm/admin-lte@4.0.0/dist/css/adminlte.min.css&quot;</span></span>
-<span class="line"><span style="color:#9CDCFE">  integrity</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;sha384-PASTE_THE_HASH_HERE&quot;</span></span>
-<span class="line"><span style="color:#9CDCFE">  crossorigin</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;anonymous&quot;</span></span>
-<span class="line"><span style="color:#808080">/&gt;</span></span></code></pre>
+                    ><code><span class="line"><span style="color:#808080">&#x3C;</span><span style="color:#569CD6">link</span></span>
+<span class="line"><span style="color:#9CDCFE">  rel</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"stylesheet"</span></span>
+<span class="line"><span style="color:#9CDCFE">  href</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"https://cdn.jsdelivr.net/npm/admin-lte@4.0.0/dist/css/adminlte.min.css"</span></span>
+<span class="line"><span style="color:#9CDCFE">  integrity</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"sha384-PASTE_THE_HASH_HERE"</span></span>
+<span class="line"><span style="color:#9CDCFE">  crossorigin</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"anonymous"</span></span>
+<span class="line"><span style="color:#808080">/></span></span></code></pre>
                     <p>
                       You can get the hash from the
                       <a href="https://www.jsdelivr.com/package/npm/admin-lte"
@@ -190,33 +189,33 @@ definePageMeta({ layout: 'docs' })
                       style="background-color: #1e1e1e; color: #d4d4d4; overflow-x: auto"
                       tabindex="0"
                       data-language="html"
-                    ><code><span class="line"><span style="color:#808080">&lt;</span><span style="color:#569CD6">head</span><span style="color:#808080">&gt;</span></span>
-<span class="line"><span style="color:#6A9955">  &lt;!-- 1. Bootstrap Icons (font CSS) — load first so icons render with the page --&gt;</span></span>
-<span class="line"><span style="color:#808080">  &lt;</span><span style="color:#569CD6">link</span><span style="color:#9CDCFE"> rel</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;stylesheet&quot;</span><span style="color:#9CDCFE"> href</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css&quot;</span><span style="color:#808080"> /&gt;</span></span>
+                    ><code><span class="line"><span style="color:#808080">&#x3C;</span><span style="color:#569CD6">head</span><span style="color:#808080">></span></span>
+<span class="line"><span style="color:#6A9955">  &#x3C;!-- 1. Bootstrap Icons (font CSS) — load first so icons render with the page --></span></span>
+<span class="line"><span style="color:#808080">  &#x3C;</span><span style="color:#569CD6">link</span><span style="color:#9CDCFE"> rel</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"stylesheet"</span><span style="color:#9CDCFE"> href</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"</span><span style="color:#808080"> /></span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#6A9955">  &lt;!-- 2. OverlayScrollbars (optional, for the sidebar scroller) --&gt;</span></span>
-<span class="line"><span style="color:#808080">  &lt;</span><span style="color:#569CD6">link</span><span style="color:#9CDCFE"> rel</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;stylesheet&quot;</span><span style="color:#9CDCFE"> href</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;https://cdn.jsdelivr.net/npm/overlayscrollbars@2.11.0/styles/overlayscrollbars.min.css&quot;</span><span style="color:#808080"> /&gt;</span></span>
+<span class="line"><span style="color:#6A9955">  &#x3C;!-- 2. OverlayScrollbars (optional, for the sidebar scroller) --></span></span>
+<span class="line"><span style="color:#808080">  &#x3C;</span><span style="color:#569CD6">link</span><span style="color:#9CDCFE"> rel</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"stylesheet"</span><span style="color:#9CDCFE"> href</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"https://cdn.jsdelivr.net/npm/overlayscrollbars@2.11.0/styles/overlayscrollbars.min.css"</span><span style="color:#808080"> /></span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#6A9955">  &lt;!-- 3. AdminLTE — includes Bootstrap CSS via its imports --&gt;</span></span>
-<span class="line"><span style="color:#808080">  &lt;</span><span style="color:#569CD6">link</span><span style="color:#9CDCFE"> rel</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;stylesheet&quot;</span><span style="color:#9CDCFE"> href</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;https://cdn.jsdelivr.net/npm/admin-lte@4.0.0/dist/css/adminlte.min.css&quot;</span><span style="color:#808080"> /&gt;</span></span>
-<span class="line"><span style="color:#808080">&lt;/</span><span style="color:#569CD6">head</span><span style="color:#808080">&gt;</span></span>
+<span class="line"><span style="color:#6A9955">  &#x3C;!-- 3. AdminLTE — includes Bootstrap CSS via its imports --></span></span>
+<span class="line"><span style="color:#808080">  &#x3C;</span><span style="color:#569CD6">link</span><span style="color:#9CDCFE"> rel</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"stylesheet"</span><span style="color:#9CDCFE"> href</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"https://cdn.jsdelivr.net/npm/admin-lte@4.0.0/dist/css/adminlte.min.css"</span><span style="color:#808080"> /></span></span>
+<span class="line"><span style="color:#808080">&#x3C;/</span><span style="color:#569CD6">head</span><span style="color:#808080">></span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#808080">&lt;</span><span style="color:#569CD6">body</span><span style="color:#808080">&gt;</span></span>
+<span class="line"><span style="color:#808080">&#x3C;</span><span style="color:#569CD6">body</span><span style="color:#808080">></span></span>
 <span class="line"><span style="color:#D4D4D4">  …</span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#6A9955">  &lt;!-- Scripts at the END of body --&gt;</span></span>
-<span class="line"><span style="color:#6A9955">  &lt;!-- 4. Popper (Bootstrap dependency for dropdowns/tooltips/popovers) --&gt;</span></span>
-<span class="line"><span style="color:#808080">  &lt;</span><span style="color:#569CD6">script</span><span style="color:#9CDCFE"> src</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js&quot;</span><span style="color:#808080">&gt;&lt;/</span><span style="color:#569CD6">script</span><span style="color:#808080">&gt;</span></span>
+<span class="line"><span style="color:#6A9955">  &#x3C;!-- Scripts at the END of body --></span></span>
+<span class="line"><span style="color:#6A9955">  &#x3C;!-- 4. Popper (Bootstrap dependency for dropdowns/tooltips/popovers) --></span></span>
+<span class="line"><span style="color:#808080">  &#x3C;</span><span style="color:#569CD6">script</span><span style="color:#9CDCFE"> src</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"</span><span style="color:#808080">>&#x3C;/</span><span style="color:#569CD6">script</span><span style="color:#808080">></span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#6A9955">  &lt;!-- 5. Bootstrap --&gt;</span></span>
-<span class="line"><span style="color:#808080">  &lt;</span><span style="color:#569CD6">script</span><span style="color:#9CDCFE"> src</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js&quot;</span><span style="color:#808080">&gt;&lt;/</span><span style="color:#569CD6">script</span><span style="color:#808080">&gt;</span></span>
+<span class="line"><span style="color:#6A9955">  &#x3C;!-- 5. Bootstrap --></span></span>
+<span class="line"><span style="color:#808080">  &#x3C;</span><span style="color:#569CD6">script</span><span style="color:#9CDCFE"> src</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js"</span><span style="color:#808080">>&#x3C;/</span><span style="color:#569CD6">script</span><span style="color:#808080">></span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#6A9955">  &lt;!-- 6. OverlayScrollbars --&gt;</span></span>
-<span class="line"><span style="color:#808080">  &lt;</span><span style="color:#569CD6">script</span><span style="color:#9CDCFE"> src</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;https://cdn.jsdelivr.net/npm/overlayscrollbars@2.11.0/browser/overlayscrollbars.browser.es6.min.js&quot;</span><span style="color:#808080">&gt;&lt;/</span><span style="color:#569CD6">script</span><span style="color:#808080">&gt;</span></span>
+<span class="line"><span style="color:#6A9955">  &#x3C;!-- 6. OverlayScrollbars --></span></span>
+<span class="line"><span style="color:#808080">  &#x3C;</span><span style="color:#569CD6">script</span><span style="color:#9CDCFE"> src</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"https://cdn.jsdelivr.net/npm/overlayscrollbars@2.11.0/browser/overlayscrollbars.browser.es6.min.js"</span><span style="color:#808080">>&#x3C;/</span><span style="color:#569CD6">script</span><span style="color:#808080">></span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#6A9955">  &lt;!-- 7. AdminLTE — must load AFTER Bootstrap --&gt;</span></span>
-<span class="line"><span style="color:#808080">  &lt;</span><span style="color:#569CD6">script</span><span style="color:#9CDCFE"> src</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;https://cdn.jsdelivr.net/npm/admin-lte@4.0.0/dist/js/adminlte.min.js&quot;</span><span style="color:#808080">&gt;&lt;/</span><span style="color:#569CD6">script</span><span style="color:#808080">&gt;</span></span>
-<span class="line"><span style="color:#808080">&lt;/</span><span style="color:#569CD6">body</span><span style="color:#808080">&gt;</span></span></code></pre>
+<span class="line"><span style="color:#6A9955">  &#x3C;!-- 7. AdminLTE — must load AFTER Bootstrap --></span></span>
+<span class="line"><span style="color:#808080">  &#x3C;</span><span style="color:#569CD6">script</span><span style="color:#9CDCFE"> src</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"https://cdn.jsdelivr.net/npm/admin-lte@4.0.0/dist/js/adminlte.min.js"</span><span style="color:#808080">>&#x3C;/</span><span style="color:#569CD6">script</span><span style="color:#808080">></span></span>
+<span class="line"><span style="color:#808080">&#x3C;/</span><span style="color:#569CD6">body</span><span style="color:#808080">></span></span></code></pre>
                     <h5 id="defer-or-async">Defer or async?</h5>
                     <p>
                       The AdminLTE bundle waits for <code>DOMContentLoaded</code> before wiring its
@@ -227,7 +226,7 @@ definePageMeta({ layout: 'docs' })
                       style="background-color: #1e1e1e; color: #d4d4d4; overflow-x: auto"
                       tabindex="0"
                       data-language="html"
-                    ><code><span class="line"><span style="color:#808080">&lt;</span><span style="color:#569CD6">script</span><span style="color:#9CDCFE"> defer</span><span style="color:#9CDCFE"> src</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;/dist/js/adminlte.min.js&quot;</span><span style="color:#808080">&gt;&lt;/</span><span style="color:#569CD6">script</span><span style="color:#808080">&gt;</span></span></code></pre>
+                    ><code><span class="line"><span style="color:#808080">&#x3C;</span><span style="color:#569CD6">script</span><span style="color:#9CDCFE"> defer</span><span style="color:#9CDCFE"> src</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"/dist/js/adminlte.min.js"</span><span style="color:#808080">>&#x3C;/</span><span style="color:#569CD6">script</span><span style="color:#808080">></span></span></code></pre>
                     <p>
                       Don’t use <code>async</code> — the script could execute before its
                       dependencies (Bootstrap, Popper) have parsed, and listeners would attach to
@@ -244,15 +243,15 @@ definePageMeta({ layout: 'docs' })
                       style="background-color: #1e1e1e; color: #d4d4d4; overflow-x: auto"
                       tabindex="0"
                       data-language="html"
-                    ><code><span class="line"><span style="color:#808080">&lt;</span><span style="color:#569CD6">style</span><span style="color:#808080">&gt;</span><span style="color:#6A9955">/* extracted critical CSS for /dashboard */</span><span style="color:#808080">&lt;/</span><span style="color:#569CD6">style</span><span style="color:#808080">&gt;</span></span>
+                    ><code><span class="line"><span style="color:#808080">&#x3C;</span><span style="color:#569CD6">style</span><span style="color:#808080">></span><span style="color:#6A9955">/* extracted critical CSS for /dashboard */</span><span style="color:#808080">&#x3C;/</span><span style="color:#569CD6">style</span><span style="color:#808080">></span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#808080">&lt;</span><span style="color:#569CD6">link</span></span>
-<span class="line"><span style="color:#9CDCFE">  rel</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;preload&quot;</span></span>
-<span class="line"><span style="color:#9CDCFE">  as</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;style&quot;</span></span>
-<span class="line"><span style="color:#9CDCFE">  href</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;/dist/css/adminlte.min.css&quot;</span></span>
-<span class="line"><span style="color:#9CDCFE">  onload</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;</span><span style="color:#569CD6">this</span><span style="color:#CE9178">.</span><span style="color:#9CDCFE">onload</span><span style="color:#D4D4D4">=</span><span style="color:#569CD6">null</span><span style="color:#CE9178">;</span><span style="color:#569CD6">this</span><span style="color:#CE9178">.</span><span style="color:#9CDCFE">rel</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&#39;stylesheet&#39;&quot;</span></span>
-<span class="line"><span style="color:#808080">/&gt;</span></span>
-<span class="line"><span style="color:#808080">&lt;</span><span style="color:#569CD6">noscript</span><span style="color:#808080">&gt;&lt;</span><span style="color:#569CD6">link</span><span style="color:#9CDCFE"> rel</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;stylesheet&quot;</span><span style="color:#9CDCFE"> href</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;/dist/css/adminlte.min.css&quot;</span><span style="color:#808080"> /&gt;&lt;/</span><span style="color:#569CD6">noscript</span><span style="color:#808080">&gt;</span></span></code></pre>
+<span class="line"><span style="color:#808080">&#x3C;</span><span style="color:#569CD6">link</span></span>
+<span class="line"><span style="color:#9CDCFE">  rel</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"preload"</span></span>
+<span class="line"><span style="color:#9CDCFE">  as</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"style"</span></span>
+<span class="line"><span style="color:#9CDCFE">  href</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"/dist/css/adminlte.min.css"</span></span>
+<span class="line"><span style="color:#9CDCFE">  onload</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"</span><span style="color:#569CD6">this</span><span style="color:#CE9178">.</span><span style="color:#9CDCFE">onload</span><span style="color:#D4D4D4">=</span><span style="color:#569CD6">null</span><span style="color:#CE9178">;</span><span style="color:#569CD6">this</span><span style="color:#CE9178">.</span><span style="color:#9CDCFE">rel</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">'stylesheet'"</span></span>
+<span class="line"><span style="color:#808080">/></span></span>
+<span class="line"><span style="color:#808080">&#x3C;</span><span style="color:#569CD6">noscript</span><span style="color:#808080">>&#x3C;</span><span style="color:#569CD6">link</span><span style="color:#9CDCFE"> rel</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"stylesheet"</span><span style="color:#9CDCFE"> href</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"/dist/css/adminlte.min.css"</span><span style="color:#808080"> />&#x3C;/</span><span style="color:#569CD6">noscript</span><span style="color:#808080">></span></span></code></pre>
                     <p>
                       Extract critical CSS with a tool like
                       <a href="https://github.com/GoogleChromeLabs/critters">Critters</a> or
@@ -269,9 +268,9 @@ definePageMeta({ layout: 'docs' })
                       style="background-color: #1e1e1e; color: #d4d4d4; overflow-x: auto"
                       tabindex="0"
                       data-language="html"
-                    ><code><span class="line"><span style="color:#808080">&lt;</span><span style="color:#569CD6">link</span><span style="color:#9CDCFE"> rel</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;preload&quot;</span><span style="color:#9CDCFE"> as</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;style&quot;</span><span style="color:#9CDCFE"> href</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;/dist/css/adminlte.min.css&quot;</span><span style="color:#808080"> /&gt;</span></span>
-<span class="line"><span style="color:#808080">&lt;</span><span style="color:#569CD6">link</span><span style="color:#9CDCFE"> rel</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;preload&quot;</span><span style="color:#9CDCFE"> as</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;font&quot;</span><span style="color:#9CDCFE"> href</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;/fonts/source-sans-3.woff2&quot;</span><span style="color:#9CDCFE"> type</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;font/woff2&quot;</span><span style="color:#9CDCFE"> crossorigin</span><span style="color:#808080"> /&gt;</span></span>
-<span class="line"><span style="color:#808080">&lt;</span><span style="color:#569CD6">link</span><span style="color:#9CDCFE"> rel</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;preconnect&quot;</span><span style="color:#9CDCFE"> href</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;https://cdn.jsdelivr.net&quot;</span><span style="color:#9CDCFE"> crossorigin</span><span style="color:#808080"> /&gt;</span></span></code></pre>
+                    ><code><span class="line"><span style="color:#808080">&#x3C;</span><span style="color:#569CD6">link</span><span style="color:#9CDCFE"> rel</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"preload"</span><span style="color:#9CDCFE"> as</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"style"</span><span style="color:#9CDCFE"> href</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"/dist/css/adminlte.min.css"</span><span style="color:#808080"> /></span></span>
+<span class="line"><span style="color:#808080">&#x3C;</span><span style="color:#569CD6">link</span><span style="color:#9CDCFE"> rel</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"preload"</span><span style="color:#9CDCFE"> as</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"font"</span><span style="color:#9CDCFE"> href</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"/fonts/source-sans-3.woff2"</span><span style="color:#9CDCFE"> type</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"font/woff2"</span><span style="color:#9CDCFE"> crossorigin</span><span style="color:#808080"> /></span></span>
+<span class="line"><span style="color:#808080">&#x3C;</span><span style="color:#569CD6">link</span><span style="color:#9CDCFE"> rel</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"preconnect"</span><span style="color:#9CDCFE"> href</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"https://cdn.jsdelivr.net"</span><span style="color:#9CDCFE"> crossorigin</span><span style="color:#808080"> /></span></span></code></pre>
                     <p>
                       Only preload what’s used on every page. Preloading per-route assets in a
                       shared layout wastes bandwidth.
@@ -289,11 +288,10 @@ definePageMeta({ layout: 'docs' })
                       style="background-color: #1e1e1e; color: #d4d4d4; overflow-x: auto"
                       tabindex="0"
                       data-language="js"
-                    ><code><span class="line"><span style="color:#6A9955">// Don&#39;t bundle the calendar app into the main chunk</span></span>
-<span class="line"><span style="color:#569CD6">const</span><span style="color:#DCDCAA"> Calendar</span><span style="color:#D4D4D4"> = () </span><span style="color:#569CD6">=&gt;</span><span style="color:#569CD6"> import</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">&quot;./Calendar.vue&quot;</span><span style="color:#D4D4D4">)</span></span></code></pre>
+                    ><code><span class="line"><span style="color:#6A9955">// Don't bundle the calendar app into the main chunk</span></span>
+<span class="line"><span style="color:#569CD6">const</span><span style="color:#DCDCAA"> Calendar</span><span style="color:#D4D4D4"> = () </span><span style="color:#569CD6">=></span><span style="color:#569CD6"> import</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">"./Calendar.vue"</span><span style="color:#D4D4D4">)</span></span></code></pre>
                     <h5 id="bundle-size-budget">Bundle size budget</h5>
                     <p>The current published <code>dist/</code> artefacts gzip to:</p>
-
                     <table>
                       <thead>
                         <tr>
@@ -332,11 +330,11 @@ definePageMeta({ layout: 'docs' })
                       style="background-color: #1e1e1e; color: #d4d4d4; overflow-x: auto"
                       tabindex="0"
                       data-language="js"
-                    ><code><span class="line"><span style="color:#C586C0">import</span><span style="color:#D4D4D4"> { </span><span style="color:#9CDCFE">precacheAndRoute</span><span style="color:#D4D4D4"> } </span><span style="color:#C586C0">from</span><span style="color:#CE9178"> &quot;workbox-precaching&quot;</span></span>
+                    ><code><span class="line"><span style="color:#C586C0">import</span><span style="color:#D4D4D4"> { </span><span style="color:#9CDCFE">precacheAndRoute</span><span style="color:#D4D4D4"> } </span><span style="color:#C586C0">from</span><span style="color:#CE9178"> "workbox-precaching"</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#DCDCAA">precacheAndRoute</span><span style="color:#D4D4D4">([</span></span>
-<span class="line"><span style="color:#D4D4D4">  { </span><span style="color:#9CDCFE">url:</span><span style="color:#CE9178"> &quot;/dist/css/adminlte.min.css&quot;</span><span style="color:#D4D4D4">, </span><span style="color:#9CDCFE">revision:</span><span style="color:#CE9178"> &quot;4.0.0&quot;</span><span style="color:#D4D4D4"> },</span></span>
-<span class="line"><span style="color:#D4D4D4">  { </span><span style="color:#9CDCFE">url:</span><span style="color:#CE9178"> &quot;/dist/js/adminlte.min.js&quot;</span><span style="color:#D4D4D4">, </span><span style="color:#9CDCFE">revision:</span><span style="color:#CE9178"> &quot;4.0.0&quot;</span><span style="color:#D4D4D4"> },</span></span>
+<span class="line"><span style="color:#D4D4D4">  { </span><span style="color:#9CDCFE">url:</span><span style="color:#CE9178"> "/dist/css/adminlte.min.css"</span><span style="color:#D4D4D4">, </span><span style="color:#9CDCFE">revision:</span><span style="color:#CE9178"> "4.0.0"</span><span style="color:#D4D4D4"> },</span></span>
+<span class="line"><span style="color:#D4D4D4">  { </span><span style="color:#9CDCFE">url:</span><span style="color:#CE9178"> "/dist/js/adminlte.min.js"</span><span style="color:#D4D4D4">, </span><span style="color:#9CDCFE">revision:</span><span style="color:#CE9178"> "4.0.0"</span><span style="color:#D4D4D4"> },</span></span>
 <span class="line"><span style="color:#6A9955">  // ...your own pages</span></span>
 <span class="line"><span style="color:#D4D4D4">])</span></span></code></pre>
                     <h5 id="removing-dev-only-files-before-deploy">
@@ -361,9 +359,9 @@ definePageMeta({ layout: 'docs' })
                       tabindex="0"
                       data-language="bash"
                     ><code><span class="line"><span style="color:#DCDCAA">rsync</span><span style="color:#569CD6"> -avz</span><span style="color:#569CD6"> --delete</span><span style="color:#D7BA7D"> \</span></span>
-<span class="line"><span style="color:#569CD6">  --exclude=</span><span style="color:#CE9178">&#39;*.map&#39;</span><span style="color:#D7BA7D"> \</span></span>
-<span class="line"><span style="color:#569CD6">  --exclude=</span><span style="color:#CE9178">&#39;html/&#39;</span><span style="color:#D7BA7D"> \</span></span>
-<span class="line"><span style="color:#569CD6">  --exclude=</span><span style="color:#CE9178">&#39;.astro/&#39;</span><span style="color:#D7BA7D"> \</span></span>
+<span class="line"><span style="color:#569CD6">  --exclude=</span><span style="color:#CE9178">'*.map'</span><span style="color:#D7BA7D"> \</span></span>
+<span class="line"><span style="color:#569CD6">  --exclude=</span><span style="color:#CE9178">'html/'</span><span style="color:#D7BA7D"> \</span></span>
+<span class="line"><span style="color:#569CD6">  --exclude=</span><span style="color:#CE9178">'.astro/'</span><span style="color:#D7BA7D"> \</span></span>
 <span class="line"><span style="color:#CE9178">  dist/</span><span style="color:#CE9178"> user@server:/var/www/your-app/</span></span></code></pre>
                     <h5 id="a-note-on-cloudflare-cache">A note on Cloudflare cache</h5>
                     <p>

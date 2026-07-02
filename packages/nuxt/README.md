@@ -7,7 +7,7 @@ dark mode** (no flash).
 ## Install
 
 ```bash
-npm i @adminlte/nuxt adminlte-vue bootstrap
+npm i @adminlte/nuxt @adminlte/vue bootstrap
 ```
 
 ```ts

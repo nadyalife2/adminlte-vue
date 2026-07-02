@@ -42,15 +42,15 @@ definePageMeta({ layout: 'docs' })
                       data-language="plaintext"
                     ><code><span class="line"><span># https://github.com/browserslist/browserslist#readme</span></span>
 <span class="line"><span></span></span>
-<span class="line"><span>&gt;= 0.5%</span></span>
+<span class="line"><span>>= 0.5%</span></span>
 <span class="line"><span>last 2 major versions</span></span>
 <span class="line"><span>not dead</span></span>
-<span class="line"><span>Chrome &gt;= 60</span></span>
-<span class="line"><span>Firefox &gt;= 60</span></span>
+<span class="line"><span>Chrome >= 60</span></span>
+<span class="line"><span>Firefox >= 60</span></span>
 <span class="line"><span>Firefox ESR</span></span>
-<span class="line"><span>iOS &gt;= 12</span></span>
-<span class="line"><span>Safari &gt;= 12</span></span>
-<span class="line"><span>not Explorer &lt;= 11</span></span></code></pre>
+<span class="line"><span>iOS >= 12</span></span>
+<span class="line"><span>Safari >= 12</span></span>
+<span class="line"><span>not Explorer &#x3C;= 11</span></span></code></pre>
                   </div>
                 </div>
               </div>

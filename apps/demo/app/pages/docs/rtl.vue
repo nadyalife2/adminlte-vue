@@ -39,14 +39,14 @@ definePageMeta({ layout: 'docs' })
                       style="background-color: #1e1e1e; color: #d4d4d4; overflow-x: auto"
                       tabindex="0"
                       data-language="html"
-                    ><code><span class="line"><span style="color:#808080">&lt;</span><span style="color:#569CD6">html</span><span style="color:#9CDCFE"> lang</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;ar&quot;</span><span style="color:#9CDCFE"> dir</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;rtl&quot;</span><span style="color:#808080">&gt;</span></span>
-<span class="line"><span style="color:#808080">  &lt;</span><span style="color:#569CD6">head</span><span style="color:#808080">&gt;</span></span>
-<span class="line"><span style="color:#808080">    &lt;</span><span style="color:#569CD6">link</span><span style="color:#9CDCFE"> rel</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;stylesheet&quot;</span><span style="color:#9CDCFE"> href</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;dist/css/adminlte.rtl.min.css&quot;</span><span style="color:#808080"> /&gt;</span></span>
-<span class="line"><span style="color:#808080">  &lt;/</span><span style="color:#569CD6">head</span><span style="color:#808080">&gt;</span></span>
-<span class="line"><span style="color:#808080">  &lt;</span><span style="color:#569CD6">body</span><span style="color:#9CDCFE"> class</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;layout-fixed sidebar-expand-lg bg-body-tertiary&quot;</span><span style="color:#808080">&gt;</span></span>
-<span class="line"><span style="color:#6A9955">    &lt;!-- ...same markup as LTR --&gt;</span></span>
-<span class="line"><span style="color:#808080">  &lt;/</span><span style="color:#569CD6">body</span><span style="color:#808080">&gt;</span></span>
-<span class="line"><span style="color:#808080">&lt;/</span><span style="color:#569CD6">html</span><span style="color:#808080">&gt;</span></span></code></pre>
+                    ><code><span class="line"><span style="color:#808080">&#x3C;</span><span style="color:#569CD6">html</span><span style="color:#9CDCFE"> lang</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"ar"</span><span style="color:#9CDCFE"> dir</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"rtl"</span><span style="color:#808080">></span></span>
+<span class="line"><span style="color:#808080">  &#x3C;</span><span style="color:#569CD6">head</span><span style="color:#808080">></span></span>
+<span class="line"><span style="color:#808080">    &#x3C;</span><span style="color:#569CD6">link</span><span style="color:#9CDCFE"> rel</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"stylesheet"</span><span style="color:#9CDCFE"> href</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"dist/css/adminlte.rtl.min.css"</span><span style="color:#808080"> /></span></span>
+<span class="line"><span style="color:#808080">  &#x3C;/</span><span style="color:#569CD6">head</span><span style="color:#808080">></span></span>
+<span class="line"><span style="color:#808080">  &#x3C;</span><span style="color:#569CD6">body</span><span style="color:#9CDCFE"> class</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"layout-fixed sidebar-expand-lg bg-body-tertiary"</span><span style="color:#808080">></span></span>
+<span class="line"><span style="color:#6A9955">    &#x3C;!-- ...same markup as LTR --></span></span>
+<span class="line"><span style="color:#808080">  &#x3C;/</span><span style="color:#569CD6">body</span><span style="color:#808080">></span></span>
+<span class="line"><span style="color:#808080">&#x3C;/</span><span style="color:#569CD6">html</span><span style="color:#808080">></span></span></code></pre>
                     <p>
                       That’s it — the sidebar now docks to the right, scroll bars flip,
                       padding/margin utilities mirror, and Bootstrap Icons stay LTR-safe (most icons
@@ -76,12 +76,12 @@ definePageMeta({ layout: 'docs' })
                       style="background-color: #1e1e1e; color: #d4d4d4; overflow-x: auto"
                       tabindex="0"
                       data-language="html"
-                    ><code><span class="line"><span style="color:#808080">&lt;</span><span style="color:#569CD6">body</span><span style="color:#808080">&gt;</span></span>
-<span class="line"><span style="color:#6A9955">  &lt;!-- LTR app shell --&gt;</span></span>
-<span class="line"><span style="color:#808080">  &lt;</span><span style="color:#569CD6">main</span><span style="color:#9CDCFE"> dir</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;rtl&quot;</span><span style="color:#9CDCFE"> lang</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;ar&quot;</span><span style="color:#808080">&gt;</span></span>
-<span class="line"><span style="color:#6A9955">    &lt;!-- this block only is RTL --&gt;</span></span>
-<span class="line"><span style="color:#808080">  &lt;/</span><span style="color:#569CD6">main</span><span style="color:#808080">&gt;</span></span>
-<span class="line"><span style="color:#808080">&lt;/</span><span style="color:#569CD6">body</span><span style="color:#808080">&gt;</span></span></code></pre>
+                    ><code><span class="line"><span style="color:#808080">&#x3C;</span><span style="color:#569CD6">body</span><span style="color:#808080">></span></span>
+<span class="line"><span style="color:#6A9955">  &#x3C;!-- LTR app shell --></span></span>
+<span class="line"><span style="color:#808080">  &#x3C;</span><span style="color:#569CD6">main</span><span style="color:#9CDCFE"> dir</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"rtl"</span><span style="color:#9CDCFE"> lang</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"ar"</span><span style="color:#808080">></span></span>
+<span class="line"><span style="color:#6A9955">    &#x3C;!-- this block only is RTL --></span></span>
+<span class="line"><span style="color:#808080">  &#x3C;/</span><span style="color:#569CD6">main</span><span style="color:#808080">></span></span>
+<span class="line"><span style="color:#808080">&#x3C;/</span><span style="color:#569CD6">body</span><span style="color:#808080">></span></span></code></pre>
                     <p>
                       Bootstrap and AdminLTE handle nested direction switches correctly — the inner
                       element’s direction is what counts.
@@ -121,7 +121,6 @@ definePageMeta({ layout: 'docs' })
 <span class="line"><span style="color:#9CDCFE">  margin-left</span><span style="color:#D4D4D4">: </span><span style="color:#B5CEA8">.5rem</span><span style="color:#D4D4D4">;   </span><span style="color:#6A9955">// stays left-margin in both LTR and RTL</span></span>
 <span class="line"><span style="color:#D4D4D4">}</span></span></code></pre>
                     <h5 id="what-flips-automatically">What flips automatically</h5>
-
                     <table>
                       <thead>
                         <tr>

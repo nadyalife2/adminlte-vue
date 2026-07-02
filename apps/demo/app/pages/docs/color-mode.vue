@@ -118,180 +118,139 @@ definePageMeta({ layout: 'docs' })
               <div class="col-12">
                 <div class="card">
                   <div class="card-body">
+                    <p>
+                      AdminLTE supports Bootstrap 5.3 color modes (light, dark, and auto) out of the
+                      box. Since 4.1 the switcher ships in <code>adminlte.js</code> as the
+                      <strong>ColorMode</strong> module — you no longer need to copy a script into
+                      your pages.
+                    </p>
+                    <h5 id="how-it-works">How it works</h5>
+                    <ul>
+                      <li>
+                        The chosen mode is persisted in <code>localStorage</code> under the key
+                        <code>lte-theme</code>.
+                      </li>
+                      <li>
+                        <code>auto</code> follows the operating system’s
+                        <code>prefers-color-scheme</code> and updates live when the OS preference
+                        changes.
+                      </li>
+                      <li>
+                        The resolved mode is applied as
+                        <code>data-bs-theme=&quot;light|dark&quot;</code> on
+                        <code>&lt;html&gt;</code>, so every Bootstrap and AdminLTE component adapts
+                        automatically.
+                      </li>
+                    </ul>
+                    <h5 id="markup">Markup</h5>
+                    <p>
+                      Add toggle buttons anywhere with <code>data-bs-theme-value</code> — the module
+                      binds them automatically. Optional <code>data-lte-theme-icon</code> elements
+                      act as an indicator for the current choice (the demo uses them in the topbar
+                      trigger):
+                    </p>
                     <pre
                       class="astro-code dark-plus"
                       style="background-color: #1e1e1e; color: #d4d4d4; overflow-x: auto"
                       tabindex="0"
                       data-language="html"
-                    ><code><span class="line"><span style="color:#6A9955">&lt;!--begin::Header--&gt;</span></span>
-<span class="line"><span style="color:#808080">&lt;</span><span style="color:#569CD6">nav</span><span style="color:#9CDCFE"> class</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;navbar navbar-expand bg-body&quot;</span><span style="color:#808080">&gt;</span></span>
-<span class="line"><span style="color:#6A9955">  &lt;!--begin::Container--&gt;</span></span>
-<span class="line"><span style="color:#808080">  &lt;</span><span style="color:#569CD6">div</span><span style="color:#9CDCFE"> class</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;container-fluid&quot;</span><span style="color:#808080">&gt;</span></span>
-<span class="line"><span style="color:#6A9955">    &lt;!--begin::Start Navbar links--&gt;</span></span>
-<span class="line"><span style="color:#808080">    &lt;</span><span style="color:#569CD6">ul</span><span style="color:#9CDCFE"> class</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;navbar-nav&quot;</span><span style="color:#808080">&gt;</span></span>
-<span class="line"><span style="color:#808080">      &lt;</span><span style="color:#569CD6">li</span><span style="color:#9CDCFE"> class</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;nav-item&quot;</span><span style="color:#808080">&gt;</span></span>
-<span class="line"><span style="color:#808080">        &lt;</span><span style="color:#569CD6">a</span><span style="color:#9CDCFE"> class</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;nav-link&quot;</span><span style="color:#9CDCFE"> data-lte-toggle</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;sidebar&quot;</span><span style="color:#9CDCFE"> href</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;#&quot;</span><span style="color:#9CDCFE"> role</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;button&quot;</span></span>
-<span class="line"><span style="color:#808080">          &gt;&lt;</span><span style="color:#569CD6">i</span><span style="color:#9CDCFE"> class</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;bi bi-list&quot;</span><span style="color:#808080">&gt;&lt;/</span><span style="color:#569CD6">i</span></span>
-<span class="line"><span style="color:#808080">        &gt;&lt;/</span><span style="color:#569CD6">a</span><span style="color:#808080">&gt;</span></span>
-<span class="line"><span style="color:#808080">      &lt;/</span><span style="color:#569CD6">li</span><span style="color:#808080">&gt;</span></span>
-<span class="line"><span style="color:#808080">      &lt;</span><span style="color:#569CD6">li</span><span style="color:#9CDCFE"> class</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;nav-item d-none d-md-block&quot;</span><span style="color:#808080">&gt;</span></span>
-<span class="line"><span style="color:#808080">        &lt;</span><span style="color:#569CD6">a</span><span style="color:#9CDCFE"> href</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;#&quot;</span><span style="color:#9CDCFE"> class</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;nav-link&quot;</span><span style="color:#808080">&gt;</span><span style="color:#D4D4D4">Home</span><span style="color:#808080">&lt;/</span><span style="color:#569CD6">a</span><span style="color:#808080">&gt;</span></span>
-<span class="line"><span style="color:#808080">      &lt;/</span><span style="color:#569CD6">li</span><span style="color:#808080">&gt;</span></span>
-<span class="line"><span style="color:#808080">      &lt;</span><span style="color:#569CD6">li</span><span style="color:#9CDCFE"> class</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;nav-item d-none d-md-block&quot;</span><span style="color:#808080">&gt;</span></span>
-<span class="line"><span style="color:#808080">        &lt;</span><span style="color:#569CD6">a</span><span style="color:#9CDCFE"> href</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;#&quot;</span><span style="color:#9CDCFE"> class</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;nav-link&quot;</span><span style="color:#808080">&gt;</span><span style="color:#D4D4D4">Contact</span><span style="color:#808080">&lt;/</span><span style="color:#569CD6">a</span><span style="color:#808080">&gt;</span></span>
-<span class="line"><span style="color:#808080">      &lt;/</span><span style="color:#569CD6">li</span><span style="color:#808080">&gt;</span></span>
-<span class="line"><span style="color:#808080">    &lt;/</span><span style="color:#569CD6">ul</span><span style="color:#808080">&gt;</span></span>
-<span class="line"><span style="color:#6A9955">    &lt;!--end::Start Navbar links--&gt;</span></span>
-<span class="line"><span style="color:#6A9955">    &lt;!--begin::End Navbar links--&gt;</span></span>
-<span class="line"><span style="color:#808080">    &lt;</span><span style="color:#569CD6">ul</span><span style="color:#9CDCFE"> class</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;navbar-nav ms-auto&quot;</span><span style="color:#808080">&gt;</span></span>
-<span class="line"><span style="color:#808080">      &lt;</span><span style="color:#569CD6">li</span><span style="color:#9CDCFE"> class</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;nav-item dropdown&quot;</span><span style="color:#808080">&gt;</span></span>
-<span class="line"><span style="color:#808080">        &lt;</span><span style="color:#569CD6">button</span></span>
-<span class="line"><span style="color:#9CDCFE">          class</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;btn btn-link nav-link py-2 px-0 px-lg-2 dropdown-toggle d-flex align-items-center&quot;</span></span>
-<span class="line"><span style="color:#9CDCFE">          id</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;bd-theme&quot;</span></span>
-<span class="line"><span style="color:#9CDCFE">          type</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;button&quot;</span></span>
-<span class="line"><span style="color:#9CDCFE">          aria-expanded</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;false&quot;</span></span>
-<span class="line"><span style="color:#9CDCFE">          data-bs-toggle</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;dropdown&quot;</span></span>
-<span class="line"><span style="color:#9CDCFE">          data-bs-display</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;static&quot;</span></span>
-<span class="line"><span style="color:#808080">        &gt;</span></span>
-<span class="line"><span style="color:#808080">          &lt;</span><span style="color:#569CD6">span</span><span style="color:#9CDCFE"> class</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;theme-icon-active&quot;</span><span style="color:#808080">&gt;</span></span>
-<span class="line"><span style="color:#808080">            &lt;</span><span style="color:#569CD6">i</span><span style="color:#9CDCFE"> class</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;my-1&quot;</span><span style="color:#808080">&gt;&lt;/</span><span style="color:#569CD6">i</span><span style="color:#808080">&gt;</span></span>
-<span class="line"><span style="color:#808080">          &lt;/</span><span style="color:#569CD6">span</span><span style="color:#808080">&gt;</span></span>
-<span class="line"><span style="color:#808080">          &lt;</span><span style="color:#569CD6">span</span><span style="color:#9CDCFE"> class</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;d-lg-none ms-2&quot;</span><span style="color:#9CDCFE"> id</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;bd-theme-text&quot;</span><span style="color:#808080">&gt;</span><span style="color:#D4D4D4">Toggle theme</span><span style="color:#808080">&lt;/</span><span style="color:#569CD6">span</span><span style="color:#808080">&gt;</span></span>
-<span class="line"><span style="color:#808080">        &lt;/</span><span style="color:#569CD6">button</span><span style="color:#808080">&gt;</span></span>
-<span class="line"><span style="color:#808080">        &lt;</span><span style="color:#569CD6">ul</span></span>
-<span class="line"><span style="color:#9CDCFE">          class</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;dropdown-menu dropdown-menu-end&quot;</span></span>
-<span class="line"><span style="color:#9CDCFE">          aria-labelledby</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;bd-theme-text&quot;</span></span>
-<span class="line"><span style="color:#9CDCFE">          style</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;--bs-dropdown-min-width: 8rem;&quot;</span></span>
-<span class="line"><span style="color:#808080">        &gt;</span></span>
-<span class="line"><span style="color:#808080">          &lt;</span><span style="color:#569CD6">li</span><span style="color:#808080">&gt;</span></span>
-<span class="line"><span style="color:#808080">            &lt;</span><span style="color:#569CD6">button</span></span>
-<span class="line"><span style="color:#9CDCFE">              type</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;button&quot;</span></span>
-<span class="line"><span style="color:#9CDCFE">              class</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;dropdown-item d-flex align-items-center active&quot;</span></span>
-<span class="line"><span style="color:#9CDCFE">              data-bs-theme-value</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;light&quot;</span></span>
-<span class="line"><span style="color:#9CDCFE">              aria-pressed</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;false&quot;</span></span>
-<span class="line"><span style="color:#808080">            &gt;</span></span>
-<span class="line"><span style="color:#808080">              &lt;</span><span style="color:#569CD6">i</span><span style="color:#9CDCFE"> class</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;bi bi-sun-fill me-2&quot;</span><span style="color:#808080">&gt;&lt;/</span><span style="color:#569CD6">i</span><span style="color:#808080">&gt;</span></span>
-<span class="line"><span style="color:#D4D4D4">              Light</span></span>
-<span class="line"><span style="color:#808080">              &lt;</span><span style="color:#569CD6">i</span><span style="color:#9CDCFE"> class</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;bi bi-check-lg ms-auto d-none&quot;</span><span style="color:#808080">&gt;&lt;/</span><span style="color:#569CD6">i</span><span style="color:#808080">&gt;</span></span>
-<span class="line"><span style="color:#808080">            &lt;/</span><span style="color:#569CD6">button</span><span style="color:#808080">&gt;</span></span>
-<span class="line"><span style="color:#808080">          &lt;/</span><span style="color:#569CD6">li</span><span style="color:#808080">&gt;</span></span>
-<span class="line"><span style="color:#808080">          &lt;</span><span style="color:#569CD6">li</span><span style="color:#808080">&gt;</span></span>
-<span class="line"><span style="color:#808080">            &lt;</span><span style="color:#569CD6">button</span></span>
-<span class="line"><span style="color:#9CDCFE">              type</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;button&quot;</span></span>
-<span class="line"><span style="color:#9CDCFE">              class</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;dropdown-item d-flex align-items-center&quot;</span></span>
-<span class="line"><span style="color:#9CDCFE">              data-bs-theme-value</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;dark&quot;</span></span>
-<span class="line"><span style="color:#9CDCFE">              aria-pressed</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;false&quot;</span></span>
-<span class="line"><span style="color:#808080">            &gt;</span></span>
-<span class="line"><span style="color:#808080">              &lt;</span><span style="color:#569CD6">i</span><span style="color:#9CDCFE"> class</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;bi bi-moon-fill me-2&quot;</span><span style="color:#808080">&gt;&lt;/</span><span style="color:#569CD6">i</span><span style="color:#808080">&gt;</span></span>
-<span class="line"><span style="color:#D4D4D4">              Dark</span></span>
-<span class="line"><span style="color:#808080">              &lt;</span><span style="color:#569CD6">i</span><span style="color:#9CDCFE"> class</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;bi bi-check-lg ms-auto d-none&quot;</span><span style="color:#808080">&gt;&lt;/</span><span style="color:#569CD6">i</span><span style="color:#808080">&gt;</span></span>
-<span class="line"><span style="color:#808080">            &lt;/</span><span style="color:#569CD6">button</span><span style="color:#808080">&gt;</span></span>
-<span class="line"><span style="color:#808080">          &lt;/</span><span style="color:#569CD6">li</span><span style="color:#808080">&gt;</span></span>
-<span class="line"><span style="color:#808080">          &lt;</span><span style="color:#569CD6">li</span><span style="color:#808080">&gt;</span></span>
-<span class="line"><span style="color:#808080">            &lt;</span><span style="color:#569CD6">button</span></span>
-<span class="line"><span style="color:#9CDCFE">              type</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;button&quot;</span></span>
-<span class="line"><span style="color:#9CDCFE">              class</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;dropdown-item d-flex align-items-center&quot;</span></span>
-<span class="line"><span style="color:#9CDCFE">              data-bs-theme-value</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;auto&quot;</span></span>
-<span class="line"><span style="color:#9CDCFE">              aria-pressed</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;true&quot;</span></span>
-<span class="line"><span style="color:#808080">            &gt;</span></span>
-<span class="line"><span style="color:#808080">              &lt;</span><span style="color:#569CD6">i</span><span style="color:#9CDCFE"> class</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;bi bi-circle-half me-2&quot;</span><span style="color:#808080">&gt;&lt;/</span><span style="color:#569CD6">i</span><span style="color:#808080">&gt;</span></span>
-<span class="line"><span style="color:#D4D4D4">              Auto</span></span>
-<span class="line"><span style="color:#808080">              &lt;</span><span style="color:#569CD6">i</span><span style="color:#9CDCFE"> class</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">&quot;bi bi-check-lg ms-auto d-none&quot;</span><span style="color:#808080">&gt;&lt;/</span><span style="color:#569CD6">i</span><span style="color:#808080">&gt;</span></span>
-<span class="line"><span style="color:#808080">            &lt;/</span><span style="color:#569CD6">button</span><span style="color:#808080">&gt;</span></span>
-<span class="line"><span style="color:#808080">          &lt;/</span><span style="color:#569CD6">li</span><span style="color:#808080">&gt;</span></span>
-<span class="line"><span style="color:#808080">        &lt;/</span><span style="color:#569CD6">ul</span><span style="color:#808080">&gt;</span></span>
-<span class="line"><span style="color:#808080">      &lt;/</span><span style="color:#569CD6">li</span><span style="color:#808080">&gt;</span></span>
-<span class="line"><span style="color:#808080">    &lt;/</span><span style="color:#569CD6">ul</span><span style="color:#808080">&gt;</span></span>
-<span class="line"><span style="color:#6A9955">    &lt;!--end::End Navbar links--&gt;</span></span>
-<span class="line"><span style="color:#808080">  &lt;/</span><span style="color:#569CD6">div</span><span style="color:#808080">&gt;</span></span>
-<span class="line"><span style="color:#6A9955">  &lt;!--end::Container--&gt;</span></span>
-<span class="line"><span style="color:#808080">&lt;/</span><span style="color:#569CD6">nav</span><span style="color:#808080">&gt;</span></span>
-<span class="line"><span style="color:#6A9955">&lt;!--end::Header--&gt;</span></span></code></pre>
+                    ><code><span class="line"><span style="color:#808080">&#x3C;</span><span style="color:#569CD6">li</span><span style="color:#9CDCFE"> class</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"nav-item dropdown"</span><span style="color:#808080">></span></span>
+<span class="line"><span style="color:#808080">  &#x3C;</span><span style="color:#569CD6">a</span></span>
+<span class="line"><span style="color:#9CDCFE">    class</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"nav-link"</span></span>
+<span class="line"><span style="color:#9CDCFE">    href</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"#"</span></span>
+<span class="line"><span style="color:#9CDCFE">    id</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"bd-theme"</span></span>
+<span class="line"><span style="color:#9CDCFE">    aria-label</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"Toggle color scheme"</span></span>
+<span class="line"><span style="color:#9CDCFE">    data-bs-toggle</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"dropdown"</span></span>
+<span class="line"><span style="color:#9CDCFE">    aria-expanded</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"false"</span></span>
+<span class="line"><span style="color:#808080">  ></span></span>
+<span class="line"><span style="color:#808080">    &#x3C;</span><span style="color:#569CD6">i</span><span style="color:#9CDCFE"> class</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"bi bi-sun-fill"</span><span style="color:#9CDCFE"> data-lte-theme-icon</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"light"</span><span style="color:#808080">>&#x3C;/</span><span style="color:#569CD6">i</span><span style="color:#808080">></span></span>
+<span class="line"><span style="color:#808080">    &#x3C;</span><span style="color:#569CD6">i</span><span style="color:#9CDCFE"> class</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"bi bi-moon-fill d-none"</span><span style="color:#9CDCFE"> data-lte-theme-icon</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"dark"</span><span style="color:#808080">>&#x3C;/</span><span style="color:#569CD6">i</span><span style="color:#808080">></span></span>
+<span class="line"><span style="color:#808080">    &#x3C;</span><span style="color:#569CD6">i</span><span style="color:#9CDCFE"> class</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"bi bi-circle-half d-none"</span><span style="color:#9CDCFE"> data-lte-theme-icon</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"auto"</span><span style="color:#808080">>&#x3C;/</span><span style="color:#569CD6">i</span><span style="color:#808080">></span></span>
+<span class="line"><span style="color:#808080">  &#x3C;/</span><span style="color:#569CD6">a</span><span style="color:#808080">></span></span>
+<span class="line"><span style="color:#808080">  &#x3C;</span><span style="color:#569CD6">ul</span><span style="color:#9CDCFE"> class</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"dropdown-menu dropdown-menu-end"</span><span style="color:#9CDCFE"> aria-labelledby</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"bd-theme"</span><span style="color:#808080">></span></span>
+<span class="line"><span style="color:#808080">    &#x3C;</span><span style="color:#569CD6">li</span><span style="color:#808080">></span></span>
+<span class="line"><span style="color:#808080">      &#x3C;</span><span style="color:#569CD6">button</span><span style="color:#9CDCFE"> type</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"button"</span><span style="color:#9CDCFE"> class</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"dropdown-item d-flex align-items-center"</span><span style="color:#9CDCFE"> data-bs-theme-value</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"light"</span><span style="color:#9CDCFE"> aria-pressed</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"false"</span><span style="color:#808080">></span></span>
+<span class="line"><span style="color:#808080">        &#x3C;</span><span style="color:#569CD6">i</span><span style="color:#9CDCFE"> class</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"bi bi-sun-fill me-2"</span><span style="color:#808080">>&#x3C;/</span><span style="color:#569CD6">i</span><span style="color:#808080">></span></span>
+<span class="line"><span style="color:#D4D4D4">        Light</span></span>
+<span class="line"><span style="color:#808080">        &#x3C;</span><span style="color:#569CD6">i</span><span style="color:#9CDCFE"> class</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"bi bi-check-lg ms-auto d-none"</span><span style="color:#808080">>&#x3C;/</span><span style="color:#569CD6">i</span><span style="color:#808080">></span></span>
+<span class="line"><span style="color:#808080">      &#x3C;/</span><span style="color:#569CD6">button</span><span style="color:#808080">></span></span>
+<span class="line"><span style="color:#808080">    &#x3C;/</span><span style="color:#569CD6">li</span><span style="color:#808080">></span></span>
+<span class="line"><span style="color:#808080">    &#x3C;</span><span style="color:#569CD6">li</span><span style="color:#808080">></span></span>
+<span class="line"><span style="color:#808080">      &#x3C;</span><span style="color:#569CD6">button</span><span style="color:#9CDCFE"> type</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"button"</span><span style="color:#9CDCFE"> class</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"dropdown-item d-flex align-items-center"</span><span style="color:#9CDCFE"> data-bs-theme-value</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"dark"</span><span style="color:#9CDCFE"> aria-pressed</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"false"</span><span style="color:#808080">></span></span>
+<span class="line"><span style="color:#808080">        &#x3C;</span><span style="color:#569CD6">i</span><span style="color:#9CDCFE"> class</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"bi bi-moon-fill me-2"</span><span style="color:#808080">>&#x3C;/</span><span style="color:#569CD6">i</span><span style="color:#808080">></span></span>
+<span class="line"><span style="color:#D4D4D4">        Dark</span></span>
+<span class="line"><span style="color:#808080">        &#x3C;</span><span style="color:#569CD6">i</span><span style="color:#9CDCFE"> class</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"bi bi-check-lg ms-auto d-none"</span><span style="color:#808080">>&#x3C;/</span><span style="color:#569CD6">i</span><span style="color:#808080">></span></span>
+<span class="line"><span style="color:#808080">      &#x3C;/</span><span style="color:#569CD6">button</span><span style="color:#808080">></span></span>
+<span class="line"><span style="color:#808080">    &#x3C;/</span><span style="color:#569CD6">li</span><span style="color:#808080">></span></span>
+<span class="line"><span style="color:#808080">    &#x3C;</span><span style="color:#569CD6">li</span><span style="color:#808080">></span></span>
+<span class="line"><span style="color:#808080">      &#x3C;</span><span style="color:#569CD6">button</span><span style="color:#9CDCFE"> type</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"button"</span><span style="color:#9CDCFE"> class</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"dropdown-item d-flex align-items-center active"</span><span style="color:#9CDCFE"> data-bs-theme-value</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"auto"</span><span style="color:#9CDCFE"> aria-pressed</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"true"</span><span style="color:#808080">></span></span>
+<span class="line"><span style="color:#808080">        &#x3C;</span><span style="color:#569CD6">i</span><span style="color:#9CDCFE"> class</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"bi bi-circle-half me-2"</span><span style="color:#808080">>&#x3C;/</span><span style="color:#569CD6">i</span><span style="color:#808080">></span></span>
+<span class="line"><span style="color:#D4D4D4">        Auto</span></span>
+<span class="line"><span style="color:#808080">        &#x3C;</span><span style="color:#569CD6">i</span><span style="color:#9CDCFE"> class</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"bi bi-check-lg ms-auto d-none"</span><span style="color:#808080">>&#x3C;/</span><span style="color:#569CD6">i</span><span style="color:#808080">></span></span>
+<span class="line"><span style="color:#808080">      &#x3C;/</span><span style="color:#569CD6">button</span><span style="color:#808080">></span></span>
+<span class="line"><span style="color:#808080">    &#x3C;/</span><span style="color:#569CD6">li</span><span style="color:#808080">></span></span>
+<span class="line"><span style="color:#808080">  &#x3C;/</span><span style="color:#569CD6">ul</span><span style="color:#808080">></span></span>
+<span class="line"><span style="color:#808080">&#x3C;/</span><span style="color:#569CD6">li</span><span style="color:#808080">></span></span></code></pre>
+                    <p>
+                      The module keeps the <code>active</code> class,
+                      <code>aria-pressed</code> state, and the <code>.bi-check-lg</code> check marks
+                      in sync on every <code>[data-bs-theme-value]</code> button.
+                    </p>
+                    <h5 id="javascript-api">JavaScript API</h5>
                     <pre
                       class="astro-code dark-plus"
                       style="background-color: #1e1e1e; color: #d4d4d4; overflow-x: auto"
                       tabindex="0"
                       data-language="js"
-                    ><code><span class="line"><span style="color:#6A9955">// Color Mode Toggler</span></span>
-<span class="line"><span style="color:#D4D4D4">(() </span><span style="color:#569CD6">=&gt;</span><span style="color:#D4D4D4"> {</span></span>
-<span class="line"><span style="color:#CE9178">  &quot;use strict&quot;</span><span style="color:#D4D4D4">;</span></span>
+                    ><code><span class="line"><span style="color:#C586C0">import</span><span style="color:#D4D4D4"> { </span><span style="color:#9CDCFE">ColorMode</span><span style="color:#D4D4D4"> } </span><span style="color:#C586C0">from</span><span style="color:#CE9178"> "admin-lte"</span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#569CD6">  const</span><span style="color:#4FC1FF"> storedTheme</span><span style="color:#D4D4D4"> = </span><span style="color:#9CDCFE">localStorage</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">getItem</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">&quot;theme&quot;</span><span style="color:#D4D4D4">);</span></span>
+<span class="line"><span style="color:#569CD6">const</span><span style="color:#4FC1FF"> colorMode</span><span style="color:#D4D4D4"> = </span><span style="color:#569CD6">new</span><span style="color:#DCDCAA"> ColorMode</span><span style="color:#D4D4D4">()</span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#569CD6">  const</span><span style="color:#DCDCAA"> getPreferredTheme</span><span style="color:#D4D4D4"> = () </span><span style="color:#569CD6">=&gt;</span><span style="color:#D4D4D4"> {</span></span>
-<span class="line"><span style="color:#C586C0">    if</span><span style="color:#D4D4D4"> (</span><span style="color:#9CDCFE">storedTheme</span><span style="color:#D4D4D4">) {</span></span>
-<span class="line"><span style="color:#C586C0">      return</span><span style="color:#9CDCFE"> storedTheme</span><span style="color:#D4D4D4">;</span></span>
-<span class="line"><span style="color:#D4D4D4">    }</span></span>
+<span class="line"><span style="color:#9CDCFE">colorMode</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">getPreferredTheme</span><span style="color:#D4D4D4">() </span><span style="color:#6A9955">// "light" | "dark" | "auto"</span></span>
+<span class="line"><span style="color:#9CDCFE">colorMode</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">setTheme</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">"dark"</span><span style="color:#D4D4D4">)    </span><span style="color:#6A9955">// apply + persist + sync toggles</span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#C586C0">    return</span><span style="color:#9CDCFE"> window</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">matchMedia</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">&quot;(prefers-color-scheme: dark)&quot;</span><span style="color:#D4D4D4">).</span><span style="color:#9CDCFE">matches</span></span>
-<span class="line"><span style="color:#D4D4D4">      ? </span><span style="color:#CE9178">&quot;dark&quot;</span></span>
-<span class="line"><span style="color:#D4D4D4">      : </span><span style="color:#CE9178">&quot;light&quot;</span><span style="color:#D4D4D4">;</span></span>
-<span class="line"><span style="color:#D4D4D4">  };</span></span>
-<span class="line"></span>
-<span class="line"><span style="color:#569CD6">  const</span><span style="color:#DCDCAA"> setTheme</span><span style="color:#D4D4D4"> = </span><span style="color:#569CD6">function</span><span style="color:#D4D4D4"> (</span><span style="color:#9CDCFE">theme</span><span style="color:#D4D4D4">) {</span></span>
-<span class="line"><span style="color:#C586C0">    if</span><span style="color:#D4D4D4"> (</span></span>
-<span class="line"><span style="color:#9CDCFE">      theme</span><span style="color:#D4D4D4"> === </span><span style="color:#CE9178">&quot;auto&quot;</span><span style="color:#D4D4D4"> &amp;&amp;</span></span>
-<span class="line"><span style="color:#9CDCFE">      window</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">matchMedia</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">&quot;(prefers-color-scheme: dark)&quot;</span><span style="color:#D4D4D4">).</span><span style="color:#9CDCFE">matches</span></span>
-<span class="line"><span style="color:#D4D4D4">    ) {</span></span>
-<span class="line"><span style="color:#9CDCFE">      document</span><span style="color:#D4D4D4">.</span><span style="color:#9CDCFE">documentElement</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">setAttribute</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">&quot;data-bs-theme&quot;</span><span style="color:#D4D4D4">, </span><span style="color:#CE9178">&quot;dark&quot;</span><span style="color:#D4D4D4">);</span></span>
-<span class="line"><span style="color:#D4D4D4">    } </span><span style="color:#C586C0">else</span><span style="color:#D4D4D4"> {</span></span>
-<span class="line"><span style="color:#9CDCFE">      document</span><span style="color:#D4D4D4">.</span><span style="color:#9CDCFE">documentElement</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">setAttribute</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">&quot;data-bs-theme&quot;</span><span style="color:#D4D4D4">, </span><span style="color:#9CDCFE">theme</span><span style="color:#D4D4D4">);</span></span>
-<span class="line"><span style="color:#D4D4D4">    }</span></span>
-<span class="line"><span style="color:#D4D4D4">  };</span></span>
-<span class="line"></span>
-<span class="line"><span style="color:#DCDCAA">  setTheme</span><span style="color:#D4D4D4">(</span><span style="color:#DCDCAA">getPreferredTheme</span><span style="color:#D4D4D4">());</span></span>
-<span class="line"></span>
-<span class="line"><span style="color:#569CD6">  const</span><span style="color:#DCDCAA"> showActiveTheme</span><span style="color:#D4D4D4"> = (</span><span style="color:#9CDCFE">theme</span><span style="color:#D4D4D4">, </span><span style="color:#9CDCFE">focus</span><span style="color:#D4D4D4"> = </span><span style="color:#569CD6">false</span><span style="color:#D4D4D4">) </span><span style="color:#569CD6">=&gt;</span><span style="color:#D4D4D4"> {</span></span>
-<span class="line"><span style="color:#569CD6">    const</span><span style="color:#4FC1FF"> themeSwitcher</span><span style="color:#D4D4D4"> = </span><span style="color:#9CDCFE">document</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">querySelector</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">&quot;#bd-theme&quot;</span><span style="color:#D4D4D4">);</span></span>
-<span class="line"></span>
-<span class="line"><span style="color:#C586C0">    if</span><span style="color:#D4D4D4"> (!</span><span style="color:#9CDCFE">themeSwitcher</span><span style="color:#D4D4D4">) {</span></span>
-<span class="line"><span style="color:#C586C0">      return</span><span style="color:#D4D4D4">;</span></span>
-<span class="line"><span style="color:#D4D4D4">    }</span></span>
-<span class="line"></span>
-<span class="line"><span style="color:#569CD6">    const</span><span style="color:#4FC1FF"> themeSwitcherText</span><span style="color:#D4D4D4"> = </span><span style="color:#9CDCFE">document</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">querySelector</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">&quot;#bd-theme-text&quot;</span><span style="color:#D4D4D4">);</span></span>
-<span class="line"><span style="color:#569CD6">    const</span><span style="color:#4FC1FF"> activeThemeIcon</span><span style="color:#D4D4D4"> = </span><span style="color:#9CDCFE">document</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">querySelector</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">&quot;.theme-icon-active i&quot;</span><span style="color:#D4D4D4">);</span></span>
-<span class="line"><span style="color:#569CD6">    const</span><span style="color:#4FC1FF"> btnToActive</span><span style="color:#D4D4D4"> = </span><span style="color:#9CDCFE">document</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">querySelector</span><span style="color:#D4D4D4">(</span></span>
-<span class="line"><span style="color:#CE9178">      `[data-bs-theme-value=&quot;</span><span style="color:#569CD6">${</span><span style="color:#9CDCFE">theme</span><span style="color:#569CD6">}</span><span style="color:#CE9178">&quot;]`</span></span>
-<span class="line"><span style="color:#D4D4D4">    );</span></span>
-<span class="line"><span style="color:#569CD6">    const</span><span style="color:#4FC1FF"> svgOfActiveBtn</span><span style="color:#D4D4D4"> = </span><span style="color:#9CDCFE">btnToActive</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">querySelector</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">&quot;i&quot;</span><span style="color:#D4D4D4">).</span><span style="color:#DCDCAA">getAttribute</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">&quot;class&quot;</span><span style="color:#D4D4D4">);</span></span>
-<span class="line"></span>
-<span class="line"><span style="color:#C586C0">    for</span><span style="color:#D4D4D4"> (</span><span style="color:#569CD6">const</span><span style="color:#4FC1FF"> element</span><span style="color:#569CD6"> of</span><span style="color:#9CDCFE"> document</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">querySelectorAll</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">&quot;[data-bs-theme-value]&quot;</span><span style="color:#D4D4D4">)) {</span></span>
-<span class="line"><span style="color:#9CDCFE">      element</span><span style="color:#D4D4D4">.</span><span style="color:#9CDCFE">classList</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">remove</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">&quot;active&quot;</span><span style="color:#D4D4D4">);</span></span>
-<span class="line"><span style="color:#9CDCFE">      element</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">setAttribute</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">&quot;aria-pressed&quot;</span><span style="color:#D4D4D4">, </span><span style="color:#CE9178">&quot;false&quot;</span><span style="color:#D4D4D4">);</span></span>
-<span class="line"><span style="color:#D4D4D4">    }</span></span>
-<span class="line"></span>
-<span class="line"><span style="color:#9CDCFE">    btnToActive</span><span style="color:#D4D4D4">.</span><span style="color:#9CDCFE">classList</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">add</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">&quot;active&quot;</span><span style="color:#D4D4D4">);</span></span>
-<span class="line"><span style="color:#9CDCFE">    btnToActive</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">setAttribute</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">&quot;aria-pressed&quot;</span><span style="color:#D4D4D4">, </span><span style="color:#CE9178">&quot;true&quot;</span><span style="color:#D4D4D4">);</span></span>
-<span class="line"><span style="color:#9CDCFE">    activeThemeIcon</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">setAttribute</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">&quot;class&quot;</span><span style="color:#D4D4D4">, </span><span style="color:#9CDCFE">svgOfActiveBtn</span><span style="color:#D4D4D4">);</span></span>
-<span class="line"><span style="color:#569CD6">    const</span><span style="color:#4FC1FF"> themeSwitcherLabel</span><span style="color:#D4D4D4"> = </span><span style="color:#CE9178">`</span><span style="color:#569CD6">${</span><span style="color:#9CDCFE">themeSwitcherText</span><span style="color:#D4D4D4">.</span><span style="color:#9CDCFE">textContent</span><span style="color:#569CD6">}</span><span style="color:#CE9178"> (</span><span style="color:#569CD6">${</span><span style="color:#9CDCFE">btnToActive</span><span style="color:#D4D4D4">.</span><span style="color:#9CDCFE">dataset</span><span style="color:#D4D4D4">.</span><span style="color:#9CDCFE">bsThemeValue</span><span style="color:#569CD6">}</span><span style="color:#CE9178">)`</span><span style="color:#D4D4D4">;</span></span>
-<span class="line"><span style="color:#9CDCFE">    themeSwitcher</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">setAttribute</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">&quot;aria-label&quot;</span><span style="color:#D4D4D4">, </span><span style="color:#9CDCFE">themeSwitcherLabel</span><span style="color:#D4D4D4">);</span></span>
-<span class="line"></span>
-<span class="line"><span style="color:#C586C0">    if</span><span style="color:#D4D4D4"> (</span><span style="color:#9CDCFE">focus</span><span style="color:#D4D4D4">) {</span></span>
-<span class="line"><span style="color:#9CDCFE">      themeSwitcher</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">focus</span><span style="color:#D4D4D4">();</span></span>
-<span class="line"><span style="color:#D4D4D4">    }</span></span>
-<span class="line"><span style="color:#D4D4D4">  };</span></span>
-<span class="line"></span>
-<span class="line"><span style="color:#9CDCFE">  window</span></span>
-<span class="line"><span style="color:#D4D4D4">    .</span><span style="color:#DCDCAA">matchMedia</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">&quot;(prefers-color-scheme: dark)&quot;</span><span style="color:#D4D4D4">)</span></span>
-<span class="line"><span style="color:#D4D4D4">    .</span><span style="color:#DCDCAA">addEventListener</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">&quot;change&quot;</span><span style="color:#D4D4D4">, () </span><span style="color:#569CD6">=&gt;</span><span style="color:#D4D4D4"> {</span></span>
-<span class="line"><span style="color:#C586C0">      if</span><span style="color:#D4D4D4"> (</span><span style="color:#9CDCFE">storedTheme</span><span style="color:#D4D4D4"> !== </span><span style="color:#CE9178">&quot;light&quot;</span><span style="color:#D4D4D4"> || </span><span style="color:#9CDCFE">storedTheme</span><span style="color:#D4D4D4"> !== </span><span style="color:#CE9178">&quot;dark&quot;</span><span style="color:#D4D4D4">) {</span></span>
-<span class="line"><span style="color:#DCDCAA">        setTheme</span><span style="color:#D4D4D4">(</span><span style="color:#DCDCAA">getPreferredTheme</span><span style="color:#D4D4D4">());</span></span>
-<span class="line"><span style="color:#D4D4D4">      }</span></span>
-<span class="line"><span style="color:#D4D4D4">    });</span></span>
-<span class="line"></span>
-<span class="line"><span style="color:#9CDCFE">  window</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">addEventListener</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">&quot;DOMContentLoaded&quot;</span><span style="color:#D4D4D4">, () </span><span style="color:#569CD6">=&gt;</span><span style="color:#D4D4D4"> {</span></span>
-<span class="line"><span style="color:#DCDCAA">    showActiveTheme</span><span style="color:#D4D4D4">(</span><span style="color:#DCDCAA">getPreferredTheme</span><span style="color:#D4D4D4">());</span></span>
-<span class="line"></span>
-<span class="line"><span style="color:#C586C0">    for</span><span style="color:#D4D4D4"> (</span><span style="color:#569CD6">const</span><span style="color:#4FC1FF"> toggle</span><span style="color:#569CD6"> of</span><span style="color:#9CDCFE"> document</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">querySelectorAll</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">&quot;[data-bs-theme-value]&quot;</span><span style="color:#D4D4D4">)) {</span></span>
-<span class="line"><span style="color:#9CDCFE">      toggle</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">addEventListener</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">&quot;click&quot;</span><span style="color:#D4D4D4">, () </span><span style="color:#569CD6">=&gt;</span><span style="color:#D4D4D4"> {</span></span>
-<span class="line"><span style="color:#569CD6">        const</span><span style="color:#4FC1FF"> theme</span><span style="color:#D4D4D4"> = </span><span style="color:#9CDCFE">toggle</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">getAttribute</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">&quot;data-bs-theme-value&quot;</span><span style="color:#D4D4D4">);</span></span>
-<span class="line"><span style="color:#9CDCFE">        localStorage</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">setItem</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">&quot;theme&quot;</span><span style="color:#D4D4D4">, </span><span style="color:#9CDCFE">theme</span><span style="color:#D4D4D4">);</span></span>
-<span class="line"><span style="color:#DCDCAA">        setTheme</span><span style="color:#D4D4D4">(</span><span style="color:#9CDCFE">theme</span><span style="color:#D4D4D4">);</span></span>
-<span class="line"><span style="color:#DCDCAA">        showActiveTheme</span><span style="color:#D4D4D4">(</span><span style="color:#9CDCFE">theme</span><span style="color:#D4D4D4">, </span><span style="color:#569CD6">true</span><span style="color:#D4D4D4">);</span></span>
-<span class="line"><span style="color:#D4D4D4">      });</span></span>
-<span class="line"><span style="color:#D4D4D4">    }</span></span>
-<span class="line"><span style="color:#D4D4D4">  });</span></span>
-<span class="line"><span style="color:#D4D4D4">})();</span></span></code></pre>
+<span class="line"><span style="color:#6A9955">// React to changes (fired on document)</span></span>
+<span class="line"><span style="color:#9CDCFE">document</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">addEventListener</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">"changed.lte.color-mode"</span><span style="color:#D4D4D4">, (</span><span style="color:#9CDCFE">event</span><span style="color:#D4D4D4">) </span><span style="color:#569CD6">=></span><span style="color:#D4D4D4"> {</span></span>
+<span class="line"><span style="color:#9CDCFE">  console</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">log</span><span style="color:#D4D4D4">(</span><span style="color:#9CDCFE">event</span><span style="color:#D4D4D4">.</span><span style="color:#9CDCFE">detail</span><span style="color:#D4D4D4">.</span><span style="color:#9CDCFE">theme</span><span style="color:#D4D4D4">)    </span><span style="color:#6A9955">// what the user chose: "light" | "dark" | "auto"</span></span>
+<span class="line"><span style="color:#9CDCFE">  console</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">log</span><span style="color:#D4D4D4">(</span><span style="color:#9CDCFE">event</span><span style="color:#D4D4D4">.</span><span style="color:#9CDCFE">detail</span><span style="color:#D4D4D4">.</span><span style="color:#9CDCFE">resolved</span><span style="color:#D4D4D4">) </span><span style="color:#6A9955">// what got applied:    "light" | "dark"</span></span>
+<span class="line"><span style="color:#D4D4D4">})</span></span></code></pre>
+                    <h5 id="preventing-the-flash-of-wrong-theme">
+                      Preventing the flash of wrong theme
+                    </h5>
+                    <p>
+                      The module runs after the DOM is ready, so pages should also apply the stored
+                      theme <em>before first paint</em> with a tiny inline snippet in
+                      <code>&lt;head&gt;</code> (this is the one piece that must stay inline — see
+                      <code>#6043</code>):
+                    </p>
+                    <pre
+                      class="astro-code dark-plus"
+                      style="background-color: #1e1e1e; color: #d4d4d4; overflow-x: auto"
+                      tabindex="0"
+                      data-language="html"
+                    ><code><span class="line"><span style="color:#808080">&#x3C;</span><span style="color:#569CD6">script</span><span style="color:#808080">></span></span>
+<span class="line"><span style="color:#D4D4D4">  (() </span><span style="color:#569CD6">=></span><span style="color:#D4D4D4"> {</span></span>
+<span class="line"><span style="color:#CE9178">    "use strict"</span></span>
+<span class="line"><span style="color:#569CD6">    let</span><span style="color:#9CDCFE"> stored</span><span style="color:#D4D4D4"> = </span><span style="color:#569CD6">null</span></span>
+<span class="line"><span style="color:#C586C0">    try</span><span style="color:#D4D4D4"> { </span><span style="color:#9CDCFE">stored</span><span style="color:#D4D4D4"> = </span><span style="color:#9CDCFE">localStorage</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">getItem</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">"lte-theme"</span><span style="color:#D4D4D4">) } </span><span style="color:#C586C0">catch</span><span style="color:#D4D4D4"> {}</span></span>
+<span class="line"><span style="color:#569CD6">    const</span><span style="color:#4FC1FF"> prefersDark</span><span style="color:#D4D4D4"> = </span><span style="color:#DCDCAA">matchMedia</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">"(prefers-color-scheme: dark)"</span><span style="color:#D4D4D4">).</span><span style="color:#9CDCFE">matches</span></span>
+<span class="line"><span style="color:#569CD6">    const</span><span style="color:#4FC1FF"> resolved</span><span style="color:#D4D4D4"> = (</span><span style="color:#9CDCFE">stored</span><span style="color:#D4D4D4"> === </span><span style="color:#CE9178">"dark"</span><span style="color:#D4D4D4"> || </span><span style="color:#9CDCFE">stored</span><span style="color:#D4D4D4"> === </span><span style="color:#CE9178">"light"</span><span style="color:#D4D4D4">) ? </span><span style="color:#9CDCFE">stored</span><span style="color:#D4D4D4"> : (</span><span style="color:#9CDCFE">prefersDark</span><span style="color:#D4D4D4"> ? </span><span style="color:#CE9178">"dark"</span><span style="color:#D4D4D4"> : </span><span style="color:#CE9178">"light"</span><span style="color:#D4D4D4">)</span></span>
+<span class="line"><span style="color:#9CDCFE">    document</span><span style="color:#D4D4D4">.</span><span style="color:#9CDCFE">documentElement</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">setAttribute</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">"data-bs-theme"</span><span style="color:#D4D4D4">, </span><span style="color:#9CDCFE">resolved</span><span style="color:#D4D4D4">)</span></span>
+<span class="line"><span style="color:#9CDCFE">    document</span><span style="color:#D4D4D4">.</span><span style="color:#9CDCFE">documentElement</span><span style="color:#D4D4D4">.</span><span style="color:#9CDCFE">style</span><span style="color:#D4D4D4">.</span><span style="color:#9CDCFE">colorScheme</span><span style="color:#D4D4D4"> = </span><span style="color:#9CDCFE">resolved</span></span>
+<span class="line"><span style="color:#D4D4D4">  })()</span></span>
+<span class="line"><span style="color:#808080">&#x3C;/</span><span style="color:#569CD6">script</span><span style="color:#808080">></span></span></code></pre>
+                    <h5 id="per-region-color-modes">Per-region color modes</h5>
+                    <p>
+                      <code>data-bs-theme</code> also works on any element, not just
+                      <code>&lt;html&gt;</code> — for example a permanently dark sidebar in an
+                      otherwise light layout:
+                    </p>
+                    <pre
+                      class="astro-code dark-plus"
+                      style="background-color: #1e1e1e; color: #d4d4d4; overflow-x: auto"
+                      tabindex="0"
+                      data-language="html"
+                    ><code><span class="line"><span style="color:#808080">&#x3C;</span><span style="color:#569CD6">aside</span><span style="color:#9CDCFE"> class</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"app-sidebar"</span><span style="color:#9CDCFE"> data-bs-theme</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"dark"</span><span style="color:#808080">></span><span style="color:#D4D4D4">...</span><span style="color:#808080">&#x3C;/</span><span style="color:#569CD6">aside</span><span style="color:#808080">></span></span></code></pre>
                   </div>
                 </div>
               </div>

@@ -25,7 +25,7 @@ definePageMeta({ layout: 'docs' })
                   type="search"
                   id="faq-search-input"
                   class="form-control form-control-lg"
-                  placeholder="Search the FAQ…"
+                  placeholder="Search the FAQ&hellip;"
                   aria-label="Search the FAQ"
                   autocomplete="off"
                 />
