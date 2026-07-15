@@ -1,0 +1,1356 @@
+{
+  "common": {
+    "__comment": "Общие строки, используемые на всех страницах / Shared strings used across all pages",
+    "save": {
+      "ru": "Сохранить",
+      "en": "Save"
+    },
+    "saving": {
+      "ru": "Сохранение...",
+      "en": "Saving..."
+    },
+    "cancel": {
+      "ru": "Отмена",
+      "en": "Cancel"
+    },
+    "delete": {
+      "ru": "Удалить",
+      "en": "Delete"
+    },
+    "deleting": {
+      "ru": "Удаление...",
+      "en": "Deleting..."
+    },
+    "edit": {
+      "ru": "Редактировать",
+      "en": "Edit"
+    },
+    "close": {
+      "ru": "Закрыть",
+      "en": "Close"
+    },
+    "loading": {
+      "ru": "Загрузка...",
+      "en": "Loading..."
+    },
+    "actions": {
+      "ru": "Действия",
+      "en": "Actions"
+    },
+    "add": {
+      "ru": "Добавить",
+      "en": "Add"
+    },
+    "search": {
+      "ru": "Поиск...",
+      "en": "Search..."
+    },
+    "yes": {
+      "ru": "Да",
+      "en": "Yes"
+    },
+    "no": {
+      "ru": "Нет",
+      "en": "No"
+    },
+    "error": {
+      "ru": "Ошибка!",
+      "en": "Error!"
+    },
+    "success": {
+      "ru": "Успешно!",
+      "en": "Success!"
+    },
+    "status": {
+      "ru": "Статус",
+      "en": "Status"
+    },
+    "active": {
+      "ru": "Активен",
+      "en": "Active"
+    },
+    "inactive": {
+      "ru": "Неактивен",
+      "en": "Inactive"
+    },
+    "select": {
+      "ru": "Выбрать...",
+      "en": "Select..."
+    },
+    "shownOf": {
+      "ru": "Показано {shown} из {total} записей.",
+      "en": "Shown {shown} of {total} records."
+    },
+    "prev": {
+      "ru": "Назад",
+      "en": "Back"
+    },
+    "next": {
+      "ru": "Вперед",
+      "en": "Next"
+    },
+    "paginationPageOf": {
+      "ru": "Страница {page} из {pages}",
+      "en": "Page {page} of {pages}"
+    },
+    "noMatches": {
+      "ru": "Нет совпадений по фильтру",
+      "en": "No matches found"
+    },
+    "noData": {
+      "ru": "Нет записей для отображения",
+      "en": "No data available"
+    },
+    "selectValue": {
+      "ru": "Выберите значение",
+      "en": "Select value"
+    }
+  },
+  "menu": {
+    "__comment": "Навигационное меню в шаблоне DemoLayout.vue / Navigation menu in DemoLayout.vue",
+    "dashboard": {
+      "ru": "Главная",
+      "en": "Dashboard"
+    },
+    "groups": {
+      "ru": "Группы клиентов",
+      "en": "Client Groups"
+    },
+    "timeTracking": {
+      "ru": "УРВ",
+      "en": "Time Tracking"
+    },
+    "schedule": {
+      "ru": "Расписание",
+      "en": "Schedule"
+    },
+    "sos": {
+      "ru": "Кнопка SOS",
+      "en": "SOS Button"
+    },
+    "sessions": {
+      "ru": "RDP-сессии",
+      "en": "RDP Sessions"
+    },
+    "clients": {
+      "ru": "Клиенты",
+      "en": "Clients"
+    }
+  },
+  "login": {
+    "__comment": "Страница авторизации (login.vue) / Sign-in page (login.vue)",
+    "title": {
+      "ru": "Вход в систему",
+      "en": "System Sign In"
+    },
+    "login": {
+      "ru": "Логин",
+      "en": "Login"
+    },
+    "password": {
+      "ru": "Пароль",
+      "en": "Password"
+    },
+    "loggingIn": {
+      "ru": "Вход...",
+      "en": "Signing in..."
+    },
+    "submit": {
+      "ru": "Войти",
+      "en": "Sign In"
+    },
+    "fillAllFields": {
+      "ru": "Заполните все поля",
+      "en": "Please fill in all fields"
+    },
+    "tokenNotReceived": {
+      "ru": "Токен не получен",
+      "en": "Token was not received"
+    },
+    "errorFallback": {
+      "ru": "Ошибка входа",
+      "en": "Failed to sign in"
+    }
+  },
+  "index": {
+    "__comment": "Главная страница мониторинга клиентов (index.vue) / Main dashboard (index.vue)",
+    "title": {
+      "ru": "Главная",
+      "en": "Dashboard"
+    },
+    "healthTitle": {
+      "ru": "Состояние сервисов K8s",
+      "en": "K8s Services Health Status"
+    },
+    "healthError": {
+      "ru": "Не удалось загрузить состояние сервисов K8s",
+      "en": "Failed to load K8s health status"
+    },
+    "healthErrorCount": {
+      "ru": "Ошибка",
+      "en": "Error"
+    },
+    "activeRdp": {
+      "ru": "Активных RDP-сессий",
+      "en": "Active RDP Sessions"
+    },
+    "clientsOnline": {
+      "ru": "Клиенты Всего/OnLine",
+      "en": "Clients Total/OnLine"
+    },
+    "clientGroups": {
+      "ru": "Групп клиентов",
+      "en": "Client Groups"
+    },
+    "vpnClients": {
+      "ru": "VPN клиенты Всего/OnLine",
+      "en": "VPN Clients Total/OnLine"
+    },
+    "sosButton": {
+      "ru": "Кнопка SOS",
+      "en": "SOS Button"
+    },
+    "details": {
+      "ru": "Подробнее",
+      "en": "More Info"
+    },
+    "monitoring": {
+      "ru": "Мониторинг",
+      "en": "Monitoring"
+    },
+    "loadingMonitoring": {
+      "ru": "Загрузка мониторинга...",
+      "en": "Loading monitoring..."
+    },
+    "clientsNotFound": {
+      "ru": "Клиенты не найдены",
+      "en": "No clients found"
+    },
+    "refreshingStatuses": {
+      "ru": "Обновление статусов...",
+      "en": "Refreshing statuses..."
+    },
+    "refreshingStatistics": {
+      "ru": "Обновление статистики...",
+      "en": "Refreshing stats..."
+    },
+    "status": {
+      "ru": "Статус",
+      "en": "Status"
+    },
+    "dataStatusNotReceived": {
+      "ru": "Данные status не получены",
+      "en": "Status data not received"
+    },
+    "hostname": {
+      "ru": "Hostname",
+      "en": "Hostname"
+    },
+    "group": {
+      "ru": "Группа",
+      "en": "Group"
+    },
+    "lastConnected": {
+      "ru": "Last connected",
+      "en": "Last connected"
+    },
+    "lastDisconnected": {
+      "ru": "Last disconnected",
+      "en": "Last disconnected"
+    },
+    "online": {
+      "ru": "Online",
+      "en": "Online"
+    },
+    "offline": {
+      "ru": "Offline",
+      "en": "Offline"
+    },
+    "statsError": {
+      "ru": "Ошибка загрузки статистики",
+      "en": "Failed to load statistics"
+    },
+    "structureError": {
+      "ru": "Ошибка обновления структуры мониторинга",
+      "en": "Failed to update monitoring structure"
+    }
+  },
+  "groups": {
+    "__comment": "Страница групп клиентов (groups.vue) / Client groups management (groups.vue)",
+    "title": {
+      "ru": "Группы клиентов",
+      "en": "Client Groups"
+    },
+    "addGroup": {
+      "ru": "Добавить группу",
+      "en": "Add Group"
+    },
+    "editGroup": {
+      "ru": "Редактирование группы",
+      "en": "Edit Group"
+    },
+    "groupName": {
+      "ru": "Название группы",
+      "en": "Group Name"
+    },
+    "groupNamePlaceholder": {
+      "ru": "Введите название группы",
+      "en": "Enter group name"
+    },
+    "deleteConfirm": {
+      "ru": "Вы уверены, что хотите удалить группу #{id}?",
+      "en": "Are you sure you want to delete group #{id}?"
+    },
+    "id": {
+      "ru": "ID",
+      "en": "ID"
+    },
+    "clientsCount": {
+      "ru": "Количество клиентов",
+      "en": "Clients Count"
+    },
+    "saveSuccess": {
+      "ru": "Группа #{id} успешно сохранена",
+      "en": "Group #{id} saved successfully"
+    },
+    "createSuccess": {
+      "ru": "Группа успешно создана",
+      "en": "Group created successfully"
+    },
+    "deleteSuccess": {
+      "ru": "Группа #{id} успешно удалена",
+      "en": "Group #{id} deleted successfully"
+    },
+    "saveError": {
+      "ru": "Ошибка сохранения группы",
+      "en": "Failed to save group"
+    },
+    "deleteError": {
+      "ru": "Ошибка удаления группы",
+      "en": "Failed to delete group"
+    },
+    "groupsNotFound": {
+      "ru": "Групп нет",
+      "en": "No groups found"
+    }
+  },
+  "client": {
+    "__comment": "Детальная страница мониторинга клиента (client.vue) / Client monitor details (client.vue)",
+    "title": {
+      "ru": "Карточка клиента",
+      "en": "Client Details"
+    },
+    "backToList": {
+      "ru": "Назад к списку",
+      "en": "Back to List"
+    },
+    "clientInfo": {
+      "ru": "Информация о клиенте",
+      "en": "Client Information"
+    },
+    "hostname": {
+      "ru": "Имя хоста (Hostname)",
+      "en": "Hostname"
+    },
+    "hostnamePlaceholder": {
+      "ru": "Введите имя хоста",
+      "en": "Enter hostname"
+    },
+    "group": {
+      "ru": "Группа",
+      "en": "Group"
+    },
+    "active": {
+      "ru": "Активен",
+      "en": "Active"
+    },
+    "connectionInfo": {
+      "ru": "Информация о подключении",
+      "en": "Connection Information"
+    },
+    "rdpServer": {
+      "ru": "RDP Сервер",
+      "en": "RDP Server"
+    },
+    "rdpDomain": {
+      "ru": "RDP Домен",
+      "en": "RDP Domain"
+    },
+    "rdpLogin": {
+      "ru": "RDP Логин",
+      "en": "RDP Login"
+    },
+    "rdpPassword": {
+      "ru": "RDP Пароль",
+      "en": "RDP Password"
+    },
+    "hardwareInfo": {
+      "ru": "Аппаратная часть",
+      "en": "Hardware Info"
+    },
+    "macAddresses": {
+      "ru": "MAC адреса",
+      "en": "MAC Addresses"
+    },
+    "bleMac": {
+      "ru": "BLE MAC",
+      "en": "BLE MAC"
+    },
+    "bleTag": {
+      "ru": "BLE Tag",
+      "en": "BLE Tag"
+    },
+    "security": {
+      "ru": "Безопасность",
+      "en": "Security"
+    },
+    "otpKey": {
+      "ru": "OTP Ключ (Base32)",
+      "en": "OTP Key (Base32)"
+    },
+    "systemInfo": {
+      "ru": "Системная информация",
+      "en": "System Information"
+    },
+    "ipAddress": {
+      "ru": "Текущий Ip-адрес",
+      "en": "Current IP Address"
+    },
+    "firmwareVersion": {
+      "ru": "Версия клиента",
+      "en": "Client Version"
+    },
+    "serialNumber": {
+      "ru": "Серийный номер",
+      "en": "Serial Number"
+    },
+    "cpuTemp": {
+      "ru": "Температура CPU, °C",
+      "en": "CPU Temp, °C"
+    },
+    "cpuLoad": {
+      "ru": "Загрузка CPU, %",
+      "en": "CPU Load, %"
+    },
+    "freeMem": {
+      "ru": "Free Memory, MB",
+      "en": "Free Memory, MB"
+    },
+    "vpnStatus": {
+      "ru": "Статус VPN",
+      "en": "VPN Status"
+    },
+    "rdpStatus": {
+      "ru": "Статус RDP",
+      "en": "RDP Status"
+    },
+    "bleStatus": {
+      "ru": "Статус BLE",
+      "en": "BLE Status"
+    },
+    "sosStatus": {
+      "ru": "Статус SOS",
+      "en": "SOS Status"
+    },
+    "lastConnected": {
+      "ru": "Last Connected",
+      "en": "Last Connected"
+    },
+    "lastDisconnected": {
+      "ru": "Last Disconnected",
+      "en": "Last Disconnected"
+    },
+    "management": {
+      "ru": "Управление клиентом",
+      "en": "Client Management"
+    },
+    "send": {
+      "ru": "Отправить",
+      "en": "Send"
+    },
+    "saveSuccess": {
+      "ru": "Данные клиента успешно сохранены",
+      "en": "Client data saved successfully"
+    },
+    "saveError": {
+      "ru": "Ошибка сохранения данных клиента",
+      "en": "Failed to save client data"
+    },
+    "cmdSentSuccess": {
+      "ru": "Команда успешно отправлена на клиент",
+      "en": "Command sent successfully"
+    },
+    "cmdSentError": {
+      "ru": "Ошибка отправки команды",
+      "en": "Failed to send command"
+    },
+    "command": {
+      "ru": "Команда",
+      "en": "Command"
+    },
+    "commandPlaceholder": {
+      "ru": "Введите команду для тонкого клиента...",
+      "en": "Enter thin client command..."
+    },
+    "startVnc": {
+      "ru": "Запустить удаленное управление",
+      "en": "Start Remote Control"
+    },
+    "getSerial": {
+      "ru": "Запрос серийного номера",
+      "en": "Request Serial Number"
+    },
+    "getVpn": {
+      "ru": "Запрос статуса VPN",
+      "en": "Request VPN Status"
+    },
+    "getVer": {
+      "ru": "Запрос версии клиента",
+      "en": "Request Client Version"
+    },
+    "reboot": {
+      "ru": "Перезагрузка",
+      "en": "Reboot"
+    },
+    "halt": {
+      "ru": "Выключить",
+      "en": "Shutdown"
+    },
+    "activeStatus": {
+      "ru": "Статус клиента",
+      "en": "Client Status"
+    },
+    "networkStatus": {
+      "ru": "Сетевой статус",
+      "en": "Network Status"
+    },
+    "sosButton": {
+      "ru": "Кнопка SOS",
+      "en": "SOS Button"
+    },
+    "vpnConnection": {
+      "ru": "VPN соединение",
+      "en": "VPN Connection"
+    },
+    "isVpnConfigured": {
+      "ru": "Настроен VPN?",
+      "en": "VPN Configured?"
+    },
+    "bleTagLabel": {
+      "ru": "BLE метка",
+      "en": "BLE Tag"
+    },
+    "activeState": {
+      "ru": "активен",
+      "en": "active"
+    },
+    "inactiveState": {
+      "ru": "не активен",
+      "en": "inactive"
+    },
+    "loading": {
+      "ru": "загрузка...",
+      "en": "loading..."
+    },
+    "stateActive": {
+      "ru": "активно",
+      "en": "active"
+    },
+    "stateInactive": {
+      "ru": "не активно",
+      "en": "inactive"
+    },
+    "statePressed": {
+      "ru": "нажата",
+      "en": "pressed"
+    },
+    "stateNotPressed": {
+      "ru": "не нажата",
+      "en": "not pressed"
+    },
+    "stateConfigured": {
+      "ru": "настроен",
+      "en": "configured"
+    },
+    "stateNotConfigured": {
+      "ru": "не настроен",
+      "en": "not configured"
+    },
+    "stateActiveFeminine": {
+      "ru": "активна",
+      "en": "active"
+    },
+    "stateInactiveFeminine": {
+      "ru": "не активна",
+      "en": "inactive"
+    },
+    "macEthernet": {
+      "ru": "MAC Ethernet",
+      "en": "MAC Ethernet"
+    },
+    "macWifi": {
+      "ru": "MAC WiFi",
+      "en": "MAC WiFi"
+    },
+    "macBluetooth": {
+      "ru": "MAC Bluetooth",
+      "en": "MAC Bluetooth"
+    },
+    "authorization": {
+      "ru": "Авторизация",
+      "en": "Authorization"
+    },
+    "noAuth": {
+      "ru": "Без авторизации",
+      "en": "No Authorization"
+    },
+    "authLogin": {
+      "ru": "Логин",
+      "en": "Login"
+    },
+    "authPassword": {
+      "ru": "Пароль",
+      "en": "Password"
+    },
+    "authBle": {
+      "ru": "BLE",
+      "en": "BLE"
+    },
+    "authOtp": {
+      "ru": "OTP",
+      "en": "OTP"
+    },
+    "idNotSpecified": {
+      "ru": "Не указан ID клиента в URL",
+      "en": "Client ID is not specified in the URL"
+    },
+    "cmdSentPattern": {
+      "ru": "Команда «{cmd}» успешно отправлена",
+      "en": "Command \"{cmd}\" sent successfully"
+    },
+    "loadingData": {
+      "ru": "Получаем актуальную информацию о клиенте...",
+      "en": "Fetching current client data..."
+    },
+    "mainStatuses": {
+      "ru": "Основные статусы",
+      "en": "Main Statuses"
+    },
+    "detailedInfo": {
+      "ru": "Детальная информация",
+      "en": "Detailed Information"
+    },
+    "clientNotFound": {
+      "ru": "Данные клиента не найдены",
+      "en": "Client data not found"
+    }
+  },
+  "schedule": {
+    "__comment": "Страница управления расписаниями (schedule.vue) / Schedule settings & assignments (schedule.vue)",
+    "title": {
+      "ru": "Расписания",
+      "en": "Schedules"
+    },
+    "addSchedule": {
+      "ru": "Создать расписание",
+      "en": "Create Schedule"
+    },
+    "editSchedule": {
+      "ru": "Редактировать расписание",
+      "en": "Edit Schedule"
+    },
+    "name": {
+      "ru": "Название",
+      "en": "Name"
+    },
+    "namePlaceholder": {
+      "ru": "Введите название расписания",
+      "en": "Enter schedule name"
+    },
+    "description": {
+      "ru": "Описание",
+      "en": "Description"
+    },
+    "descriptionPlaceholder": {
+      "ru": "Введите описание",
+      "en": "Enter description"
+    },
+    "active": {
+      "ru": "Активно",
+      "en": "Active"
+    },
+    "startTime": {
+      "ru": "Время начала",
+      "en": "Start Time"
+    },
+    "endTime": {
+      "ru": "Время окончания",
+      "en": "End Time"
+    },
+    "type": {
+      "ru": "Тип",
+      "en": "Type"
+    },
+    "typeAlways": {
+      "ru": "Всегда",
+      "en": "Always"
+    },
+    "typeDays": {
+      "ru": "По дням недели",
+      "en": "Days of week"
+    },
+    "daysOfWeek": {
+      "ru": "Дни недели",
+      "en": "Days of week"
+    },
+    "mon": {
+      "ru": "Пн",
+      "en": "Mon"
+    },
+    "tue": {
+      "ru": "Вт",
+      "en": "Tue"
+    },
+    "wed": {
+      "ru": "Ср",
+      "en": "Wed"
+    },
+    "thu": {
+      "ru": "Чт",
+      "en": "Thu"
+    },
+    "fri": {
+      "ru": "Пт",
+      "en": "Fri"
+    },
+    "sat": {
+      "ru": "Сб",
+      "en": "Sat"
+    },
+    "sun": {
+      "ru": "Вс",
+      "en": "Sun"
+    },
+    "saveSuccess": {
+      "ru": "Расписание #{id} успешно сохранено",
+      "en": "Schedule #{id} saved successfully"
+    },
+    "createSuccess": {
+      "ru": "Расписание успешно создано",
+      "en": "Schedule created successfully"
+    },
+    "deleteSuccess": {
+      "ru": "Расписание #{id} успешно удалено",
+      "en": "Schedule #{id} deleted successfully"
+    },
+    "deleteConfirm": {
+      "ru": "Вы уверены, что хотите удалить расписание #{id}?",
+      "en": "Are you sure you want to delete schedule #{id}?"
+    },
+    "assignSuccess": {
+      "ru": "Расписание успешно назначено",
+      "en": "Schedule assigned successfully"
+    },
+    "unassignSuccess": {
+      "ru": "Назначение успешно удалено",
+      "en": "Assignment deleted successfully"
+    },
+    "assignError": {
+      "ru": "Ошибка назначения расписания",
+      "en": "Failed to assign schedule"
+    },
+    "unassignError": {
+      "ru": "Ошибка удаления назначения",
+      "en": "Failed to delete assignment"
+    },
+    "assignments": {
+      "ru": "Назначенные расписания",
+      "en": "Assigned Schedules"
+    },
+    "scheduleName": {
+      "ru": "Расписание",
+      "en": "Schedule"
+    },
+    "assignedTo": {
+      "ru": "Кому назначено",
+      "en": "Assigned To"
+    },
+    "client": {
+      "ru": "Клиент",
+      "en": "Client"
+    },
+    "group": {
+      "ru": "Группа",
+      "en": "Group"
+    },
+    "assignTitle": {
+      "ru": "Назначить расписание",
+      "en": "Assign Schedule"
+    },
+    "selectSchedule": {
+      "ru": "Выберите расписание",
+      "en": "Select Schedule"
+    },
+    "targetType": {
+      "ru": "Тип цели",
+      "en": "Target Type"
+    },
+    "targetGroup": {
+      "ru": "Назначить на группу",
+      "en": "Assign to Group"
+    },
+    "targetClient": {
+      "ru": "Назначить на клиента",
+      "en": "Assign to Client"
+    },
+    "assignButton": {
+      "ru": "Назначить",
+      "en": "Assign"
+    },
+    "unassignConfirm": {
+      "ru": "Вы уверены, что хотите удалить назначение #{id}?",
+      "en": "Are you sure you want to delete assignment #{id}?"
+    },
+    "timeRangeError": {
+      "ru": "Время \"От\" должно быть раньше времени \"До\"",
+      "en": "Start time must be earlier than end time"
+    },
+    "selectDaysError": {
+      "ru": "Выберите хотя бы один день недели",
+      "en": "Select at least one day of the week"
+    },
+    "selectClient": {
+      "ru": "Выберите клиента",
+      "en": "Select a client"
+    },
+    "selectGroup": {
+      "ru": "Выберите группу",
+      "en": "Select a group"
+    },
+    "hours": {
+      "ru": "Часы",
+      "en": "Hours"
+    },
+    "minutesShort": {
+      "ru": "Мин",
+      "en": "Min"
+    },
+    "minutesStepHelp": {
+      "ru": "Минуты выбираются с шагом 5 минут.",
+      "en": "Minutes step is 5 minutes."
+    },
+    "daysOfWeekHelp": {
+      "ru": "Отметьте дни, когда расписание действует:",
+      "en": "Check the days when the schedule is active:"
+    },
+    "noAssignments": {
+      "ru": "Нет назначенных расписаний",
+      "en": "No assigned schedules"
+    },
+    "activeRules": {
+      "ru": "Активные правила",
+      "en": "Active Rules"
+    }
+  },
+  "timeTracking": {
+    "__comment": "Страница учета рабочего времени УРВ (time-tracking.vue) / Time tracking and reporting (time-tracking.vue)",
+    "title": {
+      "ru": "Учет рабочего времени",
+      "en": "Time Tracking"
+    },
+    "calculateButton": {
+      "ru": "Сформировать отчет",
+      "en": "Calculate Report"
+    },
+    "getReport": {
+      "ru": "Получить отчет",
+      "en": "Get Report"
+    },
+    "reportResults": {
+      "ru": "Результаты отчета",
+      "en": "Report Results"
+    },
+    "copyAsText": {
+      "ru": "Скопировать как текст",
+      "en": "Copy as Text"
+    },
+    "reportFor": {
+      "ru": "Отчет за",
+      "en": "Report for"
+    },
+    "thinClient": {
+      "ru": "Тонкий клиент",
+      "en": "Thin Client"
+    },
+    "loginField": {
+      "ru": "Логин",
+      "en": "Login"
+    },
+    "totalRdp": {
+      "ru": "Общее время RDP-сессии",
+      "en": "Total RDP session time"
+    },
+    "idleTime": {
+      "ru": "Время простоя (KeyLog)",
+      "en": "Idle time (KeyLog)"
+    },
+    "workplaceTime": {
+      "ru": "Время за рабочим местом (КЗ)",
+      "en": "Time at workplace (Control)"
+    },
+    "calculating": {
+      "ru": "Формирование...",
+      "en": "Calculating..."
+    },
+    "target": {
+      "ru": "Объект",
+      "en": "Object"
+    },
+    "reportObject": {
+      "ru": "Выбор",
+      "en": "Selection"
+    },
+    "filters": {
+      "ru": "Параметры отчета",
+      "en": "Report Filters"
+    },
+    "period": {
+      "ru": "Период",
+      "en": "Period"
+    },
+    "client": {
+      "ru": "Клиент",
+      "en": "Client"
+    },
+    "group": {
+      "ru": "Группа",
+      "en": "Group"
+    },
+    "date": {
+      "ru": "Дата",
+      "en": "Date"
+    },
+    "startDate": {
+      "ru": "Дата начала",
+      "en": "Start Date"
+    },
+    "stopDate": {
+      "ru": "Дата окончания",
+      "en": "End Date"
+    },
+    "duration": {
+      "ru": "Длительность (часы)",
+      "en": "Duration (hours)"
+    },
+    "comment": {
+      "ru": "Комментарий",
+      "en": "Comment"
+    },
+    "commentPlaceholder": {
+      "ru": "Введите комментарий",
+      "en": "Enter comment"
+    },
+    "addRecord": {
+      "ru": "Добавить запись",
+      "en": "Add Record"
+    },
+    "editRecord": {
+      "ru": "Редактировать запись",
+      "en": "Edit Record"
+    },
+    "saveSuccess": {
+      "ru": "Запись #{id} успешно сохранена",
+      "en": "Record #{id} saved successfully"
+    },
+    "createSuccess": {
+      "ru": "Запись успешно создана",
+      "en": "Record created successfully"
+    },
+    "deleteSuccess": {
+      "ru": "Запись #{id} успешно удалена",
+      "en": "Record #{id} deleted successfully"
+    },
+    "deleteConfirm": {
+      "ru": "Вы уверены, что хотите удалить запись #{id}?",
+      "en": "Are you sure you want to delete record #{id}?"
+    },
+    "saveError": {
+      "ru": "Ошибка сохранения привязки",
+      "en": "Failed to save record"
+    },
+    "deleteError": {
+      "ru": "Ошибка удаления записи",
+      "en": "Failed to delete record"
+    },
+    "emailList": {
+      "ru": "Список e-mail для отправки отчетов (через запятую)",
+      "en": "Email list for sending reports (comma-separated)"
+    },
+    "emailPlaceholder": {
+      "ru": "example{'@'}domain.com, test{'@'}domain.com",
+      "en": "example{'@'}domain.com, test{'@'}domain.com"
+    },
+    "name": {
+      "ru": "Название",
+      "en": "Name"
+    },
+    "namePlaceholder": {
+      "ru": "Введите название",
+      "en": "Enter name"
+    },
+    "targetClient": {
+      "ru": "Клиент",
+      "en": "Client"
+    },
+    "targetGroup": {
+      "ru": "Группа",
+      "en": "Group"
+    },
+    "reportPeriod": {
+      "ru": "Период отчета",
+      "en": "Report Period"
+    },
+    "reportFormat": {
+      "ru": "Формат отчета",
+      "en": "Report Format"
+    },
+    "emailHelp": {
+      "ru": "Можно вводить несколько e-mail через запятую или точку с запятой.",
+      "en": "You can enter multiple emails separated by comma or semicolon."
+    },
+    "emailLabel": {
+      "ru": "Email для рассылки отчета:",
+      "en": "Email for sending report:"
+    },
+    "recordsTitle": {
+      "ru": "Записи УРВ",
+      "en": "Time Tracking Records"
+    },
+    "noRecords": {
+      "ru": "Записей нет",
+      "en": "No records found"
+    },
+    "selectPeriodError": {
+      "ru": "Выберите период отчета",
+      "en": "Select report period"
+    },
+    "enterEmailError": {
+      "ru": "Введите email для рассылки",
+      "en": "Enter email for distribution"
+    },
+    "everyday": {
+      "ru": "Ежедневно",
+      "en": "Daily"
+    },
+    "everyweek": {
+      "ru": "Еженедельно",
+      "en": "Weekly"
+    },
+    "everymonth": {
+      "ru": "Ежемесячно",
+      "en": "Monthly"
+    }
+  },
+  "sos": {
+    "title": {
+      "ru": "Кнопка SOS",
+      "en": "SOS Button"
+    },
+    "addRecord": {
+      "ru": "Быстрое создание",
+      "en": "Quick Creation"
+    },
+    "editRecord": {
+      "ru": "Редактирование записи",
+      "en": "Edit Record"
+    },
+    "client": {
+      "ru": "Клиент",
+      "en": "Client"
+    },
+    "action": {
+      "ru": "Реакция на нажатие",
+      "en": "Reaction to Press"
+    },
+    "action1": {
+      "ru": "Завершить сессию RDP и отключить клиента",
+      "en": "Terminate RDP session and disconnect client"
+    },
+    "action2": {
+      "ru": "Завершить сессии RDP, отключить клиента и всех в его группе",
+      "en": "Terminate RDP sessions, disconnect client and all in their group"
+    },
+    "action3": {
+      "ru": "Завершить сессии RDP и отключить всех клиентов на предприятии",
+      "en": "Terminate RDP sessions and disconnect all clients on the enterprise"
+    },
+    "listTitle": {
+      "ru": "Список правил SOS",
+      "en": "List of SOS Rules"
+    },
+    "deleteConfirm": {
+      "ru": "Вы уверены, что хотите удалить SOS-правило для этого клиента?",
+      "en": "Are you sure you want to delete the SOS rule for this client?"
+    },
+    "createSuccess": {
+      "ru": "Запись SOS успешно создана",
+      "en": "SOS record successfully created"
+    },
+    "saveSuccess": {
+      "ru": "Запись SOS успешно сохранена",
+      "en": "SOS record successfully saved"
+    },
+    "deleteSuccess": {
+      "ru": "Запись SOS успешно удалена",
+      "en": "SOS record successfully deleted"
+    },
+    "selectClient": {
+      "ru": "Выберите клиента",
+      "en": "Select client"
+    },
+    "selectAction": {
+      "ru": "Выберите реакцию",
+      "en": "Select reaction"
+    }
+  },
+  "sessions": {
+    "title": {
+      "ru": "RDP-сессии",
+      "en": "RDP Sessions"
+    },
+    "listTitle": {
+      "ru": "Клиенты с активными RDP-сессиями",
+      "en": "Clients with active RDP sessions"
+    },
+    "suspendSuccess": {
+      "ru": "RDP сессия успешно заблокирована",
+      "en": "RDP session successfully suspended"
+    },
+    "terminateSuccess": {
+      "ru": "RDP сессия успешно завершена",
+      "en": "RDP session successfully terminated"
+    },
+    "statusSuccess": {
+      "ru": "Статус RDP сессии проверен: {status}",
+      "en": "RDP session status checked: {status}"
+    },
+    "actionSuspend": {
+      "ru": "Блокировать RDP-сессию",
+      "en": "Suspend RDP session"
+    },
+    "actionTerminate": {
+      "ru": "Завершить RDP-сессию",
+      "en": "Terminate RDP session"
+    },
+    "actionCheck": {
+      "ru": "Проверить статус RDP-сессии",
+      "en": "Check RDP session status"
+    },
+    "active": {
+      "ru": "Активна",
+      "en": "Active"
+    },
+    "suspend": {
+      "ru": "Блокирована",
+      "en": "Suspended"
+    },
+    "missing": {
+      "ru": "Отсутствует",
+      "en": "Missing"
+    },
+    "nologin": {
+      "ru": "Пользователь отсутствует",
+      "en": "User missing"
+    },
+    "noserver": {
+      "ru": "Сервер не отвечает",
+      "en": "Server unreachable"
+    }
+  },
+  "clientsPage": {
+    "title": {
+      "ru": "Клиенты",
+      "en": "Clients"
+    },
+    "quickCreate": {
+      "ru": "Быстрое создание",
+      "en": "Quick Creation"
+    },
+    "editTitle": {
+      "ru": "Редактирование клиента",
+      "en": "Edit Client"
+    },
+    "hostname": {
+      "ru": "Имя клиента (Hostname)",
+      "en": "Client Name (Hostname)"
+    },
+    "hostnamePlaceholder": {
+      "ru": "Имя хоста",
+      "en": "Host Name"
+    },
+    "active": {
+      "ru": "Активен",
+      "en": "Active"
+    },
+    "create": {
+      "ru": "Создать",
+      "en": "Create"
+    },
+    "save": {
+      "ru": "Сохранить",
+      "en": "Save"
+    },
+    "rdpSettings": {
+      "ru": "RDP-настройки",
+      "en": "RDP Settings"
+    },
+    "client": {
+      "ru": "Клиент",
+      "en": "Client"
+    },
+    "auth": {
+      "ru": "Авторизация",
+      "en": "Authorization"
+    },
+    "group": {
+      "ru": "Группа",
+      "en": "Group"
+    },
+    "ble": {
+      "ru": "BLE метка",
+      "en": "BLE Tag"
+    },
+    "otp": {
+      "ru": "OTP токен",
+      "en": "OTP Token"
+    },
+    "login": {
+      "ru": "Логин",
+      "en": "Login"
+    },
+    "loginPlaceholder": {
+      "ru": "Введите логин",
+      "en": "Enter login"
+    },
+    "password": {
+      "ru": "Пароль",
+      "en": "Password"
+    },
+    "passwordPlaceholder": {
+      "ru": "Введите пароль",
+      "en": "Enter password"
+    },
+    "server": {
+      "ru": "Ip-адрес сервера",
+      "en": "Server IP Address"
+    },
+    "serverPlaceholder": {
+      "ru": "Введите Ip-адрес сервера (опционально:порт)",
+      "en": "Enter server IP address (optional:port)"
+    },
+    "domain": {
+      "ru": "Домен (если есть)",
+      "en": "Domain (if any)"
+    },
+    "domainPlaceholder": {
+      "ru": "Введите домен",
+      "en": "Enter domain"
+    },
+    "eth0mac": {
+      "ru": "Ethernet mac-адрес",
+      "en": "Ethernet MAC Address"
+    },
+    "wlan0mac": {
+      "ru": "WiFi mac-адрес",
+      "en": "WiFi MAC Address"
+    },
+    "hci0mac": {
+      "ru": "Bluetooth mac-адрес",
+      "en": "Bluetooth MAC Address"
+    },
+    "uid": {
+      "ru": "UID",
+      "en": "UID"
+    },
+    "macPlaceholder": {
+      "ru": "XX:XX:XX:XX:XX:XX",
+      "en": "XX:XX:XX:XX:XX:XX"
+    },
+    "selectAuthType": {
+      "ru": "Выберете тип авторизации клиента:",
+      "en": "Select client authorization type:"
+    },
+    "reqLogin": {
+      "ru": "Запрашивать Логин (RDP)",
+      "en": "Request Login (RDP)"
+    },
+    "reqPassword": {
+      "ru": "Запрашивать Пароль (RDP)",
+      "en": "Request Password (RDP)"
+    },
+    "useBle": {
+      "ru": "Использовать BLE метку",
+      "en": "Use BLE Tag"
+    },
+    "useOtp": {
+      "ru": "Использовать OTP токен",
+      "en": "Use OTP Token"
+    },
+    "selectGroup": {
+      "ru": "Выберете группу:",
+      "en": "Select group:"
+    },
+    "bleName": {
+      "ru": "Название BLE-метки",
+      "en": "BLE Tag Name"
+    },
+    "bleNamePlaceholder": {
+      "ru": "ble_x1x2x3x4x5x6",
+      "en": "ble_x1x2x3x4x5x6"
+    },
+    "genIni": {
+      "ru": "Сгенерировать INI",
+      "en": "Generate INI"
+    },
+    "otpKey": {
+      "ru": "Ключ",
+      "en": "Key"
+    },
+    "otpKeyPlaceholder": {
+      "ru": "32 символа",
+      "en": "32 characters"
+    },
+    "version": {
+      "ru": "Версия",
+      "en": "Version"
+    },
+    "notActive": {
+      "ru": "не активен",
+      "en": "inactive"
+    },
+    "activeBadge": {
+      "ru": "активен",
+      "en": "active"
+    },
+    "createSuccess": {
+      "ru": "Клиент успешно создан",
+      "en": "Client created successfully"
+    },
+    "updateSuccess": {
+      "ru": "Данные клиента обновлены",
+      "en": "Client updated successfully"
+    },
+    "deleteSuccess": {
+      "ru": "Клиент успешно удален",
+      "en": "Client deleted successfully"
+    },
+    "deleteConfirm": {
+      "ru": "Вы уверены, что хотите удалить клиента?",
+      "en": "Are you sure you want to delete this client?"
+    },
+    "hostnameRequired": {
+      "ru": "Имя хоста обязательно",
+      "en": "Host name is required"
+    }
+  }
+}
